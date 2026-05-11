@@ -80,3 +80,61 @@ wordpress-expert/
 - WordPress VIP file system documentation: https://docs.wpvip.com/vip-file-system/
 - WordPress VIP PHPCS installed standards documentation: https://docs.wpvip.com/php_codesniffer/installed-standards/
 - WordPress plugin security handbook: https://developer.wordpress.org/plugins/security/
+
+## Expansion Iteration: Complete WordPress Expert Coverage
+
+### New Objective
+
+Expand the skill from strong plugin/VIP engineering coverage into an efficient all-around WordPress expert skill covering admin, performance, UI, UX, block editor, security, enterprise/VIP, troubleshooting, refactor, coding standards, linting, CI/CD, GitHub, GitHub Actions, WP-CLI, releases, and operational workflows.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated plugin architecture playbook | Yes | Add | Makes plugin creation/refactor work faster without overloading the core skill. |
+| Dedicated theme/block editor playbook | Yes | Add | Gives block-compatible generation and theme work a first-class path. |
+| Admin UX/UI playbook | Yes | Add | Covers settings UX, list tables, notices, onboarding, accessibility, and UI improvement. |
+| Performance/security playbook | Yes | Add | Separates hardening and scale heuristics from review-only guidance. |
+| Troubleshooting/operations playbook | Yes | Add | Speeds real-world debugging and incident triage. |
+| Standards/CI/GitHub playbook | Yes | Add | Covers linting, WPCS/VIPCS, static analysis, GitHub Actions, PRs, and release flow. |
+| WP-CLI automation playbook | Yes | Add | Improves runtime verification where admin/browser access is unavailable. |
+| More scripts for every workflow | Not yet | Defer | Current read-only helpers are enough; more scripts should be added only after repeated tasks prove need. |
+| Dump all knowledge into SKILL.md | No | Reject | Would make every invocation expensive and less focused. Reference routing remains the right design. |
+
+### Added Artifacts
+
+- `references/plugin-architecture.md`
+- `references/theme-and-block-editor.md`
+- `references/admin-ux-and-ui.md`
+- `references/performance-and-security.md`
+- `references/troubleshooting-operations.md`
+- `references/standards-ci-github.md`
+- `references/wp-cli-automation.md`
+
+### Updated Artifacts
+
+- `SKILL.md`: expanded trigger description, capability router, and validation ladder while keeping the body compact.
+- `README.md`: documented the complete WordPress coverage.
+- `agents/openai.yaml`: updated default prompt and short description.
+- `scripts/wp-context.sh`: added CI, block, theme, and expanded package discovery.
+- `scripts/wp-validate.sh`: added basic GitHub Actions workflow YAML parsing when Ruby is available.
+- `references/validation-commands.md`: added GitHub Actions/CI validation commands.
+
+### Additional Source Anchors Checked
+
+- Block Editor Handbook: https://developer.wordpress.org/block-editor/
+- Theme Handbook: https://developer.wordpress.org/themes/
+- `theme.json` documentation: https://developer.wordpress.org/themes/global-settings-and-styles/introduction-to-theme-json/
+- WordPress Coding Standards for PHP_CodeSniffer: https://github.com/WordPress/WordPress-Coding-Standards
+- WP-CLI command reference: https://developer.wordpress.org/cli/commands/
+- GitHub Actions workflow syntax: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax
+
+### Expansion Validation Results
+
+- `quick_validate.py wordpress-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wordpress-expert`: passed, confirming the installed symlink resolves correctly.
+- `bash -n wordpress-expert/scripts/wp-context.sh`: passed.
+- `bash -n wordpress-expert/scripts/wp-validate.sh`: passed.
+- `bash wordpress-expert/scripts/wp-context.sh .`: passed.
+- `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.

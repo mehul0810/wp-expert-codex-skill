@@ -1,38 +1,46 @@
 ---
 name: wordpress-expert
-description: Principal-level WordPress engineering skill for reviewing, debugging, designing, implementing, hardening, and validating WordPress plugins, themes, mu-plugins, block editor code, REST/AJAX integrations, WooCommerce-style extensions, multisite code, enterprise WordPress, and WordPress VIP projects. Use when Codex works on WordPress PHP/JS codebases, large-scale performance, security, migrations, custom tables, hooks, cron/Action Scheduler, Gutenberg blocks, admin UX, CI/release readiness, or VIP compatibility.
+description: Comprehensive principal-level WordPress engineering skill for efficient plugin development, theme development, block editor compatible code, admin UX/UI, frontend UI improvement, performance, security, enterprise architecture, WordPress VIP, troubleshooting, refactoring, WP-CLI automation, coding standards, linting, CI/CD, GitHub Actions, PR workflows, releases, migrations, and validation. Use when Codex works on WordPress PHP/JS codebases, plugins, themes, mu-plugins, blocks, REST/AJAX, cron/Action Scheduler, custom tables, multisite, WooCommerce-style extensions, admin screens, GitHub workflows, or VIP/enterprise production readiness.
 ---
 
 # WordPress Expert
 
-Use this skill to operate like a principal WordPress engineer: protect production behavior, find the real runtime surface, make the smallest durable change, and validate with evidence.
+Use this skill to operate like a principal WordPress engineer: find the real runtime surface, protect production behavior, design for scale and maintainability, improve UX intentionally, and validate with evidence.
 
-## Context Discipline
+## Operating Rules
 
-- Start with repo facts, not assumptions: current directory, Git root, WordPress root, plugin/theme entry files, package/composer scripts, active branch, and dirty files.
-- Load references only when needed. Do not read every reference by default.
-- Prefer targeted `rg`, `git diff`, and small file reads over broad context dumps.
+- Start with repo facts, not assumptions: current directory, Git root, WordPress root, plugin/theme entry files, Composer/npm scripts, build output, active branch, dirty files, and deployment target.
+- Load only the reference needed for the task. Do not read every reference by default.
+- Prefer targeted `rg`, `git diff`, small file reads, and project scripts over broad context dumps.
 - Preserve user work. Never reset or discard unrelated changes unless explicitly asked.
-- Treat platform policy, VIP rules, dependencies, pricing, APIs, and current WordPress behavior as drift-prone. Verify current official docs when exact current behavior matters.
+- Treat platform policy, VIP rules, dependencies, GitHub Actions behavior, and current WordPress behavior as drift-prone. Verify official docs when exact current behavior matters.
+- Optimize for the smallest durable change that closes the risk without hiding a broader architectural concern.
 
 ## Fast Workflow
 
-1. Classify the task: review, bug fix, feature, refactor, hardening, performance, VIP readiness, release, or incident.
-2. Map the runtime: locate Git root, WordPress root, active plugin/theme/mu-plugin, bootstrap files, hooks, build output, autoload, and deployment target.
-3. Identify risk: security, data integrity, backward compatibility, performance, cache invalidation, migrations, multisite, and editor/frontend layout regressions.
-4. Plan only as much as needed. For substantial work, state a concise plan before edits; otherwise implement directly.
-5. Change narrowly. Preserve public hooks, filters, REST routes, DB schema contracts, option names, block attributes, and markup unless the user asks to break compatibility.
-6. Validate with the cheapest reliable gates first, then deeper gates when available.
-7. Report outcomes with file references, commands run, residual risks, and concrete next steps only when useful.
+1. Classify the task: review, plugin, theme, block/editor, admin UX, UI polish, performance, security, VIP, troubleshooting, refactor, CI/CD, release, or incident.
+2. Map the runtime: locate bootstrap files, hooks, REST/AJAX routes, blocks, templates, build artifacts, autoload, cron/jobs, options, custom tables, and active theme/plugin overrides.
+3. Identify risk: authorization, data integrity, backward compatibility, cache behavior, migrations, multisite, layout regression, editor/frontend parity, and deployment safety.
+4. Select references from the router below; load only what the task requires.
+5. Implement narrowly unless the user requested planning/review only.
+6. Validate with the cheapest reliable gate first, then run deeper gates available in the repo.
+7. Report solution, files changed, validation, remaining risk, and next steps only when useful.
 
-## Reference Routing
+## Reference Router
 
-Read only the relevant file:
+Read the smallest relevant set:
 
-- `references/review-checklists.md`: code reviews, audits, PR review, security/performance/modularity findings.
-- `references/enterprise-architecture.md`: new features, refactors, custom tables, async jobs, caching, migrations, service boundaries.
-- `references/vip-scale-playbook.md`: WordPress VIP, high-traffic enterprise scale, page/object/query cache, filesystem, load testing, PHPCS standards.
-- `references/implementation-patterns.md`: safe code patterns for REST, AJAX, cron, Action Scheduler, options, queries, blocks, assets.
+- `references/plugin-architecture.md`: plugin development, service boundaries, REST/AJAX, custom tables, migrations, async jobs, settings, releases.
+- `references/theme-and-block-editor.md`: classic/block themes, `theme.json`, block editor code, dynamic blocks, Query Loop, patterns, editor/frontend parity.
+- `references/admin-ux-and-ui.md`: admin screens, settings UX, onboarding, notices, list tables, accessibility, frontend/UI improvement brainstorming.
+- `references/review-checklists.md`: audits, PR review, security/performance/modularity/correctness findings.
+- `references/performance-and-security.md`: high-risk performance, caching, database, security hardening, privacy, secrets, PII.
+- `references/enterprise-architecture.md`: enterprise design, data modeling, multisite, observability, backward compatibility, rollout/backout.
+- `references/vip-scale-playbook.md`: WordPress VIP, high traffic, platform constraints, cache layers, filesystem, PHPCS/VIPCS.
+- `references/troubleshooting-operations.md`: production/debug triage, fatal errors, REST/AJAX issues, cron queues, mail, media, cache, multisite.
+- `references/standards-ci-github.md`: WPCS/VIPCS, PHPStan/Psalm, ESLint, PHPUnit, GitHub Actions, CI/CD, PR/release workflows.
+- `references/wp-cli-automation.md`: WP-CLI, `wp eval`, activation probes, scaffold, search-replace, database and cron commands.
+- `references/implementation-patterns.md`: safe code snippets for REST, admin mutations, SQL, async token jobs, cache, assets, dynamic blocks.
 - `references/validation-commands.md`: command selection for linting, tests, activation checks, WP-CLI, Studio/local environments.
 
 Use scripts when helpful:
@@ -42,15 +50,13 @@ bash /path/to/wordpress-expert/scripts/wp-context.sh /path/to/repo
 bash /path/to/wordpress-expert/scripts/wp-validate.sh /path/to/repo
 ```
 
-The scripts are read-only discovery/validation helpers. Inspect them before adapting behavior.
-
 ## Review Mode
 
 - Findings first, ordered by severity. Include file/line references and the concrete failure mode.
-- Prefer a few high-confidence findings over a long speculative list.
-- Tie every issue to user impact: exploit path, data loss, broken checkout, cache stampede, slow admin, migration failure, layout regression, or BC break.
+- Prefer high-confidence findings with real impact over long speculative lists.
+- Tie every issue to user impact: exploit path, data loss, broken checkout, cache stampede, slow admin, migration failure, layout regression, accessibility failure, or BC break.
 - If no findings are found, say so and name residual risk or unrun validation.
-- Do not rewrite the code during a review unless the user asks for implementation.
+- Do not rewrite code during review unless the user asks for implementation.
 
 Severity guide:
 
@@ -61,41 +67,39 @@ Severity guide:
 
 ## Implementation Mode
 
-- Keep plugin bootstraps thin. Move behavior into namespaced classes/modules when the change is non-trivial.
-- Prefer WordPress APIs over raw PHP/framework shortcuts, but do not force WordPress APIs when they are slower or less correct for the job.
-- Register public integration points deliberately: actions, filters, REST routes, WP-CLI commands, blocks, shortcodes, cron hooks.
-- Make async jobs idempotent, retryable, and observable. Avoid PII/secrets in scheduled args, logs, cache keys, URLs, and option names.
-- Treat database writes, migrations, and background processing as production operations: version them, batch them, and make them safe to resume.
-- Preserve block/editor attributes and frontend render contracts. Do not couple behavior changes to native Query Loop or layout markup unless required.
-- Load assets only on screens/routes/blocks that need them. Avoid global admin/frontend payloads.
-- Favor root/project-level Composer workflows when the repo already centralizes autoloading; do not introduce per-plugin Composer churn without a clear reason.
+- Keep bootstraps thin. Move non-trivial behavior into namespaced modules/classes with clear ownership.
+- Prefer WordPress-native APIs and extension points, but do not force them when a lower-level approach is measurably safer or faster.
+- Register public contracts deliberately: hooks, filters, REST routes, WP-CLI commands, blocks, shortcodes, cron hooks, assets, options, schema versions.
+- Make background work idempotent, retryable, bounded, and observable. Never put secrets or PII in scheduled args, logs, cache keys, URLs, markup, or client JS.
+- Preserve block attributes, frontend markup contracts, Query Loop layout, and theme template hierarchy unless the task explicitly targets them.
+- Load assets only on screens, routes, blocks, or templates that need them.
+- Favor existing repo workflows for Composer/npm/build/release. Do not add tooling churn without a clear payoff.
 
-## WordPress Hard Rules
+## Universal WordPress Hard Rules
 
 - Capability checks authorize actions. Nonces reduce CSRF; they are not authorization.
 - Sanitize and validate input on ingress. Escape output at the final output boundary.
 - Use `$wpdb->prepare()` for dynamic SQL values and whitelist identifiers/order clauses manually.
 - Give every REST route a meaningful `permission_callback`.
-- Avoid autoloading large or volatile options. Avoid repeatedly updating hot autoloaded options.
-- Avoid unbounded `WP_Query`, `get_posts`, `get_users`, term/meta queries, and admin list queries. Use pagination, `fields => 'ids'`, `no_found_rows`, and explicit cache strategy when appropriate.
+- Avoid large or volatile autoloaded options and repeated writes to hot autoloaded options.
+- Avoid unbounded queries. Use pagination, `fields => 'ids'`, `no_found_rows`, indexed lookups, and explicit cache strategy when appropriate.
 - Do not assume local filesystem persistence on cloud/VIP-style environments. Use uploads APIs for media and temp APIs for temporary files.
-- Never expose secret keys, API tokens, private salts, customer PII, or sensitive payloads in client JS, markup, logs, cron args, transients, cache keys, or PR text.
+- Never expose secret keys, API tokens, private salts, customer PII, or sensitive payloads in public surfaces.
 
 ## Validation Ladder
-
-Choose gates based on the codebase and task:
 
 - Syntax: `php -l`, `node --check` for plain JS, `composer validate`, package manager checks.
 - Standards/static analysis: PHPCS/WPCS/VIPCS, PHPStan/Psalm, ESLint, TypeScript, WordPress scripts checks.
 - Runtime: plugin activation, `wp eval`, `wp option`, REST route probes, admin page load, block editor load, frontend smoke checks.
-- Tests: PHPUnit, Brain Monkey, WP test suite, Playwright, Cypress, Jest, Vitest.
-- Scale: query count, object-cache hit/miss behavior, slow logs, New Relic/Query Monitor, cron/action queue behavior.
+- Tests: PHPUnit, Brain Monkey, WP test suite, Jest/Vitest, Playwright/Cypress.
+- CI/CD: GitHub Actions workflow syntax, matrix jobs, artifacts, release packaging, deployment dry runs.
+- Scale: query count, object-cache behavior, slow logs, New Relic/Query Monitor, cron/action queue behavior.
 
 When a tool is missing, use the best available lower-level check and say what was not run.
 
 ## Output Expectations
 
 - For reviews: findings first, then open questions/testing gaps.
-- For implementation: summarize the solution, changed files, validation commands, and remaining risk.
-- For plans: include tradeoffs, rollout/migration notes, test strategy, and backout path.
-- Keep communication direct and evidence-based. Avoid generic WordPress advice when repository evidence is available.
+- For implementation: solution, changed files, validation commands, and remaining risk.
+- For brainstorming: options with tradeoffs, recommended direction, and what to prototype or validate.
+- For plans: rollout/migration notes, test strategy, backout path, and exact acceptance checks.

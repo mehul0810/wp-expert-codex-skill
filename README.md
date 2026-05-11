@@ -1,6 +1,18 @@
 # WP Expert Codex Skill
 
-This repository contains the `wordpress-expert` Codex skill for principal-grade WordPress engineering work: plugin/theme reviews, implementation, hardening, performance, enterprise scale, and WordPress VIP readiness.
+This repository contains the `wordpress-expert` Codex skill for complete, principal-grade WordPress engineering work.
+
+## What It Covers
+
+- Plugin development and refactoring.
+- Theme development, classic themes, block themes, and `theme.json`.
+- Block editor compatible code generation and dynamic/static block work.
+- Admin UX, settings screens, onboarding, list tables, notices, and frontend UI improvement.
+- Performance, caching, database scale, security, privacy, secrets, and PII handling.
+- Enterprise architecture, multisite, migrations, async jobs, observability, and rollout/backout planning.
+- WordPress VIP readiness and high-traffic production constraints.
+- Troubleshooting, incident triage, WP-CLI probes, activation checks, and operational debugging.
+- Coding standards, linting, static analysis, tests, GitHub Actions, CI/CD, PR workflows, and releases.
 
 ## Skill
 
@@ -13,15 +25,15 @@ wordpress-expert/
 Default invocation:
 
 ```text
-Use $wordpress-expert to review, implement, or harden a WordPress plugin, theme, or enterprise/VIP codebase.
+Use $wordpress-expert to review, implement, debug, harden, or improve a WordPress plugin, theme, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
 ```
 
 ## Design
 
 The skill is intentionally token-efficient:
 
-- `SKILL.md` contains the core operating workflow.
+- `SKILL.md` contains the core operating workflow and reference router.
 - `references/` contains deeper playbooks loaded only when relevant.
 - `scripts/` contains read-only discovery and validation helpers.
 
-See `PLANNING_REPORT.md` for the planning rationale.
+See `PLANNING_REPORT.md` for the planning rationale and validation history.

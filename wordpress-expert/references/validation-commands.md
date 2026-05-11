@@ -77,6 +77,18 @@ npx wp-scripts lint-js src
 
 Use `node --check` only for plain JavaScript that Node can parse. It is not a substitute for build/lint on JSX/TypeScript.
 
+## GitHub Actions And CI
+
+```bash
+find .github/workflows -maxdepth 1 -type f \( -name '*.yml' -o -name '*.yaml' \) -print
+find .github/workflows -maxdepth 1 -type f \( -name '*.yml' -o -name '*.yaml' \) -print0 | xargs -0 ruby -e 'require "yaml"; ARGV.each { |file| YAML.load_file(file); puts "parsed: #{file}" }'
+gh workflow list
+gh run list --limit 10
+gh run view --log-failed
+```
+
+Use `gh` only when authenticated and when GitHub context matters. YAML parsing confirms syntax only; it does not prove GitHub-specific workflow semantics.
+
 ## WordPress Runtime Checks
 
 With WP-CLI:

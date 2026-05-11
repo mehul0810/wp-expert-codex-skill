@@ -23,7 +23,11 @@ find . -maxdepth 5 \( -name wp-load.php -o -path '*/wp-content/plugins' -o -path
 
 echo
 echo "== Package Files =="
-find . -maxdepth 4 \( -name composer.json -o -name package.json -o -name phpcs.xml -o -name phpcs.xml.dist -o -name phpstan.neon -o -name phpunit.xml -o -name vite.config.* -o -name webpack.config.* -o -name block.json \) -print 2>/dev/null | sort || true
+find . -maxdepth 5 \( -name composer.json -o -name package.json -o -name phpcs.xml -o -name phpcs.xml.dist -o -name phpstan.neon -o -name phpunit.xml -o -name playwright.config.* -o -name vite.config.* -o -name webpack.config.* -o -name block.json -o -name theme.json \) -print 2>/dev/null | sort || true
+
+echo
+echo "== CI Workflows =="
+find .github/workflows -maxdepth 1 -type f \( -name '*.yml' -o -name '*.yaml' \) -print 2>/dev/null | sort || true
 
 echo
 echo "== Plugin Headers =="
@@ -36,6 +40,10 @@ done < <(find . -maxdepth 6 -type f -name '*.php' -not -path '*/vendor/*' -not -
 echo
 echo "== Theme Markers =="
 find . -maxdepth 6 -type f \( -name style.css -o -name theme.json -o -name functions.php \) -not -path '*/vendor/*' -not -path '*/node_modules/*' -not -path '*/.git/*' -print 2>/dev/null | sort || true
+
+echo
+echo "== Block Markers =="
+find . -maxdepth 7 -type f \( -name block.json -o -name 'edit.js' -o -name 'save.js' -o -name 'render.php' \) -not -path '*/vendor/*' -not -path '*/node_modules/*' -not -path '*/.git/*' -print 2>/dev/null | sort || true
 
 echo
 echo "== WordPress Entry Points =="

@@ -94,3 +94,18 @@ if [ -f package.json ]; then
     echo "npm not found"
   fi
 fi
+
+echo
+echo "== GitHub Actions Workflow YAML =="
+workflow_files=()
+while IFS= read -r -d '' file; do
+  workflow_files+=("$file")
+done < <(find .github/workflows -maxdepth 1 -type f \( -name '*.yml' -o -name '*.yaml' \) -print0 2>/dev/null)
+
+if [ "${#workflow_files[@]}" -eq 0 ]; then
+  echo "no GitHub Actions workflows found"
+elif command -v ruby >/dev/null 2>&1; then
+  ruby -e 'require "yaml"; ARGV.each { |file| YAML.load_file(file); puts "parsed: #{file}" }' "${workflow_files[@]}"
+else
+  echo "skipped: ruby not found for YAML parse"
+fi
