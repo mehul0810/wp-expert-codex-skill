@@ -49,6 +49,7 @@ Prioritize paths by traffic and cost:
 - Authorization: capability and object ownership checks for every sensitive action.
 - CSRF: nonces for admin/form/AJAX mutations.
 - REST: meaningful `permission_callback` for every route.
+- Endpoint design: avoid new `admin-ajax.php` handlers when REST can provide the same behavior with clearer schemas, permissions, cache/debug tooling, and client integration.
 - Input: sanitize, validate, enforce type/length/enum/range/ownership.
 - Output: escape at the final output boundary.
 - SQL: `$wpdb->prepare()` for values and manual whitelists for identifiers.

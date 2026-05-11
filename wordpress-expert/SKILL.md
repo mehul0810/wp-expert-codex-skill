@@ -74,6 +74,7 @@ Severity guide:
 - Keep bootstraps thin. Move non-trivial behavior into namespaced modules/classes with clear ownership.
 - Prefer WordPress-native APIs and extension points, but do not force them when a lower-level approach is measurably safer or faster.
 - Register public contracts deliberately: hooks, filters, REST routes, WP-CLI commands, blocks, shortcodes, cron hooks, assets, options, schema versions.
+- Use REST API for new interactive endpoints by default. Do not add new `admin-ajax.php` handlers when a REST route can satisfy the same use case.
 - Make background work idempotent, retryable, bounded, and observable. Never put secrets or PII in scheduled args, logs, cache keys, URLs, markup, or client JS.
 - Preserve block attributes, frontend markup contracts, Query Loop layout, and theme template hierarchy unless the task explicitly targets them.
 - Load assets only on screens, routes, blocks, or templates that need them.
@@ -85,6 +86,7 @@ Severity guide:
 - Sanitize and validate input on ingress. Escape output at the final output boundary.
 - Use `$wpdb->prepare()` for dynamic SQL values and whitelist identifiers/order clauses manually.
 - Give every REST route a meaningful `permission_callback`.
+- Avoid `admin-ajax.php` for new work unless there is a concrete legacy compatibility reason that REST cannot meet.
 - Avoid large or volatile autoloaded options and repeated writes to hot autoloaded options.
 - Avoid unbounded queries. Use pagination, `fields => 'ids'`, `no_found_rows`, indexed lookups, and explicit cache strategy when appropriate.
 - Do not assume local filesystem persistence on cloud/VIP-style environments. Use uploads APIs for media and temp APIs for temporary files.

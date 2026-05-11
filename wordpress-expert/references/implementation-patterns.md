@@ -28,11 +28,12 @@ register_rest_route(
 
 Rules:
 
+- Prefer REST routes for new JS-driven interactions. Do not create new `wp_ajax_*` actions when this REST pattern can satisfy the request.
 - Permission callback is required and meaningful.
 - Validate object ownership inside the callback or controller when ID-level access matters.
 - Return `WP_Error` with useful status codes for failures.
 
-## Admin Post Or AJAX Mutation
+## Admin Post Mutation
 
 ```php
 public function handle_save(): void {
@@ -69,6 +70,34 @@ Rules:
 - Nonce for CSRF.
 - `wp_unslash()` before sanitizing request values.
 - Explicit `autoload` argument for options likely not needed on every request.
+
+## Legacy AJAX Compatibility Wrapper
+
+Use this only when an existing `wp_ajax_*` action must remain for backward compatibility. New JS endpoints should use REST.
+
+```php
+public function ajax_save(): void {
+    if ( ! current_user_can( 'manage_options' ) ) {
+        wp_send_json_error( array( 'message' => __( 'Sorry, you are not allowed to do that.', 'example' ) ), 403 );
+    }
+
+    check_ajax_referer( 'example_save_settings' );
+
+    $result = $this->settings_service->save_from_request( wp_unslash( $_POST ) );
+
+    if ( is_wp_error( $result ) ) {
+        wp_send_json_error( array( 'message' => $result->get_error_message() ), 400 );
+    }
+
+    wp_send_json_success( array( 'message' => __( 'Settings saved.', 'example' ) ) );
+}
+```
+
+Rules:
+
+- Keep wrappers thin; the shared service should also power the REST controller.
+- Do not add new AJAX-only business logic.
+- Keep the nonce/capability checks even when the UI is admin-only.
 
 ## Safe SQL
 

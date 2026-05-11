@@ -29,6 +29,7 @@ Check these first for externally reachable code:
 - Authorization: every state-changing action has an explicit capability check. Do not rely on nonce, menu visibility, or UI hiding.
 - CSRF: admin/AJAX/form mutations verify a nonce tied to the action.
 - REST: every route has `permission_callback`; public routes intentionally return public data only.
+- AJAX/API design: new JS-driven interactions should use REST API unless a concrete legacy compatibility reason requires `admin-ajax.php`.
 - Input: sanitize and validate by type, length, enum, ID ownership, URL scheme, MIME type, and business rule.
 - Output: escape at output boundary with `esc_html`, `esc_attr`, `esc_url`, `wp_kses`, or context-specific escaping.
 - SQL: dynamic values use `$wpdb->prepare`; table/column/order identifiers are whitelisted.

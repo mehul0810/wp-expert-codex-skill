@@ -212,3 +212,25 @@ Add WordPress Design System support as a first-class skill route covering `@word
 - Block Editor Component Reference: https://developer.wordpress.org/block-editor/reference-guides/components/
 - Block Editor Reference Guides: https://developer.wordpress.org/block-editor/reference-guides/
 - Gutenberg Storybook: https://wordpress.github.io/gutenberg/
+
+## REST-First Endpoint Guidance Addition
+
+### Objective
+
+Add a durable guideline that new interactive WordPress endpoints should use REST API by default and should not use `admin-ajax.php` when REST can satisfy the same use case.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| REST-first hard rule | Yes | Add | It prevents new legacy AJAX surfaces and improves schemas, permissions, client integration, and testability. |
+| Absolute ban on all AJAX | No | Refine | Existing public actions and legacy integrations sometimes require compatibility wrappers. |
+| Migration wrapper pattern | Yes | Add | Gives Codex a safe path for legacy AJAX without duplicating business logic. |
+
+### Updated Artifacts
+
+- `SKILL.md`
+- `references/plugin-architecture.md`
+- `references/implementation-patterns.md`
+- `references/review-checklists.md`
+- `references/performance-and-security.md`

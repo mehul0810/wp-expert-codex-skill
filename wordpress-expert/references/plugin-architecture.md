@@ -37,11 +37,15 @@ Keep the bootstrap thin. It should define constants, load autoloaders, check dep
 
 ## REST And AJAX
 
-- REST is preferred for modern admin/editor apps and external integrations.
-- AJAX is still acceptable for legacy admin screens or low-scope interactions.
+- REST is the default for new interactive endpoints in admin, editor, frontend, and external integrations.
+- Do not create new `admin-ajax.php` handlers when the same behavior can be expressed as a REST route.
+- Treat existing AJAX handlers as legacy compatibility surfaces. Keep them only when backward compatibility, old integrations, or non-REST constraints require them.
+- If an existing AJAX endpoint is touched, consider adding a REST route and keeping the AJAX action as a thin compatibility wrapper around the same service.
 - Every state-changing entry point needs capability check, nonce/CSRF where applicable, validation, idempotency, and clear error responses.
 - Route schemas should describe input shape and reduce controller-level parsing.
 - Public endpoints must be explicitly public and return only public data.
+
+Use `admin-ajax.php` only with a documented reason, such as maintaining an existing public action contract, supporting legacy third-party JS already calling that action, or working inside a constrained older admin flow where adding REST is riskier than keeping a thin wrapper.
 
 ## Custom Tables
 
