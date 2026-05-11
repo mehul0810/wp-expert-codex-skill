@@ -186,3 +186,29 @@ Add WordPress.org Plugin Directory guideline reviewer expertise plus webpack, Co
 - npm ci documentation: https://docs.npmjs.com/cli/v8/commands/npm-ci/
 - webpack concepts/configuration: https://webpack.js.org/concepts/ and https://webpack.js.org/configuration/
 - WordPress dependency extraction webpack plugin: https://developer.wordpress.org/block-editor/reference-guides/packages/packages-dependency-extraction-webpack-plugin/
+
+## WordPress Design System Addition
+
+### Objective
+
+Add WordPress Design System support as a first-class skill route covering `@wordpress/components`, WordPress-native admin/editor UI patterns, design tokens, Figma-to-code translation, accessibility, and component selection.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated WordPress design system playbook | Yes | Add | It lets Codex translate UI/UX ideas into WordPress-native components instead of generic React/admin UI. |
+| Put design guidance only in admin UX file | No | Reject | Design system work also spans block editor, Figma-to-code, theme tokens, and component APIs. |
+| Hard-code component props | No | Reject | Component APIs change; the skill should require current official docs/Storybook checks for exact implementation details. |
+
+### Added Artifact
+
+- `references/wordpress-design-system.md`
+
+### Additional Source Anchors Checked
+
+- Make WordPress Design Handbook: https://make.wordpress.org/design/handbook/
+- WordPress Design Foundations: https://make.wordpress.org/design/handbook/design-guide/foundations/
+- Block Editor Component Reference: https://developer.wordpress.org/block-editor/reference-guides/components/
+- Block Editor Reference Guides: https://developer.wordpress.org/block-editor/reference-guides/
+- Gutenberg Storybook: https://wordpress.github.io/gutenberg/
