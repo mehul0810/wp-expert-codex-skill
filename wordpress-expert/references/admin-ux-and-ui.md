@@ -21,6 +21,15 @@ Use this for WordPress admin screens, settings pages, onboarding, dashboard widg
 - Use confirmation for destructive or irreversible actions.
 - Avoid surprise remote calls on page load; make checks explicit or cache them.
 
+## Editor UI Placement
+
+- Classic editor post-edit fields should use WordPress meta boxes when the UI belongs to a post, page, or custom post type edit screen.
+- Block editor document-level settings should use the document settings sidebar or a relevant document panel, not a classic meta box, unless preserving legacy compatibility.
+- Block-specific controls should live with the block through inspector controls, block supports, `ToolsPanel`, or an appropriate block panel.
+- New meta boxes should not appear in the block editor. Register or render them only for classic-editor contexts, or hide/migrate them when the post type uses the block editor.
+- Do not put global plugin settings inside post editor panels. Use a plugin settings screen when the setting affects the site or integration globally.
+- Do not force a custom full-screen React app for simple post metadata controls; match the editor surface users already understand.
+
 ## Settings UX
 
 - Use sensible defaults and explain when a setting affects performance, privacy, cost, email deliverability, indexing, or cacheability.

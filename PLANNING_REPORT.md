@@ -258,3 +258,31 @@ Improve the WordPress UI/UX guidance by synthesizing product-grade UI/UX reasoni
 
 - UI/UX Pro Max skill: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/
 - WordPress agent skills WPDS skill: https://github.com/WordPress/agent-skills/tree/trunk/skills/wpds
+
+## Editor UI Placement Addition
+
+### Objective
+
+Add guidance for choosing the right WordPress editor UI surface: meta boxes for classic editor post-edit metadata, document settings panels for block editor document-level settings, and inspector/block panels for block-specific controls.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Explicit editor surface rule | Yes | Add | It prevents generic admin UI from landing in the wrong editor surface and improves editor-native UX. |
+| Always use meta boxes | No | Reject | Meta boxes are appropriate for classic editor and legacy compatibility, but block editor has better native panel surfaces. |
+| Always use document panels | No | Reject | Block-specific settings belong with the block, not in the document sidebar. |
+
+### Updated Artifacts
+
+- `SKILL.md`
+- `references/admin-ux-and-ui.md`
+- `references/theme-and-block-editor.md`
+- `references/ui-ux-pro-for-wordpress.md`
+- `references/wordpress-design-system.md`
+
+### Block Editor Meta Box Constraint
+
+- New meta boxes should not be shown in the block editor.
+- If post metadata UI is needed in the block editor, use a document settings panel for document-level data or a block inspector/panel for block-specific data.
+- Keep meta boxes classic-editor-only unless an existing legacy integration requires compatibility.

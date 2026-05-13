@@ -47,6 +47,7 @@ Before using a component, confirm it exists and is stable in the installed WordP
 - Keep settings and inspector controls grouped by user intent, not implementation class.
 - Use progressive disclosure for advanced/destructive controls.
 - Keep editor canvas controls and sidebar controls consistent with core block behavior.
+- Match the editor surface to the data scope: classic-editor post metadata uses meta boxes; block-editor document metadata uses document settings panels; block attributes use inspector/block panels. Do not show newly implemented meta boxes inside the block editor unless maintaining a legacy compatibility contract.
 - Avoid frontend marketing UI patterns inside wp-admin unless the product already has a deliberate branded app surface.
 
 ## Figma-To-Code Translation

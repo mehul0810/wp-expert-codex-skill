@@ -78,6 +78,7 @@ Severity guide:
 - Use REST API for new interactive endpoints by default. Do not add new `admin-ajax.php` handlers when a REST route can satisfy the same use case.
 - Make background work idempotent, retryable, bounded, and observable. Never put secrets or PII in scheduled args, logs, cache keys, URLs, markup, or client JS.
 - Preserve block attributes, frontend markup contracts, Query Loop layout, and theme template hierarchy unless the task explicitly targets them.
+- Place editor UI in the right surface: classic editor post fields belong in meta boxes; block editor document-level settings belong in document/sidebar panels; block-specific settings belong in inspector/block panels. Do not show newly implemented meta boxes in the block editor unless preserving an intentional legacy compatibility surface.
 - Load assets only on screens, routes, blocks, or templates that need them.
 - Favor existing repo workflows for Composer/npm/build/release. Do not add tooling churn without a clear payoff.
 

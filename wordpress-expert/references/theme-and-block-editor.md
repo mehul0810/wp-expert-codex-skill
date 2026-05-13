@@ -42,6 +42,8 @@ Block work must preserve editor/frontend parity:
 - Define block metadata in `block.json` when possible.
 - Persist user-facing controls as attributes.
 - Keep inspector controls meaningful; avoid dumping every CSS option into the sidebar.
+- Use the correct editor surface: document-level settings belong in document settings panels; block-specific settings belong in inspector/block panels; legacy classic-editor fields belong in meta boxes.
+- Do not expose newly implemented meta boxes in the block editor; use block-editor panels instead and keep meta boxes classic-only unless compatibility requires otherwise.
 - Use block supports for spacing, color, typography, layout, borders, and alignment when core supports cover the need.
 - For dynamic blocks, treat attributes as untrusted input and escape render output.
 - For static blocks, maintain save markup compatibility and deprecations when markup changes.

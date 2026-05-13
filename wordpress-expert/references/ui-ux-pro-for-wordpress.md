@@ -44,6 +44,9 @@ Apply priorities in this order:
 
 - Controls should feel like core block controls.
 - Prefer block supports, `ToolsPanel`, `PanelBody`, and inspector controls over custom sidebars unless the workflow requires them.
+- Use document panels for document-level settings and inspector/block panels for block-specific settings.
+- Keep classic-editor post fields in meta boxes when the site/editor context is still classic editor, or when maintaining a legacy meta box contract.
+- Do not show newly implemented meta boxes in the block editor; migrate the UI into the relevant document or block panel.
 - Persist user choices as attributes or settings that actually affect frontend output.
 - Validate canvas, sidebar, preview, saved post, frontend, and invalid-block behavior.
 
