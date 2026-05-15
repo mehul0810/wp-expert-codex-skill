@@ -20,7 +20,7 @@ find . -name wp-load.php -o -path '*/wp-content/plugins' -o -path '*/wp-content/
 rg -n "Fatal error|Parse error|register_rest_route|wp_ajax_|wp_schedule_|as_enqueue_|error_log|TODO|FIXME" .
 ```
 
-Use `wp-cli-and-automation.md` and `validation-commands.md` for runtime probes.
+Use `wp-cli-automation.md` and `validation-commands.md` for runtime probes.
 
 ## Fatal Error Or White Screen
 

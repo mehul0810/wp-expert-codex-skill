@@ -1,6 +1,6 @@
 ---
 name: wordpress-expert
-description: Comprehensive principal-level WordPress engineering skill for plugin, theme, block editor, admin UI, WPDS, VIP, monorepo, build tooling, CI/CD, GitHub, WP-CLI, performance, security, and troubleshooting work. Use for WordPress codebases and delivery tasks including requirements review, PRD/SOW, estimates, milestones, mobile-first responsive architecture, enterprise implementation choices, tests, validation, confirmation gates, and maintainable onboarding-friendly code.
+description: Principal-level WordPress engineering skill for plugins, themes, blocks, admin UI, WPDS, UX, VIP, monorepos, build tooling, CI/CD, GitHub, WP-CLI, performance, security, observability, incidents, edge caching/CDN, load testing, Enterprise Search, deployments, migrations, accessibility, i18n, and troubleshooting. Use for WordPress codebases and delivery tasks including PRD/SOW, estimates, milestones, tests, validation, and enterprise implementation choices.
 ---
 
 # WordPress Expert
@@ -20,7 +20,7 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 
 ## Fast Workflow
 
-1. Classify the task: requirements/planning, estimate/SOW, review, plugin, Plugin Directory guidelines, theme, block/editor, WordPress Design System, product UI/UX, responsive architecture, admin UX, UI polish, performance, security, VIP, monorepo, build tooling, troubleshooting, refactor, CI/CD, release, or incident.
+1. Classify the task: requirements/planning, estimate/SOW, review, plugin, Plugin Directory guidelines, theme, block/editor, WordPress Design System, product UI/UX, responsive architecture, admin UX, UI polish, performance, security, VIP, observability/incident, edge caching/CDN, load testing/capacity, Enterprise Search/content scale, deployment/release, migration/editorial scale, accessibility/i18n, monorepo, build tooling, troubleshooting, refactor, CI/CD, or release.
 2. Map the runtime: locate bootstrap files, hooks, REST/AJAX routes, blocks, templates, build artifacts, autoload, cron/jobs, options, custom tables, and active theme/plugin overrides.
 3. Identify risk: authorization, data integrity, backward compatibility, cache behavior, migrations, multisite, layout regression, editor/frontend parity, and deployment safety.
 4. Select references from the router below; load only what the task requires.
@@ -43,6 +43,14 @@ Read the smallest relevant set:
 - `references/performance-and-security.md`: high-risk performance, caching, database, security hardening, privacy, secrets, PII.
 - `references/enterprise-architecture.md`: enterprise design, data modeling, multisite, observability, backward compatibility, rollout/backout.
 - `references/vip-scale-playbook.md`: WordPress VIP, high traffic, platform constraints, cache layers, filesystem, PHPCS/VIPCS.
+- `references/observability-incident-response.md`: production incidents, SLOs, VIP Insights/New Relic/logs, slow queries, postmortems.
+- `references/edge-caching-cdn-architecture.md`: edge/page cache, CDN, static assets, personalization, purge strategy, stampede protection.
+- `references/load-testing-capacity-planning.md`: launch readiness, traffic models, VIP load-test coordination, peak-event planning.
+- `references/enterprise-search-content-scale.md`: VIP Enterprise Search, indexing, query offload, search relevance, content-scale queries.
+- `references/security-operations-compliance.md`: security operations, access governance, pen tests, audit evidence, privacy/compliance.
+- `references/deployment-release-resilience.md`: VIP releases, built artifacts, rollback, feature flags, smoke checks, cache/search impact.
+- `references/content-migration-editorial-scale.md`: large imports, media/database migration, redirects, editorial workflows, launch cutovers.
+- `references/accessibility-i18n-global-readiness.md`: WCAG, keyboard/screen reader, i18n/l10n, RTL, multilingual/global readiness.
 - `references/troubleshooting-operations.md`: production/debug triage, fatal errors, REST/AJAX issues, cron queues, mail, media, cache, multisite.
 - `references/standards-ci-github.md`: WPCS/VIPCS, PHPStan/Psalm, ESLint, PHPUnit, GitHub Actions, CI/CD, PR/release workflows.
 - `references/monorepo-engineering.md`: WordPress monorepos, shared tooling, multi-plugin/theme packages, generated artifacts, symlinks, path-filtered CI.
@@ -105,7 +113,7 @@ Severity guide:
 - Runtime: plugin activation, `wp eval`, `wp option`, REST route probes, admin page load, block editor load, frontend smoke checks.
 - Tests: PHPUnit, Brain Monkey, WP test suite, Jest/Vitest, Playwright/Cypress.
 - CI/CD: GitHub Actions workflow syntax, matrix jobs, artifacts, release packaging, deployment dry runs.
-- Scale: query count, object-cache behavior, slow logs, New Relic/Query Monitor, cron/action queue behavior.
+- Scale: query count, object-cache behavior, edge cache hit rate, origin miss cost, slow logs, New Relic/Query Monitor, cron/action queue behavior, search index health, migration throughput.
 
 When a tool is missing, use the best available lower-level check and say what was not run.
 

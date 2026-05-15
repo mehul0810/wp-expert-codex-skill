@@ -35,11 +35,16 @@ wordpress-expert/
 |-- SKILL.md
 |-- agents/openai.yaml
 |-- references/
+|   |-- admin-ux-and-ui.md
+|   |-- delivery-excellence.md
 |   |-- enterprise-architecture.md
 |   |-- implementation-patterns.md
-|   |-- review-checklists.md
-|   |-- validation-commands.md
-|   `-- vip-scale-playbook.md
+|   |-- performance-and-security.md
+|   |-- plugin-architecture.md
+|   |-- standards-ci-github.md
+|   |-- theme-and-block-editor.md
+|   |-- vip-scale-playbook.md
+|   `-- focused enterprise/VIP/UI/build/search/migration/reference modules
 `-- scripts/
     |-- wp-context.sh
     `-- wp-validate.sh
@@ -316,3 +321,77 @@ Consolidate delivery planning and execution expertise into one reference coverin
 - `references/ui-ux-pro-for-wordpress.md`
 - `references/standards-ci-github.md`
 - `references/enterprise-architecture.md`
+
+## Enterprise Operations And Hyper-Scale Additions
+
+### Objective
+
+Add the missing highest-priority enterprise/VIP operations expertise for WordPress properties serving very high traffic: observability and incident response, edge caching/CDN architecture, load testing/capacity planning, Enterprise Search/content scale, security operations/compliance, deployment/release resilience, content migration/editorial scale, and accessibility/i18n/global readiness.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Observability and incident response | Yes | Add | Million-visits-per-hour systems need SLOs, logs, metrics, traces, runbooks, and postmortems, not only code fixes. |
+| Edge caching and CDN architecture | Yes | Add | Page cacheability and origin protection are core architectural requirements at VIP scale. |
+| Load testing and capacity planning | Yes | Add | Launch readiness requires traffic models, realistic cache/origin assumptions, failure thresholds, and VIP coordination. |
+| Enterprise Search and content scale | Yes | Add | Large content archives need search/index offload strategy instead of MySQL-heavy search/meta queries. |
+| Security operations and compliance | Yes | Add | Enterprise clients need access governance, audit evidence, vulnerability handling, pen-test coordination, and privacy controls. |
+| Deployment and release resilience | Yes | Add | High-traffic releases require artifacts, feature flags, rollback, migration safety, smoke checks, and communication discipline. |
+| Content migration and editorial scale | Yes | Add | Large migrations need data integrity, redirects, media strategy, editorial workflow continuity, and cutover planning. |
+| Accessibility, i18n, and global readiness | Yes | Add | Enterprise WordPress must support WCAG-aligned UX, translations, RTL, multilingual SEO, and locale-aware behavior. |
+| One giant operations manual | No | Reject | A giant file would waste tokens. Focused references preserve the compact router model. |
+| Hard-code all VIP limits forever | No | Refine | VIP policies and limits change; references include stable patterns and source anchors to verify current details. |
+
+### Added Artifacts
+
+- `references/observability-incident-response.md`
+- `references/edge-caching-cdn-architecture.md`
+- `references/load-testing-capacity-planning.md`
+- `references/enterprise-search-content-scale.md`
+- `references/security-operations-compliance.md`
+- `references/deployment-release-resilience.md`
+- `references/content-migration-editorial-scale.md`
+- `references/accessibility-i18n-global-readiness.md`
+
+### Updated Artifacts
+
+- `SKILL.md`: added new enterprise/VIP routes while keeping the main skill as a compact router.
+- `README.md`: documented the expanded coverage.
+- `agents/openai.yaml`: refreshed user-facing metadata and default prompt.
+- `PLANNING_REPORT.md`: recorded the add/skip rationale and current source anchors.
+
+### Additional Source Anchors Checked
+
+- VIP performance overview: https://docs.wpvip.com/performance/
+- VIP Insights & Metrics: https://docs.wpvip.com/performance/insights-metrics/
+- VIP New Relic: https://docs.wpvip.com/performance/new-relic/
+- VIP logs overview: https://docs.wpvip.com/logs/
+- VIP Runtime Logs: https://docs.wpvip.com/logs/runtime-logs/
+- VIP Log Shipping: https://docs.wpvip.com/logs/log-shipping/
+- VIP caching overview: https://docs.wpvip.com/technical-references/caching/
+- VIP page cache: https://docs.wpvip.com/caching/page-cache/
+- VIP object cache: https://docs.wpvip.com/caching/object-cache/
+- VIP static asset caching: https://docs.wpvip.com/caching/static-asset-caching/
+- VIP load testing: https://docs.wpvip.com/performance/load-testing/
+- VIP Enterprise Search: https://docs.wpvip.com/guidebooks/upgrade-elasticsearch/prepare-new-index/
+- VIP Enterprise Search activation: https://docs.wpvip.com/enterprise-search/enable/
+- VIP Enterprise Search indexing: https://docs.wpvip.com/enterprise-search/index/
+- VIP security overview: https://docs.wpvip.com/security/
+- VIP penetration testing: https://docs.wpvip.com/security/penetration-testing/
+- VIP build and deploy: https://docs.wpvip.com/code-deployment/default-deployment/build-and-deploy/
+- VIP import command: https://docs.wpvip.com/vip-cli/commands/import/
+- VIP database imports: https://docs.wpvip.com/databases/import/import-with-vip-cli/
+- VIP custom WP-CLI commands at scale: https://docs.wpvip.com/vip-cli/wp-cli-with-vip-cli/cli-commands-at-scale/
+- WordPress Accessibility Coding Standards: https://developer.wordpress.org/coding-standards/wordpress-coding-standards/accessibility/
+- WordPress theme internationalization: https://developer.wordpress.org/themes/advanced-topics/internationalization/
+
+### Enterprise Ops Validation Results
+
+- `quick_validate.py wordpress-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wordpress-expert`: passed, confirming the installed symlink resolves correctly.
+- `bash -n wordpress-expert/scripts/wp-context.sh`: passed.
+- `bash -n wordpress-expert/scripts/wp-validate.sh`: passed.
+- `bash wordpress-expert/scripts/wp-context.sh .`: passed and confirmed the repo context plus changed/untracked files.
+- `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.

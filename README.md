@@ -15,6 +15,14 @@ This repository contains the `wordpress-expert` Codex skill for complete, princi
 - Admin UX, settings screens, onboarding, list tables, notices, and frontend UI improvement.
 - Performance, caching, database scale, security, privacy, secrets, and PII handling.
 - Enterprise architecture, multisite, migrations, async jobs, observability, and rollout/backout planning.
+- Observability and incident response: SLOs, VIP Insights, New Relic, logs, slow queries, runbooks, and postmortems.
+- Edge caching and CDN architecture: page cache, object cache, static assets, personalization, purge strategy, and stampede protection.
+- Load testing and capacity planning for launches, traffic spikes, high-origin-load scenarios, and VIP coordination.
+- Enterprise Search and content-scale querying: indexing, search offload, relevance, admin search, and multisite boundaries.
+- Security operations and compliance: access governance, penetration testing, audit evidence, privacy, dependency risk, and incident response.
+- Deployment and release resilience: built artifacts, feature flags, rollback, smoke checks, cache/search impact, and release communication.
+- Content migration and editorial scale: large imports, media migration, redirects, SEO preservation, roles, workflows, and launch cutovers.
+- Accessibility, internationalization, localization, RTL, multilingual/global readiness, and WCAG-aligned UI validation.
 - WordPress monorepos, multi-plugin/theme packages, shared tooling, generated artifacts, and release engineering.
 - WordPress VIP readiness and high-traffic production constraints.
 - Troubleshooting, incident triage, WP-CLI probes, activation checks, and operational debugging.
