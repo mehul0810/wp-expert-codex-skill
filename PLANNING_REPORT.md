@@ -395,3 +395,52 @@ Add the missing highest-priority enterprise/VIP operations expertise for WordPre
 - `bash wordpress-expert/scripts/wp-context.sh .`: passed and confirmed the repo context plus changed/untracked files.
 - `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
 - ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
+
+## React With WordPress Enterprise Standards Addition
+
+### Objective
+
+Add first-class expertise for using React inside WordPress with enterprise standards across admin apps, block editor UI, frontend interactive blocks, headless/decoupled boundaries, data stores, REST contracts, build tooling, accessibility, performance, security, testing, and release artifacts.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated React with WordPress playbook | Yes | Add | React in WordPress has unique runtime, dependency, REST, editor, and release-artifact constraints that generic React guidance misses. |
+| WordPress-provided React/dependency extraction guidance | Yes | Add | Prevents duplicate React bundles, broken dependency handles, missing asset files, and inflated admin/editor payloads. |
+| REST and `@wordpress/data` boundaries | Yes | Add | Enterprise React apps need stable server contracts, permission checks, pagination, errors, and scalable client state. |
+| Interactivity API decision rule | Yes | Add | Frontend block interactivity should not default to a full React mount when WordPress-native interactivity is sufficient. |
+| Accessibility/security/testing gates | Yes | Add | Enterprise React work must prove roles, a11y, build artifacts, dependency safety, and failure states, not only happy-path rendering. |
+| Fold into build tooling only | No | Reject | Build tooling is necessary but not enough; React architecture spans UI, data, security, performance, and release review. |
+
+### Added Artifact
+
+- `references/react-wordpress-enterprise.md`
+
+### Updated Artifacts
+
+- `SKILL.md`: added React with WordPress to task classification and reference routing.
+- `README.md`: documented enterprise React coverage.
+- `agents/openai.yaml`: added React/admin app to the default invocation prompt.
+- `PLANNING_REPORT.md`: recorded add/skip rationale and source anchors.
+
+### Additional Source Anchors Checked
+
+- WordPress package reference: https://developer.wordpress.org/block-editor/reference-guides/packages/
+- `@wordpress/element`: https://developer.wordpress.org/block-editor/reference-guides/packages/packages-element/
+- `@wordpress/components`: https://developer.wordpress.org/block-editor/reference-guides/packages/packages-components/
+- `@wordpress/data`: https://developer.wordpress.org/block-editor/reference-guides/packages/packages-data/
+- `@wordpress/api-fetch`: https://developer.wordpress.org/block-editor/reference-guides/packages/packages-api-fetch/
+- `@wordpress/scripts`: https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/
+- Dependency extraction webpack plugin: https://developer.wordpress.org/block-editor/reference-guides/packages/packages-dependency-extraction-webpack-plugin/
+- Interactivity API: https://developer.wordpress.org/block-editor/reference-guides/interactivity-api/
+
+### React WordPress Validation Results
+
+- `quick_validate.py wordpress-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wordpress-expert`: passed, confirming the installed symlink resolves correctly.
+- `bash -n wordpress-expert/scripts/wp-context.sh`: passed.
+- `bash -n wordpress-expert/scripts/wp-validate.sh`: passed.
+- `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- `git diff --check`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.

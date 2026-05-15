@@ -9,6 +9,7 @@ This repository contains the `wordpress-expert` Codex skill for complete, princi
 - WordPress.org Plugin Directory guideline review, block directory eligibility, readme policy, licensing, tracking, and trademark checks.
 - Theme development, classic themes, block themes, and `theme.json`.
 - Block editor compatible code generation and dynamic/static block work.
+- React with WordPress enterprise standards: admin/editor apps, frontend interactive blocks, headless boundaries, dependency extraction, REST contracts, `@wordpress/data`, `@wordpress/components`, testing, accessibility, and release artifacts.
 - Product-grade UI/UX improvement: visual QA, interaction states, forms, dashboards, responsive polish, and conversion clarity.
 - Mobile-first responsive architecture for frontend/customer-facing flows and responsive-safe admin/editor interfaces.
 - WordPress Design System support: `@wordpress/components`, design tokens, Figma-to-code mapping, and accessibility.
@@ -42,7 +43,7 @@ wordpress-expert/
 Default invocation:
 
 ```text
-Use $wordpress-expert to review, implement, debug, harden, or improve a WordPress plugin, theme, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
+Use $wordpress-expert to review, implement, debug, harden, or improve a WordPress plugin, theme, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
 ```
 
 ## Design
