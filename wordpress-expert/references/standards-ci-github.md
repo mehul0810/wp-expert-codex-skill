@@ -1,6 +1,6 @@
 # Coding Standards, Linting, CI/CD, And GitHub Workflows
 
-Use this for standards setup, linting, static analysis, tests, GitHub Actions, PR workflows, release pipelines, and CI troubleshooting. For issue triage, PR descriptions, labels, estimates, milestones, and enterprise delivery workflow, also read `delivery-excellence.md`.
+Use this for standards setup, linting, static analysis, tests, GitHub Actions, PR workflows, release pipelines, and CI troubleshooting. For runtime and tool minimums, also read `runtime-toolchain-version-policy.md`. For issue triage, PR descriptions, labels, estimates, milestones, and enterprise delivery workflow, also read `delivery-excellence.md`.
 
 ## Official Anchors
 
@@ -47,6 +47,7 @@ JavaScript/CSS:
 
 Official GitHub docs define a workflow as YAML in `.github/workflows`. For WordPress repos:
 
+- Choose PHP, Node, npm, Composer, database, and action versions using `runtime-toolchain-version-policy.md`; do not use EOL versions in new workflows.
 - Use `pull_request` for validation and `push` for protected branches.
 - Use `workflow_dispatch` for manual release/deploy jobs.
 - Set least-privilege `permissions`, commonly `contents: read` for CI-only workflows.
@@ -59,6 +60,8 @@ Official GitHub docs define a workflow as YAML in `.github/workflows`. For WordP
 ## Typical WordPress CI Gates
 
 Minimum useful CI for a plugin/theme:
+
+Verify the current active PHP/Node baselines before copying this example.
 
 ```yaml
 name: CI
@@ -78,11 +81,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: '8.4'
           tools: composer
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: npm
       - run: composer install --no-interaction --prefer-dist
         if: hashFiles('composer.json') != ''

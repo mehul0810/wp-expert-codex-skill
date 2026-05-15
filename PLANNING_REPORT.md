@@ -492,3 +492,55 @@ Add first-class expertise for working with third-party APIs of any type by using
 - `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
 - `git diff --check`: passed.
 - ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
+
+## Runtime And Toolchain Version Policy Addition
+
+### Objective
+
+Add a durable rule that new minimum versions for PHP, Node, npm, Composer, databases, CI images, GitHub Actions, and other tools must be the lowest stable actively maintained non-EOL version that satisfies WordPress, host/VIP, dependency, and deployment constraints.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated runtime/toolchain version policy | Yes | Add | Version minimums affect security, supportability, CI reliability, hosting compatibility, and public-plugin backward compatibility. |
+| Official lifecycle verification | Yes | Add | PHP, Node, database, npm, Composer, and action support windows change; the skill must verify current official lifecycle docs. |
+| Lowest active stable baseline rule | Yes | Add | Avoids both obsolete/EOL versions and unnecessary bleeding-edge requirements. |
+| Public-plugin migration caution | Yes | Add | Raising minimum versions can be a backward-compatibility break and should be planned, not silently shipped. |
+| Update stale CI example versions | Yes | Add | Existing generic CI examples must not teach EOL Node/PHP choices. |
+| Hard-code permanent version numbers only | No | Reject | Runtime lifecycles drift; permanent hard-coded versions would become incorrect. Use current examples plus verification instructions. |
+
+### Added Artifact
+
+- `references/runtime-toolchain-version-policy.md`
+
+### Updated Artifacts
+
+- `SKILL.md`: added runtime/toolchain version policy to classification, routing, and universal hard rules.
+- `README.md`: documented version-policy coverage.
+- `agents/openai.yaml`: added runtime/toolchain policy to the default invocation prompt.
+- `references/build-tooling.md`: routed version decisions to the new policy.
+- `references/standards-ci-github.md`: added version-policy guidance and refreshed CI example PHP/Node versions.
+- `PLANNING_REPORT.md`: recorded add/skip rationale and source anchors.
+
+### Additional Source Anchors Checked
+
+- PHP supported versions: https://www.php.net/supported-versions.php
+- Node.js releases: https://nodejs.org/en/about/previous-releases
+- Node.js release schedule: https://github.com/nodejs/release#release-schedule
+- WordPress requirements: https://wordpress.org/about/requirements/
+- WordPress hosting server environment: https://make.wordpress.org/hosting/handbook/server-environment/
+- Composer requirements: https://github.com/composer/composer#requirements
+- npm support policy: https://github.com/npm/cli/wiki/Support-Policy
+- MySQL Innovation and LTS releases: https://dev.mysql.com/doc/refman/9.7/en/mysql-releases.html
+- MariaDB maintenance policy: https://mariadb.org/about/#maintenance-policy
+
+### Runtime Version Policy Validation Results
+
+- `quick_validate.py wordpress-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wordpress-expert`: passed, confirming the installed symlink resolves correctly.
+- `bash -n wordpress-expert/scripts/wp-context.sh`: passed.
+- `bash -n wordpress-expert/scripts/wp-validate.sh`: passed.
+- `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- `git diff --check`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.

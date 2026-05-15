@@ -12,6 +12,13 @@ Use this for WordPress build systems, dependency management, webpack configurati
 - webpack configuration: https://webpack.js.org/configuration/
 - WordPress dependency extraction webpack plugin: https://developer.wordpress.org/block-editor/reference-guides/packages/packages-dependency-extraction-webpack-plugin/
 
+## Version Policy
+
+- When choosing new PHP, Node, npm, Composer, or build-tool minimums, use `runtime-toolchain-version-policy.md`.
+- Default to the lowest stable actively maintained non-EOL version that satisfies WordPress, host/VIP, dependency, and deployment constraints.
+- Do not copy old CI examples or package `engines` values without checking current official lifecycle docs.
+- If the project currently supports an EOL version, flag it as risk and propose a migration plan instead of silently raising the minimum in a patch release.
+
 ## Composer In WordPress
 
 - Use `composer install` in CI/deploy when `composer.lock` exists. It installs locked versions for reproducible builds.
