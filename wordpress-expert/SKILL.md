@@ -1,6 +1,6 @@
 ---
 name: wordpress-expert
-description: Comprehensive principal-level WordPress engineering skill for efficient plugin development, theme development, block editor compatible code, WordPress Design System support, product-grade UI/UX improvement, WordPress.org plugin guideline review, admin UX/UI, frontend UI improvement, performance, security, enterprise architecture, WordPress VIP, monorepos, webpack, Composer, npm, troubleshooting, refactoring, WP-CLI automation, coding standards, linting, CI/CD, GitHub Actions, PR workflows, releases, migrations, and validation. Use when Codex works on WordPress PHP/JS codebases, plugins, themes, mu-plugins, blocks, REST/AJAX, cron/Action Scheduler, custom tables, multisite, WooCommerce-style extensions, admin screens, editor interfaces, Figma-to-WordPress UI, Plugin Directory submissions, monorepo workflows, build tooling, GitHub workflows, or VIP/enterprise production readiness.
+description: Comprehensive principal-level WordPress engineering skill for plugin, theme, block editor, admin UI, WPDS, VIP, monorepo, build tooling, CI/CD, GitHub, WP-CLI, performance, security, and troubleshooting work. Use for WordPress codebases and delivery tasks including requirements review, PRD/SOW, estimates, milestones, mobile-first responsive architecture, enterprise implementation choices, tests, validation, confirmation gates, and maintainable onboarding-friendly code.
 ---
 
 # WordPress Expert
@@ -15,10 +15,12 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 - Preserve user work. Never reset or discard unrelated changes unless explicitly asked.
 - Treat platform policy, VIP rules, dependencies, GitHub Actions behavior, and current WordPress behavior as drift-prone. Verify official docs when exact current behavior matters.
 - Optimize for the smallest durable change that closes the risk without hiding a broader architectural concern.
+- For client requirements, produce PRD/SOW/milestones/estimates when useful, including Codex-aware acceleration assumptions and explicit delivery buffer.
+- Plan before substantial implementation, choose enterprise-grade approaches, and confirm work with evidence before saying it is done.
 
 ## Fast Workflow
 
-1. Classify the task: review, plugin, Plugin Directory guidelines, theme, block/editor, WordPress Design System, product UI/UX, admin UX, UI polish, performance, security, VIP, monorepo, build tooling, troubleshooting, refactor, CI/CD, release, or incident.
+1. Classify the task: requirements/planning, estimate/SOW, review, plugin, Plugin Directory guidelines, theme, block/editor, WordPress Design System, product UI/UX, responsive architecture, admin UX, UI polish, performance, security, VIP, monorepo, build tooling, troubleshooting, refactor, CI/CD, release, or incident.
 2. Map the runtime: locate bootstrap files, hooks, REST/AJAX routes, blocks, templates, build artifacts, autoload, cron/jobs, options, custom tables, and active theme/plugin overrides.
 3. Identify risk: authorization, data integrity, backward compatibility, cache behavior, migrations, multisite, layout regression, editor/frontend parity, and deployment safety.
 4. Select references from the router below; load only what the task requires.
@@ -34,6 +36,7 @@ Read the smallest relevant set:
 - `references/plugin-guidelines-review.md`: WordPress.org Plugin Directory guidelines, block directory rules, readme policy, licensing, tracking, trademarks, submission blockers.
 - `references/theme-and-block-editor.md`: classic/block themes, `theme.json`, block editor code, dynamic blocks, Query Loop, patterns, editor/frontend parity.
 - `references/ui-ux-pro-for-wordpress.md`: product-grade UX strategy, visual QA, interaction states, forms, dashboards, responsive polish, WordPress UI quality bar.
+- `references/delivery-excellence.md`: requirements, PRD/SOW, estimates, milestones, mobile-first architecture, token discipline, confirmation gates, GitHub enterprise workflow, tests, code comments.
 - `references/wordpress-design-system.md`: WordPress-native UI, `@wordpress/components`, design tokens, Figma-to-code mapping, accessibility, component selection.
 - `references/admin-ux-and-ui.md`: admin screens, settings UX, onboarding, notices, list tables, accessibility, frontend/UI improvement brainstorming.
 - `references/review-checklists.md`: audits, PR review, security/performance/modularity/correctness findings.
@@ -81,6 +84,7 @@ Severity guide:
 - Place editor UI in the right surface: classic editor post fields belong in meta boxes; block editor document-level settings belong in document/sidebar panels; block-specific settings belong in inspector/block panels. Do not show newly implemented meta boxes in the block editor unless preserving an intentional legacy compatibility surface.
 - Load assets only on screens, routes, blocks, or templates that need them.
 - Favor existing repo workflows for Composer/npm/build/release. Do not add tooling churn without a clear payoff.
+- Add concise comments/docblocks for non-obvious hooks, data contracts, compatibility shims, migrations, cache invalidation, and security-sensitive decisions.
 
 ## Universal WordPress Hard Rules
 

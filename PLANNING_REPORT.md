@@ -286,3 +286,33 @@ Add guidance for choosing the right WordPress editor UI surface: meta boxes for 
 - New meta boxes should not be shown in the block editor.
 - If post metadata UI is needed in the block editor, use a document settings panel for document-level data or a block inspector/panel for block-specific data.
 - Keep meta boxes classic-editor-only unless an existing legacy integration requires compatibility.
+
+## Delivery Excellence Optimization
+
+### Objective
+
+Consolidate delivery planning and execution expertise into one reference covering client requirements, PRDs, scope of work, technical estimates, milestones, Codex-aware buffers, mobile-first responsive architecture, token discipline, planning, confirmation gates, enterprise implementation choices, GitHub workflows, testing, and maintainable comments.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated delivery excellence reference | Yes | Add | Keeps requirements, estimates, execution discipline, testing, and GitHub workflow together instead of scattering them. |
+| Mobile-first responsive architecture | Yes | Add | Frontend and customer-facing WordPress work must be designed from constrained viewports first. |
+| Codex-aware estimation with buffer | Yes | Add | Gives realistic estimates that account for AI acceleration and remaining validation/review risk. |
+| Confirmation before done | Yes | Add | Prevents premature completion claims by requiring evidence and known-gap reporting. |
+| Enterprise GitHub workflow standards | Yes | Add | Issues, labels, milestones, PR descriptions, commits, review replies, and release notes should match enterprise delivery quality. |
+| Always verbose comments | No | Refine | Comments should explain why and document contracts, not restate obvious code. |
+
+### Added Artifact
+
+- `references/delivery-excellence.md`
+
+### Updated Artifacts
+
+- `SKILL.md`
+- `README.md`
+- `agents/openai.yaml`
+- `references/ui-ux-pro-for-wordpress.md`
+- `references/standards-ci-github.md`
+- `references/enterprise-architecture.md`

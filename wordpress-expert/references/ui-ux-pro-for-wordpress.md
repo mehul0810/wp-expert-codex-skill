@@ -2,7 +2,7 @@
 
 Use this for UX strategy, UI improvement, visual QA, product flows, interaction design, responsive polish, conversion-oriented WordPress screens, admin/editor experiences, frontend feature pages, dashboards, onboarding, forms, tables, and design-to-code implementation.
 
-This reference fuses product-grade UI/UX reasoning with WordPress-native design constraints. Use it alongside `wordpress-design-system.md` when the implementation should use WPDS or `@wordpress/components`.
+This reference fuses product-grade UI/UX reasoning with WordPress-native design constraints. Use it alongside `wordpress-design-system.md` when the implementation should use WPDS or `@wordpress/components`. For estimates, milestones, and mobile-first delivery architecture, also read `delivery-excellence.md`.
 
 ## UX Triage
 
@@ -52,6 +52,7 @@ Apply priorities in this order:
 
 ### Frontend experiences
 
+- Start mobile-first for customer-facing flows, then progressively enhance tablet and desktop layouts.
 - Preserve theme design language unless the task is to redesign.
 - Improve content hierarchy, states, spacing, and conversion clarity before adding visual effects.
 - Avoid layout shifts, excessive animation, and heavy component libraries.

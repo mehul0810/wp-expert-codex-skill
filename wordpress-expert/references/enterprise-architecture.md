@@ -8,6 +8,7 @@ Use this for feature design, refactors, plugin architecture, migrations, async j
 - Preserve backward compatibility unless the user explicitly accepts a breaking change.
 - Prefer boring WordPress-native integration points with clear boundaries over clever abstractions.
 - Keep every decision tied to a failure mode: security, scale, data integrity, operability, or developer velocity.
+- Add comments/docblocks where they preserve architectural intent for future maintainers: hook timing, compatibility shims, migrations, cache invalidation, security boundaries, and external integration quirks.
 
 ## Plugin Structure
 

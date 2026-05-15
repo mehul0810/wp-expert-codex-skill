@@ -1,6 +1,6 @@
 # Coding Standards, Linting, CI/CD, And GitHub Workflows
 
-Use this for standards setup, linting, static analysis, tests, GitHub Actions, PR workflows, release pipelines, and CI troubleshooting.
+Use this for standards setup, linting, static analysis, tests, GitHub Actions, PR workflows, release pipelines, and CI troubleshooting. For issue triage, PR descriptions, labels, estimates, milestones, and enterprise delivery workflow, also read `delivery-excellence.md`.
 
 ## Official Anchors
 
@@ -108,10 +108,11 @@ Adapt this to project scripts. Do not paste generic CI if the repo already has a
 ## GitHub PR Workflow
 
 - Check branch status and dirty tree before changes.
+- Link the relevant issue, milestone, and labels when the repo uses them.
 - Keep commits scoped and messages specific.
 - For review comments, reply to each actionable thread individually when requested.
 - Avoid PR bodies with unescaped shell-sensitive backticks when creating PRs through CLI.
-- Include validation commands and known gaps in PR descriptions.
+- Include summary, scope, validation commands, screenshots for UI, risks, deployment notes, rollback notes, and known gaps in PR descriptions.
 
 ## Release Workflow
 
