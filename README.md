@@ -4,6 +4,7 @@ This repository contains WordPress-focused Codex skills:
 
 - `wp-expert`: principal-grade WordPress engineering for client, product, enterprise, VIP, plugin, theme, block editor, performance, security, and delivery work.
 - `wp-contributor`: official WordPress project contribution workflows for Core, Meta, Gutenberg, Trac, GitHub PRs, patches, testing, docs, triage, releases, and contributor communication.
+- `shared/references/research-token-discipline.md`: reusable token-efficient reasoning, repo exploration, web search, validation, and output discipline used by both skills.
 
 ## wp-expert Coverage
 
@@ -75,6 +76,7 @@ The skills are intentionally token-efficient:
 
 - Each `SKILL.md` contains the core operating workflow and reference router.
 - Each `references/` directory contains deeper playbooks loaded only when relevant.
+- The shared `research-token-discipline.md` reference keeps web/research behavior explicit without duplicating guidance across skills.
 - Each `scripts/` directory contains read-only discovery and validation helpers.
 
 See `PLANNING_REPORT.md` for the planning rationale and validation history.

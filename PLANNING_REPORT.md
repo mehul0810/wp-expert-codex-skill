@@ -998,3 +998,50 @@ Strengthen `wp-contributor` for `wordpress/gutenberg` contribution work so Codex
 - `git diff --check`: passed.
 - ASCII scan across `README.md`, `PLANNING_REPORT.md`, `wp-expert/`, and `wp-contributor/`: passed.
 - Route search confirmed Gutenberg guidance is wired into `README.md`, `SKILL.md`, `agents/openai.yaml`, `official-anchors.md`, and `gutenberg-workflow.md`.
+
+## Shared Research Token Discipline Addition
+
+### Objective
+
+Add a focused reusable reference that makes token-efficient reasoning, repository exploration, web search, source selection, validation, and output discipline explicit for both `wp-expert` and `wp-contributor`.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Shared `research-token-discipline.md` reference | Yes | Add | Both skills need the same research discipline, and a shared file avoids duplicated guidance drifting apart. |
+| Router entries in both skills | Yes | Add | The behavior must be discoverable when either skill is active, without loading the reference unless the task needs research discipline. |
+| Frontmatter trigger wording | Yes | Add | Adding token-efficient research/web search to both skill descriptions makes the behavior explicit to Codex skill selection. |
+| Search budget defaults | Yes | Add | Concrete budgets help Codex stop researching after enough primary evidence and spend more context on implementation and validation. |
+| Repo exploration discipline | Yes | Add | WordPress tasks frequently waste tokens on broad file dumps; targeted `rg`, small reads, and repo scripts are more efficient. |
+| Validation and output discipline | Yes | Add | Token savings should not reduce correctness; the reference requires evidence before saying work is done. |
+| Duplicate the same reference inside each skill | No | Reject | Duplication would increase maintenance cost and risk inconsistent behavior between `wp-expert` and `wp-contributor`. |
+| Hard-code a universal web-search count for every task | No | Reject | Correct budget depends on risk, drift, source quality, and whether local repo facts already answer the question. |
+
+### Added Artifact
+
+- `shared/references/research-token-discipline.md`
+
+### Updated Artifacts
+
+- `wp-expert/SKILL.md`
+- `wp-contributor/SKILL.md`
+- `README.md`
+- `PLANNING_REPORT.md`
+
+### Validation Results
+
+- `SKILL.md` frontmatter checks: passed for `wp-expert` and `wp-contributor`.
+- `wp-expert` description length check: passed at 683 characters.
+- `wp-contributor` description length check: passed at 529 characters.
+- Shared reference path resolution from `wp-expert`: passed.
+- Shared reference path resolution from `wp-contributor`: passed.
+- Shared reference path resolution from installed `/Users/mehulgohil/.codex/skills/wp-expert`: passed.
+- Shared reference path resolution from installed `/Users/mehulgohil/.codex/skills/wp-contributor`: passed.
+- `quick_validate.py wp-expert`: passed.
+- `quick_validate.py wp-contributor`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-contributor`: passed.
+- `git diff --check`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, `wp-expert/`, `wp-contributor/`, and `shared/`: passed.
+- Route search confirmed `research-token-discipline.md` is wired into both skill routers and documented in `README.md`.
