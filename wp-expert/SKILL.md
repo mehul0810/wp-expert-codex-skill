@@ -1,6 +1,6 @@
 ---
 name: wp-expert
-description: Principal-level WordPress engineering skill for plugins, themes, blocks, Ollie block theme/Ollie Pro, Blocksy theme/Blocksy Pro, React, third-party APIs, runtime/toolchain versions, changelogs, release notes, release contracts, backward compatibility, duplicate-code review, modularity, testability, admin UI, WPDS, UX, VIP, monorepos, build tooling, CI/CD, GitHub, WP-CLI, performance, security, observability, incidents, edge caching/CDN, load testing, Enterprise Search, deployments, migrations, accessibility, i18n, troubleshooting, and token-efficient research/web search. Use for WordPress delivery tasks including PRD/SOW, estimates, tests, validation, and enterprise choices.
+description: Principal-level WordPress engineering skill for plugins, themes, blocks, Ollie block theme/Ollie Pro, Blocksy theme/Blocksy Pro, React, third-party APIs, runtime/toolchain versions, changelogs, release notes, release contracts, backward compatibility, duplicate-code review, modularity, testability, admin UI, WPDS, UX, VIP, monorepos, build tooling, production dependency hygiene, CI/CD, GitHub, WP-CLI, performance, security, observability, incidents, edge caching/CDN, load testing, Enterprise Search, deployments, migrations, accessibility, i18n, troubleshooting, and token-efficient research/web search. Use for WordPress delivery tasks including PRD/SOW, estimates, tests, validation, and enterprise choices.
 ---
 
 # WP Expert
@@ -13,6 +13,7 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 - Load only the reference needed for the task. Do not read every reference by default.
 - Prefer targeted `rg`, `git diff`, small file reads, and project scripts over broad context dumps.
 - Use `../shared/references/research-token-discipline.md` for web-heavy, drift-prone, ambiguous, or broad-exploration tasks to keep reasoning and source lookup token-efficient.
+- Use `../shared/references/production-dependency-discipline.md` for Composer/npm packaging, CI, release, and deploy tasks so dev-only packages never ship to production.
 - Preserve user work. Never reset or discard unrelated changes unless explicitly asked.
 - Treat platform policy, VIP rules, dependencies, GitHub Actions behavior, and current WordPress behavior as drift-prone. Verify official docs when exact current behavior matters.
 - Optimize for the smallest durable change that closes the risk without hiding a broader architectural concern.
@@ -34,6 +35,7 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 Read the smallest relevant set:
 
 - `../shared/references/research-token-discipline.md`: token-efficient reasoning, repo exploration, web search, source selection, validation, and output discipline.
+- `../shared/references/production-dependency-discipline.md`: Composer/npm production artifact hygiene, `require-dev`/`devDependencies` boundaries, production installs, and release ZIP/deploy checks.
 - `references/plugin-architecture.md`: plugin development, service boundaries, REST/AJAX, custom tables, migrations, async jobs, settings, releases.
 - `references/third-party-api-integrations.md`: external API docs discovery, REST/GraphQL/SOAP/webhooks/SDKs, auth, rate limits, retries, idempotency, secrets, testing, provider operations.
 - `references/plugin-guidelines-review.md`: WordPress.org Plugin Directory guidelines, block directory rules, readme policy, licensing, tracking, trademarks, submission blockers.

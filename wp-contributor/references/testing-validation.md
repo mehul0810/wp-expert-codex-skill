@@ -9,6 +9,7 @@ Use this to choose validation for Core, Meta, Gutenberg, and related WordPress c
 - Record exact commands and outcomes in Trac or PR comments.
 - If a tool is unavailable locally, say that clearly and provide the next best evidence.
 - Do not mark work as ready until the changed behavior has been confirmed against trunk/main or the required release branch.
+- For packaging, release, or deploy changes, verify development-only Composer/npm packages are not present in the production artifact; see `../shared/references/production-dependency-discipline.md`.
 
 ## Core Validation
 
@@ -68,6 +69,16 @@ Typical checks:
 - Cache behavior and invalidation for directory/search/profile changes.
 - Privacy checks for profile, event, moderation, application, or attendee data.
 - Access and credential checks for SVN, GitHub organization, Slack channel, or admin-only changes; do not claim permissions that are not present.
+
+## Production Dependency Validation
+
+When a contribution affects Composer, npm, package scripts, build output, release ZIPs, deployment branches, or CI artifacts:
+
+- Confirm Composer production artifacts are built with `--no-dev` and do not include `require-dev` packages in `vendor/`.
+- Confirm npm production artifacts omit/prune `devDependencies` when `node_modules` is deployed.
+- For WordPress plugin/theme releases, confirm `node_modules`, test tooling, lint/static-analysis tools, fixtures, coverage, and local env files are excluded unless the project explicitly requires them.
+- Keep lockfiles when they are part of reproducible builds; lockfiles may record dev dependencies without making them production payload.
+- Include artifact-inspection evidence in the Trac/PR comment when packaging behavior changes.
 
 ## Evidence Format
 

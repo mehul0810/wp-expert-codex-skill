@@ -27,6 +27,7 @@ Use this for WordPress build systems, dependency management, webpack configurati
 - Use `composer validate` before deeper debugging.
 - Use `composer dump-autoload` after changing autoload config or adding classes when the repo relies on generated autoload files.
 - Use optimized autoloaders for production packages when appropriate: `composer install --no-dev --optimize-autoloader`.
+- Never ship Composer `require-dev` packages in production `vendor/`; use `../shared/references/production-dependency-discipline.md` for artifact checks.
 - Be cautious with Composer scripts and plugins in production. Composer scripts execute only from the root package; dependency scripts are not executed.
 - In WordPress plugin ecosystems, dependency collisions are real. Consider namespacing/scoping bundled vendor libraries for distributed plugins when conflicts are plausible.
 
@@ -37,6 +38,7 @@ Use this for WordPress build systems, dependency management, webpack configurati
 - Use `npm install` when intentionally adding/updating packages and committing the resulting lockfile changes.
 - Commit project `.npmrc` when install flags such as `legacy-peer-deps` or `install-links` are required for reproducible `npm ci`.
 - Do not commit `node_modules` unless the release policy explicitly requires vendored JS dependencies.
+- Never ship npm `devDependencies` or build/test tooling as runtime payload. For Node runtime deployments, use `npm ci --omit=dev` or prune dev packages after build.
 - Prefer existing repo scripts: `npm run build`, `npm run start`, `npm run lint`, `npm run test`, `npm run packages:build`, etc.
 - Check stale watcher processes before assuming a branch checkout or install script is triggering builds by itself.
 
@@ -75,6 +77,7 @@ For webpack bundles that import WordPress packages:
 
 - Clean checkout builds successfully.
 - Composer/npm install commands are deterministic.
+- Production dependency boundary is verified: Composer `--no-dev`; npm omitted/pruned dev packages when `node_modules` is part of the runtime artifact.
 - Build artifacts contain expected JS/CSS/PHP asset metadata.
 - Dev-only files are excluded from plugin/theme zip.
 - WordPress.org submission includes source/build instructions for minified bundles.

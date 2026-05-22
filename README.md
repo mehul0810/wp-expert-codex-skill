@@ -36,6 +36,7 @@ This repository contains WordPress-focused Codex skills:
 - Content migration and editorial scale: large imports, media migration, redirects, SEO preservation, roles, workflows, and launch cutovers.
 - Accessibility, internationalization, localization, RTL, multilingual/global readiness, and WCAG-aligned UI validation.
 - WordPress monorepos, multi-plugin/theme packages, shared tooling, generated artifacts, and release engineering.
+- Production dependency hygiene for Composer and npm: development-only packages stay in source/CI and out of runtime artifacts.
 - WordPress VIP readiness and high-traffic production constraints.
 - Troubleshooting, incident triage, WP-CLI probes, activation checks, and operational debugging.
 - Coding standards, linting, static analysis, tests, GitHub Actions, CI/CD, PR workflows, and releases.
@@ -50,6 +51,7 @@ This repository contains WordPress-focused Codex skills:
 - Gutenberg and block editor contribution through `wordpress/gutenberg` guidelines, GitHub issues, PRs, labels, milestones, package boundaries, editor tests, accessibility, React Native parity, Storybook, and Core sync awareness.
 - Ticket triage, issue reproduction, component/milestone/keyword guidance, patch refreshes, review comments, and maintainer-ready summaries.
 - Testing and validation strategy for Core, Meta, and Gutenberg using existing repo scripts first.
+- Production dependency hygiene for Composer and npm in contribution packaging, CI artifacts, release branches, and deploy checks.
 - WordPress coding standards, inline docs, i18n, accessibility, performance, privacy, security, dev-note, props, and commit-message guidance.
 - Release phase, backport, RC/minor-release caution, and private security disclosure workflows.
 
@@ -77,6 +79,7 @@ The skills are intentionally token-efficient:
 - Each `SKILL.md` contains the core operating workflow and reference router.
 - Each `references/` directory contains deeper playbooks loaded only when relevant.
 - The shared `research-token-discipline.md` reference keeps web/research behavior explicit without duplicating guidance across skills.
+- The shared `production-dependency-discipline.md` reference keeps Composer/npm production-artifact hygiene consistent across both skills.
 - Each `scripts/` directory contains read-only discovery and validation helpers.
 
 See `PLANNING_REPORT.md` for the planning rationale and validation history.

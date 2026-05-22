@@ -1,6 +1,6 @@
 ---
 name: wp-contributor
-description: WordPress contribution skill for Core, Meta, Gutenberg, wordpress-develop, WordPress.org and WordCamp.org code, Make teams, Trac, GitHub PRs, SVN/Git patches, testing, coding standards, inline docs, commit messages, props, triage, bug reports, release/backport work, accessibility, performance, i18n, security disclosure, contributor-day workflows, and token-efficient research/web search. Use when Codex works on official WordPress project contributions, tickets, patches, PRs, reviews, validation, or contributor communication.
+description: WordPress contribution skill for Core, Meta, Gutenberg, wordpress-develop, WordPress.org and WordCamp.org code, Make teams, Trac, GitHub PRs, SVN/Git patches, testing, coding standards, inline docs, commit messages, props, triage, bug reports, release/backport work, production dependency hygiene, accessibility, performance, i18n, security disclosure, contributor-day workflows, and token-efficient research/web search. Use when Codex works on official WordPress project contributions, tickets, patches, PRs, reviews, validation, or contributor communication.
 ---
 
 # WP Contributor
@@ -17,6 +17,7 @@ Use this skill when working as a WordPress project contributor, not as a client-
 - Do not publicly disclose suspected security vulnerabilities. Route private reports through the current WordPress security process.
 - Never assume a GitHub PR is enough for Core. Core PRs must be associated with a Trac ticket unless current official docs say otherwise.
 - Use `../shared/references/research-token-discipline.md` for web-heavy, drift-prone, ambiguous, or broad-exploration contribution tasks to keep reasoning and source lookup token-efficient.
+- Use `../shared/references/production-dependency-discipline.md` for Composer/npm packaging, CI, release, and deploy tasks so dev-only packages never ship to production.
 - Make comments and summaries useful to maintainers: concise reproduction, environment, actual/expected behavior, patch scope, tests run, and remaining risk.
 
 ## Fast Workflow
@@ -34,6 +35,7 @@ Use this skill when working as a WordPress project contributor, not as a client-
 Read the smallest relevant set:
 
 - `../shared/references/research-token-discipline.md`: token-efficient reasoning, repo exploration, web search, source selection, validation, and output discipline.
+- `../shared/references/production-dependency-discipline.md`: Composer/npm production artifact hygiene, `require-dev`/`devDependencies` boundaries, production installs, and release ZIP/deploy checks.
 - `references/official-anchors.md`: current official source links and what must be rechecked before relying on process details.
 - `references/contribution-map.md`: WordPress project areas, where to file issues, and how Core, Meta, Gutenberg, Docs, Test, Accessibility, Performance, and i18n differ.
 - `references/core-workflow.md`: `wordpress-develop`, trunk-first work, SVN/Git mirrors, patch files, Core Trac, GitHub PR linkage, and patch refreshes.

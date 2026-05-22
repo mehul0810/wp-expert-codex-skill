@@ -31,6 +31,7 @@ Verify current VIP docs for the target project. Stable guidance:
 - If no CI build flow exists, Composer/npm build output must be produced before committing/deploying the runtime artifact.
 - VIP CI/CD workflows commonly build from a source branch and push built output to a `-built` branch configured for deployment.
 - Avoid committing `node_modules` unless a platform-specific project explicitly requires it; use Composer/npm lockfiles and build artifacts intentionally.
+- Never deploy development-only Composer or npm packages. Build/test stages may install dev tools, but runtime artifacts must exclude Composer `require-dev` and npm `devDependencies`.
 - Confirm Composer autoload, dependency extraction, block assets, and generated manifests are included in the deployed artifact.
 
 ## Pre-Deploy Checklist
@@ -38,6 +39,7 @@ Verify current VIP docs for the target project. Stable guidance:
 - Scope: PRs, commits, migration steps, feature flags, and expected user-visible changes.
 - Diff risk: endpoints, DB schema, options, cron/jobs, cache keys, search index, auth, assets, templates, and redirects.
 - Validation: tests, lint/static analysis, build, package artifact, activation, REST probes, admin/editor/frontend smoke.
+- Dependencies: production Composer install excludes dev packages, npm runtime payload omits/prunes dev dependencies, and artifact inspection confirms no test/lint/build-only packages are shipped.
 - Data: backup/restore point, migration dry run, idempotency, batch size, resume behavior, rollback limitations.
 - Operations: deploy window, owner, watcher, support contacts, dashboard links, logs, and rollback command.
 - Communication: client note, editorial impact, release notes, known risks, and go/no-go criteria.

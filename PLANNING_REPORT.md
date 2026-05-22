@@ -1102,3 +1102,52 @@ Strengthen `wp-contributor` with focused Meta Handbook expertise for WordPress.o
 - `git diff --check`: passed.
 - ASCII scan across `README.md`, `PLANNING_REPORT.md`, `wp-expert/`, `wp-contributor/`, and `shared/`: passed.
 - Route search confirmed Meta Handbook guidance is wired into `README.md`, `SKILL.md`, `meta-workflow.md`, `official-anchors.md`, `contribution-map.md`, `testing-validation.md`, and `trac-github-triage.md`.
+
+## Production Dependency Discipline Addition
+
+### Objective
+
+Add explicit shared expertise so both `wp-expert` and `wp-contributor` never ship development-specific Composer or npm packages to production while still allowing dev dependencies in source manifests, lockfiles, local environments, and CI build/test stages.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Shared production dependency reference | Yes | Add | Composer/npm production artifact rules apply to both client/product delivery and official contribution work, so shared guidance prevents drift. |
+| Composer `require-dev` boundary | Yes | Add | Production `vendor/` must be created from `composer install --no-dev`; dev tools must not be runtime dependencies. |
+| npm `devDependencies` boundary | Yes | Add | WordPress plugin/theme artifacts should ship built JS/CSS, not build/test tooling or `node_modules` unless explicitly required. |
+| Runtime artifact checklist | Yes | Add | The rule must be validated at packaging/deploy time, not just stated in dependency manifests. |
+| Skill router wiring in both skills | Yes | Add | Codex needs to load the same reference from either WordPress engineering or WordPress contribution mode. |
+| Build/deploy and contribution validation reminders | Yes | Add | The rule is most likely to be missed in release, CI, deployment, and upstream packaging reviews. |
+| Delete dev dependencies from source manifests | No | Reject | Dev dependencies are correct for local development and CI; the risk is shipping them in runtime artifacts. |
+| Ban lockfiles because they mention dev packages | No | Reject | Lockfiles support reproducible builds and may record dev packages without installing them in production artifacts. |
+
+### Added Artifact
+
+- `shared/references/production-dependency-discipline.md`
+
+### Updated Artifacts
+
+- `wp-expert/SKILL.md`
+- `wp-expert/agents/openai.yaml`
+- `wp-expert/references/build-tooling.md`
+- `wp-expert/references/deployment-release-resilience.md`
+- `wp-contributor/SKILL.md`
+- `wp-contributor/agents/openai.yaml`
+- `wp-contributor/references/testing-validation.md`
+- `README.md`
+- `PLANNING_REPORT.md`
+
+### Validation Results
+
+- `SKILL.md` frontmatter checks: passed for `wp-expert` and `wp-contributor`.
+- `wp-expert` description length check: passed at 714 characters.
+- `wp-contributor` description length check: passed at 560 characters.
+- Shared production dependency reference path resolution from repo and installed symlink paths: passed for both skills.
+- `quick_validate.py wp-expert`: passed.
+- `quick_validate.py wp-contributor`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-contributor`: passed.
+- `git diff --check`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, `wp-expert/`, `wp-contributor/`, and `shared/`: passed.
+- Route search confirmed production dependency hygiene is wired into both skill routers, agent prompts, build/deploy references, contributor validation, README, and the shared reference.
