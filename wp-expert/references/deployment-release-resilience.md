@@ -10,6 +10,8 @@ Use this for enterprise releases, VIP deployment readiness, built artifacts, rol
 - VIP app deploy command: https://docs.wpvip.com/vip-cli/commands/app/deploy/
 - GitHub Actions workflow syntax: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax
 
+For WordPress.org Plugin Directory SVN releases, use `wordpress-org-release-operations.md` in addition to this deployment checklist.
+
 ## Release Architecture Principle
 
 A release is not complete when code is merged. It is complete when production behavior is validated, rollback is possible, and the team can explain what changed.

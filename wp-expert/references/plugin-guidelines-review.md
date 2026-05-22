@@ -54,12 +54,14 @@ For block-specific plugins submitted to the Block Directory:
 Check the final artifact:
 
 - No `node_modules`, local env files, test fixtures with secrets, CI-only config, or source-only files unless intentionally shipped.
+- For WordPress.org plugins with Composer runtime dependencies, production `vendor/` must be shipped because users will not run Composer; verify it excludes `require-dev` tooling.
 - Vendor dependencies are GPL-compatible and intentionally bundled.
 - Minified/built files have corresponding source or public source/build documentation.
 - `readme.txt` includes required metadata, service disclosures, privacy notes, external dependencies, and clear setup instructions.
 - Plugin headers, text domain, stable tag, version constants, and readme version are consistent.
 - Assets in `.wordpress-org/` or plugin assets follow expected naming and licensing.
 - For changelog and release-note wording, use `changelog-release-notes.md` and validate WordPress.org `readme.txt` when relevant.
+- For SVN deploys and post-release verification, use `wordpress-org-release-operations.md`.
 
 ## Review Output Format
 

@@ -1151,3 +1151,50 @@ Add explicit shared expertise so both `wp-expert` and `wp-contributor` never shi
 - `git diff --check`: passed.
 - ASCII scan across `README.md`, `PLANNING_REPORT.md`, `wp-expert/`, `wp-contributor/`, and `shared/`: passed.
 - Route search confirmed production dependency hygiene is wired into both skill routers, agent prompts, build/deploy references, contributor validation, README, and the shared reference.
+
+## WordPress.org Release Operations Lessons Addition
+
+### Objective
+
+Add focused `wp-expert` expertise from the WordPress.org release lessons: SVN-first verification, production-only Composer vendor handling, first SVN commit timeout behavior, Plugin Check workflow fallback, 10up deploy rerun behavior, GitHub ZIP continuation, workflow modernization backlog, and `.wordpress-org` asset verification.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated WordPress.org release operations reference | Yes | Add | These lessons are operational and release-specific; a focused reference avoids bloating generic deployment or plugin-guideline files. |
+| SVN-first release verification | Yes | Add | GitHub Actions can fail after the server-side SVN commit completed, so direct SVN checks prevent false rollback or retag decisions. |
+| Verify `trunk/`, `tags/<version>/`, and `assets/` | Yes | Add | WordPress.org release state spans current trunk, immutable version tags, and plugin directory assets. |
+| Production `vendor/` nuance | Yes | Add | WordPress.org users will not run Composer, so runtime Composer dependencies must ship, but only from production install boundaries. |
+| First SVN commit timeout guidance | Yes | Add | Initial releases can add trunk, tag, assets, built files, and production vendor at once; timeout after data transfer is inconclusive. |
+| 10up deploy rerun behavior | Yes | Add | If the tag already exists after a timeout, rerunning may no-op deploy and continue later release steps like GitHub ZIP upload. |
+| Plugin Check explicit fallback | Yes | Add | `wordpress/plugin-check-action@v1` was unstable in the observed runner/Node setup; explicit Plugin Check with Node `24.15.0` and `@wordpress/env@11.6.0` is recorded as a proven fallback. |
+| Workflow modernization backlog | Yes | Add | Deprecated `actions/upload-release-asset@v1` and nested action warnings should be tracked without blocking a verified release. |
+| Treat observed Node/action versions as permanent global truth | No | Reject | They are project-proven release lessons, but future workflow modernization should revalidate current maintained versions. |
+
+### Added Artifact
+
+- `wp-expert/references/wordpress-org-release-operations.md`
+
+### Updated Artifacts
+
+- `wp-expert/SKILL.md`
+- `wp-expert/agents/openai.yaml`
+- `wp-expert/references/plugin-guidelines-review.md`
+- `wp-expert/references/deployment-release-resilience.md`
+- `shared/references/production-dependency-discipline.md`
+- `README.md`
+- `PLANNING_REPORT.md`
+
+### Validation Results
+
+- `SKILL.md` frontmatter checks: passed for `wp-expert` and `wp-contributor`.
+- `wp-expert` description length check: passed at 748 characters.
+- `wp-contributor` description length check: passed at 560 characters.
+- `wordpress-org-release-operations.md` path resolution from repo and installed symlink paths: passed.
+- `quick_validate.py wp-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-expert`: passed.
+- `quick_validate.py wp-contributor`: passed.
+- `git diff --check`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, `wp-expert/`, `wp-contributor/`, and `shared/`: passed.
+- Route search confirmed WordPress.org release operations are wired into `README.md`, `SKILL.md`, `agents/openai.yaml`, `plugin-guidelines-review.md`, `deployment-release-resilience.md`, `production-dependency-discipline.md`, and the new reference.

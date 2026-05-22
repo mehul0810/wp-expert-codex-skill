@@ -10,6 +10,7 @@ Never ship development-only packages to production. Development dependencies can
 
 - Treat `require` as runtime and `require-dev` as development-only. Do not rely on `require-dev` packages in production code paths.
 - Build production PHP artifacts with `composer install --no-dev` when Composer dependencies are included in the deployed package.
+- For WordPress.org plugins, production `vendor/` is often required because users will not run Composer; include runtime packages from `require`, not dev tooling from `require-dev`.
 - Add `--optimize-autoloader` or stricter autoloader flags when the project/platform supports them and the change is validated.
 - Do not ship test, lint, static-analysis, scaffold, coding-standard, fixture, or dev-only tool packages in `vendor/`.
 - Common dev-only Composer packages include PHPUnit, PHPCS/WPCS/VIPCS, PHPStan/Psalm, Rector, Brain Monkey, Mockery test-only usage, composer-normalize, and installer/checker tools that are not runtime dependencies.
