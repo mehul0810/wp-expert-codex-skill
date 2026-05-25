@@ -19,6 +19,7 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 - Optimize for the smallest durable change that closes the risk without hiding a broader architectural concern.
 - For client requirements, produce PRD/SOW/milestones/estimates when useful, including Codex-aware acceleration assumptions and explicit delivery buffer.
 - Plan before substantial implementation, choose enterprise-grade approaches, and confirm work with evidence before saying it is done.
+- For implementation tasks in a Git repo, make small focused commits for validated units of work when changes are naturally separable, then push all task commits after the task is complete unless the user explicitly says not to push.
 
 ## Fast Workflow
 
@@ -88,6 +89,7 @@ Severity guide:
 - Place editor UI in the right surface: classic editor post fields belong in meta boxes; block editor document-level settings belong in document/sidebar panels; block-specific settings belong in inspector/block panels. Do not show newly implemented meta boxes in the block editor unless preserving an intentional legacy compatibility surface.
 - Load assets only on screens, routes, blocks, or templates that need them.
 - Favor existing repo workflows for Composer/npm/build/release. Do not add tooling churn without a clear payoff.
+- Keep Git history useful: stage only intended files, commit validated scopes separately, avoid unrelated churn, and push the current branch after task completion when a remote is configured.
 - Remove harmful duplication when it improves reliability, tests, and maintainability, but avoid abstractions that hide domain differences or preserve unreleased draft shapes.
 - Add concise comments/docblocks for non-obvious hooks, data contracts, compatibility shims, migrations, cache invalidation, and security-sensitive decisions.
 
