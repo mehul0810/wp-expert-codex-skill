@@ -1,0 +1,4 @@
+interface:
+  display_name: "Content Writer"
+  short_description: "Organic search content strategy and writing"
+  default_prompt: "Use $content-writer to plan and draft organic-search content for a topic."
