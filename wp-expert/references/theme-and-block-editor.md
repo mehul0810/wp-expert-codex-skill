@@ -1,12 +1,15 @@
 # Theme Development And Block Editor
 
-Use this for classic themes, block themes, child themes, `theme.json`, block editor compatible code generation, dynamic/static blocks, patterns, Query Loop behavior, and editor/frontend visual parity. For converting a provided design into a custom editable FSE/block theme, also read `custom-block-theme-from-design.md`. For Ollie block theme or Ollie Pro work, also read `ollie-block-theme.md`. For Blocksy theme or Blocksy Pro work, also read `blocksy-theme.md`.
+Use this for classic themes, block themes, child themes, `theme.json`, block editor compatible code generation, dynamic/static blocks, patterns, Query Loop behavior, and editor/frontend visual parity. For block/FSE architecture decisions, read `block-theme-architecture.md` first. For converting a provided design into a custom editable FSE/block theme, also read `custom-block-theme-from-design.md`. For Ollie block theme or Ollie Pro work, also read `ollie-block-theme.md`. For Blocksy theme or Blocksy Pro work, also read `blocksy-theme.md`.
 
 ## Official Anchors
 
 - Block Editor Handbook: https://developer.wordpress.org/block-editor/
 - Theme Handbook: https://developer.wordpress.org/themes/
 - `theme.json` introduction: https://developer.wordpress.org/themes/global-settings-and-styles/introduction-to-theme-json/
+- Block Variations API: https://developer.wordpress.org/block-editor/reference-guides/block-api/block-variations/
+- InnerBlocks: https://developer.wordpress.org/block-editor/how-to-guides/block-tutorial/nested-blocks-inner-blocks/
+- Interactivity API: https://developer.wordpress.org/block-editor/reference-guides/interactivity-api/
 - WP-CLI block commands: https://developer.wordpress.org/cli/commands/block/
 
 ## Theme Runtime Map
@@ -29,12 +32,13 @@ Before editing theme behavior, inspect:
 
 ## Block Theme Guidelines
 
+- Decide theme ownership vs plugin ownership before adding files. Theme code should own presentation; durable content/data/functionality should usually live in plugins.
 - Treat `theme.json` as the first-class design contract for global settings/styles when possible.
 - Keep `version`, `$schema`, settings, styles, template parts, patterns, and custom properties deliberate.
 - Use templates and parts for structure, patterns for reusable content composition, and CSS for gaps `theme.json` cannot express.
 - Prefer style engine/theme supports over custom CSS when it preserves editor/frontend parity.
 - Do not fight the Site Editor. Build with core blocks, supports, patterns, and constrained custom blocks.
-- For design-to-theme work, map the design to `theme.json`, core blocks, patterns, template parts, and block styles before creating custom blocks.
+- For design-to-theme work, map the design through content model, `theme.json`, templates/parts, patterns, core blocks, block styles, variations, bindings, and then custom blocks.
 - Do not use Custom HTML blocks or Shortcode blocks to implement new block theme design sections; create a proper pattern, template part, block style/variation, or custom block instead.
 
 ## Block Editor Development
@@ -51,6 +55,7 @@ Block work must preserve editor/frontend parity:
 - For static blocks, maintain save markup compatibility and deprecations when markup changes.
 - Use `useBlockProps`, `InnerBlocks`, allowed blocks, templates, and locking deliberately.
 - Register editor/front-end assets through block metadata or precise enqueue logic.
+- For interactive frontend behavior, consider the Interactivity API before adding isolated jQuery/vanilla scripts that may not cooperate with modern block rendering and client-side navigation.
 
 ## Query Loop And Layout Preservation
 

@@ -1,6 +1,6 @@
 # Custom Block Theme From Design
 
-Use this when converting a Figma/static/brand design into a custom block-based Full Site Editing theme that stays modular, editable from WordPress admin, visually faithful, and maintainable without using Custom HTML or Shortcode blocks for new design implementation.
+Use this when converting a Figma/static/brand design into a custom block-based Full Site Editing theme that stays modular, editable from WordPress admin, visually faithful, and maintainable without using Custom HTML or Shortcode blocks for new design implementation. Read `block-theme-architecture.md` first when the task involves non-trivial block, pattern, template, data, or interaction decisions.
 
 ## Official Anchors
 
@@ -13,11 +13,13 @@ Use this when converting a Figma/static/brand design into a custom block-based F
 - Block style variations: `https://developer.wordpress.org/themes/features/block-style-variations/`
 - `theme.json` reference: `https://developer.wordpress.org/block-editor/reference-guides/theme-json-reference/`
 - Block Bindings API: `https://developer.wordpress.org/block-editor/reference-guides/block-api/block-bindings/`
+- Interactivity API: `https://developer.wordpress.org/block-editor/reference-guides/interactivity-api/`
 - Create Block: `https://developer.wordpress.org/block-editor/getting-started/devenv/get-started-with-create-block/`
 
 ## Non-Negotiables
 
 - Build the theme around the Site Editor model: `theme.json`, templates, template parts, patterns, core blocks, block supports, and custom blocks only when necessary.
+- Decide theme vs plugin ownership before building: presentation belongs in the theme; durable data, business rules, and cross-theme functionality usually belong in plugins.
 - Do not use Custom HTML blocks or Shortcode blocks to implement new design sections. Treat them as legacy containment only and flag them as technical debt.
 - Keep admin editability explicit. Editors should be able to update content, images, buttons, navigation, global styles, template parts, and reusable sections without editing code.
 - Preserve design intent through tokens, layout rules, patterns, and editor constraints, not by freezing the entire page into one custom block or hard-coded markup.
@@ -27,6 +29,7 @@ Use this when converting a Figma/static/brand design into a custom block-based F
 
 Before implementation, create a design map:
 
+- Ownership: what belongs to theme files, plugin functionality, post content, post meta, options, synced patterns, or external data.
 - Templates: `front-page`, `home`, `index`, `page`, `single`, `archive`, `search`, `404`, CPT templates, WooCommerce templates, and landing-page variants.
 - Template parts: header, footer, navigation, sidebar, loop sections, CTA bands, newsletter/signup, social proof, and reusable global sections.
 - Patterns: hero, feature grid, card list, stats, testimonials, logos, CTA, pricing, FAQ, media split, post grid, author block, and page sections.
@@ -45,7 +48,9 @@ Use the first layer that satisfies design fidelity, editability, accessibility, 
 5. Patterns: reusable section markup in `/patterns`, pattern categories, clear titles, viewport width metadata, and starter layouts editors can insert and modify.
 6. Template parts and templates: reusable block markup in `/parts` and top-level templates in `/templates`; register parts in `theme.json` so they appear cleanly in the Site Editor.
 7. Block variations or block styles: use when a core block can handle the content model but needs a named preset or controlled variation.
-8. Custom block: use only when core blocks/patterns/bindings cannot provide the required structured editing, dynamic rendering, interaction, data source, validation model, or accessibility semantics.
+8. Custom block with `InnerBlocks`: use when the design needs safe composition with controlled child blocks, templates, parent/ancestor rules, or locking.
+9. Custom dynamic block: use when rendering depends on server data, permissions, query state, integrations, or evolving markup.
+10. Interactivity API: use for frontend behavior that needs stateful interactions while staying aligned with WordPress block rendering.
 
 ## When To Create A Custom Block
 
@@ -63,6 +68,7 @@ Do not create a custom block when:
 - A core block plus Block Bindings can satisfy the data model with stable editor UX.
 - The only gap is spacing, color, border, radius, shadow, or responsive behavior that can be solved with `theme.json`, block supports, block styles, or scoped CSS.
 - The block would simply wrap a hard-coded design with no meaningful editor controls.
+- The only purpose is to mimic a static design that could be represented by a locked pattern or a variation of core blocks.
 - A shortcode or Custom HTML block is being used to avoid proper block/theme architecture.
 
 ## Block Bindings Guidance
@@ -118,14 +124,17 @@ Guidelines:
 
 ## Implementation Workflow
 
-1. Create the design map and identify required templates, parts, patterns, tokens, and possible custom blocks.
-2. Build `theme.json` tokens and settings before page markup.
-3. Prototype sections in the editor with core blocks and copy stable block markup into `/patterns`, `/templates`, or `/parts`.
-4. Replace fragile sections with block styles/variations or custom blocks only when the decision matrix justifies it.
-5. Register template parts and pattern categories so the admin UI is understandable.
-6. Build custom blocks with `block.json`, `useBlockProps`, meaningful attributes, editor preview, frontend rendering, and accessibility baked in.
-7. Add visual parity checks for editor canvas, Site Editor preview, and frontend render states across breakpoints.
-8. Validate editor editability, frontend fidelity, responsive behavior, accessibility, performance, and release packaging.
+1. Create the design map and ownership map.
+2. Define content contracts and dynamic data sources before block markup.
+3. Build `theme.json` tokens and settings before page markup.
+4. Create the minimum template hierarchy and template parts.
+5. Prototype sections in the editor with core blocks and copy stable block markup into `/patterns`, `/templates`, or `/parts`.
+6. Add block styles/variations/bindings for repeatable design and data needs.
+7. Build custom blocks only where the decision matrix proves core blocks, patterns, variations, and bindings are insufficient.
+8. For custom blocks, decide static vs dynamic rendering, attributes vs meta/options/data sources, `InnerBlocks` constraints, and deprecation strategy.
+9. Add Interactivity API behavior only when frontend interaction requires state.
+10. Add visual parity checks for editor canvas, Site Editor preview, and frontend render states across breakpoints.
+11. Validate editor editability, frontend fidelity, responsive behavior, accessibility, performance, and release packaging.
 
 ## Validation Checklist
 
@@ -135,6 +144,8 @@ Guidelines:
 - Core block patterns remain valid; no invalid block warnings appear after save/reload.
 - Editor canvas, frontend, and preview match within acceptable design tolerance.
 - Dynamic fields mapped through Block Bindings render correctly in editor and frontend with expected empty/error states.
+- Custom blocks can be inserted, edited, saved, reloaded, copied, transformed when supported, and rendered without validation warnings.
+- Interactive blocks degrade safely and load scripts only where needed.
 - Mobile, tablet, desktop, and wide layouts are verified.
 - Keyboard navigation, focus states, landmarks, headings, alt text, contrast, and reduced motion are checked.
 - Query Loop and dynamic content states cover empty, long content, missing image, and translated text.

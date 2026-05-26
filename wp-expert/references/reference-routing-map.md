@@ -19,8 +19,8 @@ Use this map to choose references with low context cost.
 | WordPress.org release operations and deploy behavior | `wordpress-org-release-operations.md` | `deployment-release-resilience.md`, `build-tooling.md` |
 | Release notes, changelog quality, version narrative | `changelog-release-notes.md` | `release-contract-compatibility.md`, `delivery-excellence.md` |
 | Backward compatibility and launch-state decisions | `release-contract-compatibility.md` | `changelog-release-notes.md`, `plugin-architecture.md` |
-| Design to custom FSE block theme | `custom-block-theme-from-design.md` | `theme-and-block-editor.md`, `visual-parity-regression.md` |
-| Theme/block editor behavior or block implementation | `theme-and-block-editor.md` | `wordpress-design-system.md`, `validation-commands.md` |
+| Design to custom FSE block theme | `block-theme-architecture.md` | `custom-block-theme-from-design.md`, `visual-parity-regression.md` |
+| Theme/block editor behavior or block implementation | `block-theme-architecture.md` | `theme-and-block-editor.md`, `validation-commands.md` |
 | React in WordPress (admin/editor/frontend/headless) | `react-wordpress-enterprise.md` | `wordpress-design-system.md`, `standards-ci-github.md` |
 | UI/UX improvement or admin UX | `ui-ux-pro-for-wordpress.md` | `admin-ux-and-ui.md`, `visual-parity-regression.md` |
 | WordPress Design System implementation | `wordpress-design-system.md` | `admin-ux-and-ui.md`, `ui-ux-pro-for-wordpress.md` |

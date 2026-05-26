@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ### Added
 
+- **Block/FSE Architecture Decisioning**: Dedicated guidance for theme vs plugin ownership, content/data contracts, editor ownership, templates, template parts, patterns, block styles, variations, bindings, custom blocks, dynamic rendering, and Interactivity API.
 - **Content Writer Skill**: SEO, AEO, GEO, AI Overviews, AI Mode, answer-engine, and AI-tool-aware content strategy, briefs, drafts, audits, refreshes, schema-aware copy, and source-grounded editorial workflows.
 - **Git Delivery Discipline**: wp-expert now explicitly prefers small focused commits for separable validated changes and pushing all task commits after completion when a remote is configured.
 

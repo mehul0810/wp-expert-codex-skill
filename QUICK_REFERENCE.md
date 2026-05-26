@@ -44,12 +44,16 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 ### Theme Development & Block Editor
 
 **"I need to convert a design to a custom FSE theme"**
-- Load: `custom-block-theme-from-design.md`
-- Supporting: `theme-and-block-editor.md`, `visual-parity-regression.md`
+- Load: `block-theme-architecture.md`
+- Supporting: `custom-block-theme-from-design.md`, `visual-parity-regression.md`
 
 **"How do I implement a custom block?"**
-- Load: `theme-and-block-editor.md`
-- Supporting: `wordpress-design-system.md` (if using WPDS)
+- Load: `block-theme-architecture.md`
+- Supporting: `theme-and-block-editor.md`, `wordpress-design-system.md` (if using WPDS)
+
+**"Should this be a pattern, template part, block variation, binding, or custom block?"**
+- Load: `block-theme-architecture.md`
+- Supporting: `custom-block-theme-from-design.md`
 
 **"I'm working with Ollie block theme"**
 - Load: `ollie-block-theme.md`

@@ -32,6 +32,15 @@ cat > "$output_path" <<'TEMPLATE'
 - Priority templates for milestone 1:
 - CPT or WooCommerce templates:
 
+## Ownership Map
+
+- Theme-owned presentation:
+- Plugin-owned durable functionality/data:
+- Post content:
+- Post meta/options:
+- External data sources:
+- Synced/global editor-owned content:
+
 ## Template Parts
 
 - Header variants:
@@ -61,12 +70,25 @@ cat > "$output_path" <<'TEMPLATE'
 
 ## Block Mapping Ladder
 
+- Solved with content model/data contract:
 - Solved with `theme.json`:
+- Solved with templates/template parts:
+- Solved with patterns:
 - Solved with core blocks:
 - Solved with block bindings:
 - Solved with block styles or variations:
-- Solved with templates/parts/patterns:
-- Requires custom block (justify each):
+- Requires custom block with InnerBlocks (justify each):
+- Requires custom dynamic block (justify each):
+- Requires Interactivity API behavior:
+
+## Custom Block Decisions
+
+- Static vs dynamic rendering:
+- Attributes vs meta/options/data source:
+- InnerBlocks allowed blocks/template/locking:
+- Parent/ancestor/child relationships:
+- Deprecation or migration strategy:
+- Editor preview and empty states:
 
 ## Editor Surface Plan
 

@@ -20,6 +20,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - WordPress.org Plugin Directory guideline review, block directory eligibility, readme policy, licensing, tracking, and trademark checks.
 - WordPress.org release operations: SVN-first verification, `trunk/`, `tags/<version>/`, `assets/`, production `vendor/`, Plugin Check fallbacks, 10up deploy behavior, and GitHub ZIP workflows.
 - Theme development, classic themes, block themes, and `theme.json`.
+- Block/FSE architecture decisioning: theme vs plugin ownership, content model, editor ownership, templates, parts, patterns, variations, bindings, custom blocks, dynamic rendering, and Interactivity API.
 - Design-to-FSE custom block themes: map designs to `theme.json`, core blocks, patterns, template parts, block styles, and custom blocks only when necessary, without Custom HTML or Shortcode blocks.
 - Block Bindings in block themes: map supported core block attributes to dynamic sources before creating custom blocks when native editability is sufficient.
 - Ollie block theme and Ollie Pro expertise: Site Editor workflows, child themes, design tokens, Pro pattern library, setup wizard, starter sites, extensions, Menu Designer, WooCommerce layouts, and troubleshooting.
