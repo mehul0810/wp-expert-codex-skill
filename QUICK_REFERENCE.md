@@ -47,6 +47,14 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 - Load: `block-theme-architecture.md`
 - Supporting: `custom-block-theme-from-design.md`, `visual-parity-regression.md`
 
+**"I need to implement a style guide, design tokens, or design patterns in a theme"**
+- Load: `style-guide-theme-translation.md`
+- Supporting: `block-theme-architecture.md`, `visual-parity-regression.md`
+
+**"Should this be a custom theme or child theme on top of an existing theme?"**
+- Load: `style-guide-theme-translation.md`
+- Supporting: `theme-and-block-editor.md`
+
 **"How do I implement a custom block?"**
 - Load: `block-theme-architecture.md`
 - Supporting: `theme-and-block-editor.md`, `wordpress-design-system.md` (if using WPDS)
@@ -200,6 +208,10 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 - Load: `validation-commands.md`
 - Run: Helper scripts (wp-context.sh, wp-validate.sh)
 
+**"The in-app browser blocks my local HTTPS WordPress domain"**
+- Load: `local-https-testing.md`
+- Run: `wp-local-https-check.sh`
+
 ---
 
 ## Quick Task-to-Reference Matrix
@@ -209,6 +221,7 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 | New plugin | plugin-architecture.md | 10 min |
 | API integration | third-party-api-integrations.md | 10 min |
 | Refactor code | duplicate-code-modularity-review.md | 8 min |
+| Style guide/tokens | style-guide-theme-translation.md | 8 min |
 | Design to FSE | custom-block-theme-from-design.md | 12 min |
 | Custom block | theme-and-block-editor.md | 10 min |
 | React component | react-wordpress-enterprise.md | 12 min |
@@ -226,6 +239,7 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 | Code review | review-checklists.md | 8 min |
 | Plugin audit | plugin-guidelines-review.md | 8 min |
 | Visual parity | visual-parity-regression.md | 8 min |
+| Local HTTPS blocked | local-https-testing.md | 6 min |
 
 ---
 
@@ -245,6 +259,9 @@ bash wp-expert/scripts/fse-design-map.sh design-map.md
 
 # Verify WordPress.org release artifacts
 bash wp-expert/scripts/wporg-release-verify.sh /path/to/svn 1.0.0
+
+# Check custom local HTTPS domains and capture screenshot when Playwright is available
+bash wp-expert/scripts/wp-local-https-check.sh https://example.test/ /tmp/example-home.png
 
 # Discover contribution repo structure
 bash wp-contributor/scripts/wp-contrib-context.sh /path/to/wordpress-develop

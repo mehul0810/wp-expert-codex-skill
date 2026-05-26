@@ -20,6 +20,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - WordPress.org Plugin Directory guideline review, block directory eligibility, readme policy, licensing, tracking, and trademark checks.
 - WordPress.org release operations: SVN-first verification, `trunk/`, `tags/<version>/`, `assets/`, production `vendor/`, Plugin Check fallbacks, 10up deploy behavior, and GitHub ZIP workflows.
 - Theme development, classic themes, block themes, and `theme.json`.
+- Style guide, design pattern, and design token translation into WordPress-native primitives, including custom themes and custom child themes on top of existing parent themes.
 - Block/FSE architecture decisioning: theme vs plugin ownership, content model, editor ownership, templates, parts, patterns, variations, bindings, custom blocks, dynamic rendering, and Interactivity API.
 - Design-to-FSE custom block themes: map designs to `theme.json`, core blocks, patterns, template parts, block styles, and custom blocks only when necessary, without Custom HTML or Shortcode blocks.
 - Block Bindings in block themes: map supported core block attributes to dynamic sources before creating custom blocks when native editability is sufficient.
@@ -28,7 +29,9 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - Block editor compatible code generation and dynamic/static block work.
 - React with WordPress enterprise standards: admin/editor apps, frontend interactive blocks, headless boundaries, dependency extraction, REST contracts, `@wordpress/data`, `@wordpress/components`, testing, accessibility, and release artifacts.
 - Product-grade UI/UX improvement: visual QA, interaction states, forms, dashboards, responsive polish, and conversion clarity.
+- Premium and enterprise visual quality discipline: never settle for generic, inconsistent, or unfinished UI when the project requires a polished brand experience.
 - Visual parity regression workflow: deterministic screenshot/state checks across Site Editor, block editor canvas, and frontend surfaces.
+- Local HTTPS testing support for custom WordPress development domains that are blocked by the in-app browser, using terminal probes and certificate-error-tolerant browser runners.
 - Mobile-first responsive architecture for frontend/customer-facing flows and responsive-safe admin/editor interfaces.
 - WordPress Design System support: `@wordpress/components`, design tokens, Figma-to-code mapping, and accessibility.
 - Admin UX, settings screens, onboarding, list tables, notices, and frontend UI improvement.
@@ -83,7 +86,7 @@ content-writer/
 Default invocations:
 
 ```text
-Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, custom block/FSE theme from design, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, theme, Ollie block theme/Ollie Pro site, Blocksy theme/Blocksy Pro site, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
+Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, custom block/FSE theme from design, style guide/design-token translation, custom theme, custom child theme, local HTTPS testing issue, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, theme, Ollie block theme/Ollie Pro site, Blocksy theme/Blocksy Pro site, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
 
 Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, triage, release/backport work, or contributor communication.
 

@@ -2,7 +2,7 @@
 
 Use this for UX strategy, UI improvement, visual QA, product flows, interaction design, responsive polish, conversion-oriented WordPress screens, admin/editor experiences, frontend feature pages, dashboards, onboarding, forms, tables, and design-to-code implementation.
 
-This reference fuses product-grade UI/UX reasoning with WordPress-native design constraints. Use it alongside `wordpress-design-system.md` when the implementation should use WPDS or `@wordpress/components`. For estimates, milestones, and mobile-first delivery architecture, also read `delivery-excellence.md`.
+This reference fuses product-grade UI/UX reasoning with WordPress-native design constraints. Use it alongside `wordpress-design-system.md` when the implementation should use WPDS or `@wordpress/components`. For style guides, design patterns, design tokens, custom themes, or child themes on top of an existing theme, also read `style-guide-theme-translation.md`. For estimates, milestones, and mobile-first delivery architecture, also read `delivery-excellence.md`.
 
 ## UX Triage
 
@@ -84,6 +84,8 @@ If the request is exploratory, return 2-3 design directions with tradeoffs and a
 - Map to WordPress components first: `@wordpress/components`, `@wordpress/icons`, editor SlotFills, block supports, `theme.json`, admin styles.
 - Use a three-layer token model when custom design is needed: primitive values, semantic aliases, component tokens.
 - Prefer semantic tokens such as `--color-surface`, `--color-text-muted`, `--color-danger`, `--space-control-gap` over raw values in components.
+- Translate style-guide and design-system decisions into WordPress-native tokens, patterns, template parts, block styles, variations, or scoped component tokens before adding broad CSS overrides.
+- When working on top of an existing parent theme, preserve the parent theme's durable extension points and token model unless it actively blocks the design system or enterprise quality bar.
 - Do not introduce Tailwind/shadcn/Radix or another UI stack into WordPress admin/editor unless the project already uses it or there is a clear isolated app surface.
 - Avoid bundling duplicate React, WordPress packages, or large UI libraries into admin/editor assets.
 
@@ -105,6 +107,7 @@ Every serious UI should cover:
 
 Avoid generic AI-looking UI:
 
+- Never compromise on premium and enterprise feel when the product, client, or brand positioning requires it.
 - Pick one visual direction and make spacing, type, borders, shadows, and states coherent.
 - Do not default to purple gradients, dark mode, glassmorphism, or oversized bento cards unless the product context justifies it.
 - Use contrast, spacing, and typography for hierarchy before decoration.
@@ -113,6 +116,7 @@ Avoid generic AI-looking UI:
 - Prefer one primary action per screen or panel.
 - Reduce chrome around content-heavy workflows.
 - Make errors and recovery paths visually obvious without panic styling.
+- Treat "good enough" starter-theme output as incomplete when the acceptance criteria require a polished premium brand experience.
 
 ## Motion And Interaction
 

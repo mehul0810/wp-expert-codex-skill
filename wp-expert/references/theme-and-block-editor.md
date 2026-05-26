@@ -1,6 +1,6 @@
 # Theme Development And Block Editor
 
-Use this for classic themes, block themes, child themes, `theme.json`, block editor compatible code generation, dynamic/static blocks, patterns, Query Loop behavior, and editor/frontend visual parity. For block/FSE architecture decisions, read `block-theme-architecture.md` first. For converting a provided design into a custom editable FSE/block theme, also read `custom-block-theme-from-design.md`. For Ollie block theme or Ollie Pro work, also read `ollie-block-theme.md`. For Blocksy theme or Blocksy Pro work, also read `blocksy-theme.md`.
+Use this for classic themes, block themes, child themes, `theme.json`, block editor compatible code generation, dynamic/static blocks, patterns, Query Loop behavior, and editor/frontend visual parity. For style guides, design tokens, custom themes, or child themes on top of an existing theme, read `style-guide-theme-translation.md`. For block/FSE architecture decisions, read `block-theme-architecture.md` first. For converting a provided design into a custom editable FSE/block theme, also read `custom-block-theme-from-design.md`. For Ollie block theme or Ollie Pro work, also read `ollie-block-theme.md`. For Blocksy theme or Blocksy Pro work, also read `blocksy-theme.md`.
 
 ## Official Anchors
 
@@ -17,6 +17,7 @@ Use this for classic themes, block themes, child themes, `theme.json`, block edi
 Before editing theme behavior, inspect:
 
 - Active parent and child themes.
+- Style guide, design tokens, existing token variables, and parent theme design constraints.
 - `functions.php`, `theme.json`, block templates, template parts, patterns, `style.css`, build source, and generated assets.
 - Template hierarchy path for the page being fixed.
 - Plugin hooks that alter theme queries, blocks, templates, or assets.
@@ -67,6 +68,7 @@ Block work must preserve editor/frontend parity:
 ## UI And Frontend Quality
 
 - Respect existing design system and theme constraints first.
+- Do not compromise premium/enterprise feel. Preserve brand quality, alignment, typography, state coverage, and polish while staying WordPress-native.
 - Improve hierarchy, spacing, states, focus, empty states, and error handling before decorative changes.
 - Validate responsive behavior at real breakpoints used by the theme.
 - Check keyboard navigation, focus visibility, color contrast, form labels, reduced motion, and semantic landmarks.

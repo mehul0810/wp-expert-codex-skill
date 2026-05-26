@@ -132,6 +132,21 @@ curl -s http://example.test/wp-json/example/v1/health
 
 For authenticated state-changing routes, do not fake success by skipping auth. Use a real nonce/application password/local login only when safe.
 
+## Local HTTPS Domain Checks
+
+Use this when the in-app browser blocks a custom local WordPress domain because of self-signed certificates, HSTS, DNS, or local proxy behavior. See `local-https-testing.md` for the full workflow.
+
+```bash
+wp option get home
+wp option get siteurl
+dscacheutil -q host -a name example.test
+curl -k -sS -I https://example.test/
+curl -k -sS https://example.test/wp-json/ | head
+bash /path/to/wp-expert/scripts/wp-local-https-check.sh https://example.test/ /tmp/example-home.png
+```
+
+Treat `curl -k` success as server reachability, not visual rendering. Claim browser or visual validation only after a browser runner or real browser loads the relevant state.
+
 ## Database And Migrations
 
 ```bash

@@ -1,6 +1,6 @@
 ---
 name: wp-expert
-description: Principal-level WordPress engineering skill for plugins, themes, design-to-FSE block themes, blocks, Ollie block theme/Ollie Pro, Blocksy theme/Blocksy Pro, React, third-party APIs, runtime/toolchain versions, changelogs, release notes, release contracts, backward compatibility, duplicate-code review, modularity, testability, admin UI, WPDS, UX, VIP, monorepos, build tooling, production dependency hygiene, WordPress.org release operations, CI/CD, GitHub, WP-CLI, performance, security, observability, incidents, edge caching/CDN, load testing, Enterprise Search, deployments, migrations, accessibility, i18n, troubleshooting, and token-efficient research/web search. Use for WordPress delivery tasks including PRD/SOW, estimates, tests, validation, and enterprise choices.
+description: Principal-level WordPress engineering skill for plugins, themes, custom themes, child themes, style guides, design patterns, design tokens, design-to-FSE block themes, blocks, Ollie block theme/Ollie Pro, Blocksy theme/Blocksy Pro, React, third-party APIs, runtime/toolchain versions, changelogs, release notes, release contracts, backward compatibility, duplicate-code review, modularity, testability, admin UI, WPDS, premium/enterprise UX, local HTTPS testing, VIP, monorepos, build tooling, production dependency hygiene, WordPress.org release operations, CI/CD, GitHub, WP-CLI, performance, security, observability, incidents, edge caching/CDN, load testing, Enterprise Search, deployments, migrations, accessibility, i18n, troubleshooting, and token-efficient research/web search. Use for WordPress delivery tasks including PRD/SOW, estimates, tests, validation, and enterprise choices.
 ---
 
 # WP Expert
@@ -20,6 +20,8 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 - For client requirements, produce PRD/SOW/milestones/estimates when useful, including Codex-aware acceleration assumptions and explicit delivery buffer.
 - Plan before substantial implementation, choose enterprise-grade approaches, and confirm work with evidence before saying it is done.
 - For implementation tasks in a Git repo, make small focused commits for validated units of work when changes are naturally separable, then push all task commits after the task is complete unless the user explicitly says not to push.
+- Never compromise on premium and enterprise feel. UI, theme, block, and frontend work must feel deliberate, polished, accessible, responsive, and aligned with the project style guide or design system.
+- When the in-app browser blocks a custom local HTTPS WordPress domain, use `references/local-https-testing.md` and terminal/browser-runner workarounds before marking runtime or visual testing blocked.
 
 ## Fast Workflow
 
@@ -48,11 +50,11 @@ Read the smallest relevant set:
 - `../shared/references/production-dependency-discipline.md`: Composer/npm production artifact hygiene, `require-dev`/`devDependencies` boundaries, production installs, and release ZIP/deploy checks.
 - `references/delivery-excellence.md`, `references/changelog-release-notes.md`, `references/release-contract-compatibility.md`: requirements, PRD/SOW, estimates, milestones, changelog discipline, release contracts, and compatibility policy.
 - `references/plugin-architecture.md`, `references/third-party-api-integrations.md`, `references/implementation-patterns.md`: plugin architecture, API integrations, and safe implementation patterns.
-- `references/block-theme-architecture.md`, `references/custom-block-theme-from-design.md`, `references/theme-and-block-editor.md`, `references/react-wordpress-enterprise.md`: block/FSE architecture decisions, design-to-theme workflow, editor implementation, and React integration patterns.
-- `references/ui-ux-pro-for-wordpress.md`, `references/wordpress-design-system.md`, `references/admin-ux-and-ui.md`, `references/visual-parity-regression.md`: UI/UX strategy, WPDS usage, admin UX patterns, and visual parity QA workflow.
+- `references/block-theme-architecture.md`, `references/style-guide-theme-translation.md`, `references/custom-block-theme-from-design.md`, `references/theme-and-block-editor.md`, `references/react-wordpress-enterprise.md`: block/FSE architecture decisions, style guide/token translation, design-to-theme workflow, editor implementation, and React integration patterns.
+- `references/ui-ux-pro-for-wordpress.md`, `references/wordpress-design-system.md`, `references/admin-ux-and-ui.md`, `references/visual-parity-regression.md`: UI/UX strategy, WPDS usage, premium/enterprise visual quality, admin UX patterns, and visual parity QA workflow.
 - `references/performance-and-security.md`, `references/enterprise-architecture.md`, `references/vip-scale-playbook.md`, `references/observability-incident-response.md`, `references/edge-caching-cdn-architecture.md`, `references/load-testing-capacity-planning.md`, `references/enterprise-search-content-scale.md`, `references/security-operations-compliance.md`: enterprise scale, reliability, security, and traffic-readiness playbooks.
 - `references/wordpress-org-release-operations.md`, `references/plugin-guidelines-review.md`, `references/deployment-release-resilience.md`, `references/runtime-toolchain-version-policy.md`, `references/standards-ci-github.md`, `references/build-tooling.md`, `references/monorepo-engineering.md`, `references/wp-cli-automation.md`, `references/content-migration-editorial-scale.md`: release operations, governance, CI/CD, tooling, monorepo ops, CLI automation, and migration execution.
-- `references/review-checklists.md`, `references/duplicate-code-modularity-review.md`, `references/troubleshooting-operations.md`, `references/accessibility-i18n-global-readiness.md`, `references/validation-commands.md`, `references/ollie-block-theme.md`, `references/blocksy-theme.md`: review rigor, modularity checks, troubleshooting, accessibility/i18n readiness, validation commands, and theme-specific expertise.
+- `references/review-checklists.md`, `references/duplicate-code-modularity-review.md`, `references/troubleshooting-operations.md`, `references/local-https-testing.md`, `references/accessibility-i18n-global-readiness.md`, `references/validation-commands.md`, `references/ollie-block-theme.md`, `references/blocksy-theme.md`: review rigor, modularity checks, troubleshooting, local HTTPS browser workarounds, accessibility/i18n readiness, validation commands, and theme-specific expertise.
 
 Use scripts when helpful:
 
@@ -60,6 +62,7 @@ Use scripts when helpful:
 bash /path/to/wp-expert/scripts/wp-context.sh /path/to/repo
 bash /path/to/wp-expert/scripts/wp-validate.sh /path/to/repo
 bash /path/to/wp-expert/scripts/fse-design-map.sh /path/to/design-map.md
+bash /path/to/wp-expert/scripts/wp-local-https-check.sh https://example.test/ /tmp/example-home.png
 bash /path/to/wp-expert/scripts/wporg-release-verify.sh /path/to/svn-checkout 1.2.3
 ```
 

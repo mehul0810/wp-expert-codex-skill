@@ -39,6 +39,18 @@ Use `wp-cli-automation.md` and `validation-commands.md` for runtime probes.
 - Inspect localized script data and REST root URL.
 - Confirm public routes intentionally use public permission callbacks and leak no private data.
 
+## Local HTTPS Browser Blocks
+
+If a custom local domain such as `https://example.test`, `https://example.local`, or `https://site.wp.local` is blocked by the in-app browser, do not stop runtime validation immediately.
+
+- Verify WordPress `home` and `siteurl` values.
+- Verify DNS resolution and redirects.
+- Use `curl -k` to confirm HTTPS reachability despite local certificate trust issues.
+- Use `wp-local-https-check.sh` or a Playwright/Chromium runner with `ignoreHTTPSErrors` for screenshot and UI smoke checks.
+- Report the difference between terminal reachability, browser rendering, and visual parity; do not claim a surface was visually validated unless it was loaded in a browser runner or real browser.
+
+Read `local-https-testing.md` for the full workaround.
+
 ## Cron And Action Scheduler
 
 - Check whether the event/action exists, args shape, recurrence, next run, attempts, claim state, and last error.

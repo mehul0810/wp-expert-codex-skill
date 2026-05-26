@@ -46,6 +46,7 @@ Use the smallest matrix that still covers changed surfaces and known risk.
 
 - Prefer existing repo Playwright/Cypress visual workflows.
 - If none exist, create focused temporary snapshots around changed screens instead of full-site crawls.
+- If a custom local HTTPS domain is blocked by the in-app browser, use `local-https-testing.md` and the `wp-local-https-check.sh` helper before declaring the surface untestable.
 - Freeze volatile inputs where possible: dates, randomized content, ad slots, and external API data.
 - Keep screenshot naming deterministic: `{surface}-{template-or-page}-{state}-{viewport}.png`.
 
@@ -69,3 +70,4 @@ Report parity evidence with:
 - States and breakpoints covered.
 - Diff summary (intentional vs regression).
 - Remaining risk and untested surfaces.
+- Whether the check used normal browser access, terminal HTTPS reachability, or a certificate-error-ignoring browser runner for local HTTPS domains.

@@ -1,6 +1,6 @@
 # Block Theme And Block Architecture
 
-Use this before building or refactoring blocks, block editor features, or a block-based FSE theme. The goal is to choose the right WordPress-native layer before writing code.
+Use this before building or refactoring blocks, block editor features, or a block-based FSE theme. The goal is to choose the right WordPress-native layer before writing code. For style guides, design tokens, custom themes, or child themes on top of an existing theme, also read `style-guide-theme-translation.md`.
 
 ## Official Anchors
 
@@ -17,6 +17,7 @@ Use this before building or refactoring blocks, block editor features, or a bloc
 Answer these before implementation:
 
 - What is content, what is layout, what is design system, what is dynamic data, and what is interaction?
+- What style guide, design token system, parent theme, or child theme constraints must be respected?
 - Who should edit each part: site admin, editor, content author, developer, or data source?
 - Should this survive a theme switch? If yes, plugin or custom block ownership is likely; if no, theme patterns/templates/styles may be enough.
 - Is the section reusable as a design composition, a global region, a data-driven component, or a one-off template structure?
@@ -110,3 +111,4 @@ Use a custom block when:
 - CSS is scoped and does not fight core block markup.
 - Frontend scripts are loaded only where needed and are compatible with the chosen rendering/interactivity model.
 - Visual parity is checked across editor canvas, Site Editor preview, frontend, and responsive breakpoints.
+- Premium/enterprise feel is preserved: coherent typography, spacing, alignment, interaction states, accessibility, and brand fidelity.
