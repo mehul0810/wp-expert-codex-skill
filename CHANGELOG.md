@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - **Style Guide And Theme Translation**: wp-expert now includes guidance for translating style guides, design patterns, and design tokens into WordPress-native custom themes, child themes, `theme.json`, patterns, template parts, block styles, and variations.
 - **Local HTTPS Testing Workaround**: Added guidance and a helper script for validating custom local HTTPS WordPress domains when the in-app browser blocks self-signed certificates or local proxy routes.
 - **Premium Enterprise UI Bar**: wp-expert now explicitly requires polished, brand-aligned, accessible, responsive UI quality for premium and enterprise WordPress work.
+- **Enterprise Code Quality Gate**: Shared guidance for wp-expert and wp-contributor requiring modular, performant, secure, maintainable, test-backed code with rare/failure scenario coverage for creation, refactoring, and review.
 
 ### Changed
 

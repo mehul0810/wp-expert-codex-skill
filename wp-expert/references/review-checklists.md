@@ -1,6 +1,6 @@
 # WordPress Review Checklists
 
-Use this for audits, PR review, plugin/theme review, VIP readiness review, and security/performance/modularity checks. For duplicate-code and modularity reviews, also read `duplicate-code-modularity-review.md`.
+Use this for audits, PR review, plugin/theme review, VIP readiness review, and security/performance/modularity checks. For enterprise/WPVIP-grade code generation or review, also read `../shared/references/enterprise-code-quality-gate.md`. For duplicate-code and modularity reviews, also read `duplicate-code-modularity-review.md`.
 
 ## Triage Map
 
@@ -75,6 +75,12 @@ Look for production-scale failure modes:
 - Avoid broad refactors unless they reduce active risk or are requested.
 - Flag duplication when repeated logic can drift across hooks, REST/AJAX paths, settings saves, queries, cache keys, provider clients, or tests.
 - Do not recommend an abstraction unless it creates a clear owner, improves testability, and stays easier to understand than the duplicated code.
+
+## Tests And Rare Scenarios
+
+- Confirm tests cover the behavior change, not only a trivial happy path.
+- Require edge/failure coverage when the risk exists: permission denied, invalid nonce, malformed input, empty/missing data, deleted dependencies, duplicate submissions, retries, race conditions, stale cache, multisite scope, migration boundaries, external API failures, editor reload, and accessibility-sensitive UI states.
+- If a rare scenario is plausible but untested, report the concrete production failure it could cause.
 
 ## Block Editor And Frontend
 

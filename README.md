@@ -7,6 +7,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - `content-writer`: organic search content writing for SEO, AEO, GEO, AI Overviews, AI Mode, answer engines, AI tools, briefs, outlines, drafts, audits, and content refreshes.
 - `shared/references/research-token-discipline.md`: reusable token-efficient reasoning, repo exploration, web search, validation, and output discipline used by both skills.
 - `shared/references/production-dependency-discipline.md`: reusable Composer/npm production dependency hygiene used by both skills.
+- `shared/references/enterprise-code-quality-gate.md`: reusable enterprise/WPVIP-grade code creation and review gate for modularity, performance, security, maintainability, observability, and rare-scenario tests.
 
 ## wp-expert Coverage
 
@@ -16,6 +17,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - Changelog and release notes expertise: public/internal changelogs, unreleased feature aggregation, WordPress.org `readme.txt` changelog rules, SemVer impact, security notes, migrations, and developer-facing API notes.
 - Release contract and backward compatibility policy: preserve launched/public contracts and real production/client data, but avoid compatibility shims for abandoned intermediate shapes of unreleased features.
 - Duplicate code, modularity, and maintainability review: find repeated logic, reduce drift, improve service boundaries, add better tests, and keep refactors simple and reliable.
+- Enterprise code-quality gate: generated and reviewed code must be modular, performant, secure, maintainable, testable, and validated against relevant rare/failure scenarios.
 - Requirements analysis, PRDs, scope of work, technical breakdowns, Codex-aware estimates, milestones, and delivery buffers.
 - WordPress.org Plugin Directory guideline review, block directory eligibility, readme policy, licensing, tracking, and trademark checks.
 - WordPress.org release operations: SVN-first verification, `trunk/`, `tags/<version>/`, `assets/`, production `vendor/`, Plugin Check fallbacks, 10up deploy behavior, and GitHub ZIP workflows.
@@ -69,6 +71,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - Gutenberg and block editor contribution through `wordpress/gutenberg` guidelines, GitHub issues, PRs, labels, milestones, package boundaries, editor tests, accessibility, React Native parity, Storybook, and Core sync awareness.
 - Ticket triage, issue reproduction, component/milestone/keyword guidance, patch refreshes, review comments, and maintainer-ready summaries.
 - Testing and validation strategy for Core, Meta, and Gutenberg using existing repo scripts first.
+- Enterprise code-quality gate for upstream patches and reviews: modularity, performance, security, maintainability, and rare/failure scenario coverage framed as concrete acceptance risks.
 - Production dependency hygiene for Composer and npm in contribution packaging, CI artifacts, release branches, and deploy checks.
 - WordPress coding standards, inline docs, i18n, accessibility, performance, privacy, security, dev-note, props, and commit-message guidance.
 - Release phase, backport, RC/minor-release caution, and private security disclosure workflows.
@@ -86,9 +89,9 @@ content-writer/
 Default invocations:
 
 ```text
-Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, custom block/FSE theme from design, style guide/design-token translation, custom theme, custom child theme, local HTTPS testing issue, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, theme, Ollie block theme/Ollie Pro site, Blocksy theme/Blocksy Pro site, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
+Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, custom block/FSE theme from design, style guide/design-token translation, custom theme, custom child theme, local HTTPS testing issue, enterprise code-quality gate, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, theme, Ollie block theme/Ollie Pro site, Blocksy theme/Blocksy Pro site, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
 
-Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, triage, release/backport work, or contributor communication.
+Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, enterprise code-quality gates, triage, release/backport work, or contributor communication.
 
 Use $content-writer to research, brief, draft, rewrite, audit, or refresh organic-search-focused content for SEO, AEO, GEO, AI Overviews, answer engines, and AI tools.
 ```
@@ -170,6 +173,7 @@ The skills are intentionally token-efficient:
 - Each `references/` directory contains deeper playbooks loaded only when relevant.
 - The shared `research-token-discipline.md` reference keeps web/research behavior explicit without duplicating guidance across skills.
 - The shared `production-dependency-discipline.md` reference keeps Composer/npm production-artifact hygiene consistent across both skills.
+- The shared `enterprise-code-quality-gate.md` reference keeps modular, secure, performant, maintainable, test-backed engineering expectations consistent across code-oriented skills.
 - Each `scripts/` directory contains lightweight discovery, validation, and workflow helpers.
 
 See `PLANNING_REPORT.md` for the planning rationale and validation history.

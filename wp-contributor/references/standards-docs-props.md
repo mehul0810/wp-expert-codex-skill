@@ -6,6 +6,8 @@ Use this for contribution quality, coding standards, inline docs, commit-message
 
 Follow WordPress standards for PHP, JavaScript, CSS, HTML, accessibility, and inline documentation. Use the repository's configured tooling first. Do not reformat unrelated legacy code unless the ticket is explicitly about standards cleanup.
 
+For code creation or review, also apply `../shared/references/enterprise-code-quality-gate.md`: patches should be modular, performant, secure, maintainable, and tested for the behavior and plausible rare scenarios they affect.
+
 ## Inline Documentation
 
 Update docs when changing:

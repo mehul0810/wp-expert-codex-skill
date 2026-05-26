@@ -10,6 +10,7 @@ Use this to choose validation for Core, Meta, Gutenberg, and related WordPress c
 - If a tool is unavailable locally, say that clearly and provide the next best evidence.
 - Do not mark work as ready until the changed behavior has been confirmed against trunk/main or the required release branch.
 - For packaging, release, or deploy changes, verify development-only Composer/npm packages are not present in the production artifact; see `../shared/references/production-dependency-discipline.md`.
+- For code changes, use `../shared/references/enterprise-code-quality-gate.md` to select tests for modularity, security, performance, maintainability, and rare/failure scenarios without bloating the patch.
 
 ## Core Validation
 
@@ -41,6 +42,7 @@ Core test evidence should mention:
 - Targeted PHPUnit/QUnit/Jest command where applicable.
 - Manual admin/editor/frontend steps if automated coverage is not enough.
 - Multisite, REST, roles/caps, date/time, database, or upgrade tests when affected.
+- Rare/failure scenarios covered or intentionally left as residual risk.
 
 ## Gutenberg Validation
 

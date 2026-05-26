@@ -13,7 +13,8 @@ Use this map to choose references with low context cost.
 | Task signal | Primary reference | Common supporting references |
 | --- | --- | --- |
 | PRD, SOW, estimates, milestones, mobile-first planning | `delivery-excellence.md` | `review-checklists.md`, `runtime-toolchain-version-policy.md` |
-| Plugin architecture, new feature, refactor, service boundaries | `plugin-architecture.md` | `implementation-patterns.md`, `duplicate-code-modularity-review.md` |
+| Code creation/review quality gate, enterprise/WPVIP engineering bar | `enterprise-code-quality-gate.md` | `review-checklists.md`, `validation-commands.md` |
+| Plugin architecture, new feature, refactor, service boundaries | `plugin-architecture.md` | `implementation-patterns.md`, `enterprise-code-quality-gate.md` |
 | Third-party API integration | `third-party-api-integrations.md` | `performance-and-security.md`, `implementation-patterns.md` |
 | WordPress.org plugin compliance review | `plugin-guidelines-review.md` | `changelog-release-notes.md`, `release-contract-compatibility.md` |
 | WordPress.org release operations and deploy behavior | `wordpress-org-release-operations.md` | `deployment-release-resilience.md`, `build-tooling.md` |
@@ -44,3 +45,4 @@ Use this map to choose references with low context cost.
 
 - Use `../shared/references/research-token-discipline.md` only for web-heavy, drift-prone, or broad discovery tasks.
 - Use `../shared/references/production-dependency-discipline.md` for packaging, CI artifacts, release ZIP/SVN, and production dependency verification.
+- Use `../shared/references/enterprise-code-quality-gate.md` for implementation, refactoring, and review tasks where generated or reviewed code must meet enterprise/WPVIP-grade engineering expectations.

@@ -1,6 +1,6 @@
 ---
 name: wp-expert
-description: Principal-level WordPress engineering skill for plugins, themes, custom themes, child themes, style guides, design patterns, design tokens, design-to-FSE block themes, blocks, Ollie block theme/Ollie Pro, Blocksy theme/Blocksy Pro, React, third-party APIs, runtime/toolchain versions, changelogs, release notes, release contracts, backward compatibility, duplicate-code review, modularity, testability, admin UI, WPDS, premium/enterprise UX, local HTTPS testing, VIP, monorepos, build tooling, production dependency hygiene, WordPress.org release operations, CI/CD, GitHub, WP-CLI, performance, security, observability, incidents, edge caching/CDN, load testing, Enterprise Search, deployments, migrations, accessibility, i18n, troubleshooting, and token-efficient research/web search. Use for WordPress delivery tasks including PRD/SOW, estimates, tests, validation, and enterprise choices.
+description: Principal-level WordPress engineering skill for plugins, themes, custom themes, child themes, style guides, design patterns, design tokens, design-to-FSE block themes, blocks, Ollie block theme/Ollie Pro, Blocksy theme/Blocksy Pro, React, third-party APIs, runtime/toolchain versions, changelogs, release notes, release contracts, backward compatibility, duplicate-code review, modularity, testability, admin UI, WPDS, premium/enterprise UX, local HTTPS testing, VIP, monorepos, build tooling, production dependency hygiene, WordPress.org release operations, CI/CD, GitHub, WP-CLI, performance, security, observability, incidents, edge caching/CDN, load testing, Enterprise Search, deployments, migrations, accessibility, i18n, troubleshooting, enterprise code-quality gates, and token-efficient research/web search. Use for WordPress delivery tasks including PRD/SOW, estimates, tests, validation, reviews, code generation, and enterprise choices.
 ---
 
 # WP Expert
@@ -14,11 +14,13 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 - Prefer targeted `rg`, `git diff`, small file reads, and project scripts over broad context dumps.
 - Use `../shared/references/research-token-discipline.md` for web-heavy, drift-prone, ambiguous, or broad-exploration tasks to keep reasoning and source lookup token-efficient.
 - Use `../shared/references/production-dependency-discipline.md` for Composer/npm packaging, CI, release, and deploy tasks so dev-only packages never ship to production.
+- Use `../shared/references/enterprise-code-quality-gate.md` for code creation, refactoring, and reviews so generated or reviewed code meets modularity, performance, security, maintainability, and edge-case test expectations.
 - Preserve user work. Never reset or discard unrelated changes unless explicitly asked.
 - Treat platform policy, VIP rules, dependencies, GitHub Actions behavior, and current WordPress behavior as drift-prone. Verify official docs when exact current behavior matters.
 - Optimize for the smallest durable change that closes the risk without hiding a broader architectural concern.
 - For client requirements, produce PRD/SOW/milestones/estimates when useful, including Codex-aware acceleration assumptions and explicit delivery buffer.
 - Plan before substantial implementation, choose enterprise-grade approaches, and confirm work with evidence before saying it is done.
+- Treat every generated or reviewed code path as enterprise/WPVIP-grade by default: modular, performant, secure, maintainable, observable where needed, and covered by appropriate tests including rare/failure scenarios.
 - For implementation tasks in a Git repo, make small focused commits for validated units of work when changes are naturally separable, then push all task commits after the task is complete unless the user explicitly says not to push.
 - Never compromise on premium and enterprise feel. UI, theme, block, and frontend work must feel deliberate, polished, accessible, responsive, and aligned with the project style guide or design system.
 - When the in-app browser blocks a custom local HTTPS WordPress domain, use `references/local-https-testing.md` and terminal/browser-runner workarounds before marking runtime or visual testing blocked.
@@ -48,6 +50,7 @@ Read the smallest relevant set:
 - `references/reference-routing-map.md`: deterministic task-to-reference selection matrix for choosing primary and supporting references.
 - `../shared/references/research-token-discipline.md`: token-efficient reasoning, repo exploration, web search, source selection, validation, and output discipline.
 - `../shared/references/production-dependency-discipline.md`: Composer/npm production artifact hygiene, `require-dev`/`devDependencies` boundaries, production installs, and release ZIP/deploy checks.
+- `../shared/references/enterprise-code-quality-gate.md`: enterprise/WPVIP-grade code creation and review gate for modularity, performance, security, maintainability, observability, and rare-scenario tests.
 - `references/delivery-excellence.md`, `references/changelog-release-notes.md`, `references/release-contract-compatibility.md`: requirements, PRD/SOW, estimates, milestones, changelog discipline, release contracts, and compatibility policy.
 - `references/plugin-architecture.md`, `references/third-party-api-integrations.md`, `references/implementation-patterns.md`: plugin architecture, API integrations, and safe implementation patterns.
 - `references/block-theme-architecture.md`, `references/style-guide-theme-translation.md`, `references/custom-block-theme-from-design.md`, `references/theme-and-block-editor.md`, `references/react-wordpress-enterprise.md`: block/FSE architecture decisions, style guide/token translation, design-to-theme workflow, editor implementation, and React integration patterns.
@@ -71,6 +74,7 @@ bash /path/to/wp-expert/scripts/wporg-release-verify.sh /path/to/svn-checkout 1.
 - Findings first, ordered by severity. Include file/line references and the concrete failure mode.
 - Prefer high-confidence findings with real impact over long speculative lists.
 - Tie every issue to user impact: exploit path, data loss, broken checkout, cache stampede, slow admin, migration failure, layout regression, accessibility failure, or BC break.
+- Apply the enterprise code-quality gate: modularity, performance, security, maintainability, testability, rare/failure scenarios, and VIP-style scale assumptions are review criteria, not optional polish.
 - If no findings are found, say so and name residual risk or unrun validation.
 - Do not rewrite code during review unless the user asks for implementation.
 
@@ -84,6 +88,7 @@ Severity guide:
 ## Implementation Mode
 
 - Keep bootstraps thin. Move non-trivial behavior into namespaced modules/classes with clear ownership.
+- Code must be modular, performant, secure, maintainable, and testable by design; do not generate happy-path-only implementations.
 - Prefer WordPress-native APIs and extension points, but do not force them when a lower-level approach is measurably safer or faster.
 - Register public contracts deliberately: hooks, filters, REST routes, WP-CLI commands, blocks, shortcodes, cron hooks, assets, options, schema versions.
 - Use REST API for new interactive endpoints by default. Do not add new `admin-ajax.php` handlers when a REST route can satisfy the same use case.
@@ -95,6 +100,7 @@ Severity guide:
 - Keep Git history useful: stage only intended files, commit validated scopes separately, avoid unrelated churn, and push the current branch after task completion when a remote is configured.
 - Remove harmful duplication when it improves reliability, tests, and maintainability, but avoid abstractions that hide domain differences or preserve unreleased draft shapes.
 - Add concise comments/docblocks for non-obvious hooks, data contracts, compatibility shims, migrations, cache invalidation, and security-sensitive decisions.
+- Add or update tests for the changed behavior, including relevant rare scenarios such as permission denial, malformed input, deleted dependencies, retries, concurrency, multisite scope, cache hit/miss, external API failures, migration boundaries, editor reloads, and accessibility-sensitive UI states.
 
 ## Universal WordPress Hard Rules
 

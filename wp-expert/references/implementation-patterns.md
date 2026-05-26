@@ -2,6 +2,8 @@
 
 Use this when writing or refactoring code. Adapt names and capabilities to the codebase.
 
+For enterprise/WPVIP-grade implementation or review, load `../shared/references/enterprise-code-quality-gate.md` before choosing final structure and validation.
+
 ## Compatibility Before Patterns
 
 Before adding compatibility wrappers, fallback reads, migrations, aliases, legacy block attributes, or old REST fields, use `release-contract-compatibility.md`.

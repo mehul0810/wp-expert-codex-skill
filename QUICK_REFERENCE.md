@@ -35,6 +35,10 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 - Load: `duplicate-code-modularity-review.md`
 - Then: `implementation-patterns.md`
 
+**"I need generated code or a review to meet enterprise/WPVIP standards"**
+- Load: `../shared/references/enterprise-code-quality-gate.md`
+- Supporting: `review-checklists.md`, `validation-commands.md`
+
 **"Should I add a custom REST endpoint?"**
 - Load: `implementation-patterns.md` (REST section)
 - Also check: `standards-ci-github.md`
@@ -219,6 +223,7 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 | Task | Primary Reference | Quick Load Time |
 |------|-------------------|-----------------|
 | New plugin | plugin-architecture.md | 10 min |
+| Enterprise code quality | enterprise-code-quality-gate.md | 6 min |
 | API integration | third-party-api-integrations.md | 10 min |
 | Refactor code | duplicate-code-modularity-review.md | 8 min |
 | Style guide/tokens | style-guide-theme-translation.md | 8 min |
@@ -294,6 +299,11 @@ Use these for **any** task:
 - Load: `../shared/references/production-dependency-discipline.md`
 - When: Composer/npm, CI artifacts, releases
 - Time: 5 min read
+
+**Enterprise Code Quality**
+- Load: `../shared/references/enterprise-code-quality-gate.md`
+- When: Code creation, refactoring, reviews, tests, rare/failure scenarios
+- Time: 6 min read
 
 ---
 
