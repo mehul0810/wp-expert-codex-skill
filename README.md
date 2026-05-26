@@ -18,6 +18,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - Release contract and backward compatibility policy: preserve launched/public contracts and real production/client data, but avoid compatibility shims for abandoned intermediate shapes of unreleased features.
 - Duplicate code, modularity, and maintainability review: find repeated logic, reduce drift, improve service boundaries, add better tests, and keep refactors simple and reliable.
 - Enterprise code-quality gate: generated and reviewed code must be modular, performant, secure, maintainable, testable, and validated against relevant rare/failure scenarios.
+- Planning drift control and risk-calibrated validation: scope guardrails, stop/ask triggers, and exact user-fed CSS/value changes that can be confirmed by diff without unnecessary visual verification.
 - Requirements analysis, PRDs, scope of work, technical breakdowns, Codex-aware estimates, milestones, and delivery buffers.
 - WordPress.org Plugin Directory guideline review, block directory eligibility, readme policy, licensing, tracking, and trademark checks.
 - WordPress.org release operations: SVN-first verification, `trunk/`, `tags/<version>/`, `assets/`, production `vendor/`, Plugin Check fallbacks, 10up deploy behavior, and GitHub ZIP workflows.
@@ -89,7 +90,7 @@ content-writer/
 Default invocations:
 
 ```text
-Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, custom block/FSE theme from design, style guide/design-token translation, custom theme, custom child theme, local HTTPS testing issue, enterprise code-quality gate, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, theme, Ollie block theme/Ollie Pro site, Blocksy theme/Blocksy Pro site, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
+Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, custom block/FSE theme from design, style guide/design-token translation, custom theme, custom child theme, local HTTPS testing issue, planning drift-control issue, enterprise code-quality gate, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, theme, Ollie block theme/Ollie Pro site, Blocksy theme/Blocksy Pro site, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
 
 Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, enterprise code-quality gates, triage, release/backport work, or contributor communication.
 

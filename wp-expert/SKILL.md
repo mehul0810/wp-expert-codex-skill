@@ -1,6 +1,6 @@
 ---
 name: wp-expert
-description: Principal-level WordPress engineering skill for plugins, themes, custom themes, child themes, style guides, design patterns, design tokens, design-to-FSE block themes, blocks, Ollie block theme/Ollie Pro, Blocksy theme/Blocksy Pro, React, third-party APIs, runtime/toolchain versions, changelogs, release notes, release contracts, backward compatibility, duplicate-code review, modularity, testability, admin UI, WPDS, premium/enterprise UX, local HTTPS testing, VIP, monorepos, build tooling, production dependency hygiene, WordPress.org release operations, CI/CD, GitHub, WP-CLI, performance, security, observability, incidents, edge caching/CDN, load testing, Enterprise Search, deployments, migrations, accessibility, i18n, troubleshooting, enterprise code-quality gates, and token-efficient research/web search. Use for WordPress delivery tasks including PRD/SOW, estimates, tests, validation, reviews, code generation, and enterprise choices.
+description: Principal-level WordPress engineering skill for plugins, themes, custom themes, child themes, style guides, design patterns, design tokens, design-to-FSE block themes, blocks, Ollie block theme/Ollie Pro, Blocksy theme/Blocksy Pro, React, third-party APIs, runtime/toolchain versions, changelogs, release notes, release contracts, backward compatibility, duplicate-code review, modularity, testability, admin UI, WPDS, premium/enterprise UX, local HTTPS testing, VIP, monorepos, build tooling, production dependency hygiene, WordPress.org release operations, CI/CD, GitHub, WP-CLI, performance, security, observability, incidents, edge caching/CDN, load testing, Enterprise Search, deployments, migrations, accessibility, i18n, troubleshooting, planning drift control, risk-calibrated validation, enterprise code-quality gates, and token-efficient research/web search. Use for WordPress delivery tasks including PRD/SOW, estimates, tests, validation, reviews, code generation, and enterprise choices.
 ---
 
 # WP Expert
@@ -15,6 +15,7 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 - Use `../shared/references/research-token-discipline.md` for web-heavy, drift-prone, ambiguous, or broad-exploration tasks to keep reasoning and source lookup token-efficient.
 - Use `../shared/references/production-dependency-discipline.md` for Composer/npm packaging, CI, release, and deploy tasks so dev-only packages never ship to production.
 - Use `../shared/references/enterprise-code-quality-gate.md` for code creation, refactoring, and reviews so generated or reviewed code meets modularity, performance, security, maintainability, and edge-case test expectations.
+- Use `references/planning-drift-control.md` for scope guardrails and risk-calibrated validation, especially when the user provides exact CSS values, units, copy, or configuration that should be applied directly and confirmed by diff instead of over-verified.
 - Preserve user work. Never reset or discard unrelated changes unless explicitly asked.
 - Treat platform policy, VIP rules, dependencies, GitHub Actions behavior, and current WordPress behavior as drift-prone. Verify official docs when exact current behavior matters.
 - Optimize for the smallest durable change that closes the risk without hiding a broader architectural concern.
@@ -32,7 +33,7 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 3. Identify risk: authorization, data integrity, backward compatibility, cache behavior, migrations, multisite, layout regression, editor/frontend parity, and deployment safety.
 4. Select one primary reference from the router below and at most two supporting references.
 5. Implement narrowly unless the user requested planning/review only.
-6. Validate with the cheapest reliable gate first, then run deeper gates available in the repo.
+6. Validate with the cheapest reliable gate first, calibrated to actual risk, then run deeper gates available in the repo.
 7. Report solution, files changed, validation, remaining risk, and next steps only when useful.
 
 ## Reference Routing Rules
@@ -51,7 +52,7 @@ Read the smallest relevant set:
 - `../shared/references/research-token-discipline.md`: token-efficient reasoning, repo exploration, web search, source selection, validation, and output discipline.
 - `../shared/references/production-dependency-discipline.md`: Composer/npm production artifact hygiene, `require-dev`/`devDependencies` boundaries, production installs, and release ZIP/deploy checks.
 - `../shared/references/enterprise-code-quality-gate.md`: enterprise/WPVIP-grade code creation and review gate for modularity, performance, security, maintainability, observability, and rare-scenario tests.
-- `references/delivery-excellence.md`, `references/changelog-release-notes.md`, `references/release-contract-compatibility.md`: requirements, PRD/SOW, estimates, milestones, changelog discipline, release contracts, and compatibility policy.
+- `references/delivery-excellence.md`, `references/planning-drift-control.md`, `references/changelog-release-notes.md`, `references/release-contract-compatibility.md`: requirements, PRD/SOW, estimates, milestones, scope drift control, risk-calibrated validation, changelog discipline, release contracts, and compatibility policy.
 - `references/plugin-architecture.md`, `references/third-party-api-integrations.md`, `references/implementation-patterns.md`: plugin architecture, API integrations, and safe implementation patterns.
 - `references/block-theme-architecture.md`, `references/style-guide-theme-translation.md`, `references/custom-block-theme-from-design.md`, `references/theme-and-block-editor.md`, `references/react-wordpress-enterprise.md`: block/FSE architecture decisions, style guide/token translation, design-to-theme workflow, editor implementation, and React integration patterns.
 - `references/ui-ux-pro-for-wordpress.md`, `references/wordpress-design-system.md`, `references/admin-ux-and-ui.md`, `references/visual-parity-regression.md`: UI/UX strategy, WPDS usage, premium/enterprise visual quality, admin UX patterns, and visual parity QA workflow.

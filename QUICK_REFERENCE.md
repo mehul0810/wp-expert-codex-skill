@@ -39,6 +39,10 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 - Load: `../shared/references/enterprise-code-quality-gate.md`
 - Supporting: `review-checklists.md`, `validation-commands.md`
 
+**"I need planning that prevents implementation drift or calibrated validation"**
+- Load: `planning-drift-control.md`
+- Supporting: `delivery-excellence.md`, `validation-commands.md`
+
 **"Should I add a custom REST endpoint?"**
 - Load: `implementation-patterns.md` (REST section)
 - Also check: `standards-ci-github.md`
@@ -224,6 +228,7 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 |------|-------------------|-----------------|
 | New plugin | plugin-architecture.md | 10 min |
 | Enterprise code quality | enterprise-code-quality-gate.md | 6 min |
+| Planning drift control | planning-drift-control.md | 6 min |
 | API integration | third-party-api-integrations.md | 10 min |
 | Refactor code | duplicate-code-modularity-review.md | 8 min |
 | Style guide/tokens | style-guide-theme-translation.md | 8 min |

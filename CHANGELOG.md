@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - **Local HTTPS Testing Workaround**: Added guidance and a helper script for validating custom local HTTPS WordPress domains when the in-app browser blocks self-signed certificates or local proxy routes.
 - **Premium Enterprise UI Bar**: wp-expert now explicitly requires polished, brand-aligned, accessible, responsive UI quality for premium and enterprise WordPress work.
 - **Enterprise Code Quality Gate**: Shared guidance for wp-expert and wp-contributor requiring modular, performant, secure, maintainable, test-backed code with rare/failure scenario coverage for creation, refactoring, and review.
+- **Planning Drift Control**: wp-expert now includes scope guardrails, risk-calibrated validation levels, and exact user-fed CSS/value-change rules that use diff confirmation without unnecessary visual verification.
 
 ### Changed
 

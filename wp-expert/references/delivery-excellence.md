@@ -1,6 +1,6 @@
 # Delivery Excellence And Estimation
 
-Use this for client requirement review, PRDs, scope of work, estimates, milestones, implementation plans, GitHub issue/PR discipline, mobile-first responsive architecture, token-efficient execution, confirmation gates, testing strategy, and maintainable onboarding-friendly code.
+Use this for client requirement review, PRDs, scope of work, estimates, milestones, implementation plans, GitHub issue/PR discipline, mobile-first responsive architecture, token-efficient execution, confirmation gates, testing strategy, and maintainable onboarding-friendly code. Use `planning-drift-control.md` when a task needs explicit scope guardrails or risk-calibrated validation.
 
 ## Delivery Defaults
 
@@ -9,6 +9,7 @@ Use this for client requirement review, PRDs, scope of work, estimates, mileston
 - When multiple valid approaches exist, choose the one with the best long-term operating profile, not the one that is shortest to type.
 - Plan enough to finish in one pass, then implement narrowly.
 - Confirm with evidence before saying work is done.
+- Calibrate validation to risk. Exact user-fed values or units can be confirmed by diff without visual verification when the change is direct and not cascade-sensitive.
 - Keep token usage low by reading only the files and references needed for the current decision.
 
 ## Requirements Intake
@@ -125,6 +126,8 @@ Use mobile-first thinking for frontend and customer-facing experiences, and resp
 
 ## Planning Before Implementation
 
+For substantial, ambiguous, or drift-prone work, use `planning-drift-control.md` to define scope, validation level, and stop/ask triggers. For trivial direct edits, use a mental plan and keep the change narrow.
+
 Before editing substantial code, produce or mentally confirm:
 
 - Runtime surface and exact files likely affected.
@@ -157,6 +160,8 @@ Do not say work is complete until the relevant evidence is checked:
 - UI changes were checked in the relevant contexts: admin, editor, frontend, responsive/mobile.
 - Git status is understood.
 - Known gaps are disclosed.
+
+For exact user-fed value changes, diff confirmation is enough when the change is direct and not cascade-sensitive. Report that the exact value was applied and leave final visual acceptance to the user instead of claiming browser/editor verification.
 
 If a check cannot be run, say exactly what was not run and why.
 
