@@ -51,6 +51,8 @@ Use these as starting points. Recheck current pages before making exact process 
 ## Broad Project Sources
 
 - Make WordPress: https://make.wordpress.org/
+- WordPress AI Handbook: https://make.wordpress.org/ai/handbook/
+- AI Guidelines: https://make.wordpress.org/ai/handbook/ai-guidelines/
 - WordPress Slack signup: https://make.wordpress.org/chat/
 - WordPress Coding Standards handbook: https://make.wordpress.org/core/handbook/best-practices/coding-standards/
 - Inline Docs: https://make.wordpress.org/core/handbook/docs/inline/
@@ -66,3 +68,4 @@ Before producing exact commands or process-critical guidance, verify:
 - Current Gutenberg/GitHub labels, PR status, merge conflicts, package ownership, package scripts, and CI state.
 - Current release phase, feature freeze, beta, RC, or minor-release constraints.
 - Current security reporting process for suspected vulnerabilities.
+- Current AI contribution guidance, disclosure expectations, license compatibility guidance, and any `#core-ai` process notes when AI tools materially assisted the work.

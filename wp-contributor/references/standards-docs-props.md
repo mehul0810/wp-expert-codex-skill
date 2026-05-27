@@ -8,6 +8,8 @@ Follow WordPress standards for PHP, JavaScript, CSS, HTML, accessibility, and in
 
 For code creation or review, also apply `../shared/references/enterprise-code-quality-gate.md`: patches should be modular, performant, secure, maintainable, and tested for the behavior and plausible rare scenarios they affect.
 
+When AI tools materially assist code, tests, docs, issue text, PR summaries, or reviews, also use `ai-guidelines.md`. AI-assisted work still needs human understanding, GPL-compatible provenance, real validation, and disclosure when meaningful.
+
 ## Inline Documentation
 
 Update docs when changing:
@@ -64,3 +66,4 @@ Request specialist review when the change affects:
 - Security/privacy: auth, capabilities, nonces, escaping, sanitization, data exposure, personal data.
 - Design/UX: editor flows, admin UI, user-facing interaction patterns.
 - i18n/polyglots: strings, translator comments, locale behavior, RTL.
+- AI: AI-assisted contribution process, Core AI projects, AI disclosure/provenance questions, or uncertainty about GPL-compatible AI tool use.

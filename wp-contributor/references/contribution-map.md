@@ -20,7 +20,7 @@ Use Meta workflow for WordPress.org, WordCamp.org, Make sites, developer.wordpre
 
 Meta issues usually belong in Meta Trac or a project-specific GitHub repository listed by the Meta Handbook/project docs. Confirm the component, source location, environment, and tracker before opening or moving tickets.
 
-## Docs, Test, Accessibility, Performance, i18n
+## Docs, Test, Accessibility, Performance, AI, i18n
 
 Use the relevant Make team surface when the primary contribution is not a code patch:
 
@@ -28,6 +28,7 @@ Use the relevant Make team surface when the primary contribution is not a code p
 - Test: reproduction reports, test cases, test suite improvements, testing instructions.
 - Accessibility: keyboard, screen reader, semantics, color contrast, admin/editor accessibility.
 - Performance: query count, caching, asset loading, loading strategy, media, measurement.
+- AI: AI-assisted contribution guidance, Core AI project discussions, AI disclosure, AI-related project coordination, and questions that belong in `#core-ai` or the Make AI handbook.
 - i18n/polyglots: strings, translator comments, locale behavior, GlotPress, text domains.
 
 ## Routing Rules

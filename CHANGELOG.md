@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - **Planning Drift Control**: wp-expert now includes scope guardrails, risk-calibrated validation levels, and exact user-fed CSS/value-change rules that use diff confirmation without unnecessary visual verification.
 - **Enterprise WordPress Domain Playbooks**: Added wp-expert references for WooCommerce/commerce, headless/decoupled WordPress, advanced multisite, technical SEO, privacy/data governance, content modeling, disaster recovery, AI/LLM WordPress products, and marketplace/product readiness.
 - **Skill Evaluation Scenarios**: Added lightweight wp-expert scenario prompts to verify routing and behavior across exact CSS edits, WooCommerce, headless, multisite, technical SEO, privacy, content modeling, disaster recovery, AI products, and marketplace readiness.
+- **WordPress AI Contribution Guidelines**: wp-contributor now includes Make WordPress AI handbook guidance for AI-assisted contributions, disclosure, GPL compatibility, no-AI-slop quality, tests, documentation, issues, and maintainer expectations.
 
 ### Changed
 

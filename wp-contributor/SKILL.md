@@ -1,6 +1,6 @@
 ---
 name: wp-contributor
-description: WordPress contribution skill for Core, Meta, Gutenberg, wordpress-develop, WordPress.org and WordCamp.org code, Make teams, Trac, GitHub PRs, SVN/Git patches, testing, coding standards, inline docs, commit messages, props, triage, bug reports, release/backport work, production dependency hygiene, enterprise code-quality gates, accessibility, performance, i18n, security disclosure, contributor-day workflows, and token-efficient research/web search. Use when Codex works on official WordPress project contributions, tickets, patches, PRs, reviews, validation, or contributor communication.
+description: WordPress contribution skill for Core, Meta, Gutenberg, wordpress-develop, WordPress.org and WordCamp.org code, Make teams, Trac, GitHub PRs, SVN/Git patches, testing, coding standards, inline docs, commit messages, props, AI contribution guidelines, triage, bug reports, release/backport work, production dependency hygiene, enterprise code-quality gates, accessibility, performance, i18n, security disclosure, contributor-day workflows, and token-efficient research/web search. Use when Codex works on official WordPress project contributions, tickets, patches, PRs, reviews, validation, or contributor communication.
 ---
 
 # WP Contributor
@@ -19,6 +19,7 @@ Use this skill when working as a WordPress project contributor, not as a client-
 - Use `../shared/references/research-token-discipline.md` for web-heavy, drift-prone, ambiguous, or broad-exploration contribution tasks to keep reasoning and source lookup token-efficient.
 - Use `../shared/references/production-dependency-discipline.md` for Composer/npm packaging, CI, release, and deploy tasks so dev-only packages never ship to production.
 - Use `../shared/references/enterprise-code-quality-gate.md` for code creation, refactoring, and reviews so patches are modular, performant, secure, maintainable, and covered by appropriate tests including rare/failure scenarios.
+- Use `references/ai-guidelines.md` when AI tools materially assist code, tests, documentation, issues, reviews, triage, support, assets, or communication for the WordPress project.
 - Make comments and summaries useful to maintainers: concise reproduction, environment, actual/expected behavior, patch scope, tests run, and remaining risk.
 
 ## Fast Workflow
@@ -43,6 +44,7 @@ Read the smallest relevant set:
 - `references/core-workflow.md`: `wordpress-develop`, trunk-first work, SVN/Git mirrors, patch files, Core Trac, GitHub PR linkage, and patch refreshes.
 - `references/meta-workflow.md`: Meta Handbook expertise for WordPress.org/WordCamp.org projects, Meta Trac, GitHub/SVN paths, local environments, Slack escalation, privacy, and project-specific caution.
 - `references/gutenberg-workflow.md`: Gutenberg/block editor contribution guidelines, GitHub issues/PRs, labels, packages, tests, accessibility, React Native parity, and Core sync awareness.
+- `references/ai-guidelines.md`: AI-assisted contribution disclosure, GPL compatibility, human responsibility, no-AI-slop quality bar, tests/QA, docs/issues, and maintainer expectations.
 - `references/trac-github-triage.md`: ticket quality, components, milestones, keywords, labels, PR linkage, comments, and triage discipline.
 - `references/testing-validation.md`: Core, Meta, and Gutenberg validation strategy, local environment commands, focused tests, lints, builds, and evidence format.
 - `references/standards-docs-props.md`: WordPress coding standards, inline docs, commit-message style, props, dev notes, i18n, accessibility, and compatibility expectations.

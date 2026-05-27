@@ -18,6 +18,19 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 - Skill: `content-writer`
 - Load: `organic-search-content.md`
 
+## WordPress Contribution Tasks
+
+Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR, patch, testing, docs, triage, and contributor communication work.
+
+**"I used AI while preparing a WordPress contribution"**
+- Skill: `wp-contributor`
+- Load: `ai-guidelines.md`
+
+**"Review an AI-assisted WordPress patch or PR"**
+- Skill: `wp-contributor`
+- Load: `ai-guidelines.md`
+- Supporting: `standards-docs-props.md`, `testing-validation.md`
+
 ## Common WordPress Tasks
 
 ### Plugin Development & Architecture
