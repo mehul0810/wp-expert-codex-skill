@@ -20,6 +20,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - **Plugin Debuggability And Supportability**: Added Site Health, diagnostics, redacted support bundles, safe logs, correlation IDs, recovery controls, and enterprise support exports.
 - **Plugin Product Architecture**: Added guidance for add-on/pro boundaries, extension contracts, public APIs, hooks/filters, feature flags, dependency detection, and upgrade-safe product architecture.
 - **Session Continuity And PR Branch Discipline**: Shared guidance for rehydrating repo context in new chats, checking release/hotfix/support branches, explicitly setting PR bases, and verifying PR `baseRefName` before reporting success.
+- **Issue Milestone To PR Base Gate**: Shared PR guidance now requires issue milestones and release targets to drive PR base selection, including matching release/hotfix/support branches before defaulting to `main` or `trunk`.
+- **Project Subagent Routing Discipline**: Added shared guidance for project-level Codex subagents, skill-level routing, bounded mapper/reviewer/fixer roles, hooks boundaries, and efficient `gpt-5.3-codex-spark` usage.
 - **Style Guide And Theme Translation**: wp-expert now includes guidance for translating style guides, design patterns, and design tokens into WordPress-native custom themes, child themes, `theme.json`, patterns, template parts, block styles, and variations.
 - **Theme Frontend Performance Quality Gate**: Added Core Web Vitals, fonts, images, responsive media, asset scoping, block CSS bloat, CLS/LCP/INP, and frontend/editor CSS quality guidance.
 - **Test Coverage Discipline**: Added wp-expert guidance requiring every PR/change to make an explicit test decision, add or update coverage when behavior risk warrants it, and flag missing coverage as a concrete review finding.
@@ -40,6 +42,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 ### Changed
 
 - Shortened skill frontmatter descriptions, agent default prompts, and the `wp-expert` hot-path router to reduce always-loaded token usage.
+- Global installer now symlinks `shared/` into Codex and Claude skill roots so shared references resolve consistently from globally linked skills.
 - Validation tooling now discovers top-level skill directories dynamically so new skills are covered by reference and script checks.
 
 ## [1.0.0] - 2026-05-25

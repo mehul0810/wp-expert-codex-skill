@@ -1518,3 +1518,39 @@ Reduce baseline token usage after recent skill expansions by shrinking always-lo
 - `README.md`
 - `QUICK_REFERENCE.md`
 - `CHANGELOG.md`
+
+## Project Subagent Routing And Milestone PR Base Addition
+
+### Objective
+
+Improve skill-level routing so large WordPress and contribution projects can use project `.codex/agents/*.toml` subagents efficiently, especially `gpt-5.3-codex-spark`, while keeping the parent agent responsible for planning, validation, commits, pushes, and PRs. Add an explicit issue-milestone gate so issue-driven PRs target the matching release branch instead of drifting to `main` or `trunk`.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Shared project subagent routing reference | Yes | Add | Keeps model routing and subagent usage reusable across `wp-expert` and `wp-contributor` without bloating hot-path skill bodies. |
+| Project-level `.codex/agents/*.toml` profiles | Yes | Add | Subagent needs differ per app/repo; project config is the right boundary for mapper, reviewer, and narrow fixer roles. |
+| `gpt-5.3-codex-spark` routing guidance | Yes | Add | Encourages Spark for bounded read-only mapping, log triage, narrow fixes, and validation summaries while reserving stronger models for high-risk decisions. |
+| Hooks as dynamic skill router | No | Reject | Hooks are deterministic lifecycle scripts; they should enforce project checks, not choose WordPress expertise or model assignment. |
+| Issue milestone to PR base gate | Yes | Add | Prevents new-chat drift where issue work incorrectly opens PRs against default branch instead of the release branch tied to the milestone. |
+
+### Added Artifacts
+
+- `shared/references/project-subagent-routing.md`
+
+### Updated Artifacts
+
+- `wp-expert/SKILL.md`: added shared subagent routing to operating rules and hot-path shortcuts.
+- `wp-contributor/SKILL.md`: added shared subagent routing for contribution repos.
+- `shared/references/session-continuity-pr-discipline.md`: added issue milestone to PR base branch gate.
+- `wp-expert/references/reference-routing-map.md`: added subagent/model routing and issue-milestone PR routing signals.
+- `README.md`, `QUICK_REFERENCE.md`, `skill-evals/wp-expert-scenarios.md`, and `CHANGELOG.md`: documented and evaluated the new behavior.
+- `scripts/validate-references.sh`: now accepts routing-map references that live in `shared/references/`.
+- `scripts/install-global-skill-links.sh`: now symlinks `shared/` into Codex and Claude skill roots so `../shared/references/*.md` resolves from global skill installs.
+
+### Source Anchors Checked
+
+- Codex subagents: https://developers.openai.com/codex/subagents
+- Codex skills: https://developers.openai.com/codex/skills
+- Codex hooks: https://developers.openai.com/codex/hooks

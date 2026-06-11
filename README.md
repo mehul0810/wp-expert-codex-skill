@@ -7,6 +7,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - `content-writer`: organic search content writing for SEO, AEO, GEO, AI Overviews, AI Mode, answer engines, AI tools, briefs, outlines, drafts, audits, and content refreshes.
 - `shared/references/research-token-discipline.md`: reusable token-efficient reasoning, repo exploration, web search, validation, and output discipline used by both skills.
 - `shared/references/session-continuity-pr-discipline.md`: reusable new-chat context rehydration, release-branch detection, explicit PR base selection, and branch/PR safety used by code-oriented skills.
+- `shared/references/project-subagent-routing.md`: reusable project-level Codex subagent routing, model assignment, bounded parallel mapping/review, and efficient `gpt-5.3-codex-spark` usage used by code-oriented skills.
 - `shared/references/production-dependency-discipline.md`: reusable Composer/npm production dependency hygiene used by both skills.
 - `shared/references/enterprise-code-quality-gate.md`: reusable enterprise/WPVIP-grade code creation and review gate for modularity, performance, security, maintainability, observability, and rare-scenario tests.
 
@@ -80,6 +81,8 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - Coding standards, linting, static analysis, tests, GitHub Actions, CI/CD, PR workflows, and releases.
 - Enterprise GitHub workflows: issue triage, labels, milestones, scoped commits, PR descriptions, review response discipline.
 - New-chat and PR branch discipline: rehydrate repo context, check release/hotfix/support branches, explicitly pass PR base branches, and verify PR `baseRefName` before reporting success.
+- Issue milestone to PR base discipline: when work belongs to an issue milestone, create PRs against the matching release/hotfix/support branch instead of defaulting to `main` or `trunk`.
+- Project-level Codex subagent routing: use `.codex/agents/*.toml` profiles, skill-level reference lanes, bounded read-only mappers/reviewers, and `gpt-5.3-codex-spark` for lower-risk parallel WordPress work.
 - Efficient tests and maintainable code comments/docblocks for onboarding and future regression prevention.
 - Enterprise acceptance criteria templates: definition-of-done gates for plugin features, themes, REST APIs, migrations, performance fixes, security fixes, and conversion pages.
 - Webpack, Composer, npm, dependency extraction, lockfiles, build scripts, and release artifact packaging.
@@ -103,6 +106,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - Enterprise code-quality gate for upstream patches and reviews: modularity, performance, security, maintainability, and rare/failure scenario coverage framed as concrete acceptance risks.
 - Production dependency hygiene for Composer and npm in contribution packaging, CI artifacts, release branches, and deploy checks.
 - New-chat and PR branch discipline for contribution work: verify trunk/main versus release/backport branches, explicitly set PR bases, and avoid defaulting to the wrong upstream branch.
+- Project-level Codex subagent routing for contribution work: use bounded mappers/reviewers for Core, Meta, Gutenberg, tests, docs, and backport surfaces while keeping PRs and final decisions parent-owned.
 - WordPress coding standards, inline docs, i18n, accessibility, performance, privacy, security, dev-note, props, and commit-message guidance.
 - Release phase, backport, RC/minor-release caution, and private security disclosure workflows.
 
@@ -121,7 +125,11 @@ Default invocations:
 ```text
 Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, plugin product architecture, plugin supportability, WooCommerce store, headless/decoupled frontend, multisite network, technical SEO surface, privacy/data-governance flow, analytics/measurement plan, content model, database table architecture, disaster recovery plan, AI/LLM WordPress product, marketplace/freemium product, custom block/FSE theme from design, style guide/design-token translation, custom theme, custom child theme, hybrid theme migration, frontend performance quality gate, conversion-focused website, UX product strategy, information architecture, UX writing, conversion flow, brainstorming/planning decision, anti-overengineering review, image/screenshot pixel-parity implementation, premium enterprise design QA, VIP/enterprise launch readiness, local HTTPS testing issue, planning drift-control issue, enterprise acceptance criteria, test coverage decision, missing test coverage review, enterprise code-quality gate, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, threat model, performance profile, scale budget, theme, Ollie block theme/Ollie Pro site, Blocksy theme/Blocksy Pro site, React/admin app, block editor, admin UX, advanced troubleshooting issue, CI/CD workflow, or enterprise/VIP codebase.
 
+Use $wp-expert with `shared/references/project-subagent-routing.md` when a WordPress app project needs Codex subagent profiles, skill-level routing, or efficient `gpt-5.3-codex-spark` usage.
+
 Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, AI-assisted contribution guidelines, enterprise code-quality gates, triage, release/backport work, or contributor communication.
+
+Use $wp-contributor with `shared/references/project-subagent-routing.md` when a contribution repo needs bounded Core/Meta/Gutenberg subagent mapping, review, or test triage.
 
 Use $content-writer to research, brief, draft, rewrite, audit, or refresh organic-search-focused content for SEO, AEO, GEO, AI Overviews, answer engines, and AI tools.
 ```
@@ -146,6 +154,7 @@ This symlinks the skills into `~/.claude/skills/`, where Claude Code discovers p
 ~/.claude/skills/wp-expert/SKILL.md
 ~/.claude/skills/wp-contributor/SKILL.md
 ~/.claude/skills/content-writer/SKILL.md
+~/.claude/skills/shared/references/*.md
 ```
 
 Install selected skills only:
@@ -181,6 +190,7 @@ The same installer also symlinks skills into Codex's global skills directory:
 ~/.codex/skills/wp-expert/SKILL.md
 ~/.codex/skills/wp-contributor/SKILL.md
 ~/.codex/skills/content-writer/SKILL.md
+~/.codex/skills/shared/references/*.md
 ```
 
 If `CODEX_HOME` or `CLAUDE_HOME` is set, the installer uses those locations instead of `~/.codex` or `~/.claude`.
@@ -194,6 +204,7 @@ What it does:
 - Validates each skill folder has compatible frontmatter (`name`, `description`) and naming.
 - Symlinks skills to Codex global path: `${CODEX_HOME:-~/.codex}/skills/<skill-name>`.
 - Symlinks skills to Claude global path: `${CLAUDE_HOME:-~/.claude}/skills/<skill-name>`.
+- Symlinks shared references to both skill roots as `shared/` so `../shared/references/*.md` resolves consistently from symlinked skill folders.
 
 ## Design
 
@@ -204,6 +215,7 @@ The skills are intentionally token-efficient:
 - Skill frontmatter descriptions and default prompts are intentionally short because they affect baseline skill-selection context.
 - The shared `research-token-discipline.md` reference keeps web/research behavior explicit without duplicating guidance across skills.
 - The shared `session-continuity-pr-discipline.md` reference keeps new-chat context recovery and PR base-branch safety explicit across code-oriented skills.
+- The shared `project-subagent-routing.md` reference keeps project-level subagent/model routing explicit without bloating hot-path skill instructions.
 - The shared `production-dependency-discipline.md` reference keeps Composer/npm production-artifact hygiene consistent across both skills.
 - The shared `enterprise-code-quality-gate.md` reference keeps modular, secure, performant, maintainable, test-backed engineering expectations consistent across code-oriented skills.
 - The `wp-expert/references/thinking-brainstorming-engineering-discipline.md` reference keeps brainstorming convergence, anti-overengineering, reference budgets, and premium polish stopping rules explicit without bloating the core skill.

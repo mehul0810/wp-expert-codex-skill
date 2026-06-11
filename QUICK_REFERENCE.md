@@ -249,6 +249,14 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 
 ### Code Standards & CI/CD
 
+**"I want project-level Codex subagents for WordPress work or better `gpt-5.3-codex-spark` usage"**
+- Load: `../shared/references/project-subagent-routing.md`
+- Supporting: `references/reference-routing-map.md`, then the one lane-specific reference needed by each subagent
+
+**"Open a PR for issue work tied to a milestone or release branch"**
+- Load: `../shared/references/session-continuity-pr-discipline.md`
+- Check: issue milestone, release branches, explicit PR base, and post-create `baseRefName`
+
 **"What are WordPress coding standards?"**
 - Load: `standards-ci-github.md`
 - Also check: `review-checklists.md`

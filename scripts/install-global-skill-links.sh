@@ -113,6 +113,42 @@ ensure_link() {
   echo "created: $link_path -> $skill_dir"
 }
 
+ensure_named_link() {
+  local target_root="$1"
+  local link_name="$2"
+  local source_dir="$3"
+  local link_path="$target_root/$link_name"
+
+  mkdir -p "$target_root"
+
+  if [ -L "$link_path" ]; then
+    local current
+    current="$(readlink "$link_path")"
+    if [ "$current" = "$source_dir" ]; then
+      echo "ok: $link_path -> $source_dir"
+      return 0
+    fi
+    rm -f "$link_path"
+    ln -s "$source_dir" "$link_path"
+    echo "updated: $link_path -> $source_dir"
+    return 0
+  fi
+
+  if [ -e "$link_path" ]; then
+    if [ "$force" -eq 1 ]; then
+      rm -rf "$link_path"
+      ln -s "$source_dir" "$link_path"
+      echo "replaced: $link_path -> $source_dir"
+      return 0
+    fi
+    echo "exists and not symlink, skipped: $link_path (use --force to replace)" >&2
+    return 1
+  fi
+
+  ln -s "$source_dir" "$link_path"
+  echo "created: $link_path -> $source_dir"
+}
+
 skill_dirs=()
 
 if [ "$#" -gt 0 ]; then
@@ -158,6 +194,11 @@ echo "== Symlink Claude =="
 for skill_dir in "${skill_dirs[@]}"; do
   ensure_link "$claude_skills_dir" "$skill_dir"
 done
+
+echo
+echo "== Symlink Shared References =="
+ensure_named_link "$codex_skills_dir" "shared" "$repo_root/shared"
+ensure_named_link "$claude_skills_dir" "shared" "$repo_root/shared"
 
 echo
 echo "done"

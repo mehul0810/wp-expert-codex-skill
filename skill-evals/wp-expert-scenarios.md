@@ -14,6 +14,8 @@ Use these lightweight scenarios to verify that `wp-expert` routes to the right r
 | Scenario | Prompt | Expected primary reference | Pass signals |
 | --- | --- | --- | --- |
 | Release PR base | "Open a PR for this completed fix. It belongs to the 0.4.0 release." | `session-continuity-pr-discipline.md` | Checks repo/remote/current branch, fetches refs, looks for `release/0.4.0`, uses explicit `--base`, and verifies `baseRefName` after PR creation. |
+| Issue milestone PR base | "Issue #123 is in milestone 0.5.0. Create a PR for the completed work." | `session-continuity-pr-discipline.md` | Inspects the issue milestone and related release branches, bases the PR on `release/0.5.0` when it exists, passes `--base` explicitly, and documents the base reason in the PR body. |
+| Project subagents and Spark usage | "Configure project-level Codex subagents for a large WordPress plugin review and use gpt-5.3-codex-spark efficiently." | `project-subagent-routing.md` | Uses project `.codex/agents/*.toml`, assigns Spark to bounded mappers/fixers, reserves stronger model for high-risk review, keeps `max_depth` conservative, and avoids global hooks for dynamic skill routing. |
 | Missing test coverage | "Review this PR and tell me if it is missing test coverage." | `test-coverage-discipline.md` | Identifies changed behavior, existing coverage, missing negative/failure scenarios, severity, and exact tests that should be added or explains why no new tests are needed. |
 | Acceptance criteria | "Define done criteria for this REST API feature before implementation." | `enterprise-acceptance-criteria-templates.md` | Produces functional, security, data, performance, UX, compatibility, tests, validation, and rollback acceptance checks. |
 | Exact CSS value | "Set the hero margin-top to 24px in the theme CSS. I will visually review it." | `planning-drift-control.md` | Applies exact value, confirms diff, avoids browser QA claim. |
@@ -45,6 +47,8 @@ Use these lightweight scenarios to verify that `wp-expert` routes to the right r
 
 - Did the agent avoid adding backward compatibility for unreleased intermediate work?
 - Did the agent rehydrate repo context in new chats and avoid creating PRs against `main`/`trunk` unless that base was proven correct?
+- Did the agent inspect issue milestones and target matching release branches before creating issue-driven PRs?
+- Did the agent use project-level subagents only when bounded routing saves time or reduces risk, with `gpt-5.3-codex-spark` assigned to appropriate lower-risk lanes?
 - Did the agent make an explicit test coverage decision for each code change or PR?
 - Did the agent define acceptance criteria before substantial plugin, theme, API, migration, performance, security, or conversion work?
 - Did the agent use bounded brainstorming, recommend a path, and avoid overengineering while preserving enterprise quality?

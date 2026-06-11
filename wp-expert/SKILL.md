@@ -14,6 +14,7 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 - Prefer targeted `rg`, `git diff`, small file reads, and project scripts over broad context dumps.
 - Use `../shared/references/research-token-discipline.md` for web-heavy, drift-prone, ambiguous, or broad-exploration tasks to keep reasoning and source lookup token-efficient.
 - Use `../shared/references/session-continuity-pr-discipline.md` for new chats, resumed repo work, release branches, GitHub issues/PRs, and any branch/PR creation. Never create a PR until the intended base branch is proven and passed explicitly.
+- Use `../shared/references/project-subagent-routing.md` for project-level Codex subagents, skill-level routing, model assignment, and efficient `gpt-5.3-codex-spark` usage.
 - Use `../shared/references/production-dependency-discipline.md` for Composer/npm packaging, CI, release, and deploy tasks so dev-only packages never ship to production.
 - Use `../shared/references/enterprise-code-quality-gate.md` for code creation, refactoring, and reviews so generated or reviewed code meets modularity, performance, security, maintainability, and edge-case test expectations.
 - Use `references/planning-drift-control.md` for scope guardrails and risk-calibrated validation, especially when the user provides exact CSS values, units, copy, or configuration that should be applied directly and confirmed by diff instead of over-verified.
@@ -58,6 +59,7 @@ Hot-path shortcuts:
 
 - Planning and delivery: `references/delivery-excellence.md`, `references/planning-drift-control.md`, `references/thinking-brainstorming-engineering-discipline.md`.
 - Code quality, tests, packaging, and PR safety: `../shared/references/enterprise-code-quality-gate.md`, `references/test-coverage-discipline.md`, `../shared/references/production-dependency-discipline.md`, `../shared/references/session-continuity-pr-discipline.md`.
+- Project subagents and model routing: `../shared/references/project-subagent-routing.md`; use hooks only for deterministic project lifecycle checks.
 - Reviews: `references/review-checklists.md`, then route by the concrete risk found.
 - UI/UX and design parity: `references/ux-product-strategy-design-qa.md`, then `references/ui-ux-pro-for-wordpress.md`, `references/wordpress-design-system.md`, or `references/visual-parity-regression.md` only when needed.
 - Theme/block/FSE: `references/block-theme-architecture.md`; add design, performance, Ollie, or Blocksy references only for those specific surfaces.

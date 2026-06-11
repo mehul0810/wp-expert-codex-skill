@@ -13,7 +13,8 @@ Use this map to choose references with low context cost.
 
 | Task signal | Primary reference | Common supporting references |
 | --- | --- | --- |
-| New chat/session continuity, branch creation, PR base selection, release branch drift | `session-continuity-pr-discipline.md` | `standards-ci-github.md`, `delivery-excellence.md` |
+| New chat/session continuity, branch creation, issue milestone to PR release branch, PR base selection, release branch drift | `session-continuity-pr-discipline.md` | `standards-ci-github.md`, `delivery-excellence.md` |
+| Project-level Codex subagents, skill-level routing, model assignment, efficient `gpt-5.3-codex-spark` usage | `project-subagent-routing.md` | `reference-routing-map.md`, `thinking-brainstorming-engineering-discipline.md` |
 | PRD, SOW, estimates, milestones, mobile-first planning | `delivery-excellence.md` | `review-checklists.md`, `runtime-toolchain-version-policy.md` |
 | Enterprise acceptance criteria or definition of done for plugin/theme/API/migration/security/performance/conversion work | `enterprise-acceptance-criteria-templates.md` | `test-coverage-discipline.md`, `validation-commands.md` |
 | Planning drift control, scope guard, exact CSS/value change, calibrated validation | `planning-drift-control.md` | `delivery-excellence.md`, `validation-commands.md` |
@@ -74,5 +75,6 @@ Use this map to choose references with low context cost.
 
 - Use `../shared/references/research-token-discipline.md` only for web-heavy, drift-prone, or broad discovery tasks.
 - Use `../shared/references/session-continuity-pr-discipline.md` for new chats, resumed repo work, branch creation, release branch detection, and explicit PR base safety.
+- Use `../shared/references/project-subagent-routing.md` for project-level Codex subagents, skill-level routing, bounded parallel mapping/review, and model routing.
 - Use `../shared/references/production-dependency-discipline.md` for packaging, CI artifacts, release ZIP/SVN, and production dependency verification.
 - Use `../shared/references/enterprise-code-quality-gate.md` for implementation, refactoring, and review tasks where generated or reviewed code must meet enterprise/WPVIP-grade engineering expectations.

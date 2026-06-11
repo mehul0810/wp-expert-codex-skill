@@ -138,12 +138,9 @@ validate_routing_map() {
   grep -o '`[a-z0-9-]*\.md`' "$routing_file" | sed 's/`//g' | sort -u | while read -r ref_file; do
     local full_path="$repo_root/wp-expert/references/$ref_file"
 
-    # Skip shared references (they're not in the routing map, they're in the SKILL.md)
-    if [ "$ref_file" = "research-token-discipline.md" ] || \
-       [ "$ref_file" = "session-continuity-pr-discipline.md" ] || \
-       [ "$ref_file" = "production-dependency-discipline.md" ] || \
-       [ "$ref_file" = "enterprise-code-quality-gate.md" ]; then
-      log_success "Routing map: $ref_file (shared, skipped)"
+    local shared_path="$repo_root/shared/references/$ref_file"
+    if [ -f "$shared_path" ]; then
+      log_success "Routing map: $ref_file exists in shared references"
       continue
     fi
 
