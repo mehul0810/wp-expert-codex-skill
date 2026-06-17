@@ -37,6 +37,7 @@ Before editing theme behavior, inspect:
 - Treat `theme.json` as the first-class design contract for global settings/styles when possible.
 - Keep `version`, `$schema`, settings, styles, template parts, patterns, and custom properties deliberate.
 - Use templates and parts for structure, patterns for reusable content composition, and CSS for gaps `theme.json` cannot express.
+- For normal pages/posts, keep visible body content in editable `post_content` or intentional data sources; page templates should render Post Content rather than replace Pages > Edit with hard-coded body markup.
 - Prefer style engine/theme supports over custom CSS when it preserves editor/frontend parity.
 - Do not fight the Site Editor. Build with core blocks, supports, patterns, and constrained custom blocks.
 - For design-to-theme work, map the design through content model, `theme.json`, templates/parts, patterns, core blocks, block styles, variations, bindings, and then custom blocks.

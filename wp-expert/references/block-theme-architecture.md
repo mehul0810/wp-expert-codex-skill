@@ -30,6 +30,8 @@ Answer these before implementation:
 - Plugin owns durable functionality: custom post types, taxonomies, options, meta contracts, REST routes, business rules, data integrations, and blocks that should work across themes.
 - Custom blocks can live in a theme only when they are genuinely theme-specific and safe to lose on theme switch.
 - Do not put business data or irreplaceable content solely into theme files or hard-coded pattern markup.
+- For page/post-owned visible content, keep the admin edit path real: the page template should normally include `<!-- wp:post-content /-->`, while page-specific copy, media, CTAs, and sections live in the page's `post_content`, inserted patterns, synced patterns, or deliberate meta/option/CPT data sources.
+- Do not make Pages > Edit misleading by hard-coding the visible page body in a template, template part, or always-rendered pattern unless the user explicitly chooses code-owned content for that surface.
 
 ## Decision Stack
 
@@ -56,6 +58,7 @@ Use a pattern when:
 - The section is mostly layout and content composition.
 - Editors can safely modify text, media, buttons, and nested blocks.
 - The section can be copied, inserted, and adjusted per page.
+- Page-specific patterns should be inserted into the page content when editors must manage that page from Pages > Edit; referencing a pattern only from a template makes the template control the visible content instead.
 
 Use a template part when:
 
@@ -92,17 +95,20 @@ Use a custom block when:
 
 1. Define theme/plugin ownership and content contracts.
 2. Build the token system in `theme.json` before composing pages.
-3. Create the minimum template hierarchy and template parts.
-4. Build section patterns from core blocks first.
-5. Add block styles and variations for repeatable design variants.
-6. Add bindings for supported dynamic fields where native editing is enough.
-7. Add custom blocks only for gaps proven by the decision stack.
-8. Add Interactivity API behavior for frontend interactions that need state.
-9. Validate in Site Editor, post editor, preview, and frontend.
+3. Decide which visible sections are template-owned, page-owned `post_content`, synced pattern-owned, or data-source-owned.
+4. Create the minimum template hierarchy and template parts, keeping page templates structural and including Post Content when page editors must own the body.
+5. Build section patterns from core blocks first.
+6. Add block styles and variations for repeatable design variants.
+7. Add bindings for supported dynamic fields where native editing is enough.
+8. Add custom blocks only for gaps proven by the decision stack.
+9. Add Interactivity API behavior for frontend interactions that need state.
+10. Validate in Site Editor, post editor, preview, and frontend.
 
 ## Validation Checklist
 
 - No Custom HTML or Shortcode blocks are used for new design implementation.
+- Page/post-owned visible content is editable from the expected admin surface; page templates render Post Content instead of replacing it with hard-coded page body markup.
+- Page-specific strings, images, and CTAs are not trapped in theme template or pattern files when Pages > Edit is expected to control them.
 - Editor can insert, edit, save, reload, and preview without invalid block warnings.
 - Templates, parts, and patterns have clear names and appear in the expected Site Editor surfaces.
 - Locked areas protect design integrity without blocking required content edits.

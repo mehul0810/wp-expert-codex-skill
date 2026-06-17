@@ -22,6 +22,7 @@ Use this when converting a Figma/static/brand design into a custom block-based F
 - Decide theme vs plugin ownership before building: presentation belongs in the theme; durable data, business rules, and cross-theme functionality usually belong in plugins.
 - Do not use Custom HTML blocks or Shortcode blocks to implement new design sections. Treat them as legacy containment only and flag them as technical debt.
 - Keep admin editability explicit. Editors should be able to update content, images, buttons, navigation, global styles, template parts, and reusable sections without editing code.
+- If a normal page/post is the editing surface, the visible page body must be controlled by that page/post content, not by hard-coded template or pattern markup that bypasses Pages > Edit.
 - Preserve design intent through tokens, layout rules, patterns, and editor constraints, not by freezing the entire page into one custom block or hard-coded markup.
 - Validate editor and frontend parity; a design that only works on the frontend is not a finished block theme.
 
@@ -83,6 +84,8 @@ Do not create a custom block when:
 - Use templates for page-level structure and template parts for global or repeated site regions.
 - Use patterns as section starters that editors can insert, duplicate, and modify.
 - Use synced patterns only for content that should update globally across the site; use unsynced theme patterns for reusable design sections.
+- For custom page designs, prefer a structural page template with `<!-- wp:post-content /-->`, then put the designed sections into the page's `post_content` as editable blocks or inserted patterns.
+- Avoid Site Editor database template overrides as the delivery mechanism unless the user intentionally wants an admin-owned template customization; repo-owned theme changes should live in files and page-owned content should live in content.
 - Use block locking, allowed blocks, InnerBlocks templates, and template locking to protect layout while preserving content editability.
 - Prefer document/sidebar panels for document-level settings and inspector controls for block-specific settings.
 - Keep classic editor meta boxes out of the block editor unless preserving a legacy compatibility contract.
@@ -127,8 +130,8 @@ Guidelines:
 1. Create the design map and ownership map.
 2. Define content contracts and dynamic data sources before block markup.
 3. Build `theme.json` tokens and settings before page markup.
-4. Create the minimum template hierarchy and template parts.
-5. Prototype sections in the editor with core blocks and copy stable block markup into `/patterns`, `/templates`, or `/parts`.
+4. Create the minimum template hierarchy and template parts, keeping page templates structural when Pages > Edit should own the body.
+5. Prototype sections in the editor with core blocks; store reusable starters in `/patterns`, but insert page-specific sections into the page content.
 6. Add block styles/variations/bindings for repeatable design and data needs.
 7. Build custom blocks only where the decision matrix proves core blocks, patterns, variations, and bindings are insufficient.
 8. For custom blocks, decide static vs dynamic rendering, attributes vs meta/options/data sources, `InnerBlocks` constraints, and deprecation strategy.
@@ -139,7 +142,8 @@ Guidelines:
 ## Validation Checklist
 
 - No new Custom HTML or Shortcode blocks are used for design implementation.
-- Editors can update expected content and global sections from the admin/Site Editor.
+- Editors can update expected content and global sections from the intended admin surface: Pages > Edit for page-owned content, Site Editor for templates/parts, and synced pattern editing for global reusable content.
+- Page templates that should expose page-owned content include Post Content and do not hide the visible body in template-only markup.
 - Header, footer, navigation, templates, template parts, and patterns appear with clear labels.
 - Core block patterns remain valid; no invalid block warnings appear after save/reload.
 - Editor canvas, frontend, and preview match within acceptable design tolerance.

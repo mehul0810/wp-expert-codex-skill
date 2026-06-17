@@ -12,9 +12,9 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 - Start with repo facts, not assumptions: current directory, Git root, WordPress root, plugin/theme entry files, Composer/npm scripts, build output, active branch, dirty files, and deployment target.
 - Load only the reference needed for the task. Do not read every reference by default.
 - Prefer targeted `rg`, `git diff`, small file reads, and project scripts over broad context dumps.
-- Use `../shared/references/research-token-discipline.md` for web-heavy, drift-prone, ambiguous, or broad-exploration tasks to keep reasoning and source lookup token-efficient.
-- Use `../shared/references/session-continuity-pr-discipline.md` for new chats, resumed repo work, release branches, GitHub issues/PRs, and any branch/PR creation. Never create a PR until the intended base branch is proven and passed explicitly.
-- Use `../shared/references/project-subagent-routing.md` for project-level Codex subagents, skill-level routing, model assignment, and efficient `gpt-5.3-codex-spark` usage.
+- Use `../shared/references/research-token-discipline.md` for web-heavy, drift-prone, ambiguous, or broad exploration.
+- Use `../shared/references/session-continuity-pr-discipline.md` for new chats, resumed repo work, release branches, issues/PRs, and branch/PR creation. Never create a PR until the intended base branch is proven and passed explicitly.
+- Use `../shared/references/project-subagent-routing.md` for project subagents, skill routing, model assignment, and efficient `gpt-5.3-codex-spark` usage.
 - Use `../shared/references/production-dependency-discipline.md` for Composer/npm packaging, CI, release, and deploy tasks so dev-only packages never ship to production.
 - Use `../shared/references/enterprise-code-quality-gate.md` for code creation, refactoring, and reviews so generated or reviewed code meets modularity, performance, security, maintainability, and edge-case test expectations.
 - Use `references/planning-drift-control.md` for scope guardrails and risk-calibrated validation, especially when the user provides exact CSS values, units, copy, or configuration that should be applied directly and confirmed by diff instead of over-verified.
@@ -24,13 +24,14 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 - Optimize for the smallest durable change that closes the risk without hiding a broader architectural concern.
 - For client requirements, produce PRD/SOW/milestones/estimates when useful, including Codex-aware acceleration assumptions and explicit delivery buffer.
 - Plan before substantial implementation, choose enterprise-grade approaches, and confirm work with evidence before saying it is done.
-- Use `references/enterprise-acceptance-criteria-templates.md` for substantial plugin, theme, API, migration, performance, security, or conversion work so done criteria are explicit before implementation drifts.
+- Use `references/enterprise-acceptance-criteria-templates.md` for substantial plugin, theme, API, migration, performance, security, or conversion work so done criteria are explicit before drift.
 - Treat every generated or reviewed code path as enterprise/WPVIP-grade by default: modular, performant, secure, maintainable, observable where needed, and covered by appropriate tests including rare/failure scenarios.
-- Use `references/test-coverage-discipline.md` for implementation, review, and PR work to decide whether each change needs new/updated tests and to flag missing test coverage as a concrete review finding when risk warrants it.
+- Use `references/test-coverage-discipline.md` for implementation, review, and PR work to decide needed tests and flag material gaps.
 - For implementation tasks in a Git repo, make small focused commits for validated units of work when changes are naturally separable, then push all task commits after the task is complete unless the user explicitly says not to push.
-- Use `references/ux-product-strategy-design-qa.md` for substantial UI/UX, design-review, product-flow, information-architecture, UX-writing, conversion, or image/screenshot-to-implementation work.
+- Use `references/ux-product-strategy-design-qa.md` for substantial UI/UX, design review, product flow, IA, UX writing, conversion, or image/screenshot implementation.
 - Never compromise on premium and enterprise feel. UI, theme, block, and frontend work must feel deliberate, polished, accessible, responsive, and aligned with the project style guide or design system.
 - When an image, screenshot, Figma frame, or visual reference is provided, treat it as the visual source of truth unless stated otherwise; implement for pixel-faithful parity while preserving accessibility, responsiveness, WordPress editability, performance, and maintainability.
+- For block/FSE page builds, keep page/post-owned visible content admin-editable: templates provide structure and render Post Content; page-specific sections belong in page content, inserted patterns, synced patterns, or intentional data sources.
 - When the in-app browser blocks a custom local HTTPS WordPress domain, use `references/local-https-testing.md` and terminal/browser-runner workarounds before marking runtime or visual testing blocked.
 
 ## Fast Workflow

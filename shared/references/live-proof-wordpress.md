@@ -45,6 +45,7 @@ For theme/block work, validate editor and frontend parity when behavior or visua
 
 - `theme.json` parses and maps design tokens intentionally.
 - Templates, parts, patterns, block styles, variations, and bindings remain editable.
+- Page/post-owned visible content is editable from the intended admin surface; if Pages > Edit should control the page, the relevant template renders Post Content and page-specific sections are not hard-coded only in template/pattern files.
 - Avoid Custom HTML/Shortcode blocks for design implementation unless explicitly required.
 - Custom blocks are created only when core blocks, patterns, styles, variations, or bindings cannot meet the design/editability requirement.
 - Editor canvas and frontend output preserve responsive behavior, accessibility, and premium/enterprise polish.
