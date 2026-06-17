@@ -41,6 +41,15 @@ cat > "$output_path" <<'TEMPLATE'
 - External data sources:
 - Synced/global editor-owned content:
 
+## Admin Editing Surface
+
+- Primary editing surface (Pages > Edit, Site Editor, synced pattern, option page, CPT, external data):
+- Visible content source of truth (`post_content`, template, part, pattern, meta, option, API):
+- Templates that must render Post Content:
+- Page content seeding plan (manual, WP-CLI, import, migration, none):
+- Site Editor database override policy:
+- Locked areas vs editor-editable areas:
+
 ## Template Parts
 
 - Header variants:
@@ -106,6 +115,8 @@ cat > "$output_path" <<'TEMPLATE'
 ## Validation Matrix
 
 - Breakpoints:
+- Pages > Edit controls visible page-owned content:
+- Site Editor controls only intended template/part/global content:
 - Editor/frontend parity targets:
 - Accessibility checks:
 - Performance checks:

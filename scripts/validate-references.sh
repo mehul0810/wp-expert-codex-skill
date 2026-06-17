@@ -28,6 +28,7 @@ Options:
   --files     Check that referenced files exist
   --routing   Validate reference routing map
   --tokens    Check skill token budgets
+  --behavior  Check critical agent behavior guardrails
   --help      Show this message
 
 Examples:
@@ -321,6 +322,17 @@ validate_token_budgets() {
   fi
 }
 
+validate_behavior_rules() {
+  echo ""
+  echo "=== Validating critical behavior guardrails ==="
+
+  if bash "$repo_root/scripts/skill-behavior-audit.sh"; then
+    log_success "Critical behavior guardrails are present"
+  else
+    log_error "Critical behavior guardrail audit failed"
+  fi
+}
+
 # Summary
 print_summary() {
   echo ""
@@ -375,8 +387,11 @@ main() {
     validate_scripts
     validate_metadata
     validate_token_budgets
+    validate_behavior_rules
   elif [ "$check_type" = "tokens" ]; then
     validate_token_budgets
+  elif [ "$check_type" = "behavior" ]; then
+    validate_behavior_rules
   fi
 
   print_summary

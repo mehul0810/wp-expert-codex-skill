@@ -126,7 +126,7 @@ Adapt this to project scripts. Do not paste generic CI if the repo already has a
 - Link the relevant issue, milestone, and labels when the repo uses them.
 - Keep commits scoped and messages specific. For implementation tasks, create small focused commits for separately validated units of work when the change naturally splits.
 - Stage only intended files. Do not include unrelated local changes, secrets, generated noise, or local environment files.
-- After the full task is complete and validation has run, push all task commits to the current branch when a remote is configured, unless the user explicitly says not to push.
+- Push only when the user explicitly asks, or when repo-local automation policy explicitly authorizes pushing after validation. If no push is authorized, report the branch ahead/behind state instead.
 - If the remote has advanced, fetch and use the repo's normal safe sync path before pushing. Do not force-push, amend, or rewrite shared history without explicit approval.
 - For review comments, reply to each actionable thread individually when requested.
 - Avoid PR bodies with unescaped shell-sensitive backticks when creating PRs through CLI.

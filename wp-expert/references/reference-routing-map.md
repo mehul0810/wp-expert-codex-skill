@@ -9,10 +9,22 @@ Use this map to choose references with low context cost.
 - Exceed that budget only when a named acceptance risk cannot be handled safely with the current set.
 - Stop loading more references when you already have enough to implement or review safely.
 
+## Mandatory Overlays
+
+- Substantial implementation/review: `architecture-decision-gate.md`, then the primary technical reference.
+- Any code change: `enterprise-code-quality-gate.md` plus a `test-coverage-discipline.md` decision.
+- Any completion claim for WordPress runtime/editor/frontend/external/release behavior: `live-proof-wordpress.md`.
+- Any branch, issue, PR, release branch, or resumed-session work: `session-continuity-pr-discipline.md`.
+- Any package, deploy, release ZIP/SVN, Composer, npm, or CI artifact work: `production-dependency-discipline.md`.
+- Any web-heavy, drift-prone, broad, or current-policy lookup: `research-token-discipline.md`.
+- Any UI/theme/FSE/design work: keep premium/enterprise UX and editor ownership proof visible.
+
 ## Task To Reference Map
 
 | Task signal | Primary reference | Common supporting references |
 | --- | --- | --- |
+| Skill behavior audit, routing regression, eval scenarios, prompt drift after skill edits | `agent-behavior-eval-scenarios.md` | `architecture-decision-gate.md`, `reference-routing-map.md` |
+| Architecture decision gate, ownership/source-of-truth choice, public contract, release state, validation proof, project policy precedence | `architecture-decision-gate.md` | `enterprise-code-quality-gate.md`, `live-proof-wordpress.md` |
 | New chat/session continuity, branch creation, issue milestone to PR release branch, PR base selection, release branch drift | `session-continuity-pr-discipline.md` | `standards-ci-github.md`, `delivery-excellence.md` |
 | Project-level Codex subagents, skill-level routing, model assignment, efficient `gpt-5.3-codex-spark` usage | `project-subagent-routing.md` | `reference-routing-map.md`, `thinking-brainstorming-engineering-discipline.md` |
 | PRD, SOW, estimates, milestones, mobile-first planning | `delivery-excellence.md` | `review-checklists.md`, `runtime-toolchain-version-policy.md` |
@@ -78,3 +90,4 @@ Use this map to choose references with low context cost.
 - Use `../shared/references/project-subagent-routing.md` for project-level Codex subagents, skill-level routing, bounded parallel mapping/review, and model routing.
 - Use `../shared/references/production-dependency-discipline.md` for packaging, CI artifacts, release ZIP/SVN, and production dependency verification.
 - Use `../shared/references/enterprise-code-quality-gate.md` for implementation, refactoring, and review tasks where generated or reviewed code must meet enterprise/WPVIP-grade engineering expectations.
+- Use `../shared/references/live-proof-wordpress.md` before claiming WordPress runtime, editor, frontend, external, or release work is complete.

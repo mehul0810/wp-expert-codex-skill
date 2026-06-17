@@ -91,6 +91,18 @@ Do not create a custom block when:
 - Keep classic editor meta boxes out of the block editor unless preserving a legacy compatibility contract.
 - When classic editor support requires meta boxes, register/show them for classic screens and keep them hidden in the block editor UI.
 
+## Design-To-FSE Page Recipe
+
+For a custom designed page that must remain manageable from Pages > Edit:
+
+1. Create a structural page template, such as `page-roadmap.html`, only for site chrome and layout boundaries.
+2. Include `<!-- wp:post-content /-->` where the page-owned body should render.
+3. Build the designed page sections as editable blocks in the page `post_content`; use theme patterns as insertable starters, not hidden body replacements.
+4. Keep tokens, scoped CSS, block styles, and responsive rules in theme files.
+5. Use synced patterns only for globally reused content that should update everywhere.
+6. Use a custom block only when core blocks, bindings, patterns, styles, and variations cannot preserve fidelity and safe editing.
+7. Validate Pages > Edit, Site Editor, frontend, responsive states, and the absence of unintended database template overrides.
+
 ## Theme File Architecture
 
 A custom block theme should usually include:
