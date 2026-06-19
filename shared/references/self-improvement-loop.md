@@ -33,6 +33,7 @@ Use concrete labels:
 - Missing GitHub issue-first intake.
 - Missing branch/base proof.
 - Delegation before strategy.
+- Missing delegation after strategy.
 - Scope creep or over-engineering.
 - Missing owner approval.
 - Release train violation.

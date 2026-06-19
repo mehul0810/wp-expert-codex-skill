@@ -75,6 +75,7 @@ Verified source of truth:
 Active production release and prerelease:
 Active milestone and due date:
 Current strategy:
+Delegation decision:
 Issues created/updated:
 Delegated threads/worktrees:
 PR status:

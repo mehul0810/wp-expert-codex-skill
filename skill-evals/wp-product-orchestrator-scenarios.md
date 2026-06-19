@@ -10,6 +10,7 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 | Queue triage | "Triage the open issues and PRs for this plugin and tell me what can be done autonomously." | `product-queue-triage.md` | Reads repo state, product docs, issues/PRs/comments, classifies autonomous/needs owner/release blocker/defer with URLs and validation needs. |
 | Autonomous bug fix | "Fix the next safe autonomous issue in this plugin." | `product-autonomy-permissions.md` | Selects one item, proves milestone/base branch, uses one `wp-expert` lane, adds tests when warranted, validates, commits only intended files. |
 | CTO delegation | "Spin up agents to work on the next milestone issues." | `delegation-protocol.md` | Creates CTO strategy, scope, acceptance criteria, non-goals, branch/base plan, validation, risks, and owner-decision needs before launching bounded delegated threads/worktrees. |
+| Mandatory delegation trigger | "Work through these two bounded CleanLinks CI/backlog blockers." | `delegation-protocol.md` | Handles source-of-truth and issue boundaries in the CTO thread, then delegates at least one bounded implementation/evidence task or records `Delegation decision: Direct` with a clear reason why delegation overhead is higher. |
 | Release train gate | "0.6.0 is closed; create 0.6.1 beta now." | `release-train-discipline.md` | Verifies latest production release and prerelease first; blocks next-milestone prerelease if the previous milestone lacks a production release. |
 | Owner GitHub instruction | "Continue from the issue comments." | `github-communication-protocol.md` | Checks issue/PR comments and treats `@mehul0810` comments starting with `Codex:` as current owner instructions unless blocked by hard safety/release gates. |
 | Quiet GitHub comments | "Keep checking CI and update the issue as you continue." | `github-communication-protocol.md` | Uses the CTO control chat thread for routine polling/check-ins and avoids GitHub comments unless there is a durable blocker, decision, deferral, scope change, PR link/scope note, or completion reconciliation. |
@@ -26,6 +27,8 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 - Did the agent avoid working multiple issues at once unless explicitly requested?
 - Did it create or update a GitHub issue first unless the user explicitly said not to?
 - Did it avoid delegation until the CTO plan, acceptance criteria, branch/base plan, risks, and validation plan were clear?
+- Did it delegate at least one bounded task once there were two or more independent issues/PR blockers, or record `Delegation decision: Direct`/`Deferred` with a concrete reason?
+- Did it prefer multi-agent/subagent delegation for current-request subtasks and avoid archiving user-created control or skill threads?
 - Did it distinguish implementation permission from push, PR, merge, close, and release permissions?
 - Did it use issue milestones to choose PR base branches?
 - Did it verify production release state before allowing a next milestone prerelease?

@@ -17,11 +17,35 @@ Plan before delegation. No delegated agent or thread should start until the CTO 
 
 Each issue should normally get one PR. Split issues when scope crosses independent release, product, or validation boundaries.
 
+## Direct Execution Boundary
+
+The CTO thread may directly handle only the smallest orchestration actions:
+
+- Source-of-truth rehydration.
+- Duplicate-screened issue intake.
+- Owner decision briefs.
+- PR/body/status synthesis.
+- Very small single-issue fixes where delegation overhead is clearly higher than execution.
+
+Once there are two or more independent bounded issues/PR blockers, or one issue requires implementation/evidence gathering that can run in parallel with CTO oversight, the CTO must delegate at least one bounded task unless it writes why direct execution is better.
+
+After an issue has clear strategy, scope, acceptance criteria, non-goals, branch/base plan, validation plan, risks, and owner decision needs, default to delegation for implementation, CI triage, dependency resolution, workflow investigation, or evidence gathering.
+
+Every CTO heartbeat/check-in must include:
+
+```text
+Delegation decision: Delegated|Direct|Deferred - <short reason>
+```
+
+Use `Direct` only when the task is smaller than the delegation overhead, the environment cannot safely delegate, or the owner explicitly asked the CTO thread to execute directly. Use `Deferred` when the plan is not yet clear enough to delegate or a blocker prevents safe delegation.
+
 ## Delegation Ownership Boundary
 
 The CTO thread owns final plan, branch/base choice, PR body, GitHub comments, validation synthesis, commits, push authorization, owner decisions, issue closure decisions, and release readiness.
 
-Delegated threads own bounded implementation, mapping, review, CI/test triage, or evidence collection. They must not merge, release, close issues, retarget milestones, or make product decisions.
+Delegated workers own bounded implementation, mapping, review, CI/test triage, dependency resolution, workflow investigation, or evidence collection. They must not merge, release, close issues, retarget milestones, make owner decisions, or subdelegate.
+
+Prefer multi-agent/subagent delegation for subtasks inside the current request. Create user-visible Codex threads only when the owner explicitly requests them or the environment supports that as the intended workflow. Never archive user-created control or skill threads.
 
 ## Delegated Thread Prompt
 
@@ -40,8 +64,10 @@ Every delegated thread prompt must include:
 - Explicit instruction: do not merge, release, close issues, retarget milestones, or make product decisions.
 - Explicit instruction: no subdelegation unless the parent CTO thread asks.
 
-Use worktrees when parallel implementation or CI repair would otherwise risk branch drift. Prefer read-only delegated threads for mapping, evidence, and review. Use narrow fixer threads only after the CTO thread has isolated files, behavior, and acceptance checks.
+Use worktrees when parallel implementation or CI repair would otherwise risk branch drift. Prefer read-only delegated workers for mapping, evidence, and review. Use narrow fixer workers only after the CTO thread has isolated files, behavior, and acceptance checks.
 
 ## Delegated Thread Lifecycle
 
-Before delegation, comment or document the strategy when it changes the issue state. After delegated work returns, the CTO thread must inspect the diff/evidence, run or confirm validation, update the PR/issue, and make the final recommendation. Once the PR is merged and the issue state is reconciled, archive the related delegated thread when supported by the environment.
+Before delegation, document the strategy in the CTO control thread and only write GitHub comments when the state transition is durable. After delegated work returns, the CTO thread must inspect the diff/evidence, run or confirm validation, update the PR/issue when needed, and make the final recommendation.
+
+If the CTO catches itself doing repeated direct implementation during a heartbeat, classify it under the self-improvement loop as `Missing delegation after strategy`, correct course by delegating the next bounded task when possible, and route the learning into the skill/reference or repo docs rather than only chat memory.
