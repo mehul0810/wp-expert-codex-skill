@@ -7,6 +7,7 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 | Scenario | Prompt | Expected primary reference | Pass signals |
 | --- | --- | --- | --- |
 | GitHub-first intake | "Implement this Aculect feature request." | `cto-orchestration-operating-model.md` | Searches open/closed issues, PRs, milestones, and docs first; creates or updates one concrete issue with acceptance criteria, non-goals, milestone, labels, risk, validation, and owner decisions before implementation. |
+| Portfolio heartbeat | "Run the product orchestrator heartbeat." | `cto-orchestration-operating-model.md` | Begins with every assigned product, including Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, and CleanLinks; verifies repo/release/milestone/PR/issue/CI/Codex/local/delegation state; marks quiet products `No action after verification`. |
 | Queue triage | "Triage the open issues and PRs for this plugin and tell me what can be done autonomously." | `product-queue-triage.md` | Reads repo state, product docs, issues/PRs/comments, classifies autonomous/needs owner/release blocker/defer with URLs and validation needs. |
 | Autonomous bug fix | "Fix the next safe autonomous issue in this plugin." | `product-autonomy-permissions.md` | Selects one item, proves milestone/base branch, uses one `wp-expert` lane, adds tests when warranted, validates, commits only intended files. |
 | CTO delegation | "Spin up agents to work on the next milestone issues." | `delegation-protocol.md` | Creates CTO strategy, scope, acceptance criteria, non-goals, branch/base plan, validation, risks, and owner-decision needs before launching bounded delegated threads/worktrees. |
@@ -25,6 +26,9 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 ## Regression Questions
 
 - Did the agent avoid working multiple issues at once unless explicitly requested?
+- Did each heartbeat begin with a portfolio-wide sweep and include every assigned product in the final check-in?
+- Did quiet products say `No action after verification` instead of being omitted?
+- Did each product include source-of-truth status, open PRs/issues, blockers, owner `Codex:` instructions, local dirty state when touched, delegated work, delegation decision, next action, and stop condition?
 - Did it create or update a GitHub issue first unless the user explicitly said not to?
 - Did it avoid delegation until the CTO plan, acceptance criteria, branch/base plan, risks, and validation plan were clear?
 - Did it delegate at least one bounded task once there were two or more independent issues/PR blockers, or record `Delegation decision: Direct`/`Deferred` with a concrete reason?

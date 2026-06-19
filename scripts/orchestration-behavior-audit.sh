@@ -50,6 +50,10 @@ require_text "wp-product-orchestrator/SKILL.md" "CTO control chat thread" "orche
 require_text "wp-product-orchestrator/SKILL.md" "Keep direct CTO execution limited" "orchestrator direct execution boundary"
 require_text "wp-product-orchestrator/SKILL.md" "delegate at least one bounded task" "orchestrator mandatory delegation trigger"
 require_text "wp-product-orchestrator/SKILL.md" "Delegation decision" "orchestrator delegation decision status line"
+require_text "wp-product-orchestrator/SKILL.md" "portfolio-wide sweep across all assigned products" "orchestrator portfolio sweep"
+require_text "wp-product-orchestrator/SKILL.md" "No action after verification" "orchestrator quiet product reporting"
+require_text "wp-product-orchestrator/SKILL.md" "Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, and CleanLinks" "current managed product examples"
+require_text "wp-product-orchestrator/SKILL.md" "Portfolio coverage drift" "orchestrator portfolio drift classification"
 require_text "wp-product-orchestrator/SKILL.md" "../shared/references/delegation-protocol.md" "orchestrator delegation protocol routing"
 require_text "wp-product-orchestrator/SKILL.md" "../shared/references/github-communication-protocol.md" "orchestrator GitHub communication routing"
 require_text "wp-product-orchestrator/SKILL.md" "../shared/references/commit-pr-discipline.md" "orchestrator commit/PR routing"
@@ -58,6 +62,9 @@ require_text "wp-product-orchestrator/SKILL.md" "../shared/references/self-impro
 
 require_text "shared/references/cto-orchestration-operating-model.md" "Source Of Truth Hierarchy" "source-of-truth hierarchy reference section"
 require_text "shared/references/cto-orchestration-operating-model.md" "GitHub Issue-First Intake" "GitHub issue-first intake reference section"
+require_text "shared/references/cto-orchestration-operating-model.md" "Portfolio Sweep Discipline" "portfolio sweep reference section"
+require_text "shared/references/cto-orchestration-operating-model.md" "Quiet products must be included with" "quiet products inclusion"
+require_text "shared/references/cto-orchestration-operating-model.md" "Open PRs/issues and CI/release blockers" "portfolio minimum status fields"
 require_text "shared/references/delegation-protocol.md" "Delegated Thread Prompt" "delegated thread/worktree protocol"
 require_text "shared/references/delegation-protocol.md" "no subdelegation unless the parent CTO thread asks" "delegated no-subdelegation rule"
 require_text "shared/references/delegation-protocol.md" "Direct Execution Boundary" "direct CTO execution boundary"
@@ -78,6 +85,7 @@ require_text "shared/references/commit-pr-discipline.md" "Every PR must include"
 require_text "shared/references/weekly-wordpress-intelligence.md" "Weekly WordPress Ecosystem Intelligence" "weekly WordPress ecosystem intelligence"
 require_text "shared/references/self-improvement-loop.md" "Self-Improvement Loop" "self-improvement loop"
 require_text "shared/references/self-improvement-loop.md" "Missing delegation after strategy" "self-improvement missing delegation label"
+require_text "shared/references/self-improvement-loop.md" "Portfolio coverage drift" "self-improvement portfolio drift label"
 require_text "shared/references/repo-product-docs-contract.md" "Product Truth Does Not Live Only In The Skill" "repo product docs contract"
 
 if [ "$errors" -gt 0 ]; then

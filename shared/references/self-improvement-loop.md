@@ -34,6 +34,7 @@ Use concrete labels:
 - Missing branch/base proof.
 - Delegation before strategy.
 - Missing delegation after strategy.
+- Portfolio coverage drift.
 - Scope creep or over-engineering.
 - Missing owner approval.
 - Release train violation.
