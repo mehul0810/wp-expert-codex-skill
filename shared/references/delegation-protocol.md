@@ -47,6 +47,25 @@ Use `Direct` only when the task is smaller than the delegation overhead, the env
 
 Before declaring delegation unavailable, use tool discovery for project/thread/worktree/subagent surfaces. Look for `list_projects`, `create_thread`, `fork_thread`, `send_message_to_thread`, and available worktree or subagent tools when they are not already loaded.
 
+## Worktree Creation Guard
+
+Before creating an app-managed worker worktree, verify the saved project path or source thread `cwd` is the actual plugin Git repository root:
+
+```bash
+git rev-parse --show-toplevel
+```
+
+If the product thread is rooted in a broader WordPress folder such as `wp-content` or `wp-content/plugins`, do not call `create_thread` or `fork_thread` with a worktree environment from that thread. App-managed worktree setup can fail or land on the wrong repository/base. Use an exact plugin repo-root saved project when available; otherwise report `missing exact repo project` as the hard blocker and prepare a tooling/setup decision brief.
+
+When using app-managed worktrees, pass an explicit verified base branch through the worktree starting state when the tool supports it. After the worker materializes, verify:
+
+- The child thread or worktree is readable.
+- The worktree path appears in `git worktree list`.
+- The worktree is on the intended branch/base.
+- The worktree is not detached or on production `main` for implementation work.
+
+If a pending worktree does not materialize, or it lands detached/wrong-base, classify it as `unusable worktree` and stop retrying the same creation path until the repo-root/project/base problem is fixed.
+
 Missing milestone due dates are owner decisions, not blanket implementation blockers. If an existing issue has clear scope plus safe milestone/branch/base evidence, delegate implementation and prepare a separate due-date decision brief.
 
 Dirty or behind primary checkouts block direct edits in that checkout. They do not block a fresh scoped Codex worktree worker from a clean upstream branch when branch/base evidence is safe.
