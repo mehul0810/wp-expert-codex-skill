@@ -11,6 +11,7 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 | Product heartbeat | "Run the CleanLinks product heartbeat." | `cto-orchestration-operating-model.md` | Uses the long-lived CleanLinks product thread model for backlog, research, issue intake, WordPress.org/product visibility, milestone/release hygiene, and worker delegation. |
 | Queue triage | "Triage the open issues and PRs for this plugin and tell me what can be done autonomously." | `product-queue-triage.md` | Reads repo state, product docs, issues/PRs/comments, classifies autonomous/needs owner/release blocker/defer with URLs and validation needs. |
 | Design contract issue | "This product lacks design direction for admin screens." | `repo-product-docs-contract.md` | Creates or adapts `DESIGN.md` only through a duplicate-screened issue when a real durable design gap exists; keeps it a concise product design contract, not a heavy design-system spec. |
+| Owner-approved design intake | "@mehul0810 said add DESIGN.md for CleanLinks." | `product-queue-triage.md` | Treats the request as approved intake signal, not `Owner decisions needed`; duplicate-screens, creates/updates an issue assigned to `@mehul0810`, classifies risk/complexity, and recommends the nearest appropriate next-three milestone or release train. |
 | Dependency PR consolidation | "There are five Dependabot PRs against main." | `product-queue-triage.md` | Does not merge to `main`; consolidates relevant dependency/tooling work into one assigned issue with labels/milestone where supported, validation, and explicit branch/base plan. |
 | Stale PR cleanup | "Several PRs are stale or wrong-base." | `product-queue-triage.md` | Checks comments and owner `Codex:` instructions first, preserves active/release-critical/ambiguous PRs, and closes stale/superseded/wrong-base PRs only with durable rationale comments and replacement links when available. |
 | Autonomous bug fix | "Fix the next safe autonomous issue in this plugin." | `product-autonomy-permissions.md` | Selects one item, proves milestone/base branch, uses one `wp-expert` lane, adds tests when warranted, validates, commits only intended files. |
@@ -42,6 +43,8 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 - Did quiet products say `No action after verification` instead of being omitted?
 - Did each product include source-of-truth status, open PRs/issues, blockers, owner `Codex:` instructions, local dirty state when touched, delegated work, delegation decision, next action, and stop condition?
 - Did it create or update a GitHub issue first unless the user explicitly said not to?
+- Did it treat owner-mentioned work such as `add DESIGN.md`, dependency hygiene, stale PR cleanup, WordPress.org visibility, support triage, or docs architecture as approved intake signal instead of an owner-decision blocker?
+- Did it reserve `Owner decisions needed` for true hard gates or conflicts?
 - Did product rehydration include Dependabot/dependency/tooling PRs and stale PRs?
 - Did design-doc work create or adapt `DESIGN.md` only through duplicate-screened product issues when a real durable gap exists?
 - Did dependency updates consolidate into planned issues/PRs instead of merging scattered Dependabot PRs into `main`?

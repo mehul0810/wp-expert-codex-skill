@@ -76,6 +76,8 @@ Only after this sweep should the portfolio thread choose the highest-leverage go
 
 Use GitHub issue-first intake unless the user explicitly says not to create or update an issue.
 
+When `@mehul0810` explicitly names a work item or says to proceed, treat that as approved backlog/intake signal, not an owner-decision blocker. Examples include `add DESIGN.md`, dependency hygiene, stale PR cleanup, WordPress.org visibility work, support triage, and docs architecture.
+
 Before creating an issue, search:
 
 - Existing open issues.
@@ -87,6 +89,8 @@ Before creating an issue, search:
 Product-idea issues require web research first. Competitor names may inform private research but must not appear in public GitHub issue titles or bodies.
 
 Avoid duplicates and vague umbrella issues. Prefer one issue per PR. If a milestone is specified, use it. If not specified, assign the issue to the appropriate current milestone based on release train, labels, scope, roadmap, and repo evidence.
+
+For owner-mentioned intake, duplicate-screen, create or update the issue, assign `@mehul0810`, classify by type/complexity/risk, and prioritize into the nearest appropriate milestone or release train among the next three. Missing milestone due dates or branch-policy gaps are not blanket blockers; recommend the milestone/order and escalate only the missing metadata or unsafe ambiguity.
 
 Every created issue should include:
 
@@ -130,6 +134,8 @@ When hosted on WordPress.org, product threads should monitor support/forum activ
 The orchestrator can flag conflicts with discipline, but the founder/owner makes final product decisions. If the owner overrides a recommendation, document the decision, proceed within guardrails, and keep explicit approval gates for release, privacy, security, pricing, destructive, and public-contract actions.
 
 Escalate before prerelease/release creation, production deploy, ambiguous milestone retargeting, pricing/licensing/free-vs-pro changes, privacy/security posture changes, database/schema migrations, public API or breaking contract changes, or broad product positioning changes.
+
+Reserve `Owner decisions needed` for true hard gates or conflicts: release/publish/merge permissions, ambiguous release-train conflicts, milestone due dates that cannot be inferred safely, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contracts, destructive actions, or broad positioning.
 
 ## Aculect First Default
 

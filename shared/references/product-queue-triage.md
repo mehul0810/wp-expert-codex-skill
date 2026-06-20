@@ -46,6 +46,8 @@ gh pr diff <number-or-url> --patch
 
 User requests become GitHub issues first unless the user explicitly says not to. Product-idea issues require web research before filing. Competitor names may inform private research, but do not put competitor names in public GitHub issue titles or bodies.
 
+Owner-mentioned work is approved intake signal, not an owner-decision blocker. When `@mehul0810` names work or says to proceed, duplicate-screen, create or update the issue, assign `@mehul0810`, classify by type/complexity/risk, and prioritize into the nearest appropriate milestone or release train among the next three.
+
 Before creating an issue:
 
 - Search open issues, recently closed issues, open PRs, milestones, roadmap docs, product docs, and release docs.
@@ -54,7 +56,7 @@ Before creating an issue:
 - Reuse existing labels and milestones when evidence supports them.
 - Include acceptance criteria, non-goals, branch/base plan, validation expectations, risk, and owner decisions.
 - Use `develop` for normal development integration; create or use `release/<milestone-number>` from the verified development base when the repo has adopted that workflow and milestone evidence supports it.
-- Missing milestone due dates require an owner decision brief, but they are not by themselves blockers to implementation delegation for existing issues with clear scope and safe branch/base evidence.
+- Missing milestone due dates or branch-policy gaps are not blanket blockers for owner-approved intake. Create/update the issue and recommend the milestone/order; escalate only missing metadata or unsafe ambiguity.
 - Dirty or behind primary checkouts block direct edits, not fresh scoped worktree delegation from a clean upstream branch.
 - If delegation is deferred, report the exact blocker: issue number, missing branch/base, missing owner decision, missing tool/project, or unsafe checkout state.
 
@@ -81,7 +83,7 @@ During rehydration, check open Dependabot/dependency/tooling PRs and stale PRs.
 Classify each item:
 
 - `Autonomous`: bounded, aligned with product docs, clear validation path, no sensitive decision.
-- `Needs owner`: product choice, paid/free boundary, privacy/security, untestable live provider, ambiguous UX/brand/SEO, or release/deploy decision.
+- `Needs owner`: true hard gate or conflict, such as release/publish/merge permission, ambiguous release train, unsafe milestone inference, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contract, destructive action, or broad positioning.
 - `Release blocker`: must land or be explicitly deferred before the target milestone/release.
 - `Blocked`: missing access, failing environment, stale/conflicted branch, unknown base, unclear reproduction.
 - `Defer/close`: duplicate, superseded, stale without evidence, support-only, or poor product fit.
