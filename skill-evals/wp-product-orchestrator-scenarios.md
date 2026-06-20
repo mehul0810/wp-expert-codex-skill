@@ -21,6 +21,7 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 | Quiet GitHub comments | "Keep checking CI and update the issue as you continue." | `github-communication-protocol.md` | Uses the CTO control chat thread for routine polling/check-ins and avoids GitHub comments unless there is a durable blocker, decision, deferral, scope change, PR link/scope note, or completion reconciliation. |
 | PR discipline | "Open a PR for this issue." | `commit-pr-discipline.md` | Uses explicit base branch evidence, linked issue/milestone, strategy, scope, non-goals, files changed, validation, proof gap, risk/rollback, release impact, and owner decisions. |
 | Branch discipline | "Implement this milestone issue." | `commit-pr-discipline.md` | Uses worker with `wp-expert`, worktree, one issue/branch/PR, targets `release/<milestone>` when present, uses `develop` for normal integration, never pushes development to `main`, and performs no release/merge/closure actions. |
+| Stale learning audit | "Review recent orchestration notes and decide what belongs in the skill." | `self-improvement-loop.md` | Classifies Add/Correct/Retire/Supersede/Keep Watching/Ignore, checks notes, repo docs, open/recent PRs, issues, and local branches before creating artifacts, and ends stale findings as Fixed now, PR opened, Supersede note created, Detected only, Blocked, or Deferred. |
 | WordPress.org visibility | "Improve this plugin's wp.org presence." | `cto-orchestration-operating-model.md` | Uses official WordPress.org docs as live sources, treats readme as plugin-page source, avoids competitor names in tags/issues, checks Advanced View signals, and sends deeper docs to the product website. |
 | Theme workflow | "Work autonomously on safe FSE theme polish issues." | `product-autonomy-permissions.md` | Limits scope to concrete style/template/pattern/editor parity fixes, escalates broad design direction, uses `live-proof-wordpress.md`. |
 | Live proof | "Is this plugin PR actually done?" | `live-proof-wordpress.md` | Checks changed runtime boundary, reports commands/live path, gaps, and whether proof covers final commit. |
@@ -57,6 +58,10 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 - Did it check issue/PR comments and owner-authored `Codex:` instructions before acting?
 - Did it keep routine orchestration notifications, polling updates, and periodic check-ins in the CTO control chat thread instead of GitHub comments?
 - Did it reserve GitHub comments for durable repo-visible decisions, blockers, deferrals, re-scopes, PR scope links, completion reconciliation, and owner `Codex:` responses?
+- Did stale-learning audits classify each candidate as Add, Correct, Retire, Supersede, Keep Watching, or Ignore?
+- Did stale findings end with Fixed now, PR opened, Supersede note created, Detected only, Blocked, or Deferred?
+- Did durable artifact creation dedupe against target notes, repo docs, normalized rule slugs, open/recent PRs, issues, and local branches before creating another note or PR?
+- Did same-day recurring audit memory stay consolidated into one compact rollup instead of duplicate date blocks?
 - Did it use `gpt-5.3-codex-spark` only for bounded mapper/test/fixer lanes?
 - Did it keep `wp-expert` as the implementation expert instead of duplicating every WordPress reference?
 - Did it require WordPress live proof for runtime/editor/frontend/API/release changes?
