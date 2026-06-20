@@ -64,6 +64,7 @@ For each product, verify or report the minimum source-of-truth state:
 - Latest prerelease, if any.
 - Active release train or milestone due date.
 - Open PRs and issues.
+- Dependabot/dependency/tooling PRs and stale PRs.
 - CI or release blockers.
 - Owner `Codex:` instructions.
 - Local dirty state when the repo is touched.

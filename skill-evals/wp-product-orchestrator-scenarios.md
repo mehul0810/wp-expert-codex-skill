@@ -10,6 +10,9 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 | Portfolio heartbeat | "Run the product orchestrator heartbeat." | `cto-orchestration-operating-model.md` | Acts as cross-product control room, checks every assigned product and product-thread health, surfaces cross-product blockers/owner decisions, marks quiet products `No action after verification`, and does not execute product-level work. |
 | Product heartbeat | "Run the CleanLinks product heartbeat." | `cto-orchestration-operating-model.md` | Uses the long-lived CleanLinks product thread model for backlog, research, issue intake, WordPress.org/product visibility, milestone/release hygiene, and worker delegation. |
 | Queue triage | "Triage the open issues and PRs for this plugin and tell me what can be done autonomously." | `product-queue-triage.md` | Reads repo state, product docs, issues/PRs/comments, classifies autonomous/needs owner/release blocker/defer with URLs and validation needs. |
+| Design contract issue | "This product lacks design direction for admin screens." | `repo-product-docs-contract.md` | Creates or adapts `DESIGN.md` only through a duplicate-screened issue when a real durable design gap exists; keeps it a concise product design contract, not a heavy design-system spec. |
+| Dependency PR consolidation | "There are five Dependabot PRs against main." | `product-queue-triage.md` | Does not merge to `main`; consolidates relevant dependency/tooling work into one assigned issue with labels/milestone where supported, validation, and explicit branch/base plan. |
+| Stale PR cleanup | "Several PRs are stale or wrong-base." | `product-queue-triage.md` | Checks comments and owner `Codex:` instructions first, preserves active/release-critical/ambiguous PRs, and closes stale/superseded/wrong-base PRs only with durable rationale comments and replacement links when available. |
 | Autonomous bug fix | "Fix the next safe autonomous issue in this plugin." | `product-autonomy-permissions.md` | Selects one item, proves milestone/base branch, uses one `wp-expert` lane, adds tests when warranted, validates, commits only intended files. |
 | CTO delegation | "Spin up agents to work on the next milestone issues." | `delegation-protocol.md` | Creates CTO strategy, scope, acceptance criteria, non-goals, branch/base plan, validation, risks, and owner-decision needs before launching bounded delegated threads/worktrees. |
 | Mandatory delegation trigger | "Work through these two bounded CleanLinks CI/backlog blockers." | `delegation-protocol.md` | Handles source-of-truth and issue boundaries in the CTO thread, then delegates at least one bounded implementation/evidence task or records `Delegation decision: Direct` with a clear reason why delegation overhead is higher. |
@@ -39,6 +42,10 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 - Did quiet products say `No action after verification` instead of being omitted?
 - Did each product include source-of-truth status, open PRs/issues, blockers, owner `Codex:` instructions, local dirty state when touched, delegated work, delegation decision, next action, and stop condition?
 - Did it create or update a GitHub issue first unless the user explicitly said not to?
+- Did product rehydration include Dependabot/dependency/tooling PRs and stale PRs?
+- Did design-doc work create or adapt `DESIGN.md` only through duplicate-screened product issues when a real durable gap exists?
+- Did dependency updates consolidate into planned issues/PRs instead of merging scattered Dependabot PRs into `main`?
+- Did stale PR closures include durable comments and replacement links when available, after checking owner instructions?
 - Did it avoid delegation until the CTO plan, acceptance criteria, branch/base plan, risks, and validation plan were clear?
 - Did it delegate at least one bounded task once there were two or more independent issues/PR blockers, or record `Delegation decision: Direct`/`Deferred` with a concrete reason?
 - Did it use tool discovery before saying worker/chat/worktree delegation was unavailable?

@@ -58,6 +58,24 @@ Before creating an issue:
 - Dirty or behind primary checkouts block direct edits, not fresh scoped worktree delegation from a clean upstream branch.
 - If delegation is deferred, report the exact blocker: issue number, missing branch/base, missing owner decision, missing tool/project, or unsafe checkout state.
 
+## Design Contract Intake
+
+Create focused GitHub issues to add or adapt `DESIGN.md` when a real durable product design gap exists. Duplicate-screen first, assign to `@mehul0810`, reuse labels/milestones when supported, and include acceptance criteria, non-goals, validation, and branch/base plan. Do not create generic design-doc churn.
+
+Priority order: CleanLinks and Aculect high priority; OneSMTP early enough to shape UI; PreviewShare and WP Distraction Free View lightweight unless the product surface grows.
+
+## Dependency And Stale PR Triage
+
+During rehydration, check open Dependabot/dependency/tooling PRs and stale PRs.
+
+- Do not merge Dependabot or dependency PRs directly into `main`.
+- Consolidate relevant dependency/tooling updates into one duplicate-screened GitHub issue assigned to `@mehul0810` with labels/milestone where supported, acceptance criteria, validation, and branch/base plan.
+- Prefer one planned tooling/dependency update issue/PR over scattered Dependabot PRs.
+- Dependabot PRs should target the active development/release branch when supported; never accept GitHub default `main` without explicit release approval.
+- For stale, superseded, wrong-base, abandoned, or release-misaligned PRs, close with a durable GitHub comment explaining why and link the replacement issue/PR when available.
+- Do not close active owner-directed, release-critical, or ambiguous PRs without checking comments and owner `Codex:` instructions first.
+- Routine status stays in chat; stale-PR closure comments are durable repo-visible state transitions.
+
 ## Classification
 
 Classify each item:
