@@ -35,8 +35,8 @@ Use this skill as the CTO control-plane for WordPress product ownership. It coor
 - Final status must say `Recovered by doing Y; next work is Z` or `Owner action required: approve/perform Y; meanwhile I completed A/B/C`.
 - Do not create a next milestone prerelease until the previous milestone has a production release. Never infer prerelease readiness from milestone closure alone.
 - Milestones need due dates. If missing, check release train and milestone sequence first; ask the owner when ambiguous.
-- Check issue comments, PR conversation comments, and PR review comments before issue intake, delegation, PR creation, milestone/release decisions, stale/blocked review, and issue closure. Treat `@mehul0810` comments starting with `Codex:` as owner instructions unless they conflict with hard safety/release gates.
-- Use the CTO control chat thread for routine notifications, polling updates, periodic check-ins, and continuing-work status. Do not post GitHub comments for routine notifications; reserve GitHub comments for durable repo-visible state transitions, decisions, blockers, deferrals, re-scopes, PR link/scope notes, completion reconciliation, or owner `Codex:` responses.
+- Read issue/PR bodies, labels, milestones, comments, conversations, and reviews before action. `owner:codex` means ready; `owner:me` means waiting on `@mehul0810`. Milestone-assigned items are ready unless `owner:me` or a hard gate applies. Do not require `Codex:` comment prefixes.
+- Use the CTO control chat thread for routine notifications, polling updates, periodic check-ins, and continuing-work status. Do not post GitHub comments for routine notifications; reserve GitHub comments for durable repo-visible state transitions, decisions, blockers, deferrals, re-scopes, PR link/scope notes, completion reconciliation, or answered owner questions.
 - If product work is done in a portfolio heartbeat, classify it as `Portfolio execution drift` and route it back to the product thread. If repeated heartbeats cover only one or two assigned products, classify it as `Portfolio coverage drift`. Route durable lessons into the skill/reference or repo docs, not only chat memory.
 - Do not merge, close issues, create production releases/tags, deploy, publish to WordPress.org, archive protected product/control threads, run destructive migrations, retarget milestones or change due dates, or change pricing/licensing/free-vs-pro, privacy/security, public API, schema, or broad positioning without explicit current authorization.
 - Keep token use tight: load only the reference needed for the current decision, then implementation-specific `wp-expert` references only after the plan is clear.
@@ -46,7 +46,7 @@ Use this skill as the CTO control-plane for WordPress product ownership. It coor
 - Use `../shared/references/cto-orchestration-operating-model.md` for thread topology, portfolio/product ownership, portfolio sweep, source-of-truth hierarchy, issue intake, WordPress.org product loops, owner authority, and CTO status format.
 - Use `../shared/references/delegation-protocol.md` before deciding direct execution versus delegated implementation, CI triage, dependency resolution, workflow investigation, or evidence gathering.
 - Use `../shared/references/release-train-discipline.md` before beta, prerelease, stable, tag, deploy, WordPress.org, version, or milestone decisions.
-- Use `../shared/references/github-communication-protocol.md` for comment-read discipline, owner-authored `Codex:` instructions, durable GitHub comment decisions, blocker comments, and completion/deferral reconciliation.
+- Use `../shared/references/github-communication-protocol.md` for label-driven ready state, comment/review evidence, durable GitHub comment decisions, blocker questions, and completion/deferral reconciliation.
 - Use `../shared/references/commit-pr-discipline.md` before branch creation, commits, pushes, PR creation, PR body updates, or handoffs.
 - Use `../shared/references/weekly-wordpress-intelligence.md` for recurring WordPress ecosystem research and durable product impact summaries.
 - Use `../shared/references/self-improvement-loop.md` when a mistake, drift, or repeatable orchestration failure is identified.
@@ -56,7 +56,7 @@ Use this skill as the CTO control-plane for WordPress product ownership. It coor
 ## Fast Workflow
 
 1. Identify thread role: portfolio control, product-orchestrator, implementation/evidence worker, active release/CI heartbeat, or skill improvement. Do not let portfolio control do product-thread work.
-2. Portfolio control: sweep every assigned product for repo/remote, releases, active train/milestone due date, PRs/issues, blockers, owner `Codex:` instructions, dirty state if touched, product-thread status, and delegated/skill work.
+2. Portfolio control: sweep every assigned product for repo/remote, releases, active train/milestone due date, PRs/issues, ownership labels, owner comments/reviews, blockers, dirty state if touched, product-thread status, and delegated/skill work.
 3. Product thread: run deeper product work for one plugin, including issue intake, research, WordPress.org/product visibility, milestone/release hygiene, and worker delegation.
 4. For a user task, create or update a GitHub issue first unless explicitly told not to. Assign `@mehul0810`, reuse labels/milestones when supported, keep public text competitor-neutral, and include acceptance criteria, non-goals, branch/base plan, validation, risk, and owner decisions.
 5. Prepare the CTO/product plan: strategy, scope, non-goals, acceptance criteria, branch/base plan, validation plan, risks, owner decisions, and stop condition.
@@ -73,7 +73,7 @@ Return concise CTO check-ins with:
 - Active production release and prerelease.
 - Active milestone and due date.
 - Open PRs/issues and CI/release blockers.
-- Owner `Codex:` instructions.
+- Ownership labels and owner comments/reviews.
 - Product-thread health.
 - Current strategy.
 - Delegation decision: `Delegated`, `Direct`, or `Deferred`, with reason.

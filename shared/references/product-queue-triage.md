@@ -25,6 +25,8 @@ Read repo policy before judging fit:
 - `RELEASE.md`, changelog, version file, package metadata, WordPress.org `readme.txt`.
 - Existing labels, milestones, projects, and release branches.
 
+Ensure `owner:codex` and `owner:me` labels exist in each managed repo. Labels define ready state: `owner:codex` is ready for orchestrator/worker action; `owner:me` is waiting on `@mehul0810`.
+
 ## Queue Discovery
 
 For the current repo:
@@ -48,12 +50,14 @@ User requests become GitHub issues first unless the user explicitly says not to.
 
 Owner-mentioned work is approved intake signal, not an owner-decision blocker. When `@mehul0810` names work or says to proceed, duplicate-screen, create or update the issue, assign `@mehul0810`, classify by type/complexity/risk, and prioritize into the nearest appropriate milestone or release train among the next three.
 
+A milestone-assigned issue/PR is ready to work unless it has `owner:me` or hits a hard approval gate. If `@mehul0810` answers a question and relabels the item to `owner:codex`, read the body plus all comments/reviews and continue the needed work without asking again.
+
 Before creating an issue:
 
 - Search open issues, recently closed issues, open PRs, milestones, roadmap docs, product docs, and release docs.
 - Avoid broad umbrella issues; prefer one issue per PR.
 - Assign to `@mehul0810`.
-- Reuse existing labels and milestones when evidence supports them.
+- Reuse existing labels and milestones when evidence supports them; label ready backlog `owner:codex`.
 - Include acceptance criteria, non-goals, branch/base plan, validation expectations, risk, and owner decisions.
 - Use `develop` for normal development integration; create or use `release/<milestone-number>` from the verified development base when the repo has adopted that workflow and milestone evidence supports it.
 - Missing milestone due dates or branch-policy gaps are not blanket blockers for owner-approved intake. Create/update the issue and recommend the milestone/order; escalate only missing metadata or unsafe ambiguity.
@@ -75,7 +79,7 @@ During rehydration, check open Dependabot/dependency/tooling PRs and stale PRs.
 - Prefer one planned tooling/dependency update issue/PR over scattered Dependabot PRs.
 - Dependabot PRs should target the active development/release branch when supported; never accept GitHub default `main` without explicit release approval.
 - For stale, superseded, wrong-base, abandoned, or release-misaligned PRs, close with a durable GitHub comment explaining why and link the replacement issue/PR when available.
-- Do not close active owner-directed, release-critical, or ambiguous PRs without checking comments and owner `Codex:` instructions first.
+- Do not close active owner-directed, release-critical, or ambiguous PRs without checking comments, reviews, labels, and milestones first.
 - Routine status stays in chat; stale-PR closure comments are durable repo-visible state transitions.
 
 ## Classification
@@ -83,7 +87,7 @@ During rehydration, check open Dependabot/dependency/tooling PRs and stale PRs.
 Classify each item:
 
 - `Autonomous`: bounded, aligned with product docs, clear validation path, no sensitive decision.
-- `Needs owner`: true hard gate or conflict, such as release/publish/merge permission, ambiguous release train, unsafe milestone inference, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contract, destructive action, or broad positioning.
+- `Needs owner`: labeled `owner:me` or blocked by a true hard gate/conflict, such as release/publish/merge permission, ambiguous release train, unsafe milestone inference, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contract, destructive action, or broad positioning. Ask the question clearly in the issue/PR and label `owner:me`; resume when answered and relabeled `owner:codex`.
 - `Release blocker`: must land or be explicitly deferred before the target milestone/release.
 - `Blocked`: missing access, failing environment, stale/conflicted branch, unknown base, unclear reproduction.
 - `Defer/close`: duplicate, superseded, stale without evidence, support-only, or poor product fit.

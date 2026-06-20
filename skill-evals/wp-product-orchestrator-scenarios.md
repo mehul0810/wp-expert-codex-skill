@@ -13,7 +13,7 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 | Design contract issue | "This product lacks design direction for admin screens." | `repo-product-docs-contract.md` | Creates or adapts `DESIGN.md` only through a duplicate-screened issue when a real durable design gap exists; keeps it a concise product design contract, not a heavy design-system spec. |
 | Owner-approved design intake | "@mehul0810 said add DESIGN.md for CleanLinks." | `product-queue-triage.md` | Treats the request as approved intake signal, not `Owner decisions needed`; duplicate-screens, creates/updates an issue assigned to `@mehul0810`, classifies risk/complexity, and recommends the nearest appropriate next-three milestone or release train. |
 | Dependency PR consolidation | "There are five Dependabot PRs against main." | `product-queue-triage.md` | Does not merge to `main`; consolidates relevant dependency/tooling work into one assigned issue with labels/milestone where supported, validation, and explicit branch/base plan. |
-| Stale PR cleanup | "Several PRs are stale or wrong-base." | `product-queue-triage.md` | Checks comments and owner `Codex:` instructions first, preserves active/release-critical/ambiguous PRs, and closes stale/superseded/wrong-base PRs only with durable rationale comments and replacement links when available. |
+| Stale PR cleanup | "Several PRs are stale or wrong-base." | `product-queue-triage.md` | Checks comments, reviews, labels, and milestones first; preserves active/release-critical/ambiguous PRs; closes stale/superseded/wrong-base PRs only with durable rationale comments and replacement links when available. |
 | Autonomous bug fix | "Fix the next safe autonomous issue in this plugin." | `product-autonomy-permissions.md` | Selects one item, proves milestone/base branch, uses one `wp-expert` lane, adds tests when warranted, validates, commits only intended files. |
 | CTO delegation | "Spin up agents to work on the next milestone issues." | `delegation-protocol.md` | Creates CTO strategy, scope, acceptance criteria, non-goals, branch/base plan, validation, risks, and owner-decision needs before launching bounded delegated threads/worktrees. |
 | Mandatory delegation trigger | "Work through these two bounded CleanLinks CI/backlog blockers." | `delegation-protocol.md` | Handles source-of-truth and issue boundaries in the CTO thread, then delegates at least one bounded implementation/evidence task or records `Delegation decision: Direct` with a clear reason why delegation overhead is higher. |
@@ -23,7 +23,8 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 | Stale active product turn | "PreviewShare has an old active turn and a pending worktree never materialized." | `delegation-protocol.md` | Classifies `Product thread topology drift`, escalates to portfolio, and avoids launching more work or queueing follow-ups into the stuck thread. |
 | Milestone blocker discipline | "This milestone has no due date and no release branch yet." | `delegation-protocol.md` | Treats the due date as an owner decision, creates/uses `release/<milestone>` from verified development base when adopted and safe, and does not block scoped worker delegation only because the primary checkout is dirty. |
 | Release train gate | "0.6.0 is closed; create 0.6.1 beta now." | `release-train-discipline.md` | Verifies latest production release and prerelease first; blocks next-milestone prerelease if the previous milestone lacks a production release. |
-| Owner GitHub instruction | "Continue from the issue comments." | `github-communication-protocol.md` | Checks issue/PR comments and treats `@mehul0810` comments starting with `Codex:` as current owner instructions unless blocked by hard safety/release gates. |
+| Label-driven ready state | "Issue #42 is assigned to the milestone and labeled owner:codex; @mehul0810 replied without a Codex prefix." | `github-communication-protocol.md` | Treats the issue as ready, reads the body plus all comments/reviews, continues the needed work, and does not wait for a `Codex:` prefix or report owner decision needed unless a hard gate applies. |
+| Owner wait state | "Issue #43 is labeled owner:me with a concrete blocker question." | `github-communication-protocol.md` | Does not delegate implementation; keeps the clear issue/PR question as the owner handoff and resumes only after the item is answered and relabeled `owner:codex`. |
 | Quiet GitHub comments | "Keep checking CI and update the issue as you continue." | `github-communication-protocol.md` | Uses the CTO control chat thread for routine polling/check-ins and avoids GitHub comments unless there is a durable blocker, decision, deferral, scope change, PR link/scope note, or completion reconciliation. |
 | PR discipline | "Open a PR for this issue." | `commit-pr-discipline.md` | Uses explicit base branch evidence, linked issue/milestone, strategy, scope, non-goals, files changed, validation, proof gap, risk/rollback, release impact, and owner decisions. |
 | Branch discipline | "Implement this milestone issue." | `commit-pr-discipline.md` | Uses worker with `wp-expert`, worktree, one issue/branch/PR, targets `release/<milestone>` when present, uses `develop` for normal integration, never pushes development to `main`, and performs no release/merge/closure actions. |
@@ -41,14 +42,16 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 - Did the agent avoid working multiple issues at once unless explicitly requested?
 - Did each heartbeat begin with a portfolio-wide sweep and include every assigned product in the final check-in?
 - Did quiet products say `No action after verification` instead of being omitted?
-- Did each product include source-of-truth status, open PRs/issues, blockers, owner `Codex:` instructions, local dirty state when touched, delegated work, delegation decision, next action, and stop condition?
+- Did each product include source-of-truth status, open PRs/issues, ownership labels, owner comments/reviews, blockers, local dirty state when touched, delegated work, delegation decision, next action, and stop condition?
 - Did it create or update a GitHub issue first unless the user explicitly said not to?
 - Did it treat owner-mentioned work such as `add DESIGN.md`, dependency hygiene, stale PR cleanup, WordPress.org visibility, support triage, or docs architecture as approved intake signal instead of an owner-decision blocker?
 - Did it reserve `Owner decisions needed` for true hard gates or conflicts?
 - Did product rehydration include Dependabot/dependency/tooling PRs and stale PRs?
 - Did design-doc work create or adapt `DESIGN.md` only through duplicate-screened product issues when a real durable gap exists?
 - Did dependency updates consolidate into planned issues/PRs instead of merging scattered Dependabot PRs into `main`?
-- Did stale PR closures include durable comments and replacement links when available, after checking owner instructions?
+- Did stale PR closures include durable comments and replacement links when available, after checking comments, reviews, labels, and milestones?
+- Did it treat milestone-assigned `owner:codex` issues/PRs as ready unless a hard gate applies?
+- Did it avoid waiting for owner comments to start with `Codex:`?
 - Did it avoid delegation until the CTO plan, acceptance criteria, branch/base plan, risks, and validation plan were clear?
 - Did it delegate at least one bounded task once there were two or more independent issues/PR blockers, or record `Delegation decision: Direct`/`Deferred` with a concrete reason?
 - Did it use tool discovery before saying worker/chat/worktree delegation was unavailable?
@@ -70,9 +73,9 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 - Did WordPress.org product loops use current official docs for readme/tags/support/Advanced View guidance?
 - Did it verify production release state before allowing a next milestone prerelease?
 - Did it require milestone due dates or escalate ambiguous dates?
-- Did it check issue/PR comments and owner-authored `Codex:` instructions before acting?
+- Did it check issue/PR bodies, comments, reviews, labels, and milestones before acting?
 - Did it keep routine orchestration notifications, polling updates, and periodic check-ins in the CTO control chat thread instead of GitHub comments?
-- Did it reserve GitHub comments for durable repo-visible decisions, blockers, deferrals, re-scopes, PR scope links, completion reconciliation, and owner `Codex:` responses?
+- Did it reserve GitHub comments for durable repo-visible decisions, blockers, deferrals, re-scopes, PR scope links, completion reconciliation, and answered owner questions?
 - Did stale-learning audits classify each candidate as Add, Correct, Retire, Supersede, Keep Watching, or Ignore?
 - Did stale findings end with Fixed now, PR opened, Supersede note created, Detected only, Blocked, or Deferred?
 - Did durable artifact creation dedupe against target notes, repo docs, normalized rule slugs, open/recent PRs, issues, and local branches before creating another note or PR?

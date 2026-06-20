@@ -66,7 +66,7 @@ For each product, verify or report the minimum source-of-truth state:
 - Open PRs and issues.
 - Dependabot/dependency/tooling PRs and stale PRs.
 - CI or release blockers.
-- Owner `Codex:` instructions.
+- Ownership labels and owner comments/reviews.
 - Local dirty state when the repo is touched.
 - Product-thread and delegated/skill work.
 
@@ -75,6 +75,8 @@ Only after this sweep should the portfolio thread choose the highest-leverage go
 ## GitHub Issue-First Intake
 
 Use GitHub issue-first intake unless the user explicitly says not to create or update an issue.
+
+GitHub labels define ready state. Ensure `owner:codex` and `owner:me` exist in each managed repo. Use `owner:codex` for items ready for orchestrator/worker action and `owner:me` for items waiting on `@mehul0810`. A milestone-assigned issue/PR is ready unless it has `owner:me` or hits a hard approval gate.
 
 When `@mehul0810` explicitly names a work item or says to proceed, treat that as approved backlog/intake signal, not an owner-decision blocker. Examples include `add DESIGN.md`, dependency hygiene, stale PR cleanup, WordPress.org visibility work, support triage, and docs architecture.
 
@@ -137,6 +139,8 @@ Escalate before prerelease/release creation, production deploy, ambiguous milest
 
 Reserve `Owner decisions needed` for true hard gates or conflicts: release/publish/merge permissions, ambiguous release-train conflicts, milestone due dates that cannot be inferred safely, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contracts, destructive actions, or broad positioning.
 
+Do not require owner comments to start with `Codex:`. Comments and reviews are evidence to read before work, stale-PR closure, PR creation, issue closure, or rescope decisions; labels, milestones, and hard gates determine ready state.
+
 ## Aculect First Default
 
 Support multi-product ownership, but the operational default is Aculect AI Companion first. Apply this workflow there first and add more products only after the workflow proves stable.
@@ -152,7 +156,7 @@ Verified source of truth:
 Active production release and prerelease:
 Active milestone and due date:
 Open PRs/issues and CI/release blockers:
-Owner Codex instructions:
+Ownership labels and owner comments/reviews:
 Product-thread health:
 Current strategy:
 Delegation decision:
