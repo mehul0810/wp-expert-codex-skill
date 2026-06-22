@@ -6,9 +6,10 @@ Use this reference before committing, pushing, opening a PR, updating a PR body,
 
 - `main` is production release space only. Never push development work directly to `main`.
 - `develop` is for unmilestoned development integration or as the verified source for creating missing milestone branches.
-- Milestone-based work must create or use `release/<milestone-number>` branches from the verified development base and target issue PRs into that release branch.
+- Milestone-based work must create or use `release/<release-version>` branches from the verified development base and target issue PRs into that release branch. `<release-version>` is the version/milestone title, not the GitHub milestone ID or sequence number; do not create `release/3` unless the documented release version is literally `3`.
 - Release branches merge to `main` only after explicit owner release approval.
 - Never rely on GitHub's default base; prove and set the PR base explicitly.
+- If a wrong milestone-ID branch was created, preserve commits by replaying or reconciling them into the correct release-version branch, retarget open PRs, and do not delete the wrong branch without explicit owner approval.
 
 ## Commit Convention
 

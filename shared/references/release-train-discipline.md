@@ -10,7 +10,7 @@ Example: if `0.6.0` is not production-released, do not create `0.6.1-beta-*`. Ne
 
 Never infer prerelease readiness from milestone closure alone.
 
-`main` is production release space only. Release branches merge to `main` only after explicit owner release approval and owner testing confirmation. Milestone work must target `release/<milestone-number>`. `develop` is only for unmilestoned development integration or as the verified source for creating a missing milestone branch.
+`main` is production release space only. Release branches merge to `main` only after explicit owner release approval and owner testing confirmation. Milestone release work must target `release/<release-version>`, where `<release-version>` is the version/milestone title, not the GitHub milestone ID or sequence number. Do not create branches like `release/3` unless the documented release version is literally `3`. `develop` is only for unmilestoned development integration or as the verified source for creating a missing milestone branch.
 
 ## Required Release Checks
 
@@ -34,7 +34,9 @@ Milestones need due dates. If a milestone lacks a due date:
 - Do not invent dates that conflict with repo policy or production release order.
 - Do not treat the missing due date alone as a blocker to implementation delegation for an existing issue when scope, milestone evidence, and branch/base are otherwise safe.
 
-For milestone-assigned work, create or use `release/<milestone-number>` from the verified development base. Do not target `develop` for milestone PRs. Do not retarget ambiguous milestones or change due dates without evidence.
+For milestone-assigned work, create or use `release/<release-version>` from the verified development base; `<release-version>` is the version/milestone title, not the GitHub milestone ID or sequence number. If the milestone title is not a release version, infer only from repo release policy/source-of-truth evidence; otherwise ask or create a product-thread decision brief. Do not target `develop` for milestone PRs. Do not retarget ambiguous milestones or change due dates without evidence.
+
+If a wrong milestone-ID branch such as `release/3` was created, preserve commits by replaying or reconciling them into the correct `release/<release-version>` branch, retarget open PRs, and do not delete the wrong branch without explicit owner approval.
 
 ## Release Stop Conditions
 

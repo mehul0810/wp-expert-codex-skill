@@ -59,7 +59,8 @@ Before creating an issue:
 - Assign to `@mehul0810`.
 - Reuse existing labels and milestones when evidence supports them; label ready backlog `owner:codex`.
 - Include acceptance criteria, non-goals, branch/base plan, validation expectations, risk, and owner decisions.
-- Milestone work must use `release/<milestone-number>` as branch and PR base. Use `develop` only for unmilestoned integration or as the verified source for creating missing milestone branches.
+- Milestone work must use `release/<release-version>` as branch and PR base, where `<release-version>` is the version/milestone title, not the GitHub milestone ID or sequence number. If the milestone title is not a release version, infer only from repo release policy/source-of-truth evidence; otherwise ask or create a product-thread decision brief. Do not create `release/3` unless the documented release version is literally `3`. Use `develop` only for unmilestoned integration or as the verified source for creating missing milestone branches.
+- If a wrong milestone-ID branch was created, preserve commits by replaying or reconciling them into the correct `release/<release-version>` branch, retarget open PRs, and do not delete the wrong branch without explicit owner approval.
 - Missing milestone due dates or branch-policy gaps are not blanket blockers for owner-approved intake. Create/update the issue and recommend the milestone/order; escalate only missing metadata or unsafe ambiguity.
 - Dirty or behind primary checkouts block direct edits, not fresh scoped worktree delegation from a clean upstream branch.
 - If delegation is deferred, report the exact blocker: issue number, missing branch/base, missing owner decision, missing tool/project, or unsafe checkout state.

@@ -81,7 +81,7 @@ When work is tied to a GitHub issue, Trac ticket, or project tracker item, use t
 Before opening the PR:
 
 - Inspect the issue milestone title, labels, body, linked project item, linked release, and existing related PRs.
-- Fetch remote branches and look for matching `release/<milestone>`, `hotfix/<milestone>`, `support/<milestone>`, `maintenance/<milestone>`, `develop`, or project-specific release branches.
+- Fetch remote branches and look for matching `release/<release-version>`, `hotfix/<release-version>`, `support/<release-version>`, `maintenance/<release-version>`, `develop`, or project-specific release branches. Use the version/milestone title, not the GitHub milestone ID or sequence number.
 - If a matching release branch exists, create the work branch from that release branch and open the PR against that branch.
 - If the milestone explicitly targets default-branch development, document that evidence and still pass `--base` explicitly.
 - If multiple issues are included, confirm they share the same release target; otherwise split the work or ask before creating a combined PR.
