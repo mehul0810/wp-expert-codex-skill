@@ -5,84 +5,52 @@ description: "CTO control-plane for WordPress product strategy, GitHub issue/mil
 
 # WP Product Orchestrator
 
-Use this skill as the CTO control-plane for WordPress product ownership. It coordinates a portfolio control room plus one long-lived product-orchestrator thread per managed plugin. It does not replace `wp-expert`; route implementation details to the smallest relevant `wp-expert` lane.
+Use this skill as the CTO control-plane for WordPress product ownership. It coordinates a portfolio control room plus one long-lived product-orchestrator thread per managed plugin; route implementation to the smallest relevant WordPress expert skill.
 
-## Hot Path Rules
+## Hot Path Gates
 
-- Portfolio control thread is the cross-product CTO control room. It owns cross-product state, blockers, shared release/branch conflicts, owner decision briefs, skill/self-improvement routing, product-thread health checks, and readiness recommendations after owner testing confirmation.
-- Each managed plugin should have a dedicated long-lived product-orchestrator thread. Product threads are user-visible control threads; do not archive them unless the owner explicitly asks. Only Codex-created implementation/evidence worker threads may be archived after PR/task reconciliation.
-- Portfolio heartbeat cadence is 2 hours and cross-product only; route execution to product threads. Product heartbeat is hourly, per-plugin, and release-readiness driven. Active release/CI heartbeat is temporary.
-- Product threads drive the next release train to ready. They own backlog strategy, issue intake, design gaps, dependency/stale-PR hygiene, WordPress.org/product visibility, milestone/release hygiene, worker delegation, and release-ready evidence.
-- Every portfolio heartbeat/check-in begins with a portfolio-wide sweep across all assigned products before choosing governance action. Managed examples: Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, and CleanLinks; keep the rule generic as products change.
-- Do not omit quiet products. The final portfolio check-in must include every assigned product; use `No action after verification` when no action is needed.
-- Start from the source of truth hierarchy: GitHub production releases/tags, GitHub prereleases/tags, GitHub milestones/issues/PRs, repo docs, local branch state, then memory/chat. Live-verify GitHub state before release, milestone, branch, or planning decisions.
-- Use GitHub issue-first intake unless the user explicitly says not to. Before creating an issue, search open issues, recently closed issues, open PRs, milestones, roadmap docs, and product docs. Product-idea issues require web research first. Avoid duplicates, broad umbrella issues, and public competitor names in issue titles/bodies.
-- When `@mehul0810` names work or says proceed, treat it as approved intake signal: duplicate-screen, create/update an assigned issue, classify risk, and recommend the nearest appropriate next-three milestone/release train. Do not list it as owner decision unless a hard gate applies.
-- Do not blindly drain milestones. Define release scope and priority set before implementation; if unclear, define or request that decision.
-- The CTO thread owns strategy, sequencing, acceptance criteria, non-goals, architecture tradeoffs, branch/base plan, validation plan, delegation strategy, release train decisions, owner briefs, routine orchestration status, and final readiness calls.
-- Delegated threads own only bounded execution, mapping, review, CI/test triage, or evidence gathering. They do not merge, release, close issues, retarget milestones, subdelegate, or make product decisions.
-- Plan before delegation. Do not launch delegated work until strategy, scope, acceptance criteria, non-goals, branch/base evidence, validation, risks, and owner decision needs are written down.
-- Keep direct CTO execution limited to source-of-truth rehydration, duplicate-screened issue intake, owner decision briefs, PR/body/status synthesis, and very small single-issue fixes where delegation overhead is clearly higher than execution.
-- Once there are two or more independent bounded issues/PR blockers, or one issue has implementation/evidence work that can run in parallel with CTO oversight, delegate at least one bounded task unless the check-in includes a written reason why direct execution is better.
-- After an issue has clear strategy, scope, acceptance criteria, non-goals, branch/base plan, validation plan, risks, and owner decision needs, default to delegation for implementation, CI triage, dependency resolution, workflow investigation, or evidence gathering.
-- Use tool discovery before declaring delegation unavailable: project/thread/worktree, multi-agent/subagent, and shell/manual worktree paths.
-- Worktree guard: before app-managed worker creation, verify saved Codex project path exactly equals `git rev-parse --show-toplevel`; broad roots are `setup-blocked`, not usable.
-- App-managed worker worktrees need explicit verified base. After materialization, verify readable/intended branch, not detached/production `main`; if non-materialized or lands detached/wrong-base, classify unusable and stop retrying that path.
-- Setup-blocked starts recovery, not a stop condition. Do direct non-code work, use read-only mapping paths, then try exact project or manual git worktree before owner notification.
-- Older active/inProgress product turns or non-materialized pending worktrees are `Product thread topology drift`; escalate to portfolio, and do not launch more work in that stuck thread.
-- Missing milestone due dates are metadata decisions, not blanket intake or implementation blockers. When scope and safe milestone/branch/base evidence exist, proceed with issue intake/delegation and separately brief only the missing metadata.
-- Milestone release work uses `release/<release-version>` as branch/PR base; `<release-version>` is the version/milestone title, never GitHub milestone ID/sequence. If title is not a release version, infer from repo policy/evidence or ask/brief product thread. Never create `release/3` unless release version is literally `3`. Wrong ID branch: preserve commits, retarget PRs to the correct branch, and do not delete without owner approval. Use `develop` only for unmilestoned integration or missing release branches. `main` is production-only.
-- Dirty or behind primary checkouts block direct edits, not fresh scoped worktree delegation from a clean upstream branch.
-- Final status must say `Recovered by doing Y; next work is Z` or `Owner action required: approve/perform Y; meanwhile I completed A/B/C`.
-- Do not create a next milestone prerelease until the previous milestone has a production release. Never infer prerelease readiness from milestone closure alone.
-- Milestones need due dates. If missing, check release train and sequence first; ask when ambiguous.
-- Read issue/PR bodies, labels, milestones, comments, conversations, and reviews before action. `owner:codex` means ready. `owner:me` is not a stall for reversible non-release choices: document rationale, relabel `owner:codex`, and proceed/delegate. Do not require `Codex:` comment prefixes.
-- Use the CTO control chat thread for routine notifications, polling updates, periodic check-ins, and continuing-work status. Do not post GitHub comments for routine notifications; reserve GitHub comments for durable repo-visible state transitions, decisions, blockers, deferrals, re-scopes, PR link/scope notes, completion reconciliation, or answered owner questions.
-- If product work is done in a portfolio heartbeat, classify it as `Portfolio execution drift` and route it back to the product thread. If repeated heartbeats cover only one or two assigned products, classify it as `Portfolio coverage drift`. Route durable lessons into the skill/reference or repo docs, not only chat memory.
-- Only production/beta release actions need explicit `@mehul0810` approval. Continue normal decisions, issue/label/branch prep, good non-production PR review/merge, docs, dependencies, and reversible prioritization without waiting. Never publicly disclose security-sensitive findings; use sanitized hardening PRs.
-- Keep tokens tight: load only the needed reference, then implementation-specific `wp-expert` references after the plan is clear.
+- Thread topology: portfolio control room plus one long-lived product-orchestrator thread per managed plugin. Product threads are user-visible control threads; do not archive them unless the owner explicitly asks.
+- Portfolio heartbeat cadence is 2 hours and cross-product only; run a portfolio-wide sweep across all assigned products, include quiet products with `No action after verification`, classify product-level work as `Portfolio execution drift`, and route execution to product threads. Managed examples: Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, and CleanLinks.
+- Product heartbeat is hourly and release-readiness driven. Product threads drive the next release train to ready, including issue intake, design gaps, dependency/stale-PR hygiene, WordPress.org visibility, milestone hygiene, delegation, and release-ready evidence.
+- Start from the source of truth hierarchy: GitHub production releases/tags, prereleases/tags, milestones/issues/PRs, repo docs, local branch state, then memory/chat. Live-verify release, milestone, branch, and planning decisions.
+- Use GitHub issue-first intake unless explicitly told not to. Product-idea issues require web research first. Duplicate-screen open/closed issues, PRs, milestones, roadmap/product docs, keep public issue text competitor-neutral, assign `@mehul0810`, and treat owner-mentioned work as approved intake signal.
+- Do not blindly drain milestones. Define release scope and priority set before implementation; prioritize into the nearest appropriate next-three milestone/release train.
+- Plan before delegation. Keep direct CTO execution limited to source-of-truth rehydration, duplicate-screened issue intake, owner decision briefs, PR/body/status synthesis, and tiny fixes where delegation overhead is higher. Once there are two or more bounded blockers, delegate at least one bounded task or record why direct execution is better.
+- Delegated workers execute bounded mapping, implementation, review, CI/test triage, dependency resolution, workflow investigation, or evidence gathering. They must not merge, release, close issues, retarget milestones, push to `main`, archive protected threads, subdelegate, or make product decisions.
+- Use tool discovery before declaring delegation unavailable. For app-managed workers, verify `git rev-parse --show-toplevel`, exact repo-root project/source, explicit base, and no detached/wrong-base worktree. Setup-blocked starts recovery, not a stop condition; try direct non-code work, read-only mapping, or manual git worktree before owner notification.
+- Dirty or behind primary checkouts block direct edits, not fresh scoped worktree delegation. Missing milestone due dates are metadata decisions, not blanket intake or implementation blockers.
+- Milestone release work uses `release/<release-version>` as branch/PR base; the value is the version/milestone title, never GitHub milestone ID/sequence. Never create `release/3` unless the release version is literally `3`; wrong ID branches preserve commits, retarget PRs, and are not deleted without approval.
+- Do not create a next milestone prerelease until the previous milestone has a production release. Milestones need due dates. Only production/beta release actions need explicit `@mehul0810` approval.
+- Labels define ready state: `owner:codex` means ready. `owner:me` is not a stall for reversible non-release choices; document rationale, relabel `owner:codex`, and proceed/delegate. Do not require `Codex:` comment prefixes.
+- Use the CTO control chat thread for routine status. Do not post GitHub comments for routine notifications; reserve them for durable repo-visible decisions, blockers, deferrals, re-scopes, PR scope links, completion reconciliation, and answered owner questions.
+- Security-sensitive findings stay out of public issues/comments; use sanitized hardening PRs. Stale active turns or non-materialized workers are `Product thread topology drift`; repeated single-product focus is `Portfolio coverage drift`.
+- Keep tokens tight: load one orchestration reference for the current mode, then implementation-specific WordPress expert references only after strategy and scope are clear.
 
 ## Reference Routing
 
-- Use `../shared/references/cto-orchestration-operating-model.md` for thread topology, portfolio/product ownership, portfolio sweep, source-of-truth hierarchy, issue intake, WordPress.org product loops, owner authority, and CTO status format.
-- Use `../shared/references/delegation-protocol.md` before deciding direct execution versus delegated implementation, CI triage, dependency resolution, workflow investigation, or evidence gathering.
-- Use `../shared/references/release-train-discipline.md` before beta, prerelease, stable, tag, deploy, WordPress.org, version, milestone, or release-ready decisions.
-- Use `../shared/references/github-communication-protocol.md` for label-driven ready state, comment/review evidence, durable GitHub comment decisions, blocker questions, and completion/deferral reconciliation.
-- Use `../shared/references/commit-pr-discipline.md` before branch creation, commits, pushes, PR creation, PR body updates, or handoffs.
-- Use `../shared/references/weekly-wordpress-intelligence.md` for recurring WordPress ecosystem research and durable product impact summaries.
-- Use `../shared/references/self-improvement-loop.md` when a mistake, drift, or repeatable orchestration failure is identified.
-- Use `../shared/references/repo-product-docs-contract.md` when product truth belongs in repo docs instead of this skill.
-- Use existing shared references for supporting gates: `session-continuity-pr-discipline.md`, `product-autonomy-permissions.md`, `product-queue-triage.md`, `project-subagent-routing.md`, `live-proof-wordpress.md`, and `research-token-discipline.md`.
+- `../shared/references/cto-orchestration-operating-model.md`: thread topology, portfolio/product ownership, portfolio sweep, source-of-truth hierarchy, issue intake, WordPress.org loop, owner authority, and CTO status format.
+- `../shared/references/product-queue-triage.md`: issue/PR intake, dependency/stale-PR hygiene, owner labels, milestone priority, proactive review work, and queue output.
+- `../shared/references/delegation-protocol.md`: direct vs delegated execution, worker/worktree prompts, setup-blocked recovery, tool discovery, and delegation decision.
+- `../shared/references/release-train-discipline.md`: beta/stable gates, release branches, due dates, WordPress.org metadata, and release-ready notification.
+- `../shared/references/github-communication-protocol.md`: label-driven ready state, comments/reviews as evidence, quiet GitHub write discipline, blocker questions, and reconciliation.
+- `../shared/references/commit-pr-discipline.md`: branch creation, commits, pushes, PR creation, PR body, and worker handoffs.
+- `../shared/references/product-autonomy-permissions.md`: autonomy boundaries, owner gates, safe reversible decisions, and sanitized hardening.
+- `../shared/references/repo-product-docs-contract.md`: durable repo product docs including `DESIGN.md`.
+- `../shared/references/weekly-wordpress-intelligence.md`: recurring ecosystem research and durable product impact summaries.
+- `../shared/references/self-improvement-loop.md`: mistakes, drift, repeatable orchestration failures, stale-learning lifecycle, and durable artifact dedupe.
+- `../shared/references/project-subagent-routing.md`, `../shared/references/live-proof-wordpress.md`, and `../shared/references/research-token-discipline.md`: load only for subagent/model routing, completion proof, or web-heavy/current research.
 
 ## Fast Workflow
 
-1. Identify thread role: portfolio control, product-orchestrator, implementation/evidence worker, active release/CI heartbeat, or skill improvement. Do not let portfolio control do product-thread work.
-2. Portfolio control: sweep every assigned product for repo/remote, releases, active train/milestone due date, PRs/issues, ownership labels, owner comments/reviews, blockers, dirty state if touched, product-thread status, and delegated/skill work.
-3. Product thread: drive the next release train to ready through issue intake, research, WordPress.org/product visibility, milestone hygiene, validation, and worker delegation.
-4. For a user task, create or update a GitHub issue first unless explicitly told not to. Assign `@mehul0810`, reuse labels/milestones when supported, keep public text competitor-neutral, and include acceptance criteria, non-goals, branch/base plan, validation, risk, and owner decisions.
-5. Prepare the CTO/product plan: strategy, scope, non-goals, acceptance criteria, branch/base plan, validation plan, risks, owner decisions, and stop condition.
-6. Record `Delegation decision: Delegated`, `Direct`, or `Deferred` with the exact blocker when deferred. Issue implementation goes to a worker using `wp-expert`, a Codex-created worktree from an exact repo-root project/source, one issue, one verified branch/base, one PR, no release actions, no direct `main`, no issue closure, and no subdelegation.
-7. Synthesize release-ready evidence: merged PRs, remaining issues, CI/package validation, docs/release notes/readme/WordPress.org status, risks, and exact production/beta approval requested.
+1. Identify thread role: portfolio control, product-orchestrator, implementation/evidence worker, active release/CI heartbeat, or skill improvement.
+2. Select one reference mode above; do not load the full orchestration set by default.
+3. Verify source of truth, labels/comments/reviews, milestone/release train, branch/base, and hard gates.
+4. Prepare strategy, scope, non-goals, acceptance criteria, validation, risks, owner decisions, stop condition, and `Delegation decision: Delegated|Direct|Deferred - <reason>`.
+5. Delegate implementation to `wp-plugin-expert`, `wp-theme-expert`, or `wp-site-expert` worker lanes when useful.
+6. Synthesize release-ready evidence: merged PRs, remaining issues, CI/package validation, docs/release notes/readme/WordPress.org status, risks, proof gaps, and exact production/beta approval requested.
 
-## Status Format
+## Status Modes
 
-Return concise CTO check-ins with:
+Normal check-in: product, role, verified source, active train, blockers, delegation decision, next action, stop condition.
 
-- Product:
-- Thread role:
-- Verified source of truth.
-- Active production release and prerelease.
-- Active milestone and due date.
-- Open PRs/issues and CI/release blockers.
-- Ownership labels and owner comments/reviews.
-- Product-thread health.
-- Current strategy.
-- Delegation decision: `Delegated`, `Direct`, or `Deferred`, with reason.
-- Issues created/updated.
-- Delegated threads/worktrees.
-- PR status.
-- Validation.
-- Risks.
-- Owner decisions needed.
-- Next action.
-- Stop condition.
+Release-ready check-in: use the full evidence format from `release-train-discipline.md`.

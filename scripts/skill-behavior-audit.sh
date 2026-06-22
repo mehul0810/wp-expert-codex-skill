@@ -26,7 +26,7 @@ require_text "wp-expert/SKILL.md" "wp-site-expert" "wp-expert site specialist ro
 require_text "wp-plugin-expert/SKILL.md" "../wp-expert/references/plugin-architecture.md" "wp-plugin-expert plugin architecture routing"
 require_text "wp-theme-expert/SKILL.md" "../wp-expert/references/block-theme-architecture.md" "wp-theme-expert block theme routing"
 require_text "wp-site-expert/SKILL.md" "../wp-expert/references/conversion-focused-website-engineering.md" "wp-site-expert conversion routing"
-require_text "wp-expert/references/reference-routing-map.md" "## Mandatory Overlays" "mandatory overlay routing"
+require_text "wp-expert/references/reference-routing-map.md" "## Risk-Triggered Overlays" "risk-triggered overlay routing"
 require_text "wp-expert/references/architecture-decision-gate.md" "Source of truth" "architecture source-of-truth gate"
 require_text "wp-expert/references/agent-behavior-eval-scenarios.md" "Block theme page from screenshot" "block theme editability eval scenario"
 require_text "wp-expert/references/agent-behavior-eval-scenarios.md" "Milestone issue PR" "PR base eval scenario"
