@@ -1,6 +1,6 @@
 ---
 name: wp-expert
-description: Umbrella router for principal WordPress engineering. Use for ambiguous WordPress work or when the right specialist is unclear; route plugin work to wp-plugin-expert, theme/FSE/block design work to wp-theme-expert, site/UX/CRO/SEO work to wp-site-expert, product orchestration to wp-product-orchestrator, and contribution work to wp-contributor.
+description: Thin router for ambiguous WordPress engineering. Use only when the user explicitly asks for wp-expert or when the correct specialist is unclear; otherwise prefer wp-plugin-expert, wp-theme-expert, wp-site-expert, wp-product-orchestrator, wp-contributor, or content-writer directly.
 ---
 
 # WP Expert

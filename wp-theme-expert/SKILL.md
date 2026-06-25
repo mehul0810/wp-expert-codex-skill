@@ -1,6 +1,6 @@
 ---
 name: wp-theme-expert
-description: Enterprise WordPress theme engineering for classic themes, block themes, FSE, theme.json, templates, template parts, patterns, block styles, custom blocks, editor/frontend parity, design-to-theme implementation, visual parity, responsive architecture, and premium WordPress theme UX.
+description: Enterprise WordPress theme engineering for classic themes, block themes, FSE, theme.json, templates, patterns, block styles, custom blocks, editor/frontend parity, design-to-theme implementation, visual parity, responsive architecture, and premium theme UX.
 ---
 
 # WP Theme Expert
@@ -19,23 +19,12 @@ Operate as a principal WordPress theme and block/FSE engineer. Build editable, p
 - Put classic editor fields in meta boxes; put block editor document settings in document/sidebar panels and block settings in inspector panels. Do not show new meta boxes in the block editor unless preserving legacy compatibility.
 - Never compromise premium and enterprise feel: preserve visual hierarchy, spacing, typography, responsive quality, interaction states, accessibility, and editor/frontend parity.
 - For runtime/editor/frontend completion claims, use `../shared/references/live-proof-wordpress.md` when live proof matters.
+- Use `references/router.md` only when the correct theme/FSE reference is not obvious from the task.
 - Stage only intended files, commit scoped validated changes when expected, and push only when explicitly asked or repo-local automation policy authorizes it.
 
 ## Reference Router
 
-- Block themes, FSE architecture, `theme.json`, templates, parts, patterns: `../wp-expert/references/block-theme-architecture.md`.
-- Design-to-FSE custom block theme from screenshot/Figma/design: `../wp-expert/references/custom-block-theme-from-design.md`.
-- Classic themes, child themes, block editor compatibility: `../wp-expert/references/theme-and-block-editor.md`.
-- Style guides, design tokens, custom themes, child-theme translation: `../wp-expert/references/style-guide-theme-translation.md`.
-- Visual parity and screenshot regression: `../wp-expert/references/visual-parity-regression.md`.
-- Theme/frontend performance, Core Web Vitals, fonts/images/assets: `../wp-expert/references/theme-frontend-performance-quality-gate.md`.
-- WordPress Design System and block editor components: `../wp-expert/references/wordpress-design-system.md`.
-- Premium UI implementation and admin/editor UX: `../wp-expert/references/ui-ux-pro-for-wordpress.md`.
-- Ollie/Ollie Pro: `../wp-expert/references/ollie-block-theme.md`.
-- Blocksy/Blocksy Pro: `../wp-expert/references/blocksy-theme.md`.
-- Hybrid theme/page-builder migration: `../wp-expert/references/hybrid-theme-migration-modernization.md`.
-- Local HTTPS/browser testing blockers: `../wp-expert/references/local-https-testing.md`.
-- Ambiguous or cross-lane work: `../wp-expert/references/reference-routing-map.md`.
+Load `references/router.md` for the full theme/FSE reference map. Do not load the router when the task already names a specific domain reference.
 
 ## Output
 
