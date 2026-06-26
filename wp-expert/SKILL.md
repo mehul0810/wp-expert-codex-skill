@@ -1,6 +1,6 @@
 ---
 name: wp-expert
-description: Router for ambiguous WordPress work. Use when explicitly requested or unclear whether the task belongs to wp-plugin-expert, wp-theme-expert, wp-site-expert, wp-product-orchestrator, wp-contributor, or content-writer; clear tasks should trigger the specialist directly.
+description: Router for ambiguous WordPress work. Use when explicitly requested or unclear whether the task belongs to wp-plugin-expert, wp-theme-expert, wp-site-expert, wp-portfolio-cto, wp-product-orchestrator, wp-contributor, or content-writer; clear tasks should trigger the specialist directly.
 ---
 
 # WP Expert
@@ -13,7 +13,8 @@ Use this skill as the thin WordPress engineering router. Prefer the narrow speci
 - Plugin/product code, REST APIs, admin screens, custom tables, WordPress.org plugin releases, Composer/npm tooling, CI, tests, security, performance, or plugin troubleshooting: use `wp-plugin-expert`.
 - Themes, block themes, FSE, `theme.json`, templates, patterns, block styles, custom blocks, design-to-theme builds, visual parity, Ollie, Blocksy, or editor/frontend parity: use `wp-theme-expert`.
 - Whole-site work, landing pages, conversion flows, UX/IA, content architecture, SEO/AEO/GEO, analytics, accessibility, responsive polish, performance, or premium visitor/admin experience: use `wp-site-expert`.
-- Product strategy, GitHub issue intake, milestones, release trains, delegation, product heartbeats, PR synthesis, or release-ready briefs: use `wp-product-orchestrator`.
+- Cross-product portfolio governance, portfolio heartbeats, product-thread health, release conflicts across products, owner portfolio briefs, or shared process/skill self-improvement: use `wp-portfolio-cto`.
+- One product's backlog strategy, GitHub issue intake, milestones, release train, delegation, product heartbeat, PR synthesis, or release-ready brief: use `wp-product-orchestrator`.
 - WordPress Core, Meta, Gutenberg, Trac, upstream patches, contributor docs, or official contribution workflow: use `wp-contributor`.
 - Organic-search writing, briefs, drafts, content refreshes, AI Overview/AEO/GEO writing: use `content-writer`.
 

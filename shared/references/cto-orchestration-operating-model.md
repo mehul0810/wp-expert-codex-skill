@@ -1,6 +1,6 @@
 # CTO Orchestration Operating Model
 
-Use this reference when `wp-product-orchestrator` is managing portfolio governance, product-thread ownership, GitHub intake, sequencing, delegation, or readiness for WordPress products.
+Use this reference when `wp-portfolio-cto` manages cross-product governance or when `wp-product-orchestrator` needs product-thread topology, GitHub intake, sequencing, delegation, or readiness rules.
 
 ## Thread Topology
 
@@ -100,7 +100,7 @@ Do not blindly drain every issue in a milestone. Product implementation starts o
 
 If the current milestone has no ready work, continue to the next milestone's ready work. If no suitable ready issue exists, create proactive review work from the codebase and current ecosystem for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, or sanitized hardening.
 
-Use any relevant skill or capability for product-thread evidence: `wp-expert` for implementation/review, content/SEO skills for docs and visibility, security skills internally for sanitized hardening, web search for current ecosystem/docs, WordPress.org support and Advanced View review, and repo code review. Keep public issues/comments sanitized when security-sensitive.
+Use the narrowest relevant skill or capability for product-thread evidence: `wp-plugin-expert`, `wp-theme-expert`, or `wp-site-expert` for implementation/review; `content-writer` for docs and visibility; security skills internally for sanitized hardening; web search for current ecosystem/docs; WordPress.org support and Advanced View review; and repo code review. Keep public issues/comments sanitized when security-sensitive.
 
 Every created issue should include:
 

@@ -90,7 +90,8 @@ check_limit() {
 skill_body_limit() {
   local skill_name="$1"
   case "$skill_name" in
-    wp-product-orchestrator) echo "${WP_PRODUCT_ORCHESTRATOR_BODY_MAX_WORDS:-950}" ;;
+    wp-portfolio-cto) echo "${WP_PORTFOLIO_CTO_BODY_MAX_WORDS:-850}" ;;
+    wp-product-orchestrator) echo "${WP_PRODUCT_ORCHESTRATOR_BODY_MAX_WORDS:-850}" ;;
     wp-contributor) echo "${WP_CONTRIBUTOR_BODY_MAX_WORDS:-1300}" ;;
     wp-expert) echo "${WP_EXPERT_BODY_MAX_WORDS:-900}" ;;
     wp-plugin-expert|wp-theme-expert|wp-site-expert) echo "${WP_SPECIALIST_BODY_MAX_WORDS:-700}" ;;

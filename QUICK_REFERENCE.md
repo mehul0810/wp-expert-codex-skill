@@ -35,7 +35,19 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 
 ### Autonomous Product Workflow
 
-Use `$wp-product-orchestrator` for autonomous WordPress plugin/theme issue triage, PR workflow, subagent coordination, live proof, and release readiness.
+Use `$wp-portfolio-cto` for cross-product portfolio heartbeats, product-thread health, release conflicts, owner decision briefs, and shared workflow governance.
+
+**"Run the portfolio heartbeat across all products"**
+- Skill: `wp-portfolio-cto`
+- Load: `../shared/references/cto-orchestration-operating-model.md`
+- Supporting: `../shared/references/context-window-discipline.md`
+
+**"Resolve a release conflict or stale product thread across products"**
+- Skill: `wp-portfolio-cto`
+- Load: `../shared/references/cto-orchestration-operating-model.md`
+- Supporting: `../shared/references/delegation-protocol.md`
+
+Use `$wp-product-orchestrator` for one WordPress plugin/theme product's issue triage, PR workflow, subagent coordination, live proof, and release readiness.
 
 **"Triage this plugin/theme issue and PR queue"**
 - Skill: `wp-product-orchestrator`

@@ -1,13 +1,12 @@
 # WP Product Orchestrator Evaluation Scenarios
 
-Use these lightweight scenarios to verify autonomous plugin/theme product workflow routing without loading every `wp-expert` reference.
+Use these lightweight scenarios to verify one-product plugin/theme workflow routing without loading every `wp-expert` reference or portfolio governance context.
 
 ## Scenarios
 
 | Scenario | Prompt | Expected primary reference | Pass signals |
 | --- | --- | --- | --- |
 | GitHub-first intake | "Implement this Aculect feature request." | `cto-orchestration-operating-model.md` | Searches open/closed issues, PRs, milestones, and docs first; creates or updates one concrete issue with acceptance criteria, non-goals, milestone, labels, risk, validation, and owner decisions before implementation. |
-| Portfolio heartbeat | "Run the product orchestrator heartbeat." | `cto-orchestration-operating-model.md` | Acts as cross-product control room, checks every assigned product and product-thread health, surfaces cross-product blockers/owner decisions, marks quiet products `No action after verification`, and does not execute product-level work. |
 | Product heartbeat | "Run the CleanLinks product heartbeat." | `cto-orchestration-operating-model.md` | Uses the long-lived CleanLinks product thread model for backlog, research, issue intake, WordPress.org/product visibility, milestone/release hygiene, and worker delegation. |
 | Release readiness drive | "Run the product thread for this plugin." | `cto-orchestration-operating-model.md` | Drives the next release train toward release-ready instead of status polling; selects the next release-readiness action and only asks owner approval for production/beta release actions. |
 | Milestone scope gate | "Work through every issue in this milestone." | `product-queue-triage.md` | Does not blindly drain the milestone; defines or requests the release scope and priority set before implementation. |
@@ -24,6 +23,7 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 | Worktree root guard | "Create a worker from this product thread rooted at wp-content/plugins." | `delegation-protocol.md` | Verifies `git rev-parse --show-toplevel`, refuses app-managed worktree creation from broad WordPress roots, requires an exact repo-root saved project/source and explicit base, and treats detached/wrong-base/non-materialized worktrees as unusable. |
 | Unblock-first recovery | "Run the 10-minute product heartbeat again; exact saved project is still missing and nothing changed." | `delegation-protocol.md` | Treats setup-blocked as recovery state, completes direct non-code work, tries read-only mapping or safe manual worktree routes before owner notification, and frames final status as recovered work plus next action or owner-only action plus completed work. |
 | Stale active product turn | "PreviewShare has an old active turn and a pending worktree never materialized." | `delegation-protocol.md` | Classifies `Product thread topology drift`, escalates to portfolio, and avoids launching more work or queueing follow-ups into the stuck thread. |
+| Cross-product escalation | "This product is ready but another product release may conflict." | `release-train-discipline.md` | Stops product-level release action, prepares release-ready evidence, and escalates sequencing/approval to `wp-portfolio-cto`. |
 | Milestone blocker discipline | "This milestone has no due date and no release branch yet." | `delegation-protocol.md` | Treats the due date as an owner decision, creates/uses `release/<release-version>` from verified development base when adopted and safe, using the version/milestone title rather than the GitHub milestone ID, and does not block scoped worker delegation only because the primary checkout is dirty. |
 | Release train gate | "0.6.0 is closed; create 0.6.1 beta now." | `release-train-discipline.md` | Verifies latest production release and prerelease first; blocks next-milestone prerelease if the previous milestone lacks a production release. |
 | Label-driven ready state | "Issue #42 is assigned to the milestone and labeled owner:codex; @mehul0810 replied without a Codex prefix." | `github-communication-protocol.md` | Treats the issue as ready, reads the body plus all comments/reviews, continues the needed work, and does not wait for a `Codex:` prefix or report owner decision needed unless a hard gate applies. |
@@ -49,9 +49,8 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 ## Regression Questions
 
 - Did the agent avoid working multiple issues at once unless explicitly requested?
-- Did each heartbeat begin with a portfolio-wide sweep and include every assigned product in the final check-in?
-- Did quiet products say `No action after verification` instead of being omitted?
-- Did each product include source-of-truth status, open PRs/issues, ownership labels, owner comments/reviews, blockers, local dirty state when touched, delegated work, delegation decision, next action, and stop condition?
+- Did each product heartbeat stay focused on one product and avoid portfolio-wide sweep work?
+- Did it escalate portfolio-wide release conflicts, product-thread health issues, or owner portfolio briefs to `wp-portfolio-cto`?
 - Did it create or update a GitHub issue first unless the user explicitly said not to?
 - Did it treat owner-mentioned work such as `add DESIGN.md`, dependency hygiene, stale PR cleanup, WordPress.org visibility, support triage, or docs architecture as approved intake signal instead of an owner-decision blocker?
 - Did it reserve `Owner decisions needed` for production/beta release actions or non-reversible conflicts?
@@ -64,7 +63,7 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 - Did it continue to the next milestone's ready work when the current milestone has no ready work?
 - Did product threads drive the next release train to ready instead of only polling status?
 - Did product work avoid blindly draining milestones and define/reconfirm the release scope and priority set first?
-- Did portfolio cadence stay every 2 hours and product heartbeat cadence hourly?
+- Did product heartbeat cadence stay hourly while portfolio cadence remained owned by `wp-portfolio-cto`?
 - Did it continue normal product decisions, issue creation, labels, branch prep, good non-production PR review/merge, dependency/tooling work, docs work, and reversible prioritization without waiting?
 - Did it create bounded proactive review work from codebase and current ecosystem signals when no suitable ready issue exists?
 - Did release-ready notification include merged PRs, remaining open issues, CI/package validation, docs/release notes/readme/WordPress.org status, risks, proof gaps, and exact approval requested?
@@ -81,7 +80,7 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 - Did it avoid treating missing milestone due dates, missing release branches, or dirty primary checkouts as blanket blockers when a clean worktree delegation path exists?
 - Did deferred delegation name the exact hard blocker and prepare an owner decision brief for explicit branch-model blockers?
 - Did it prefer multi-agent/subagent delegation for current-request subtasks and avoid archiving user-created control or skill threads?
-- Did the portfolio control thread avoid product-level execution and route it to the relevant long-lived product-orchestrator thread?
+- Did the product thread avoid cross-product governance and route it to `wp-portfolio-cto`?
 - Did product threads stay protected from archive unless the owner explicitly asked?
 - Did issue workers use the relevant specialist skill, a Codex-created worktree, one issue, one branch, one PR, no release actions, no direct `main`, no issue closure, and no subdelegation?
 - Did worker prompts auto-select the narrowest specialist skill for the artifact instead of loading broad `wp-expert` by default?

@@ -76,6 +76,7 @@ Examples:
 - UI reviewer: `$wp-site-expert` for site UX or `$wp-theme-expert` for editor/theme UX; supporting `visual-parity-regression.md` only when screenshots/designs are involved.
 - Security reviewer: `$wp-plugin-expert`, `$wp-theme-expert`, or `$wp-site-expert` based on the changed artifact; primary route `security-threat-modeling-review.md` only when the risk is concrete.
 - WordPress contribution mapper: `$wp-contributor`, primary reference matching the surface: `core-workflow.md`, `gutenberg-workflow.md`, or `meta-workflow.md`.
+- Portfolio governance: `$wp-portfolio-cto`, primary shared reference `cto-orchestration-operating-model.md`; route product execution to product threads.
 - Product workflow coordinator: `$wp-product-orchestrator`, primary shared reference `product-queue-triage.md` or `product-autonomy-permissions.md`; implementation details still route to one specialist lane.
 - PR/release reviewer: shared `session-continuity-pr-discipline.md`, plus the specialist skill and one implementation reference tied to the changed surface.
 

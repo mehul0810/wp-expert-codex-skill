@@ -1,10 +1,10 @@
 # Delegation Protocol
 
-Use this reference before creating product-orchestrator threads, Codex worker threads, worktrees, or subagent prompts for WordPress product work.
+Use this reference before creating product-orchestrator threads, Codex worker threads, worktrees, or subagent prompts for WordPress product work. `wp-portfolio-cto` owns cross-product control; `wp-product-orchestrator` owns one product's execution plan.
 
 ## Plan Before Delegation
 
-Plan before delegation. No delegated agent or thread should start until the CTO thread has prepared:
+Plan before delegation. No delegated agent or thread should start until the parent portfolio/product control thread has prepared:
 
 - Strategy.
 - Scope.
@@ -122,6 +122,6 @@ Use worktrees when parallel implementation or CI repair would otherwise risk bra
 
 ## Delegated Thread Lifecycle
 
-Before delegation, document the strategy in the CTO control thread and only write GitHub comments when the state transition is durable. After delegated work returns, the CTO thread must inspect the diff/evidence, confirm screenshot proof for design-visible changes or record the proof gap, run or confirm validation, update the PR/issue when needed, and make the final recommendation.
+Before delegation, document the strategy in the parent portfolio/product control thread and only write GitHub comments when the state transition is durable. After delegated work returns, that control thread must inspect the diff/evidence, confirm screenshot proof for design-visible changes or record the proof gap, run or confirm validation, update the PR/issue when needed, and make the final recommendation.
 
 If the CTO catches itself doing repeated direct implementation during a heartbeat, classify it under the self-improvement loop as `Missing delegation after strategy`, correct course by delegating the next bounded task when possible, and route the learning into the skill/reference or repo docs rather than only chat memory.

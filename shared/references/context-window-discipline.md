@@ -22,7 +22,8 @@ Use this reference when the active conversation is large, the task may drift bec
 
 ## Product Orchestration Rules
 
-- Portfolio/product control threads should stay high-level. Do not let them absorb implementation logs, CI noise, or large code-reading output.
+- `wp-portfolio-cto` and product control threads should stay high-level. Do not let them absorb implementation logs, CI noise, or large code-reading output.
+- For portfolio heartbeats, prefer fresh product/worker threads for unrelated product execution and compact only when continuing the same portfolio decision chain.
 - For product heartbeats, compact the product thread when continuing the same release train and context is high; create or use bounded worker threads for implementation/evidence work.
 - For a new product or unrelated product initiative, prefer a fresh worker/product thread and rehydrate from the source-of-truth hierarchy.
 - Before asking the owner to compact, complete cheap source-of-truth checks that do not depend on old chat history; then state why compact is better than a fresh thread.

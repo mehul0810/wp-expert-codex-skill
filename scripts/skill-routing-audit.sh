@@ -21,7 +21,8 @@ reference_mentions() {
 skill_limit() {
   case "$1" in
     content-writer) echo 4 ;;
-    wp-product-orchestrator) echo 15 ;;
+    wp-portfolio-cto) echo 7 ;;
+    wp-product-orchestrator) echo 11 ;;
     wp-expert) echo 8 ;;
     wp-plugin-expert|wp-theme-expert|wp-site-expert|wp-contributor) echo 9 ;;
     *) echo 10 ;;
@@ -86,11 +87,14 @@ check_router_discipline() {
   require_text "wp-plugin-expert/SKILL.md" "Use for WordPress plugin/product engineering" "plugin trigger description"
   require_text "wp-theme-expert/SKILL.md" "Use for WordPress theme engineering" "theme trigger description"
   require_text "wp-site-expert/SKILL.md" "Use for WordPress site engineering" "site trigger description"
-  require_text "wp-product-orchestrator/SKILL.md" "Use for WordPress product orchestration" "product orchestrator trigger description"
+  require_text "wp-portfolio-cto/SKILL.md" "Use for cross-product WordPress portfolio CTO governance" "portfolio CTO trigger description"
+  require_text "wp-product-orchestrator/SKILL.md" "Use for one WordPress plugin/theme product thread" "product orchestrator trigger description"
+  require_text "wp-expert/SKILL.md" "wp-portfolio-cto" "wp-expert portfolio specialist routing"
   require_text "wp-contributor/SKILL.md" "Use for official WordPress contribution" "contributor trigger description"
   require_text "shared/references/context-window-discipline.md" "Context decision: Compact|Fresh thread|Continue" "context decision status phrase"
   require_text "wp-product-orchestrator/SKILL.md" "Context decision: Compact|Fresh thread|Continue" "orchestrator context decision line"
   require_text "wp-product-orchestrator/SKILL.md" "Auto-route workers by changed artifact" "orchestrator worker auto routing"
+  require_text "wp-portfolio-cto/SKILL.md" "Route product-level backlog" "portfolio routes product execution"
   require_text "wp-plugin-expert/SKILL.md" "references/router.md" "plugin router pointer"
   require_text "wp-theme-expert/SKILL.md" "references/router.md" "theme router pointer"
   require_text "wp-site-expert/SKILL.md" "references/router.md" "site router pointer"
