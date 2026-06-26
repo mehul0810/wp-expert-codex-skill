@@ -23,6 +23,8 @@ Before any beta, prerelease, or stable action, verify:
 - Whether the owner explicitly authorized production/beta release creation in the current context.
 - Whether owner testing confirmation exists for production readiness.
 - For WordPress.org-hosted plugins, whether the next compatible release plans `Tested up to` WordPress 7.0.
+- Whether any admin UI, frontend UI, consent/setup flow, editor surface, or visual output has release-candidate visual proof from the packaged ZIP/build or release branch build.
+- Whether the product's golden workflow regression matrix has been smoke-tested against the release candidate package/build.
 
 Use the source of truth hierarchy from `cto-orchestration-operating-model.md`: GitHub production releases/tags first, then prereleases/tags, then milestones/issues/PRs, then repo docs, then local state, then memory/chat.
 
@@ -51,4 +53,4 @@ Stop before release or prerelease creation when:
 
 Normal product orchestration, issue intake, implementation, hardening PRs, branch creation for milestone work, good non-production PR review/merge, dependency/tooling work, docs work, and validation do not require explicit release approval when they avoid production/beta releases, tags, deploys, and public release approval claims.
 
-When the train is release-ready, request exact production/beta release approval with evidence: merged PRs, remaining open issues, CI/package validation, docs/release notes/readme/WordPress.org status, risks, rollback notes, and proof gaps.
+When the train is release-ready, request exact production/beta release approval with evidence: merged PRs, remaining open issues, CI/package validation, package/build used, exact environment, visual proof status, golden workflow regression status, docs/release notes/readme/WordPress.org status, risks, rollback notes, failed or skipped proof gaps, and whether skipped proof is acceptable for release.

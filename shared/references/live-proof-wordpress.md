@@ -14,6 +14,28 @@ Use this reference before claiming a WordPress plugin/theme change is done. Pick
 | External proof | payment/API/webhook/email/provider | real safe credential/account or explicit waiver |
 | Release proof | packaged artifact, wp.org/SVN, deploy | artifact inspection, production deps, tag/SVN checks |
 
+## Release Candidate Visual Proof
+
+Before beta/production readiness for any release that touches admin UI, frontend UI, consent screens, setup flows, editor surfaces, or other visual output, test the release-candidate package/ZIP or release branch build, not only a dev checkout. Use focused screenshots or Playwright/browser evidence from the packaged artifact.
+
+Cover changed UI plus critical existing UI workflows at desktop and narrow/mobile/admin-constrained widths when relevant. If automation is unavailable, require manual screenshot evidence or state an explicit proof gap in the release brief.
+
+Keep this pragmatic: use a compact product-specific matrix and focused screenshots. Do not build a broad exhaustive browser suite unless the release risk justifies it.
+
+## Golden Workflow Regression Matrix
+
+Each product should define a small golden workflow regression matrix for critical existing behavior that must be smoke-tested before beta/production approval. Start with product-specific versions of:
+
+- Activation/deactivation and upgrade path.
+- Admin navigation and primary screen load.
+- Settings save and validation failure path.
+- Connect/reconnect, permissions, consent approval, or OAuth-like setup.
+- Diagnostics, logs, health checks, and support information.
+- Public rendering, block/editor output, shortcode output, or core visitor flow.
+- Product-specific money path, security-sensitive path, or integration core flow.
+
+Release-ready proof should say which matrix items passed, failed, or were skipped, the package/build used, the exact environment, and whether any skipped proof is acceptable for release.
+
 ## Plugin Proof
 
 For plugin changes, verify the closest affected boundary:
