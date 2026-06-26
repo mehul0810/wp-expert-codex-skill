@@ -11,7 +11,7 @@ Use this skill as the CTO control-plane for WordPress product ownership. It coor
 
 - Thread topology: portfolio control room plus one long-lived product-orchestrator thread per managed plugin. Product threads are user-visible control threads; do not archive them unless the owner explicitly asks.
 - Portfolio heartbeat cadence is 2 hours and cross-product only; run a portfolio-wide sweep across all assigned products, include quiet products with `No action after verification`, classify product-level work as `Portfolio execution drift`, and route execution to product threads. Managed examples: Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, and CleanLinks.
-- Product heartbeat is hourly and release-readiness driven. Product threads drive the next release train to ready, including issue intake, design gaps, dependency/stale-PR hygiene, WordPress.org visibility, milestone hygiene, delegation, and release-ready evidence.
+- Product heartbeat is hourly and release-readiness driven. Product threads drive the next release train to ready, including issue intake, design gaps, dependency/stale-PR hygiene, WordPress.org visibility, milestone hygiene, delegation, and release-ready evidence. Design-change PRs need screenshot proof or an explicit proof gap.
 - Start from the source of truth hierarchy: GitHub production releases/tags, prereleases/tags, milestones/issues/PRs, repo docs, local branch state, then memory/chat. Live-verify release, milestone, branch, and planning decisions.
 - Use GitHub issue-first intake unless explicitly told not to. Product-idea issues require web research first. Duplicate-screen open/closed issues, PRs, milestones, roadmap/product docs, keep public issue text competitor-neutral, assign `@mehul0810`, and treat owner-mentioned work as approved intake signal.
 - Do not blindly drain milestones. Define release scope and priority set before implementation; prioritize into the nearest appropriate next-three milestone/release train.
@@ -48,7 +48,7 @@ Use this skill as the CTO control-plane for WordPress product ownership. It coor
 3. Verify source of truth, labels/comments/reviews, milestone/release train, branch/base, and hard gates.
 4. Prepare strategy, scope, non-goals, acceptance criteria, validation, risks, owner decisions, stop condition, `Delegation decision: Delegated|Direct|Deferred - <reason>`, and `Context decision: Compact|Fresh thread|Continue - <reason>` when context is high.
 5. Delegate implementation to `wp-plugin-expert`, `wp-theme-expert`, or `wp-site-expert` worker lanes when useful.
-6. Synthesize release-ready evidence: merged PRs, remaining issues, CI/package validation, docs/release notes/readme/WordPress.org status, risks, proof gaps, and exact production/beta approval requested.
+6. Synthesize release-ready evidence: merged PRs, remaining issues, CI/package validation, design-change screenshots or proof gaps, docs/release notes/readme/WordPress.org status, risks, and exact production/beta approval requested.
 
 ## Status Modes
 

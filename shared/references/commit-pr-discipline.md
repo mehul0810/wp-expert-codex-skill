@@ -49,6 +49,7 @@ Every PR must include:
 - Files changed.
 - Validation commands and results.
 - Live proof or proof gap.
+- Screenshot evidence for admin, editor, frontend, style, layout, UX, or other design-visible changes, or an explicit reason screenshots could not be captured.
 - Risk and rollback notes.
 - Release impact.
 - Delegated thread/worktree reference when applicable.
@@ -60,6 +61,7 @@ PRs must not:
 - Target `main` for development or milestone work.
 - Close issues accidentally when targeting a branch that will not auto-close them.
 - Claim release readiness without release-train verification.
+- Omit screenshot evidence when the PR changes design-visible output unless the proof gap is explicit.
 - Merge themselves unless explicitly authorized.
 
 Use closing keywords only when the PR fully resolves the linked issue and targets a branch where closure behavior is intended.

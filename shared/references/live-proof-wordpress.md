@@ -72,6 +72,10 @@ Acceptable fallback evidence:
 - Browser runner with certificate errors ignored for local-only domains.
 - Screenshot from an available real browser if visual proof is required.
 
+## Design-Visible PR Screenshot Rule
+
+If a PR changes admin, editor, frontend, style, layout, UX, or other design-visible output, include screenshot evidence in the PR body or linked artifacts. If screenshots cannot be captured, state the exact blocker and the closest available proof.
+
 ## External Integrations
 
 For third-party APIs, use official docs plus a safe live credential/account when available. Mocks and unit tests prove code shape but do not prove provider behavior. If credentials are unavailable, finish local code/tests/review, then ask for the exact credential, test account, webhook target, or explicit proof waiver.

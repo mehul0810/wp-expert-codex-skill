@@ -113,6 +113,7 @@ Every delegated thread prompt must include:
 - Forbidden actions.
 - Expected files or areas to inspect.
 - Expected validation commands.
+- Screenshot requirement when admin, editor, frontend, style, layout, UX, or other design-visible output changes; include screenshot evidence in the PR or state the exact proof gap.
 - Output format.
 - Explicit instruction: do not merge, release, close issues, retarget milestones, push to `main`, archive protected product/control threads, or make product decisions.
 - Explicit instruction: no subdelegation unless the parent CTO thread asks.
@@ -121,6 +122,6 @@ Use worktrees when parallel implementation or CI repair would otherwise risk bra
 
 ## Delegated Thread Lifecycle
 
-Before delegation, document the strategy in the CTO control thread and only write GitHub comments when the state transition is durable. After delegated work returns, the CTO thread must inspect the diff/evidence, run or confirm validation, update the PR/issue when needed, and make the final recommendation.
+Before delegation, document the strategy in the CTO control thread and only write GitHub comments when the state transition is durable. After delegated work returns, the CTO thread must inspect the diff/evidence, confirm screenshot proof for design-visible changes or record the proof gap, run or confirm validation, update the PR/issue when needed, and make the final recommendation.
 
 If the CTO catches itself doing repeated direct implementation during a heartbeat, classify it under the self-improvement loop as `Missing delegation after strategy`, correct course by delegating the next bounded task when possible, and route the learning into the skill/reference or repo docs rather than only chat memory.
