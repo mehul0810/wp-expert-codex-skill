@@ -1,10 +1,10 @@
 # Delegation Protocol
 
-Use this reference before creating product-orchestrator threads, Codex worker threads, worktrees, or subagent prompts for WordPress product work.
+Use this reference before creating product-orchestrator threads, Codex worker threads, worktrees, or subagent prompts for WordPress product work. `wp-portfolio-cto` owns cross-product control; `wp-product-orchestrator` owns one product's execution plan.
 
 ## Plan Before Delegation
 
-Plan before delegation. No delegated agent or thread should start until the CTO thread has prepared:
+Plan before delegation. No delegated agent or thread should start until the parent portfolio/product control thread has prepared:
 
 - Strategy.
 - Scope.
@@ -45,7 +45,7 @@ Delegation decision: Delegated|Direct|Deferred - <short reason>
 
 Use `Direct` only when the task is smaller than the delegation overhead, the environment cannot safely delegate, or the owner explicitly asked the CTO thread to execute directly. Use `Deferred` when the plan is not yet clear enough to delegate or a blocker prevents safe delegation.
 
-Before declaring delegation unavailable, use tool discovery for project/thread/worktree/subagent surfaces. Look for `list_projects`, `create_thread`, `fork_thread`, `send_message_to_thread`, and available worktree or subagent tools when they are not already loaded.
+Before declaring delegation unavailable, use tool discovery for project/thread/worktree/subagent surfaces. Look for `list_projects`, `create_thread`, `fork_thread`, `send_message_to_thread`, available worktree or subagent tools, and shell/manual git worktree capability when safe.
 
 ## Worktree Creation Guard
 
@@ -55,7 +55,7 @@ Before creating an app-managed worker worktree, verify the saved project path or
 git rev-parse --show-toplevel
 ```
 
-If the product thread is rooted in a broader WordPress folder such as `wp-content` or `wp-content/plugins`, do not call `create_thread` or `fork_thread` with a worktree environment from that thread. App-managed worktree setup can fail or land on the wrong repository/base. Use an exact plugin repo-root saved project when available; otherwise report `missing exact repo project` as the hard blocker and prepare a tooling/setup decision brief.
+Exact-project preflight: the saved Codex project path must exactly equal the plugin repo root returned by `git rev-parse --show-toplevel`. If the product thread is rooted in a broader WordPress folder such as `wp-content` or `wp-content/plugins`, do not call `create_thread` or `fork_thread` with a worktree environment from that thread. App-managed worktree setup can fail or land on the wrong repository/base. Use an exact plugin repo-root saved project when available; otherwise report `setup-blocked: missing exact repo project` as the hard blocker and prepare a tooling/setup decision brief.
 
 When using app-managed worktrees, pass an explicit verified base branch through the worktree starting state when the tool supports it. After the worker materializes, verify:
 
@@ -66,17 +66,36 @@ When using app-managed worktrees, pass an explicit verified base branch through 
 
 If a pending worktree does not materialize, or it lands detached/wrong-base, classify it as `unusable worktree` and stop retrying the same creation path until the repo-root/project/base problem is fixed.
 
-Missing milestone due dates are owner decisions, not blanket implementation blockers. If an existing issue has clear scope plus safe milestone/branch/base evidence, delegate implementation and prepare a separate due-date decision brief.
+## Unblock-First Recovery Ladder
+
+`Setup-blocked` is not a stop condition by itself. It is an internal classification that starts recovery.
+
+Choose the recovery path by work type:
+
+- Research, GitHub issue intake, support/forum triage, Advanced View checks, docs planning, and PR/status synthesis: do directly in the product thread. No worktree required.
+- Read-only code mapping or evidence: use available subagent/explorer tools, or same-thread read-only inspection when safe.
+- Code changes: first try exact saved repo-root Codex project worktree. If missing, try another safe route: manual `git worktree` from the exact plugin repo root with verified clean base, or a bounded worker/subagent operating on that explicit worktree/path, subject to sandbox and approval rules.
+
+If a repo setup problem can be solved safely through commands or an allowed escalation request, attempt recovery instead of reporting a blocker. Notify the owner only when the remaining action is owner-only: adding a saved Codex project in the app UI, approving recovery/replacement of a user-created stale product thread, branch-model changes, or privileged/destructive/release-sensitive actions.
+
+Final status must not stop at "blocked because X". Use either:
+
+- `Recovered by doing Y; next work is Z`.
+- `Owner action required: approve/perform Y; meanwhile I completed A/B/C that did not need Y`.
+
+Stale active turn handling: if a product orchestrator has an older active/inProgress turn, or a pending worktree did not materialize, classify `Product thread topology drift`, escalate to the portfolio thread, and do not launch more work or queue follow-ups into the stuck thread.
+
+Missing milestone due dates are metadata decisions, not blanket implementation blockers. If an existing issue has clear scope plus safe milestone/branch/base evidence, delegate implementation and document or separately brief only unsafe ambiguity.
 
 Dirty or behind primary checkouts block direct edits in that checkout. They do not block a fresh scoped Codex worktree worker from a clean upstream branch when branch/base evidence is safe.
 
-When delegation is deferred, report the exact hard blocker: issue number, missing branch/base, missing owner decision, missing tool/project, or unsafe checkout state. For an explicit branch-model blocker such as OneSMTP #73, prepare an owner decision brief instead of passive polling.
+When delegation is deferred, report the exact hard blocker: issue number, missing branch/base, production/beta release approval, missing tool/project, or unsafe checkout state. For an explicit branch-model blocker such as OneSMTP #73, prepare a decision brief instead of passive polling.
 
 ## Delegation Ownership Boundary
 
 The portfolio or product control thread owns final plan, branch/base choice, PR body, GitHub comments, validation synthesis, commits, push authorization, owner decisions, issue closure decisions, and release readiness.
 
-Delegated workers own bounded implementation, mapping, review, CI/test triage, dependency resolution, workflow investigation, or evidence collection. They must not merge, release, close issues, retarget milestones, make owner decisions, or subdelegate.
+Delegated workers own bounded implementation, mapping, review, CI/test triage, dependency resolution, workflow investigation, or evidence collection. They must not create production/beta releases, publish/deploy, close issues, retarget milestones, or subdelegate.
 
 Prefer multi-agent/subagent delegation for subtasks inside the current request. Create user-visible Codex threads only when the owner explicitly requests them or the environment supports that as the intended workflow. Never archive user-created control or skill threads.
 
@@ -94,6 +113,7 @@ Every delegated thread prompt must include:
 - Forbidden actions.
 - Expected files or areas to inspect.
 - Expected validation commands.
+- Screenshot requirement when admin, editor, frontend, style, layout, UX, or other design-visible output changes; include screenshot evidence in the PR or state the exact proof gap.
 - Output format.
 - Explicit instruction: do not merge, release, close issues, retarget milestones, push to `main`, archive protected product/control threads, or make product decisions.
 - Explicit instruction: no subdelegation unless the parent CTO thread asks.
@@ -102,6 +122,6 @@ Use worktrees when parallel implementation or CI repair would otherwise risk bra
 
 ## Delegated Thread Lifecycle
 
-Before delegation, document the strategy in the CTO control thread and only write GitHub comments when the state transition is durable. After delegated work returns, the CTO thread must inspect the diff/evidence, run or confirm validation, update the PR/issue when needed, and make the final recommendation.
+Before delegation, document the strategy in the parent portfolio/product control thread and only write GitHub comments when the state transition is durable. After delegated work returns, that control thread must inspect the diff/evidence, confirm screenshot proof for design-visible changes or record the proof gap, run or confirm validation, update the PR/issue when needed, and make the final recommendation.
 
 If the CTO catches itself doing repeated direct implementation during a heartbeat, classify it under the self-improvement loop as `Missing delegation after strategy`, correct course by delegating the next bounded task when possible, and route the learning into the skill/reference or repo docs rather than only chat memory.
