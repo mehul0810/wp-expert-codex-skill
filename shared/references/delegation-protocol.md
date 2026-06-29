@@ -66,6 +66,20 @@ When using app-managed worktrees, pass an explicit verified base branch through 
 
 If a pending worktree does not materialize, or it lands detached/wrong-base, classify it as `unusable worktree` and stop retrying the same creation path until the repo-root/project/base problem is fixed.
 
+## Worktree Hygiene
+
+Before creating any new worker worktree, run a lightweight inventory from the owning repo with `git worktree list --porcelain` and classify existing worktrees:
+
+- `active`: tied to an open PR/issue, active Codex thread, current release/CI work, or known owner task.
+- `prunable metadata`: missing path or broken gitdir entry that `git worktree prune` can safely clear.
+- `stale-clean`: clean, no open PR/issue/thread tie, known worker branch, and reconciled task.
+- `dirty/needs-review`: uncommitted, untracked, detached, unknown branch, or unclear ownership.
+- `owner/user-owned`: primary checkout or any path likely owned by the user.
+
+After a PR is merged/closed or delegated worker output is reconciled, remove safe `stale-clean` worker worktrees or state why they remain active. Prefer `git worktree remove <path>` and then `git worktree prune` from the owning repo. Do not use raw folder deletion unless worktree metadata is already broken and the Git cleanup command confirms that.
+
+Never remove a worktree that is dirty, tied to an open PR/issue, tied to an active Codex thread, on an unknown branch, or under a user-owned primary checkout without explicit confirmation.
+
 ## Unblock-First Recovery Ladder
 
 `Setup-blocked` is not a stop condition by itself. It is an internal classification that starts recovery.

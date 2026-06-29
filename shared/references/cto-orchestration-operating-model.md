@@ -70,9 +70,12 @@ For each product, verify or report the minimum source-of-truth state:
 - CI or release blockers.
 - Ownership labels and owner comments/reviews.
 - Local dirty state when the repo is touched.
+- Cross-product stale-worktree pressure or prunable worktree metadata.
 - Product-thread and delegated/skill work.
 
 Only after this sweep should the portfolio thread choose the highest-leverage governance action. If one product consumes owner attention, the final report still needs every product's verified status and next action/stop condition. Quiet products must be included with `No action after verification`.
+
+Portfolio heartbeats report stale-worktree accumulation as governance drift and route repo-specific cleanup to product threads. Product threads own worktree inventory, safe `git worktree remove <path>` cleanup, and `git worktree prune` after worker PR/task reconciliation.
 
 ## GitHub Issue-First Intake
 
