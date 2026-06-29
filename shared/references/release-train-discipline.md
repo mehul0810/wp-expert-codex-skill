@@ -24,6 +24,7 @@ Before any beta, prerelease, or stable action, verify:
 - Whether owner testing confirmation exists for production readiness.
 - For WordPress.org-hosted plugins, whether the next compatible release plans `Tested up to` WordPress 7.0.
 - Whether release metadata matches the target version: plugin header/version file, `readme.txt` stable tag and changelog, package metadata, and release notes.
+- Whether `readme.txt` and changelog/release notes are release-current: stable tag/version, `Tested up to`, Requires WP/PHP if present, changelog section, upgrade notice when applicable, feature descriptions, FAQ/screenshots/tags where relevant, and no overclaiming unmerged future milestone work.
 - Whether any admin UI, frontend UI, consent/setup flow, editor surface, or visual output has release-candidate visual proof from the packaged ZIP/build or release branch build.
 - Whether the product's golden workflow regression matrix has been smoke-tested against the release candidate package/build.
 - Whether package/readme/Plugin Check validation is current after release metadata changes.
@@ -50,13 +51,14 @@ Stop before release or prerelease creation when:
 - Production release state is unclear.
 - The previous release train is not production-released.
 - Plugin header, readme stable tag/changelog, package metadata, or release notes do not match the target version.
+- `readme.txt` or changelog/release notes are stale, incomplete, or overclaim unmerged future milestone work.
 - CI or package validation is not current.
 - Package/readme/Plugin Check validation is not current.
 - WordPress.org, marketplace, or deploy credentials are missing.
 - The owner did not explicitly authorize the production/beta release action.
 
-If release metadata is stale, do not ask for production/beta approval yet. Create or delegate a focused release-metadata blocker PR, validate package/readme/Plugin Check from the release branch build, then regenerate the release-ready brief.
+If release metadata, `readme.txt`, or changelog/release notes are stale, do not ask for production/beta approval yet. Create or delegate a focused release-readiness issue/PR against the active `release/<version>` branch, validate package/readme/Plugin Check from the release branch build after changes, then regenerate the release-ready brief. If current, include explicit readme/changelog audit evidence in the brief.
 
 Normal product orchestration, issue intake, implementation, hardening PRs, branch creation for milestone work, good non-production PR review/merge, dependency/tooling work, docs work, and validation do not require explicit release approval when they avoid production/beta releases, tags, deploys, and public release approval claims.
 
-When the train is release-ready, request exact production/beta release approval with evidence: merged PRs, remaining open issues, CI/package validation, package/build used, exact environment, visual proof status, golden workflow regression status, docs/release notes/readme/WordPress.org status, risks, rollback notes, failed or skipped proof gaps, and whether skipped proof is acceptable for release.
+When the train is release-ready, request exact production/beta release approval with evidence: merged PRs, remaining open issues, CI/package validation, package/build used, exact environment, visual proof status, golden workflow regression status, readme/changelog audit status, docs/release notes/readme/WordPress.org status, risks, rollback notes, failed or skipped proof gaps, and whether skipped proof is acceptable for release.

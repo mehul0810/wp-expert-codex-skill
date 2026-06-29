@@ -138,6 +138,7 @@ When the train is ready for owner approval, report:
 - Remaining open issues and why they are non-blocking or deferred.
 - CI, package, build, lint, test, and live-proof validation.
 - Release metadata match for target version: plugin header, readme stable tag/changelog, package metadata, release notes, and current Plugin Check.
+- Readme/changelog audit: `Tested up to`, Requires WP/PHP if present, upgrade notice when applicable, feature descriptions, FAQ/screenshots/tags where relevant, and no overclaiming unmerged future milestone work.
 - Docs, release notes, readme, WordPress.org, support, and Advanced View status.
 - Risks, rollback notes, and unresolved proof gaps.
 - Exact approval requested: production or beta release target/version.
