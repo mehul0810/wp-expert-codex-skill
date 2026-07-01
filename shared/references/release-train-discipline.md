@@ -1,6 +1,6 @@
 # Release Train Discipline
 
-Use this reference before beta, prerelease, stable, deploy, version, tag, WordPress.org, milestone, or release-branch decisions.
+Use this reference before beta, prerelease, stable, deploy, version, tag, WordPress.org, milestone, release-branch, or post-release closure decisions.
 
 ## Production Gate
 
@@ -88,3 +88,18 @@ Every release-ready brief must include a compact quality gate matrix. Keep pass 
 - UI/browser proof: required when admin, editor, frontend, consent/setup, or customer-facing UI changes. Use packaged/release-candidate screenshots or Playwright/browser evidence and cover constrained widths when relevant.
 
 When the train is release-ready, request exact production/beta release approval with evidence: merged PRs, remaining open issues, compact quality gate matrix, CI/package validation, package/build used, exact environment, visual proof status, golden workflow regression status, readme/changelog audit status, docs/release notes/readme/WordPress.org status, risks, rollback notes, failed or skipped proof gaps, and whether skipped proof is acceptable for release.
+
+## Post-Release Verification
+
+After the owner approves and the product thread completes a beta, production release, deploy, or WordPress.org publish, do not call the release train closed until the product thread returns a compact post-release check:
+
+- Approved commit, GitHub release/tag or prerelease, and published package/artifact align.
+- Public version signal matches the intended version: WordPress.org, marketplace, product site, package download, or installable ZIP as applicable.
+- `readme.txt`, changelog, release notes, docs links, screenshots/assets, banners/icons, and `Tested up to` metadata are current where applicable.
+- Installed-package smoke check passes for the critical golden workflow, or the skipped proof gap is explicitly accepted.
+- Immediate support/forum/error signals are checked where available.
+- Rollback/backout notes are documented for the shipped artifact.
+- Next milestone/release train is started, confirmed, or intentionally deferred.
+- Temporary release/CI heartbeat, worker worktrees, and release evidence threads are reconciled or left with a documented reason.
+
+If any post-release proof fails, stop normal release closure and route recovery to the product thread or prepare an owner decision brief.
