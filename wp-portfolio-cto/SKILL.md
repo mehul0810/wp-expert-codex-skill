@@ -19,6 +19,7 @@ Use this skill as the cross-product WordPress portfolio control room. It governs
 - Ask before interrupting, recreating, or forking user-created product threads. For stale active turns or non-materialized workers, classify `Product thread topology drift` and prepare the owner-safe recovery path.
 - Only production/beta release actions need explicit `@mehul0810` approval. Keep pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contracts, destructive actions, and broad positioning behind explicit approval.
 - Use the CTO control chat thread for routine status. GitHub comments are for durable repo-visible decisions, blockers, deferrals, re-scopes, PR scope links, completion reconciliation, and answered owner questions.
+- Release approval recommendations must carry the compact quality gate matrix from `release-train-discipline.md`; quiet passes stay summarized, and only failed/risky gates should expand.
 - Keep tokens tight: load one portfolio reference mode, use `project-subagent-routing.md` for model/reasoning selection, ask for compact on continuity-sensitive high-context portfolio work, and use fresh product/worker threads for unrelated product execution.
 
 ## Reference Routing
@@ -45,4 +46,4 @@ Use this skill as the cross-product WordPress portfolio control room. It governs
 
 Portfolio check-in: product, verified source, release train, blockers, product-thread health, delegation state, owner decisions, next action, stop condition.
 
-Release approval brief: product, target version, production/prerelease state, merged PRs, remaining issues, CI/package/live proof, docs/readme/WordPress.org status, risks, rollback, and exact approval requested.
+Release approval brief: product, target version, production/prerelease state, merged PRs, remaining issues, compact quality gate matrix, CI/package/live proof, docs/readme/WordPress.org status, risks, rollback, and exact approval requested.

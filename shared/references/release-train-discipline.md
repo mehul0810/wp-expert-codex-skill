@@ -28,6 +28,7 @@ Before any beta, prerelease, or stable action, verify:
 - Whether any admin UI, frontend UI, consent/setup flow, editor surface, or visual output has release-candidate visual proof from the packaged ZIP/build or release branch build.
 - Whether the product's golden workflow regression matrix has been smoke-tested against the release candidate package/build.
 - Whether package/readme/Plugin Check validation is current after release metadata changes.
+- Whether the compact quality gate matrix below is complete, with every gate marked pass/fail/risk or `Not applicable - reason`.
 
 Use the source of truth hierarchy from `cto-orchestration-operating-model.md`: GitHub production releases/tags first, then prereleases/tags, then milestones/issues/PRs, then repo docs, then local state, then memory/chat.
 
@@ -63,4 +64,19 @@ If release metadata, `readme.txt`, or changelog/release notes are stale, do not 
 
 Normal product orchestration, issue intake, implementation, hardening PRs, branch creation for milestone work, good non-production PR review/merge, dependency/tooling work, docs work, and validation do not require explicit release approval when they avoid production/beta releases, tags, deploys, and public release approval claims.
 
-When the train is release-ready, request exact production/beta release approval with evidence: merged PRs, remaining open issues, CI/package validation, package/build used, exact environment, visual proof status, golden workflow regression status, readme/changelog audit status, docs/release notes/readme/WordPress.org status, risks, rollback notes, failed or skipped proof gaps, and whether skipped proof is acceptable for release.
+## Release Quality Gate Matrix
+
+Every release-ready brief must include a compact quality gate matrix. Keep pass cases to one short line each. Expand only failed or risky gates. Do not omit a gate; use `Not applicable - reason` when the product/change shape justifies exclusion.
+
+- Security/privacy: capabilities, nonces/auth, sanitization/escaping, secrets, data handling, dependency/vulnerability signals, and no public exploitable detail.
+- Performance: admin/frontend load, queries, assets/enqueues, package footprint, cache/async behavior, and realistic regression risk for the product.
+- Modularity/architecture: boundaries, excessive coupling, public API/schema/contracts, and migration/rollback notes when relevant.
+- Maintainability: code clarity, useful comments vs stale/noisy comments, duplication pressure, and whether the change stays supportable by a new engineer.
+- Test coverage: unit/integration/e2e/browser coverage where relevant, release-branch CI, packaged release-candidate proof, and golden workflow regression proof for critical user-facing flows.
+- Documentation/release notes: `readme.txt`, changelog, upgrade notice, docs, screenshots/assets, WordPress.org metadata/tags/`Tested up to`, support/release notes, and no overclaiming future work.
+- Commented-code/dead-code hygiene: commented-out code, debug helpers, stray `var_dump`/`console.log`, stale TODOs, unused paths, and dead compatibility shims that should not ship.
+- Compatibility: launched backwards-compatibility commitments, supported WordPress/PHP/browser/runtime versions, editor/classic behavior when relevant, and integration contract compatibility.
+- Packaging/version metadata: plugin header/version file, package metadata, runtime-only Composer/npm payload, release ZIP/build contents, and target-version alignment across release surfaces.
+- UI/browser proof: required when admin, editor, frontend, consent/setup, or customer-facing UI changes. Use packaged/release-candidate screenshots or Playwright/browser evidence and cover constrained widths when relevant.
+
+When the train is release-ready, request exact production/beta release approval with evidence: merged PRs, remaining open issues, compact quality gate matrix, CI/package validation, package/build used, exact environment, visual proof status, golden workflow regression status, readme/changelog audit status, docs/release notes/readme/WordPress.org status, risks, rollback notes, failed or skipped proof gaps, and whether skipped proof is acceptable for release.
