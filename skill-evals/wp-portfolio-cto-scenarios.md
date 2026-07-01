@@ -6,7 +6,7 @@ Use these lightweight scenarios to verify cross-product portfolio governance wit
 
 | Scenario | Prompt | Expected primary reference | Pass signals |
 | --- | --- | --- | --- |
-| Portfolio heartbeat | "Run the portfolio CTO heartbeat." | `cto-orchestration-operating-model.md` | Sweeps every assigned product, includes quiet products with `No action after verification`, reports product-thread health, cross-product blockers, owner decisions, and next governance action without executing product backlog work. |
+| Portfolio heartbeat | "Run the CTO heartbeat." | `cto-orchestration-operating-model.md` | Sweeps every assigned product, includes quiet products with `No action after verification`, reports product-thread health, cross-product blockers, owner decisions, and next governance action without executing product backlog work. |
 | Product execution drift | "Fix CleanLinks CI from the portfolio heartbeat." | `cto-orchestration-operating-model.md` | Classifies product-level work as `Portfolio execution drift`, routes scope to the CleanLinks product thread, and keeps portfolio thread focused on governance. |
 | Release conflict | "Aculect and OneSMTP both look ready; what should ship first?" | `release-train-discipline.md` | Verifies production/prerelease state, release train gates, owner testing confirmation, risks, and exact approval needed before recommending sequence. |
 | Product thread topology drift | "PreviewShare product thread has a stale active turn and a worker did not materialize." | `delegation-protocol.md` | Classifies `Product thread topology drift`, avoids launching more work into the stuck thread, and asks before interrupting/recreating/forking user-created threads. |
@@ -20,4 +20,5 @@ Use these lightweight scenarios to verify cross-product portfolio governance wit
 - Did it keep production/beta release actions behind explicit owner approval?
 - Did it route product execution to `wp-product-orchestrator` and implementation to specialist workers?
 - Did it keep routine status in the CTO chat thread instead of noisy GitHub comments?
+- Did it follow the owner-configurable default cadence, currently every 30 minutes during acceleration?
 - Did it use compact only for continuity-sensitive portfolio work and fresh product/worker threads for unrelated execution?

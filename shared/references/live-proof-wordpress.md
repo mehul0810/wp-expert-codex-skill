@@ -18,6 +18,8 @@ Use this reference before claiming a WordPress plugin/theme change is done. Pick
 
 Before beta/production readiness for any release that touches admin UI, frontend UI, consent screens, setup flows, editor surfaces, or other visual output, test the release-candidate package/ZIP or release branch build, not only a dev checkout. Use focused screenshots or Playwright/browser evidence from the packaged artifact.
 
+Prefer disposable localhost `wp-proof` environments for routine release readiness, browser/admin smoke, screenshots, package validation, and golden workflow proof when they are available. Use long-lived Studio environments when parity, existing local data, custom domain URLs, integration reproduction, or owner manual/visual review is the reason.
+
 Cover changed UI plus critical existing UI workflows at desktop and narrow/mobile/admin-constrained widths when relevant. If automation is unavailable, require manual screenshot evidence or state an explicit proof gap in the release brief.
 
 Keep this pragmatic: use a compact product-specific matrix and focused screenshots. Do not build a broad exhaustive browser suite unless the release risk justifies it.

@@ -9,8 +9,9 @@ Use this skill as the cross-product WordPress portfolio control room. It governs
 
 ## Hot Path
 
-- Portfolio heartbeat cadence is 2 hours and cross-product only. Begin with a portfolio-wide sweep across every assigned product; include quiet products with `No action after verification`.
+- Portfolio heartbeat cadence is owner-configurable; the active acceleration default is every 30 minutes and cross-product only. Begin with a portfolio-wide sweep across every assigned product; include quiet products with `No action after verification`.
 - Current managed examples: Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, and CleanLinks. Follow the assigned product list when it changes.
+- Treat `CTO` as the owner-approved portfolio thread alias and `<Product Name> PO` as the product-thread alias, but use thread IDs for archive, pin, delegation, release, or destructive actions.
 - Own cross-product state, shared blockers, product-thread health, release conflicts, shared branch/release process, owner decision briefs, skill/self-improvement routing, and production readiness recommendations after owner testing confirmation.
 - Route product-level backlog, issue intake, WordPress.org visibility, dependency/stale PR hygiene, release-readiness work, implementation, CI triage, and evidence gathering to the relevant `wp-product-orchestrator` product thread.
 - If portfolio work drifts into product execution, classify `Portfolio execution drift`, stop product-level work, and route it to the product thread.

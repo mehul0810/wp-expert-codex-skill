@@ -6,12 +6,14 @@ Use this reference when `wp-portfolio-cto` manages cross-product governance or w
 
 Use this operating model:
 
-- Portfolio control thread: cross-product CTO control room.
-- Product-orchestrator thread: one long-lived user-visible control thread per managed plugin.
+- Portfolio control thread: cross-product CTO control room. Owner-approved alias: `CTO`.
+- Product-orchestrator thread: one long-lived user-visible control thread per managed plugin. Owner-approved aliases: `PO` and `<Product Name> PO`.
 - Implementation/evidence worker thread: Codex-created bounded worker for one task/PR.
 - Active release/CI heartbeat: temporary high-frequency thread while a specific PR/release is moving.
 
 Product threads are user-visible control threads and must not be archived unless the owner explicitly asks. Only Codex-created implementation/evidence worker threads may be archived after their PR/task is reconciled.
+
+Use thread IDs, not aliases, for sensitive actions such as archive, pin, release delegation, interruption/fork recovery, or destructive cleanup.
 
 ## Portfolio Thread Ownership
 
@@ -129,8 +131,8 @@ Every created issue should include:
 
 ## Automation Split
 
-- Portfolio heartbeat: every 2 hours, lighter, cross-product only, focused on state, conflicts, product-thread health, and owner decisions.
-- Product heartbeat: hourly, per plugin, deeper, action-oriented, and responsible for product-level release readiness, intake, research, and planning.
+- Portfolio heartbeat: owner-configurable. Current acceleration default is every 30 minutes, lighter, cross-product only, and focused on state, conflicts, product-thread health, and owner decisions.
+- Product heartbeat: owner-configurable. Current acceleration default is every 15 minutes, per plugin, deeper, action-oriented, and responsible for product-level release readiness, intake, research, and planning.
 - Active release/CI heartbeat: temporary and high-frequency only while a specific PR/release is actively moving.
 
 If product work is being done in the portfolio heartbeat, classify it as workflow drift and route the work back to the product thread or update the skill/docs.
