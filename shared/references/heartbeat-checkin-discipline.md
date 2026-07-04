@@ -12,6 +12,7 @@ Use this reference for CTO and PO heartbeat reporting. Check-ins must be delta-f
 - Use `NOTIFY` only when there is a material change, blocker, owner decision, executable work, release/proof drift, topology/process concern, or cadence change worth surfacing.
 - Use `DONT_NOTIFY` only when no owner decision, blocker, executable work, material drift, or process concern exists.
 - Prefer plain decision language over workflow jargon. Replace vague terms like `owner-gated` with the exact decision needed.
+- Heartbeats must exit cleanly. If a routine product heartbeat cannot finish current live checks quickly, return a partial owner-readable result instead of staying in progress.
 
 ## Readability Rules
 
@@ -54,6 +55,43 @@ Cadence/automation changes
 ```
 
 Omit empty sections only when the omission is obvious and reduces noise.
+
+## Partial Result Rule
+
+Use a partial `NOTIFY` result for routine product heartbeats, quiet monitoring loops, or post-intervention checks when live checks time out, public checks run long, or one narrow verification path cannot finish promptly.
+
+- Do not leave the heartbeat in progress for hours waiting on routine live checks.
+- Return what is already verified.
+- Name the exact blocked or incomplete checks.
+- State whether owner decisions changed or stayed unchanged.
+- State the next retry point or cadence adjustment.
+- Keep the message owner-readable; do not dump retry logs.
+
+Use this shape:
+
+```text
+NOTIFY - <product>
+
+What changed
+- <verified delta or no verified material change>.
+
+What is blocked
+- <exact timed-out or incomplete checks>; impact on confidence.
+
+What owner needs to decide
+- <changed decision or no change>.
+
+What Codex will do next
+- <retry scope, reduced cadence, or next safe action>.
+
+Evidence
+- <verified evidence already gathered>.
+
+Cadence/automation changes
+- <next retry window, reduced cadence, or pause reason>.
+```
+
+For routine quiet monitoring, partial results should usually end with either a reduced retry cadence or `DONT_NOTIFY` on the next heartbeat if no new signal appears.
 
 ## Portfolio CTO Template
 
@@ -162,3 +200,4 @@ Avoid phrases like `no update`, `nothing new`, or `still monitoring` without evi
 - If the same blocker repeats, say what was attempted, what changed, and what exact escalation remains.
 - If nothing changed, compress to one quiet sentence instead of repeating the full structure.
 - If a product consumed most of the action budget, summarize the rest with a compact verified-quiet coverage line.
+- If a heartbeat timed out or exited partially, the next check-in should say what was verified before timeout, what remains unverified, and whether cadence was reduced or kept for a concrete reason.

@@ -17,13 +17,13 @@ Use thread IDs, not aliases, for sensitive actions such as archive, pin, release
 
 ## Portfolio Thread Ownership
 
-The portfolio thread owns cross-product state, blockers, release conflicts, owner briefs, skill/self-improvement routing, and production readiness recommendations after owner testing.
+The portfolio thread owns cross-product state, blockers, release conflicts, owner briefs, skill/self-improvement routing, and readiness recommendations after testing.
 
-The portfolio thread should not do product-level work by default. It should steer, audit, resolve cross-product conflicts, escalate owner decisions, and route product execution back to the relevant product thread.
+The portfolio thread should not do product-level work by default. It should steer, resolve cross-product conflicts, escalate owner decisions, and route product execution back to the relevant product thread.
 
-For delegation recovery, request exact saved Codex projects for managed plugin repo roots when app UI setup is owner-only. Ask the owner before interrupting, recreating, or forking user-created product-orchestrator threads.
+For delegation recovery, request exact saved Codex projects for managed plugin repo roots when app UI setup is owner-only. Ask before interrupting, recreating, or forking user-created product-orchestrator threads.
 
-The portfolio thread is accountable for product-orchestrator effectiveness, not just status relay. Compare the previous product `Next action` with current state. Repeated `idle`, `DONT_NOTIFY`, `no drift`, or unchanged next-action language is a governance signal.
+The portfolio thread is accountable for product-orchestrator effectiveness, not just status relay. Compare the previous product `Next action` with current state. Repeated `idle`, `DONT_NOTIFY`, or unchanged next-action language is a governance signal.
 
 Classify `PO loop slip` when any of these repeat across heartbeats on an active train:
 
@@ -43,13 +43,13 @@ Each product-orchestrator thread owns a plugin:
 - Backlog strategy and GitHub issue intake.
 - Web research and product-idea generation.
 - WordPress.org support triage.
-- WordPress.org Advanced View tracking: installs, downloads, tested version, ratings, support status, last updated, and version/download signals.
-- Plugin-page visibility: readme, tags, FAQ, screenshots, banners/icons, changelog, Playground/preview, and docs.
-- Website/docs visibility: landing page, docs, troubleshooting, release notes, and future workflow-ready content without claiming unshipped features.
+- WordPress.org Advanced View tracking: installs, downloads, tested version, ratings, support status, last updated, and download signals.
+- Plugin-page visibility: readme, tags, screenshots, banners/icons, changelog, Playground/preview, and docs.
+- Website/docs visibility: troubleshooting, release notes, and workflow-ready content without claiming unshipped features.
 - Milestone planning and release-train hygiene.
 - Delegation strategy for implementation/evidence workers.
 
-The primary product-thread objective is to drive the next release train to release-ready, not to poll status. Keep selecting the highest-leverage release-readiness action until the train is ready for production/beta release approval.
+The primary product-thread objective is to drive the next release train to release-ready, not poll status. Keep selecting the highest-leverage release-readiness action until the train is ready for release approval.
 
 ## Source Of Truth Hierarchy
 
@@ -67,6 +67,8 @@ Live-verify current GitHub state before release, milestone, branch, or planning 
 ## Bounded Live Check Policy
 
 For routine non-release portfolio/product heartbeats, batch GitHub live checks where possible. If GitHub/network access times out, retry at most once for a narrow missing signal, then report `live check unavailable` and use local remote-tracking, public, and repo evidence as fallback. Do not start implementation, merge, relabel, create issues, or make release/ready-state decisions when owner labels, comments, milestones, or PR state could not be live-verified.
+
+Routine product heartbeats must return promptly. If a quiet or post-intervention heartbeat cannot finish live checks quickly, return a partial owner-readable result with verified evidence, blocked checks, owner-decision change/no-change, and next retry/cadence instead of leaving the thread in progress.
 
 For owner-gated beta/prerelease/production readiness, fresh live verification is required. If releases, tags, milestones, issues, PRs, labels, comments, CI, or package state cannot be verified live, fail closed with a concise owner-visible blocker instead of retry loops.
 
@@ -90,7 +92,7 @@ For each product, verify/report minimum state:
 - Product-thread and delegated/skill work.
 
 Only after this sweep should the portfolio thread choose the highest-leverage governance action. If one product consumes owner attention, the final report still needs every product's verified status and next action/stop condition. Quiet products must be included with `No action after verification`.
-Exception reports should still surface Open PRs/issues and CI/release blockers for non-quiet products.
+Exception reports should surface Open PRs/issues and CI/release blockers for non-quiet products.
 
 Portfolio heartbeats report stale-worktree accumulation as governance drift and route repo-specific cleanup to product threads.
 
@@ -98,10 +100,10 @@ Portfolio heartbeats report stale-worktree accumulation as governance drift and 
 
 Heartbeat cadence is dynamic and should be justified by signal, not habit.
 
-- Use 15-minute product cadence for active release trains, active PR/CI movement, executable `owner:codex` work, or short-window recovery.
+- Use 15-minute product cadence for active release trains, PR/CI movement, executable `owner:codex` work, or short-window recovery.
 - Use 30-60 minute product cadence for owner-gated, blocked, monitoring-only, or quiet queues.
 - Pause or delete product heartbeats when there is no active train and no useful discovery, support, regression, or release signal.
-- Reactivate product cadence when owner scope changes, public regressions appear, support signals rise, release approval is pending, or a proactive discovery lane is active.
+- Reactivate product cadence when owner scope changes, regressions appear, support signals rise, release approval is pending, or a proactive discovery lane is active.
 - Portfolio CTO should challenge stale high-frequency heartbeats that only return quiet status and either reduce cadence, pause/delete the loop, or redirect it to a discovery task.
 
 Current acceleration defaults:
@@ -109,7 +111,7 @@ Current acceleration defaults:
 - Portfolio heartbeat: every 30 minutes.
 - Product heartbeat: every 15 minutes.
 
-These defaults are owner-configurable and should not override stronger repo or situation evidence.
+These defaults are owner-configurable and should not override stronger signals.
 
 ## Product Priority And Discovery Intensity
 
@@ -149,25 +151,25 @@ Web or competitor research may inform private reasoning, but public issue wordin
 
 If a product repeatedly completes evidence-rich sweeps yet creates no issues, surface the discovery gap as a process issue in the portfolio thread.
 
-Use the narrowest relevant skill or capability for product-thread evidence: `wp-plugin-expert`, `wp-theme-expert`, or `wp-site-expert` for implementation/review; `content-writer` for docs and visibility; security skills for sanitized hardening; web search for current ecosystem/docs; WordPress.org review; and repo code review.
+Use the narrowest relevant skill or capability for product-thread evidence: `wp-plugin-expert`, `wp-theme-expert`, or `wp-site-expert` for implementation/review; `content-writer` for docs/visibility; security skills for sanitized hardening; web search for current ecosystem/docs; WordPress.org review; and repo code review.
 
 Every created issue should include problem/context, expected outcome, acceptance criteria, non-goals, suggested milestone, labels, Assignee: `@mehul0810`, branch/base plan, risk, validation, and owner decisions if any.
 
 ## Automation Split
 
-- Portfolio heartbeat: owner-configurable. Current acceleration default is every 30 minutes, cross-product only, and focused on state, conflicts, product-thread health, and owner decisions.
-- Product heartbeat: owner-configurable. Current acceleration default is every 15 minutes, per plugin, and focused on release readiness, intake, research, and planning.
+- Portfolio heartbeat: owner-configurable. Current acceleration default is every 30 minutes, cross-product only, focused on state, conflicts, product-thread health, and owner decisions.
+- Product heartbeat: owner-configurable. Current acceleration default is every 15 minutes, per plugin, focused on release readiness, intake, and planning.
 - Active release/CI heartbeat: temporary and high-frequency only while a specific PR/release is actively moving.
 
 If product work is being done in the portfolio heartbeat, classify it as workflow drift and route the work back to the product thread or update the skill/docs.
 
-If product heartbeats hit setup-blocked delegation, recover first: complete direct non-code work, use read-only mapping paths, and try safe manual worktree routes before owner notification.
+If product heartbeats hit setup-blocked delegation, recover first: complete direct non-code work, use read-only mapping, and try manual worktree routes before owner notification.
 
-Automation hygiene is CTO governance. During cadence/process changes, remove or update paused, stale, generic/untitled, deprecated-skill, duplicate, or wrong-cadence tasks. If tools are unavailable, report exact automation IDs needing cleanup.
+Automation hygiene is CTO governance. During cadence/process changes, remove or update paused, stale, generic/untitled, deprecated-skill, duplicate, or wrong-cadence tasks. If tools are unavailable, report automation IDs needing cleanup.
 
 ## Post-Release Follow-Through
 
-After owner-approved beta, production release, deploy, or WordPress.org publish, require this compact post-release check before closure:
+After owner-approved beta, production release, deploy, or WordPress.org publish, require this post-release check before closure:
 
 - GitHub release/tag or prerelease exists at the approved commit.
 - Public package/download/installable artifact matches the intended version.
@@ -193,7 +195,7 @@ The orchestrator can flag conflicts with discipline, but the founder/owner makes
 
 Escalate before prerelease/release creation, production deploy, ambiguous milestone retargeting, pricing/licensing/free-vs-pro changes, privacy/security posture changes, database/schema migrations, public API or breaking contract changes, or broad product positioning changes.
 
-Reserve `Owner decisions needed` for production/beta release actions or non-reversible conflicts: creating production/beta releases or tags, publishing/deploying, declaring release approval, unsafe milestone inference, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contracts, destructive actions, or broad positioning. Normal product decisions, issue creation, labels, branch prep, PR review or merge for good non-production PRs, dependency/tooling work, docs work, and reversible backlog prioritization should continue without waiting.
+Reserve `Owner decisions needed` for production/beta release actions or non-reversible conflicts: creating production/beta releases or tags, publishing/deploying, declaring release approval, unsafe milestone inference, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contracts, destructive actions, or broad positioning. Normal product decisions, labels, branch prep, PR review or merge for good non-production PRs, dependency/tooling work, docs work, and reversible backlog prioritization should continue without waiting.
 
 When a release train is ready, notify the portfolio/owner with evidence: merged PRs, remaining open issues, CI/package validation, docs/release notes/readme/WordPress.org status, risks, and the exact production/beta release approval requested.
 
