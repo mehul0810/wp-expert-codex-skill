@@ -8,10 +8,10 @@ Use this operating model:
 
 - Portfolio control thread: cross-product CTO control room. Owner-approved alias: `CTO`.
 - Product-orchestrator thread: one long-lived user-visible control thread per managed plugin. Owner-approved aliases: `PO` and `<Product Name> PO`.
-- Implementation/evidence worker thread: Codex-created bounded worker for one task/PR.
+- Implementation/evidence worker thread: Codex-created bounded worker under the `Worker Threads` project.
 - Active release/CI heartbeat: temporary high-frequency thread while a specific PR/release is moving.
 
-Product threads are user-visible control threads and must not be archived unless the owner asks. Only Codex-created implementation/evidence workers may be archived after PR/task reconciliation.
+Product threads are user-visible control threads and must not be archived unless the owner asks. Only Codex-created implementation/evidence workers may be archived after reconciliation.
 
 Use thread IDs, not aliases, for sensitive actions such as archive, pin, release delegation, interruption/fork recovery, or destructive cleanup.
 
@@ -19,9 +19,9 @@ Use thread IDs, not aliases, for sensitive actions such as archive, pin, release
 
 The portfolio thread owns blockers, release conflicts, owner briefs, skill routing, and readiness.
 
-The portfolio thread should not do product-level work by default. It should steer, resolve cross-product conflicts, escalate owner decisions, and route product execution back to the relevant product thread. Only bypass a PO for super-critical work it still cannot do with GPT-5.5 and xhigh/max reasoning.
+The portfolio thread should not do product-level work by default. It should steer, resolve cross-product conflicts, escalate owner decisions, and route product execution back to the product thread. Only bypass a PO for super-critical work it still cannot do with GPT-5.5 and xhigh/max reasoning.
 
-For delegation recovery, request exact saved Codex projects for managed plugin repo roots when app UI setup is owner-only. Ask before interrupting, recreating, or forking user-created product-orchestrator threads. Route substantive skill updates through a Skill PO lane/thread unless the fix is emergency coordination; direct-main Skill PO publication needs explicit CTO/owner approval.
+For delegation recovery, request exact saved Codex projects for managed plugin repo roots when app UI setup is owner-only. Ask before interrupting or recreating user-created product-orchestrator threads. Route substantive skill updates through a Skill PO lane/thread unless the fix is emergency coordination; direct-main Skill PO publication needs explicit CTO/owner approval.
 
 The portfolio thread is accountable for product-orchestrator effectiveness, not just status relay. Compare the previous product `Next action` with current state. Repeated `idle`, `DONT_NOTIFY`, or unchanged next-action language is a governance signal.
 
