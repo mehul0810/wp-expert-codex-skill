@@ -1,30 +1,28 @@
 # Custom Block Theme From Design
 
-Use this when converting a Figma/static/brand design into a custom block-based Full Site Editing theme that stays modular, editable from WordPress admin, visually faithful, and maintainable without using Custom HTML or Shortcode blocks for new design implementation. Read `block-theme-architecture.md` first when the task involves non-trivial block, pattern, template, data, or interaction decisions. If a design image, screenshot, or approved mockup is provided, also read `ux-product-strategy-design-qa.md` and use `visual-parity-regression.md` for pixel-parity evidence.
+Use this when converting a Figma/static/brand design into a custom block-based Full Site Editing theme that stays modular, editable from WordPress admin, visually faithful, and maintainable without using Custom HTML or Shortcode blocks for new design implementation. Read `block-theme-architecture.md` first when the task involves non-trivial block, pattern, template, data, or interaction decisions. If a design image, screenshot, or mockup is provided, also read `ux-product-strategy-design-qa.md` and use `visual-parity-regression.md` for pixel-parity evidence.
+
+Use `../scripts/fse-design-map.sh` to front-load the design map when the page/template ownership or editing surface is not already obvious.
 
 ## Official Anchors
 
 - Theme Handbook: `https://developer.wordpress.org/themes/`
 - Global Settings and Styles: `https://developer.wordpress.org/themes/global-settings-and-styles/`
 - `theme.json` overview: `https://developer.wordpress.org/themes/core-concepts/global-settings-and-styles/`
-- Theme styles: `https://developer.wordpress.org/themes/global-settings-and-styles/styles/`
 - Template parts: `https://developer.wordpress.org/themes/templates/template-parts/`
-- Style variations: `https://developer.wordpress.org/themes/global-settings-and-styles/style-variations/`
-- Block style variations: `https://developer.wordpress.org/themes/features/block-style-variations/`
 - `theme.json` reference: `https://developer.wordpress.org/block-editor/reference-guides/theme-json-reference/`
 - Block Bindings API: `https://developer.wordpress.org/block-editor/reference-guides/block-api/block-bindings/`
 - Interactivity API: `https://developer.wordpress.org/block-editor/reference-guides/interactivity-api/`
-- Create Block: `https://developer.wordpress.org/block-editor/getting-started/devenv/get-started-with-create-block/`
 
 ## Non-Negotiables
 
 - Build the theme around the Site Editor model: `theme.json`, templates, template parts, patterns, core blocks, block supports, and custom blocks only when necessary.
 - Decide theme vs plugin ownership before building: presentation belongs in the theme; durable data, business rules, and cross-theme functionality usually belong in plugins.
 - Do not use Custom HTML blocks or Shortcode blocks to implement new design sections. Treat them as legacy containment only and flag them as technical debt.
-- Keep admin editability explicit. Editors should be able to update content, images, buttons, navigation, global styles, template parts, and reusable sections without editing code.
-- If a normal page/post is the editing surface, the visible page body must be controlled by that page/post content, not by hard-coded template or pattern markup that bypasses Pages > Edit.
-- Preserve design intent through tokens, layout rules, patterns, and editor constraints, not by freezing the entire page into one custom block or hard-coded markup.
-- Validate editor and frontend parity; a design that only works on the frontend is not a finished block theme.
+- Keep admin editability explicit. Editors should be able to update content, images, buttons, navigation, global styles, template parts, and reusable sections without code edits.
+- If a normal page/post is the editing surface, the visible page body must be controlled by that page/post content, not by hard-coded template or pattern markup that bypasses editing.
+- Preserve design intent through tokens, layout rules, patterns, and editor constraints, not by freezing the page into one custom block.
+- Validate editor and frontend parity; frontend-only is not a finished block theme.
 
 ## Design-To-Theme Audit
 
@@ -37,6 +35,29 @@ Before implementation, create a design map:
 - Tokens: color palette, gradients, typography scale, fluid sizes, spacing scale, content width, wide width, radii, shadows, borders, motion, and breakpoint behavior.
 - Content model: editable text, images, links, buttons, navigation, query-driven content, reusable global content, site options, post meta, and dynamic data.
 - Interaction model: menus, tabs, accordions, sliders, filtering, search, forms, modals, and animation requirements.
+
+## Image-To-WordPress Translation Loop
+
+Run this loop before writing markup:
+
+1. Read the image as a contract for hierarchy, spacing, composition, and visible states at the shown breakpoint.
+2. Classify each section by ownership: page content, template part, pattern, query/dynamic data, or custom interactive component.
+3. Choose the primary editing surface per section: Pages > Edit, Site Editor, synced pattern, document settings, inspector controls, options page, or plugin data source.
+4. Map the section to the cheapest WordPress-native layer that preserves fidelity and editability: `theme.json`, core blocks, pattern, template part, block style/variation, bindings, custom block, or dynamic block.
+5. Decide what must stay file-owned versus database-owned. Repo-distributed structure belongs in files; intentional user customizations can live in database overrides.
+6. Only then write or edit the template, pattern, block, and CSS.
+
+## Surface Selection Matrix
+
+Use this default mapping unless repo rules or the user contract say otherwise:
+
+- Full page content the editor should manage from Pages > Edit: structural template plus `Post Content`; seed the body with blocks or insertable patterns.
+- Shared site chrome or sections reused across templates: template parts.
+- Reusable design sections editors may insert and adapt per page: unsynced patterns.
+- Reusable global content that should update everywhere: synced patterns.
+- Query-driven listings, archives, and blog grids: Query Loop or a custom dynamic block when Query Loop is insufficient.
+- Stable structured UI with constrained child areas: custom block with `InnerBlocks`.
+- Data-driven components that need custom rendering, permissions, or integrations: custom dynamic block.
 
 ## Block Mapping Ladder
 
@@ -75,6 +96,7 @@ Do not create a custom block when:
 ## Block Bindings Guidance
 
 - Use Block Bindings for dynamic text/media/link/date fields that map cleanly to supported core block attributes and keep the editing surface native.
+- Prefer bindings or pattern overrides when the design needs repeated structured sections with per-instance field changes but not a full custom authoring UI.
 - Register source data with explicit schema and permissions. For post meta sources, expose only intended keys and keep sensitive keys unbound.
 - Validate compatibility per WordPress version and supported block attributes before committing to bindings as the primary model.
 - Promote a custom block only when bindings cannot support required structure, editorial constraints, or interaction semantics.
@@ -103,32 +125,6 @@ For a custom designed page that must remain manageable from Pages > Edit:
 6. Use a custom block only when core blocks, bindings, patterns, styles, and variations cannot preserve fidelity and safe editing.
 7. Validate Pages > Edit, Site Editor, frontend, responsive states, and the absence of unintended database template overrides.
 
-## Theme File Architecture
-
-A custom block theme should usually include:
-
-```text
-theme-slug/
-  style.css
-  theme.json
-  functions.php
-  templates/
-  parts/
-  patterns/
-  styles/
-  assets/
-  src/
-  build/
-```
-
-Guidelines:
-
-- Keep `functions.php` thin: setup, asset registration, pattern categories, block styles/variations, and custom block registration.
-- Put reusable section markup in `/patterns`, not hard-coded page templates unless it is structural.
-- Put global regions in `/parts`, directly under the folder; WordPress does not support nested template parts.
-- Use `/styles` for global style variations when alternate design skins are required.
-- Keep custom block source and build artifacts organized so release packaging includes runtime assets but not dev tooling.
-
 ## CSS And Responsive Strategy
 
 - Encode design tokens in `theme.json` first; use CSS only for what the style engine and block supports cannot express safely.
@@ -151,8 +147,21 @@ Guidelines:
 10. Add visual parity checks for editor canvas, Site Editor preview, and frontend render states across breakpoints.
 11. Validate editor editability, frontend fidelity, responsive behavior, accessibility, performance, and release packaging.
 
+## Frontend Design Implementation Contract
+
+For screenshot-to-WordPress work, the implementation is only complete when all of these are true:
+
+- The design is translated into tokens, layout rules, and block architecture before deep CSS polish.
+- Every visible section has one clear owner and one intended admin editing surface.
+- Templates stay structural when page/post content is supposed to own the visible body.
+- Patterns are editor-friendly starters, not hidden substitutes for page content ownership.
+- Custom blocks exist only for proven content-model, interaction, or dynamic-data gaps.
+- The rendered page matches the source visual closely at the target breakpoint and degrades cleanly across smaller/larger breakpoints.
+- The page is manageable by the intended WordPress user without code edits, Custom HTML, or shortcode crutches.
+
 ## Validation Checklist
 
+- The design map identifies ownership, editing surface, tokens, and template-vs-content boundaries before final implementation.
 - No new Custom HTML or Shortcode blocks are used for design implementation.
 - Editors can update expected content and global sections from the intended admin surface: Pages > Edit for page-owned content, Site Editor for templates/parts, and synced pattern editing for global reusable content.
 - Page templates that should expose page-owned content include Post Content and do not hide the visible body in template-only markup.

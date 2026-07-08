@@ -39,6 +39,7 @@ require_text "wp-theme-expert/SKILL.md" "worker-execution-discipline.md" "wp-the
 require_text "wp-theme-expert/SKILL.md" "design-intelligence-routing.md" "wp-theme-expert design routing"
 require_text "wp-theme-expert/SKILL.md" "adjacent-finding-protocol.md" "wp-theme-expert adjacent finding routing"
 require_text "wp-theme-expert/SKILL.md" "hand off instead of loading broad WordPress context" "wp-theme-expert lane handoff"
+require_text "wp-theme-expert/SKILL.md" "custom-block-theme-from-design.md" "wp-theme-expert screenshot-to-theme primary reference"
 require_text "wp-theme-expert/references/router.md" "../../wp-expert/references/block-theme-architecture.md" "wp-theme-expert block theme routing"
 require_text "wp-site-expert/SKILL.md" "references/router.md" "wp-site-expert modular router routing"
 require_text "wp-site-expert/SKILL.md" "enterprise-code-quality-gate.md" "wp-site-expert quality contract routing"
@@ -79,6 +80,8 @@ require_text "wp-expert/references/agent-behavior-eval-scenarios.md" "Unreleased
 require_text "wp-expert/scripts/fse-design-map.sh" "Primary editing surface" "FSE editing surface field"
 require_text "wp-expert/scripts/fse-design-map.sh" "Templates that must render Post Content" "FSE Post Content requirement field"
 require_text "wp-expert/references/custom-block-theme-from-design.md" "Design-To-FSE Page Recipe" "design-to-FSE recipe"
+require_text "wp-expert/references/custom-block-theme-from-design.md" "Image-To-WordPress Translation Loop" "image-to-wordpress translation loop"
+require_text "wp-expert/references/custom-block-theme-from-design.md" "Surface Selection Matrix" "image-to-wordpress surface selection matrix"
 require_text "wp-expert/references/standards-ci-github.md" "Push only when the user explicitly asks" "GitHub push authorization discipline"
 
 if [ "$errors" -gt 0 ]; then

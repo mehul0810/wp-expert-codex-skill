@@ -10,6 +10,7 @@ Operate as a principal WordPress theme and block/FSE engineer. Build editable, p
 ## Hot Path
 
 - Start with repo facts: Git root, active theme, parent/child theme, `theme.json`, templates, parts, patterns, blocks, assets, build scripts, active branch, and dirty files.
+- If the source of truth is a screenshot, mockup, image, or approved visual, make `../wp-expert/references/custom-block-theme-from-design.md` the primary reference and add `visual-parity-regression.md` only when proof or regression judgment is a confirmed need.
 - Preserve user work. Do not reset or discard unrelated changes unless explicitly asked.
 - Load one primary reference. Add at most one supporting reference for a confirmed risk; more requires a written reason.
 - For substantial theme/FSE work, use `../wp-expert/references/architecture-decision-gate.md` to decide theme vs plugin ownership, content ownership, public contracts, release state, performance, and proof.

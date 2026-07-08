@@ -51,6 +51,23 @@ Use the first layer that satisfies the requirement without making editing fragil
 
 Avoid jumping to step 9 or 10 because the design looks custom.
 
+## Image-To-WordPress Translation Rule
+
+When the task starts from a screenshot, mockup, image, or approved visual:
+
+- Treat the image as a UI contract, not as a markup contract. First decide content ownership, editing surface, and layout ownership, then choose blocks/templates/patterns.
+- Classify each visible section before coding: page-owned content, global site chrome, reusable starter section, dynamic/query-driven content, or truly custom interactive component.
+- Default mapping:
+  - page-owned marketing or content sections -> page `post_content` plus inserted patterns,
+  - global header/footer/navigation/chrome -> template parts,
+  - reusable section starters -> theme patterns,
+  - dynamic repeated content -> Query Loop or a purpose-built dynamic block,
+  - constrained editorial composition -> custom block with `InnerBlocks`,
+  - server/data/integration-driven UI -> custom dynamic block.
+- Do not let the screenshot push implementation into template-only page bodies when Pages > Edit or the post editor is expected to control visible content.
+- Use design tokens and `theme.json` first. Use custom CSS for the remaining gap, not as the first architectural decision.
+- Keep one durable source of truth per visible area. Avoid split ownership where the template, pattern, page content, and custom CSS all compete to control the same section.
+
 ## Pattern, Template Part, Or Custom Block
 
 Use a pattern when:
