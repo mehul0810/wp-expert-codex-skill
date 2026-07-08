@@ -9,7 +9,7 @@ Use this skill as the cross-product WordPress portfolio control room. It routes 
 
 ## Hot Path
 
-- Portfolio heartbeat cadence is dynamic. Use 15 minutes only for active releases/PRs/CI/executable `owner:codex`, 30-60 minutes for quiet or owner-gated monitoring, and pause/delete when quiet. Default is every 30 minutes. Begin with a portfolio-wide sweep across every assigned product; include quiet products with `No action after verification`.
+- Portfolio heartbeat cadence is dynamic. Use 15 minutes only for active releases/PRs/CI/executable `owner:codex`, 30-60 minutes for quiet or owner-gated monitoring, and pause/delete when quiet. Default is every 30 minutes. Begin with a compact exception sweep: active blockers, owner decisions, moving PRs/releases, unhealthy threads/workers, and material drift. Rotate quiet products instead of rereading every product on every heartbeat. Run a full portfolio sweep only for first intake, owner-requested audits, release-readiness synthesis, cross-product drift, or after a context reset.
 - Examples: Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, CleanLinks, Perform, OneCaptcha, and ThemeRouter.
 - Use `CTO` and `<Product Name> PO` as aliases, but use thread IDs for archive, pin, delegation, release, or destructive actions.
 - Own cross-product state, blockers, thread health, release conflicts, branch/release process, automation hygiene, owner briefs, skill routing, and readiness after owner testing.
@@ -31,11 +31,11 @@ Use this skill as the cross-product WordPress portfolio control room. It routes 
 - Release approval briefs must carry the compact quality gate matrix from `release-train-discipline.md`; expand only failed/risky gates.
 - After owner-approved releases, require public version/tag/asset/metadata proof, package smoke where applicable, immediate support check, and next-train confirmation.
 - If the owner calls out a process miss, or failure repeats, route substantive skill changes through a Skill PO lane/thread; direct-main publication is only for explicit CTO/owner approval after validation, otherwise use a PR.
-- Keep tokens tight: load one portfolio reference mode, use `project-subagent-routing.md` for model/reasoning selection, ask for compact on high-context continuity work, and use fresh threads for unrelated execution.
+- Keep tokens tight: load one portfolio reference mode, use `project-subagent-routing.md` for model/reasoning selection, ask for compact on high-context continuity work, and use fresh threads for unrelated execution. If a heartbeat or connector hits `Bad Request`, retry once with a strictly smaller payload and stop broad reads.
 
 ## Reference Routing
 
-- `../shared/references/cto-orchestration-operating-model.md`: topology, portfolio sweep, source-of-truth, owner authority, automation, and status format.
+- `../shared/references/cto-orchestration-operating-model.md`: topology, compact exception sweeps, source-of-truth, owner authority, automation, and status format.
 - `../shared/references/release-train-discipline.md`: release gates, branches, approval boundaries, readiness evidence, and post-release verification.
 - `../shared/references/delegation-protocol.md`: product-thread topology drift, protected-thread boundaries, worktree recovery, and delegation health.
 - `../shared/references/heartbeat-checkin-discipline.md`: delta-first CTO/PO heartbeat templates, quiet-status rules, blocker escalation, and compact coverage lines.
@@ -46,9 +46,9 @@ Use this skill as the cross-product WordPress portfolio control room. It routes 
 
 ## Fast Workflow
 
-1. Identify assigned products and active product threads.
-2. Sweep every product: repo/remote, latest production/prerelease, train/due-date risk, PRs/issues, blockers, ready labels, owner signals, dirty state if touched, worktree/automation pressure, and delegated/skill work.
-3. Mark products quiet only when no eligible execution remains or remaining work is owner-gated, deferred, or blocked with evidence. Repeated executable work triggers `PO loop slip`.
+1. Identify assigned products, active product threads, active blockers, owner decisions, moving PRs/releases, unhealthy workers/threads, and material drift since the last check.
+2. Run a compact exception sweep first. Verify only the products or threads needed to resolve current blockers or confirm material changes; rotate quiet products over time. Use a full portfolio sweep only for first intake, owner-requested audits, release-readiness synthesis, cross-product drift, or after a context reset.
+3. Mark products quiet only when no eligible execution remains or remaining work is owner-gated, deferred, or blocked with evidence. Repeated executable work triggers `PO loop slip`; repeated quiet-state without drift triggers cadence reduction or pause.
 4. Choose the highest-leverage governance action: owner brief, release conflict, product-thread recovery, post-release check, automation cleanup, or process fix.
 5. Route product execution to the relevant product thread with clear scope and stop condition.
 6. Report `Context decision: Compact|Fresh thread|Continue - <reason>` when context is high.

@@ -29,7 +29,7 @@ Executable work is PR-sized by default: one issue, branch, PR, and proof package
 
 Product docs are system memory. Use `AGENTS.md`, `DESIGN.md`, `TESTING.md`, `RELEASE.md`, architecture docs, README, and product docs for reusable repo rules. Repeated failures or proof lessons become skill/system updates or repo-doc issues, not chat-only instructions.
 
-Request-payload hygiene is part of the system loop: inspect one product/thread/PR/issue at a time when context is large; avoid raw XML, full diffs, long outputs, and image lists unless required; retry `Bad Request` once with a smaller payload.
+Request-payload hygiene is part of the system loop: inspect one product/thread/PR/issue at a time when context is large; avoid raw XML, full diffs, long outputs, full skill bodies, repeated heartbeat history, and image lists unless required; retry `Bad Request` once with a smaller payload, then stop broad reads and report the narrowed path.
 
 ## Portfolio Thread Ownership
 
@@ -79,13 +79,15 @@ Routine product heartbeats must return promptly. If checks cannot finish quickly
 
 For owner-gated beta/prerelease/production readiness, fresh live verification is required. If releases, tags, milestones, issues, PRs, labels, comments, CI, or package state cannot be verified live, fail closed with a concise owner-visible blocker instead of retry loops.
 
-## Portfolio Sweep Discipline
+## Compact Exception Sweep Discipline
 
-Every portfolio heartbeat/check-in starts with a sweep across assigned products before governance action. Managed products include Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, CleanLinks, Perform, and OneCaptcha.
+Portfolio heartbeats/check-ins default to a compact exception sweep before governance action. Managed products include Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, CleanLinks, Perform, OneCaptcha, ThemeRouter, Aculect Docs, Aculect Blocks, low-cadence Instamojo for Give, and Authority & Growth Strategist.
 
-For each product, verify/report minimum state: repo path/remote, latest production release, prerelease, active train/due-date risk, Open PRs/issues and CI/release blockers, Dependabot/dependency/tooling PRs and stale PRs, ready labels, owner comments/reviews, local dirty state when touched, Cross-product stale-worktree pressure or prunable metadata, and product/delegated/skill work.
+Start with active blockers, owner decisions, moving PRs/releases, unhealthy product/worker threads, process drift, and material changes since the last check. Verify/report only the products or threads needed for those exceptions. Rotate quiet products over later heartbeats instead of rereading all assigned products every time.
 
-After this sweep, choose the highest-leverage governance action. If one product consumes owner attention, still include verified status and next action/stop. Quiet products still use `No action after verification`. Exception reports surface Open PRs/issues and CI/release blockers for non-quiet products.
+Use a full portfolio sweep only for first intake, owner-requested audits, release-readiness synthesis, cross-product drift, stale automation/worktree audits, or after a context reset. For full sweeps, verify/report minimum state: repo path/remote, latest production release, prerelease, active train/due-date risk, open PRs/issues and CI/release blockers, dependency/tooling PRs and stale PRs, ready labels, owner comments/reviews, local dirty state when touched, stale-worktree pressure or prunable metadata, and product/delegated/skill work.
+
+After the compact exception sweep, choose the highest-leverage governance action. If one product consumes owner attention, summarize the rest with a compact quiet-coverage line and a rotation plan. Quiet products use `No material drift after verification` only when the checked evidence supports it. Exception reports surface open PRs/issues and CI/release blockers for non-quiet products.
 
 Portfolio heartbeats report stale-worktree accumulation as governance drift and route cleanup to product threads.
 
