@@ -6,7 +6,7 @@ Use this reference for GitHub issue/PR triage in WordPress repositories.
 
 Convert queue state into action: autonomous work, owner decisions, release blockers, or deferrals.
 
-The product-thread objective is release readiness: keep advancing the next release train until it is ready for production/beta release approval with evidence.
+The product-thread objective is release readiness: keep advancing the next release train to approval.
 
 ## Product Heartbeat Execution Contract
 
@@ -34,7 +34,7 @@ Ensure `owner:codex` and `owner:me` labels exist in each managed repo. Labels de
 
 ## Queue Discovery
 
-For the current repo:
+For the repo:
 
 ```bash
 gh issue list --state open --limit 100 --json number,title,labels,milestone,url
@@ -50,7 +50,7 @@ gh issue view <number-or-url> --json number,title,body,comments,labels,milestone
 gh pr view <number-or-url> --json number,title,body,comments,reviews,files,statusCheckRollup,mergeStateStatus,baseRefName,headRefName,isDraft,url
 ```
 
-Treat these as separate intake lanes:
+Treat these as intake lanes:
 
 - human contributor PRs,
 - human-created issues,
@@ -82,7 +82,7 @@ Before creating an issue:
 - Dirty or behind primary checkouts block direct edits, not fresh scoped worktree delegation from a clean upstream branch.
 - If delegation is deferred, report the exact blocker: issue number, missing branch/base, missing owner decision, missing tool/project, or unsafe checkout state.
 
-If no ready issue exists, create proactive review work from code/ecosystem signals for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, sanitized hardening, or authority/growth. Keep each issue bounded and classified as: blocker, near-term improvement, research-needed idea, or owner-gated strategic choice.
+If no ready issue exists, create proactive review work for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, sanitized hardening, or authority/growth. Keep each issue bounded and classified as: blocker, near-term improvement, research-needed idea, or owner-gated strategic choice.
 
 Convert real discoveries into issues unless they are safely fixed inside the current PR scope. Duplicate-screen first, then create a focused issue with observed symptom, why it matters, suspected source, affected files/surfaces, acceptance criteria, validation/proof expectation, risk, and whether docs need updating.
 
@@ -92,7 +92,9 @@ Use `community-intake-hygiene.md` for contributor PR courtesy, external issue co
 
 ## Design Contract Intake
 
-Create focused GitHub issues to add or adapt `DESIGN.md` when a design gap exists. Duplicate-screen, assign to `@mehul0810`, reuse labels/milestones, and include validation plus branch/base.
+Create focused GitHub issues to add or adapt `DESIGN.md` when a design gap exists. Duplicate-screen, assign to `@mehul0810`, reuse labels/milestones, and include branch/base.
+
+For premium/enterprise or AI/workflow surfaces, use `enterprise-design-judgment.md`. State accountable role, control/proof gap, failure behavior, and screenshot evidence.
 
 ## Dependency And Stale PR Triage
 
@@ -102,8 +104,8 @@ Check dependency/tooling and stale PRs.
 - Consolidate relevant dependency/tooling updates into one duplicate-screened GitHub issue assigned to `@mehul0810` with labels/milestone where supported, validation, and branch/base plan.
 - Prefer one planned tooling/dependency update issue/PR over scattered Dependabot PRs.
 - Dependabot PRs should target the active development/release branch when supported; never accept GitHub default `main` without explicit release approval.
-- For stale, superseded, wrong-base, abandoned, or release-misaligned PRs, close with a durable GitHub comment explaining why and link the replacement issue/PR when available.
-- Do not close active owner-directed, release-critical, or ambiguous PRs without checking comments, reviews, labels, and milestones first.
+- For stale, superseded, wrong-base, abandoned, or release-misaligned PRs, close with a durable GitHub comment and link the replacement issue/PR when available.
+- Do not close active owner-directed or release-critical PRs without checking comments, reviews, labels, and milestones first.
 - Routine status stays in chat; stale-PR closure comments are durable transitions.
 
 ## Adjacent Finding Triage

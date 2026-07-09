@@ -43,6 +43,7 @@ require_file "shared/references/project-subagent-routing.md" "project subagent r
 require_file "shared/references/rolling-milestone-triage.md" "rolling milestone triage reference"
 require_file "shared/references/heartbeat-checkin-discipline.md" "heartbeat check-in discipline reference"
 require_file "shared/references/authority-growth-lane.md" "authority and growth lane reference"
+require_file "shared/references/enterprise-design-judgment.md" "enterprise design judgment reference"
 
 require_text "wp-portfolio-cto/SKILL.md" "cross-product WordPress portfolio control room" "portfolio CTO control room language"
 require_text "wp-portfolio-cto/SKILL.md" "Begin with a compact exception sweep" "portfolio compact sweep rule"
@@ -438,6 +439,7 @@ require_text "shared/references/product-queue-triage.md" "Missing milestone due 
 require_text "shared/references/product-queue-triage.md" "production/beta release action" "queue owner decision hard-gate scope"
 require_text "shared/references/product-queue-triage.md" "Design Contract Intake" "queue design contract intake"
 require_text "shared/references/product-queue-triage.md" 'Create focused GitHub issues to add or adapt `DESIGN.md`' "queue design issue rule"
+require_text "shared/references/product-queue-triage.md" "State accountable role, control/proof gap, failure behavior, and screenshot evidence" "queue enterprise design issue framing"
 require_text "shared/references/product-queue-triage.md" 'Do not merge Dependabot or dependency PRs directly into `main`' "queue no dependabot main merge"
 require_text "shared/references/product-queue-triage.md" "Consolidate relevant dependency/tooling updates into one duplicate-screened GitHub issue" "queue dependency consolidation"
 require_text "shared/references/product-queue-triage.md" "close with a durable GitHub comment" "queue stale PR durable closure comment"
