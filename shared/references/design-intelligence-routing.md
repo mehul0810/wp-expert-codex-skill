@@ -22,6 +22,7 @@ Use design QA only after a prototype/build has both a source visual and a render
 
 - CTO/PO decides whether a design pass is needed based on product risk and context, not by default.
 - Use `product-experience-principles.md` as the quality lens for premium polish, plug-and-play defaults, onboarding simplicity, and advanced-user escape hatches.
+- For premium/enterprise, AI/workflow, buyer-facing, or governance-heavy surfaces, also use `enterprise-design-judgment.md` to judge proof-led IA, trust signals, workflow control, auditability, and failure behavior.
 - If UI changed, require screenshot proof.
 - If layout, workflow quality, or UX clarity changed materially, add a design audit.
 - If a large redesign has no chosen direction, ideate before implementation.
