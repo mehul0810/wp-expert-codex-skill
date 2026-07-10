@@ -2,7 +2,7 @@
 
 Use this for WordPress websites, landing pages, lead funnels, pricing pages, checkout flows, booking flows, product pages, campaign pages, and CRO improvements that must improve conversion while preserving enterprise, VIP, accessibility, SEO, privacy, and performance standards.
 
-Use alongside `ux-product-strategy-design-qa.md`, `technical-seo-engineering.md`, `privacy-consent-data-governance.md`, `performance-profiling-scale-budgets.md`, `theme-frontend-performance-quality-gate.md`, and WooCommerce guidance when commerce is involved.
+Use this as the primary conversion reference. Add only one support reference for a confirmed UX, SEO, privacy, performance, theme, commerce, or enterprise-proof risk; do not load the complete website stack by default.
 
 ## Conversion Engineering Principles
 
@@ -40,6 +40,7 @@ For high-converting pages:
 - CTAs: specific verbs, consistent destination, visible at natural decision points, and keyboard accessible.
 - Forms: minimal fields, clear labels, inline errors, privacy expectation, success state, and recovery for failed submission.
 - Trust: testimonials, logos, reviews, case studies, security/privacy statements, guarantees, transparent pricing, support expectations.
+- For enterprise audiences, prefer proof-led hierarchy: claim, evidence, workflow/control, and outcome. Use role/use-case/task-based IA and real screenshots or customer evidence before decorative filler.
 - Friction reducers: FAQs, comparison tables, social proof, payment/shipping clarity, no surprise costs, visible contact path.
 - Mobile: primary CTA and form path must be usable without pinch/zoom or layout jumps.
 
