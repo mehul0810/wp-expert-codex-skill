@@ -8,6 +8,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - `wp-site-expert`: enterprise WordPress site, UX, CRO, SEO/AEO/GEO, analytics, accessibility, content architecture, performance, and premium visitor/admin experience engineering.
 - `wp-portfolio-cto`: cross-product WordPress portfolio control room for portfolio heartbeats, product-thread health, release conflicts, owner decision briefs, and shared workflow governance.
 - `wp-product-orchestrator`: one-product WordPress plugin/theme orchestrator for issue intake, milestone scope, release-readiness drive, worker delegation, validation synthesis, and PR workflow.
+- `loop-steward`: independent control-plane PR review, bounded revision, validation, and policy-gated merge decisions for `agent-loop`, `agent-book`, and `agent-skills`.
 - `wp-contributor`: official WordPress project contribution workflows for Core, Meta, Gutenberg, Trac, GitHub PRs, patches, testing, docs, triage, releases, and contributor communication.
 - `content-writer`: organic search content writing for SEO, AEO, GEO, AI Overviews, AI Mode, answer engines, AI tools, briefs, outlines, drafts, audits, and content refreshes.
 - `shared/references/research-token-discipline.md`: reusable token-efficient reasoning, repo exploration, web search, validation, and output discipline used by both skills.
@@ -28,6 +29,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - `wp-site-expert` for whole-site, landing page, UX, CRO, SEO/content, analytics, accessibility, and premium site polish work.
 - `wp-portfolio-cto` for cross-product portfolio governance, product-thread health, release conflicts, and owner portfolio briefs.
 - `wp-product-orchestrator` for one plugin/theme product's backlog, release train, GitHub issue/PR queue, and delegated implementation workflow.
+- `loop-steward` for active control-plane PRs that need independent review, bounded repair, or a policy-gated merge decision.
 
 The detailed playbooks remain in `wp-expert/references/` and `shared/references/`; specialist skills load those references only when needed.
 
@@ -157,6 +159,7 @@ wp-theme-expert/
 wp-site-expert/
 wp-portfolio-cto/
 wp-product-orchestrator/
+loop-steward/
 wp-contributor/
 content-writer/
 ```
@@ -177,6 +180,8 @@ Use the relevant specialist with `shared/references/project-subagent-routing.md`
 Use $wp-portfolio-cto for cross-product WordPress portfolio governance, portfolio heartbeats, product-thread health, release conflicts, owner decision briefs, and shared workflow improvements.
 
 Use $wp-product-orchestrator to triage, plan, delegate, validate, commit, push, or prepare PRs for one WordPress plugin/theme product thread.
+
+Use $loop-steward to review, repair, validate, and policy-gate a pull request in agent-loop, agent-book, or agent-skills.
 
 Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, AI-assisted contribution guidelines, enterprise code-quality gates, triage, release/backport work, or contributor communication.
 
