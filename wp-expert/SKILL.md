@@ -17,6 +17,7 @@ Use this skill as the thin WordPress engineering router. Prefer the narrow speci
 - One product's backlog strategy, GitHub issue intake, milestones, release train, delegation, product heartbeat, PR synthesis, or release-ready brief: use `wp-product-orchestrator`.
 - WordPress Core, Meta, Gutenberg, Trac, upstream patches, contributor docs, or official contribution workflow: use `wp-contributor`.
 - Organic-search writing, briefs, drafts, content refreshes, AI Overview/AEO/GEO writing: use `content-writer`.
+- Control-plane PR review/repair/merge for `agent-loop`, `agent-book`, or `agent-skills`: use `loop-steward`, not a WordPress product role.
 
 ## Universal Rules
 

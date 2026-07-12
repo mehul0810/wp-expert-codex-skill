@@ -29,11 +29,14 @@ Options:
   --routing   Validate reference routing map
   --fanout    Check skill routing fan-out and modular router discipline
   --tokens    Check skill token budgets
+  --routes    Check representative cumulative route budgets
+  --evals     Check skill scenario inventory
   --behavior  Check critical agent behavior guardrails
   --orchestration
               Check product orchestrator CTO behavior guardrails
   --visual    Check visual-to-WordPress behavior guardrails
   --models    Check availability-first model routing
+  --steward   Check Loop Steward authority guardrails
   --help      Show this message
 
 Examples:
@@ -316,6 +319,8 @@ validate_metadata() {
     "CONTRIBUTING.md"
     "SYSTEM_REQUIREMENTS.md"
     "QUICK_REFERENCE.md"
+    "AGENTS.md"
+    "TESTING.md"
   )
 
   for file in "${files[@]}"; do
@@ -335,6 +340,28 @@ validate_token_budgets() {
     log_success "Skill token budgets are within limits"
   else
     log_error "Skill token budget audit failed"
+  fi
+}
+
+validate_route_budgets() {
+  echo ""
+  echo "=== Validating cumulative route budgets ==="
+
+  if bash "$repo_root/scripts/route-budget-audit.sh"; then
+    log_success "Representative route budgets are controlled"
+  else
+    log_error "Route budget audit failed"
+  fi
+}
+
+validate_skill_evals() {
+  echo ""
+  echo "=== Validating skill eval inventory ==="
+
+  if bash "$repo_root/scripts/skill-eval-audit.sh"; then
+    log_success "Skill eval inventory is complete"
+  else
+    log_error "Skill eval inventory audit failed"
   fi
 }
 
@@ -379,6 +406,17 @@ validate_model_routing_rules() {
     log_success "Availability-first model routing is valid"
   else
     log_error "Availability-first model routing audit failed"
+  fi
+}
+
+validate_loop_steward_rules() {
+  echo ""
+  echo "=== Validating Loop Steward guardrails ==="
+
+  if bash "$repo_root/scripts/loop-steward-behavior-audit.sh"; then
+    log_success "Loop Steward guardrails are present"
+  else
+    log_error "Loop Steward guardrail audit failed"
   fi
 }
 
@@ -447,13 +485,20 @@ main() {
     validate_scripts
     validate_metadata
     validate_token_budgets
+    validate_route_budgets
     validate_routing_fanout
+    validate_skill_evals
     validate_behavior_rules
     validate_orchestration_rules
     validate_visual_wordpress_rules
     validate_model_routing_rules
+    validate_loop_steward_rules
   elif [ "$check_type" = "tokens" ]; then
     validate_token_budgets
+  elif [ "$check_type" = "routes" ]; then
+    validate_route_budgets
+  elif [ "$check_type" = "evals" ]; then
+    validate_skill_evals
   elif [ "$check_type" = "fanout" ]; then
     validate_routing_fanout
   elif [ "$check_type" = "behavior" ]; then
@@ -464,6 +509,8 @@ main() {
     validate_visual_wordpress_rules
   elif [ "$check_type" = "models" ]; then
     validate_model_routing_rules
+  elif [ "$check_type" = "steward" ]; then
+    validate_loop_steward_rules
   fi
 
   print_summary

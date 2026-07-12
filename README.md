@@ -213,6 +213,7 @@ This symlinks the skills into `~/.claude/skills/`, where Claude Code discovers p
 ~/.claude/skills/wp-site-expert/SKILL.md
 ~/.claude/skills/wp-portfolio-cto/SKILL.md
 ~/.claude/skills/wp-product-orchestrator/SKILL.md
+~/.claude/skills/loop-steward/SKILL.md
 ~/.claude/skills/wp-contributor/SKILL.md
 ~/.claude/skills/content-writer/SKILL.md
 ~/.claude/skills/shared/references/*.md
@@ -225,6 +226,7 @@ Install selected skills only:
 bash scripts/install-global-skill-links.sh wp-expert
 bash scripts/install-global-skill-links.sh wp-plugin-expert wp-theme-expert wp-site-expert
 bash scripts/install-global-skill-links.sh wp-expert wp-plugin-expert wp-theme-expert wp-site-expert wp-portfolio-cto wp-product-orchestrator wp-contributor
+bash scripts/install-global-skill-links.sh loop-steward
 bash scripts/install-global-skill-links.sh content-writer
 ```
 
@@ -244,11 +246,12 @@ test -f ~/.claude/skills/wp-theme-expert/SKILL.md && echo "wp-theme-expert insta
 test -f ~/.claude/skills/wp-site-expert/SKILL.md && echo "wp-site-expert installed"
 test -f ~/.claude/skills/wp-portfolio-cto/SKILL.md && echo "wp-portfolio-cto installed"
 test -f ~/.claude/skills/wp-product-orchestrator/SKILL.md && echo "wp-product-orchestrator installed"
+test -f ~/.claude/skills/loop-steward/SKILL.md && echo "loop-steward installed"
 test -f ~/.claude/skills/wp-contributor/SKILL.md && echo "wp-contributor installed"
 test -f ~/.claude/skills/content-writer/SKILL.md && echo "content-writer installed"
 ```
 
-After first install, fully restart Claude Code if the skills do not appear immediately. Then run `/help` or explicitly ask Claude Code to use `wp-expert`, `wp-plugin-expert`, `wp-theme-expert`, `wp-site-expert`, `wp-portfolio-cto`, `wp-product-orchestrator`, `wp-contributor`, or `content-writer`.
+After first install, fully restart Claude Code if the skills do not appear immediately. Then run `/help` or explicitly ask Claude Code to use `wp-expert`, `wp-plugin-expert`, `wp-theme-expert`, `wp-site-expert`, `wp-portfolio-cto`, `wp-product-orchestrator`, `loop-steward`, `wp-contributor`, or `content-writer`.
 
 ### Install Globally For Codex
 
@@ -261,6 +264,7 @@ The same installer also symlinks skills into Codex's global skills directory:
 ~/.codex/skills/wp-site-expert/SKILL.md
 ~/.codex/skills/wp-portfolio-cto/SKILL.md
 ~/.codex/skills/wp-product-orchestrator/SKILL.md
+~/.codex/skills/loop-steward/SKILL.md
 ~/.codex/skills/wp-contributor/SKILL.md
 ~/.codex/skills/content-writer/SKILL.md
 ~/.codex/skills/shared/references/*.md
@@ -310,6 +314,8 @@ The skills are intentionally token-efficient:
 - Focused `wp-expert/references/` playbooks keep plugin product architecture, troubleshooting, conversion engineering, frontend performance, launch readiness, hybrid migration, supportability, analytics, and acceptance criteria loadable only when needed.
 - Each `scripts/` directory contains lightweight discovery, validation, and workflow helpers.
 - `scripts/skill-token-audit.sh` guards frontmatter, `SKILL.md`, prompt, and reference word budgets so future improvements do not quietly increase token usage.
+- `scripts/route-budget-audit.sh` guards representative cumulative skill/router/reference paths rather than only individual files.
+- `skill-evals/README.md` defines the fresh-agent behavior gate; structural audits never substitute for scenario execution.
 - `skill-evals/wp-expert-scenarios.md` contains lightweight scenario prompts for checking routing and behavior after skill changes.
 
 See `PLANNING_REPORT.md` for the planning rationale and validation history.
