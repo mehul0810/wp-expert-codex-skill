@@ -6,11 +6,19 @@ Use this reference before beta, prerelease, stable, deploy, version, tag, WordPr
 
 Do not create a next milestone prerelease until the previous milestone has a production release.
 
-Example: if `0.6.0` is not production-released, do not create `0.6.1-beta-*`. New work may be folded into the current unreleased train or queued for a later milestone, but prerelease and release creation are gated by production release state.
+Example: if `0.6.0` is not production-released, do not create `0.6.1-beta-*`; fold work into the current train or queue it later.
 
 Never infer prerelease readiness from milestone closure alone.
 
-`main` is production release space only. Release branches merge to `main` only after explicit owner release approval and owner testing confirmation. Milestone release work must target `release/<release-version>`, where `<release-version>` is the version/milestone title, not the GitHub milestone ID or sequence number. Do not create branches like `release/3` unless the documented release version is literally `3`. `develop` is only for unmilestoned development integration or as the verified source for creating a missing milestone branch.
+`main` is production release space only. Release branches merge to it only after explicit owner approval and testing. Milestone release work must target `release/<release-version>`: the version string, never the GitHub milestone ID; `develop` is only unmilestoned integration or a verified release-branch source.
+
+## Production Mainline Reconciliation
+
+Treat a production release as incomplete until its exact release tag is an ancestor of `origin/main`. Never advance `main` for a beta or prerelease.
+
+- Live-verify the release, tag, matching `release/<version>` branch, and `origin/main`.
+- Use `release/<version>` to `main` only when its head is the tag; otherwise use a narrow branch at the tag. Require owner approval; never push directly to `main`.
+- Before deployment and after release, prove `git merge-base --is-ancestor <release-tag-commit> origin/main` plus matching tag and main metadata. On failure, stop and record `mainline sync missing` before another prerelease.
 
 ## Required Release Checks
 
@@ -36,28 +44,17 @@ Release-ready recommendations and owner approval requests require fresh live ver
 
 ## Active Release Train Execution
 
-An active release train is quiet only when there is no eligible execution left: all scoped non-production PRs are merged, or each remaining PR/issue is explicitly classified as owner-gated, failing, draft, wrong-base with recovery action, blocked, or deliberately deferred with rationale.
+An active train is quiet only with no eligible work: every scoped PR/issue is merged, owner-gated, failing, draft, wrong-base with recovery, blocked, or deferred.
 
-Do not return routine `DONT_NOTIFY` status solely because a clean PR queue is unchanged. A clean/green, correctly based, non-production PR in the active release scope is executable work: review it, merge it when governance allows, or record the concrete blocker. Wrong-base PRs are also active drift: retarget, recreate, supersede, or defer them with evidence instead of leaving them open without a recovery path.
-
-Each active-train check should compare the previous `Next action` with the current state. If the same executable action repeats, the product thread must attempt the action, delegate it, or return the exact blocker/tool failure. Repeated monitoring without action is release-train drift.
-
-Each active-train check should maintain a compact burn-down: implementation-ready, merge-ready, owner-gated, wrong-base/recovery, blocked, and deferrable. Move to release-ready evidence only after the burn-down has no eligible non-production execution remaining.
-
-Escalate to the portfolio CTO when executable release-train work remains unchanged for two heartbeats, or after one heartbeat when a clean/green, correctly based non-production PR remains unreviewed/unmerged without a concrete blocker.
+Action a clean, correctly based non-production PR or state its concrete blocker. Compare the prior `Next action`; on repetition, execute, delegate, or report the exact tool failure. Keep an implementation-ready/merge-ready/owner-gated/wrong-base/blocked/deferred burn-down, and escalate repeated executable work to the portfolio CTO.
 
 ## Milestone Discipline
 
-Milestones need due dates. If a milestone lacks a due date:
+Milestones need due dates: recommend one only from current-train and sequence evidence, ask if ambiguous, and do not treat the missing due date alone as an implementation blocker.
 
-- Set or recommend one only after checking the current release train and existing milestone sequence.
-- Ask the owner if the date is ambiguous.
-- Do not invent dates that conflict with repo policy or production release order.
-- Do not treat the missing due date alone as a blocker to implementation delegation for an existing issue when scope, milestone evidence, and branch/base are otherwise safe.
+For milestone work, create or use `release/<release-version>` from the verified development base; use the version string, not the GitHub milestone ID or sequence number. If it is not a version, use repo evidence or a decision brief. Do not retarget ambiguous milestones or change due dates without evidence.
 
-For milestone-assigned work, create or use `release/<release-version>` from the verified development base; `<release-version>` is the version/milestone title, not the GitHub milestone ID or sequence number. If the milestone title is not a release version, infer only from repo release policy/source-of-truth evidence; otherwise ask or create a product-thread decision brief. Do not target `develop` for milestone PRs. Do not retarget ambiguous milestones or change due dates without evidence.
-
-If a wrong milestone-ID branch such as `release/3` was created, preserve commits by replaying or reconciling them into the correct `release/<release-version>` branch, retarget open PRs, and do not delete the wrong branch without explicit owner approval.
+If a wrong milestone-ID branch such as `release/3` exists, preserve and replay/reconcile commits to `release/<release-version>`, retarget PRs, and do not delete it without owner approval.
 
 ## Release Stop Conditions
 
@@ -100,6 +97,7 @@ When the train is release-ready, request exact production/beta release approval 
 After the owner approves and the product thread completes a beta, production release, deploy, or WordPress.org publish, do not call the release train closed until the product thread returns a compact post-release check:
 
 - Approved commit, GitHub release/tag or prerelease, and published package/artifact align.
+- For a production release, the exact release tag is an ancestor of `origin/main`, `main` reports the same release version, and beta/prerelease tags have not advanced `main`.
 - Public version signal matches the intended version: WordPress.org, marketplace, product site, package download, or installable ZIP as applicable.
 - `readme.txt`, changelog, release notes, docs links, screenshots/assets, banners/icons, and `Tested up to` metadata are current where applicable.
 - Installed-package smoke check passes for the critical golden workflow, or the skipped proof gap is explicitly accepted.
