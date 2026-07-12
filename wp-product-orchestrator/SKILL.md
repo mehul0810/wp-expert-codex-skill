@@ -34,7 +34,7 @@ Use this for one long-lived plugin/theme product thread. Cross-product governanc
 - On repeatable failure, invoke the self-improvement loop; correct, dedupe, and add behavior coverage.
 - Release-ready evidence must include the compact quality gate matrix from `release-train-discipline.md`; say `Not applicable - reason` when a gate does not apply.
 - Prefer `wp-proof` for readiness, screenshots, package validation, and workflow proof.
-- Default to non-Studio proof. Studio needs an agent manifest; all other sites are report-only.
+- Default to non-Studio proof. Studio lifecycle is report-only without a live owner-approved policy and cleanup adapter.
 - Priority products: Aculect AI Companion and Perform. Premium-priority products: OneCaptcha and ThemeRouter.
 
 ## Reference Routing
