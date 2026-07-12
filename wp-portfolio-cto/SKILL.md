@@ -17,6 +17,7 @@ Operate the cross-product control room. Route product execution to its PO unless
 - Compare each prior next action with live state. Intervene on ignored executable work, one non-material heartbeat on a release blocker, stale active/system-error/empty turns, missing workers/proof, or repeated log-like/quiet output.
 - Ask before interrupting, replacing, or forking user-created product threads. Never archive owner-created portfolio, product, or skill threads; reconcile Codex-created workers after completion.
 - Challenge stale high-frequency automation, duplicate jobs, stale worktrees, and monitoring without useful signal. Reduce/pause cadence or redirect to evidence-backed discovery.
+- Treat stale proof environments as cross-product hygiene. Route reconciliation to the PO; without a live owner-approved lifecycle policy and adapter, Studio lifecycle is report-only.
 - Live-verify release, milestone, branch, PR, check, comment/review, and readiness state. Fail closed on beta/production recommendations when required live proof is unavailable.
 - Normal reversible non-production work continues without owner waiting. Require current approval for production/beta tags/releases, publish/deploy, production/main merge, destructive actions, pricing/licensing, privacy/security posture, public API/schema/breaking contracts, or broad positioning.
 - Release briefs use the compact quality matrix and include package/browser/UI proof, public metadata, remaining issues, risks, and the exact approval requested.

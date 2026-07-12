@@ -21,6 +21,7 @@ Run one long-lived product control thread. Cross-product governance belongs to `
 - Labels express readiness, but reversible non-release work should not stall on `owner:me`. Only current production/beta release, publish/deploy, production/main merge, destructive, pricing/licensing, privacy/security posture, public contract/schema, or broad positioning changes require owner approval.
 - Keep sensitive security details out of public issues/comments. Use sanitized hardening work and private escalation.
 - UI/design work needs issue-side before evidence and PR-side after screenshots or an explicit proof gap. Release readiness requires packaged/runtime proof and the compact quality matrix.
+- Default to disposable non-Studio proof. Studio lifecycle is report-only without a live owner-approved policy and cleanup adapter.
 - Use delta-first, owner-readable check-ins. Execute or report an exact blocker; do not leave heartbeats active on timeouts. Routine status stays in chat, not noisy GitHub comments.
 - Treat empty/system-error turns, non-materialized workers, wrong path/base/model, missing proof, repeated inactivity, or owner-instruction drift as topology/process failure. Recover and invoke the self-improvement loop.
 - Keep context bounded: one primary mode plus one support reference only after confirmed risk; compact continuity work and use fresh workers for unrelated execution.
