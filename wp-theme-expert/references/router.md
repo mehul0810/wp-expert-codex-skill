@@ -14,6 +14,8 @@ Use this router only after `wp-theme-expert` is selected. Load one primary refer
 - Theme/frontend performance, Core Web Vitals, fonts/images/assets: `../../wp-expert/references/theme-frontend-performance-quality-gate.md`.
 - WordPress Design System and block editor components: `../../wp-expert/references/wordpress-design-system.md`.
 - Premium UI implementation and admin/editor UX: `../../wp-expert/references/ui-ux-pro-for-wordpress.md`.
+- Plug-and-play product experience and advanced-user controls: `../../shared/references/product-experience-principles.md`.
+- Enterprise proof, accountable IA, governance, and failure behavior: `../../shared/references/enterprise-design-judgment.md`.
 - Ollie/Ollie Pro: `../../wp-expert/references/ollie-block-theme.md`.
 - Blocksy/Blocksy Pro: `../../wp-expert/references/blocksy-theme.md`.
 - Hybrid theme/page-builder migration: `../../wp-expert/references/hybrid-theme-migration-modernization.md`.

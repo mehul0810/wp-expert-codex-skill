@@ -92,6 +92,19 @@ check_reference_chain_discipline() {
   fi
 }
 
+check_shared_reference_reachability() {
+  local ref basename
+  while IFS= read -r ref; do
+    basename="$(basename "$ref")"
+    if ! grep -RFq "$basename" \
+      "$repo_root"/*/SKILL.md \
+      "$repo_root"/*/references/router.md \
+      "$repo_root/wp-expert/references/reference-routing-map.md" 2>/dev/null; then
+      error "shared reference is not reachable from a skill/router: $basename"
+    fi
+  done < <(find "$repo_root/shared/references" -maxdepth 1 -type f -name '*.md' | sort)
+}
+
 check_router_discipline() {
   require_text "wp-expert/SKILL.md" "clear tasks should trigger the specialist directly" "wp-expert narrow trigger wording"
   require_text "wp-expert/SKILL.md" "Auto-select the specialist by the task's primary artifact or outcome" "wp-expert auto specialist selection"
@@ -99,13 +112,20 @@ check_router_discipline() {
   require_text "wp-theme-expert/SKILL.md" "Use for WordPress theme engineering" "theme trigger description"
   require_text "wp-site-expert/SKILL.md" "Use for WordPress site engineering" "site trigger description"
   require_text "wp-portfolio-cto/SKILL.md" "Use for cross-product WordPress portfolio CTO governance" "portfolio CTO trigger description"
-  require_text "wp-product-orchestrator/SKILL.md" "Use for one WordPress plugin/theme product thread" "product orchestrator trigger description"
+  require_text "wp-product-orchestrator/SKILL.md" "Use for one WordPress product control thread" "product orchestrator trigger description"
   require_text "wp-expert/SKILL.md" "wp-portfolio-cto" "wp-expert portfolio specialist routing"
   require_text "wp-contributor/SKILL.md" "Use for official WordPress contribution" "contributor trigger description"
+  require_text "loop-steward/SKILL.md" "control-plane PR" "loop steward trigger description"
+  require_text "wp-expert/SKILL.md" 'use `loop-steward`' "control-plane routing boundary"
+  require_text "wp-portfolio-cto/SKILL.md" "references/router.md" "portfolio router pointer"
+  require_text "wp-product-orchestrator/SKILL.md" "references/router.md" "product router pointer"
+  require_text "wp-product-orchestrator/references/router.md" "authority-growth-lane.md" "authority growth route"
+  require_text "wp-product-orchestrator/references/router.md" "weekly-wordpress-intelligence.md" "weekly intelligence route"
+  require_text "wp-product-orchestrator/references/router.md" "repo-product-docs-contract.md" "repo docs route"
   require_text "shared/references/context-window-discipline.md" "Context decision: Compact|Fresh thread|Continue" "context decision status phrase"
   require_text "wp-product-orchestrator/SKILL.md" "Context decision: Compact|Fresh thread|Continue" "orchestrator context decision line"
-  require_text "wp-product-orchestrator/SKILL.md" "Auto-route workers by changed artifact" "orchestrator worker auto routing"
-  require_text "wp-portfolio-cto/SKILL.md" "Route product backlog" "portfolio routes product execution"
+  require_text "wp-product-orchestrator/SKILL.md" "Route by artifact" "orchestrator worker auto routing"
+  require_text "wp-portfolio-cto/SKILL.md" "Route backlog" "portfolio routes product execution"
   require_text "wp-plugin-expert/SKILL.md" "references/router.md" "plugin router pointer"
   require_text "wp-theme-expert/SKILL.md" "references/router.md" "theme router pointer"
   require_text "wp-site-expert/SKILL.md" "references/router.md" "site router pointer"
@@ -125,6 +145,7 @@ check_skill_fanout
 check_router_discipline
 check_all_md_links
 check_reference_chain_discipline
+check_shared_reference_reachability
 
 if [ "$errors" -gt 0 ]; then
   echo "routing audit failed: $errors issue(s)" >&2
