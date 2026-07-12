@@ -142,6 +142,8 @@ require_absent "wp-portfolio-cto/SKILL.md" "Aculect AI Companion" "portfolio hot
 require_absent "wp-product-orchestrator/SKILL.md" "OneCaptcha and ThemeRouter" "product hot path has no priority list"
 require_absent "shared/references/cto-orchestration-operating-model.md" "every 30 minutes" "CTO model has no fixed cadence"
 require_absent "shared/references/cto-orchestration-operating-model.md" "every 15 minutes" "CTO model has no fixed product cadence"
+require_absent "skill-evals/wp-portfolio-cto-scenarios.md" "every 30 minutes" "CTO eval has no fixed cadence"
+require_absent "skill-evals/wp-product-orchestrator-scenarios.md" "every 15 minutes" "PO eval has no fixed cadence"
 require_absent "shared/references/delegation-protocol.md" "OneSMTP #73" "delegation reference has no transient issue"
 require_absent "shared/references/release-train-discipline.md" 'Tested up to` WordPress 7.0' "release reference has no fixed WordPress target"
 require_absent "shared/references/product-queue-triage.md" 'Tested up to` WordPress 7.0' "queue reference has no fixed WordPress target"

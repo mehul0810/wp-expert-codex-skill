@@ -88,7 +88,7 @@ Use these lightweight scenarios to verify one-product plugin/theme workflow rout
 - Did it continue to the next milestone's ready work when the current milestone has no ready work?
 - Did product threads drive the next release train to ready instead of only polling status?
 - Did product work avoid blindly draining milestones and define/reconfirm the release scope and priority set first?
-- Did product heartbeat cadence follow the owner-configurable default, currently every 15 minutes during acceleration, while portfolio cadence remained owned by `wp-portfolio-cto`?
+- Did product heartbeat cadence resolve from current owner direction or governed automation/product state while portfolio cadence remained owned by `wp-portfolio-cto`?
 - Did routine heartbeat live checks batch GitHub queries, retry at most once for a narrow missing signal, then report `live check unavailable` without retry storms?
 - Did routine or quiet product heartbeats exit with a partial owner-readable result instead of staying in progress when long or timed-out live checks could not finish promptly?
 - Did one non-material heartbeat on a release blocker escalate instead of looping quietly?
