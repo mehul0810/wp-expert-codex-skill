@@ -28,7 +28,7 @@ Maintain the control-plane repositories without turning MeGo into a PR log. Trea
 
 - `agent-loop`: run `npm test` and a diff check against the PR base.
 - `agent-book`: verify the decision source, links, dedupe, and diff check against the PR base.
-- `agent-skills`: validate the changed skill with `quick_validate.py`, then run the repository reference and behavior audits relevant to the changed role.
+- `agent-skills`: validate changed skills with `quick_validate.py`, run relevant reference/behavior audits, and run `git diff --check origin/main...HEAD`.
 
 ## Authority boundaries
 

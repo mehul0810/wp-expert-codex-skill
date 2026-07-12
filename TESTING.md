@@ -3,7 +3,7 @@
 ## Fast Gate
 
 ```bash
-git diff --check
+git diff --check origin/main...HEAD
 bash -n scripts/*.sh
 bash scripts/skill-token-audit.sh
 bash scripts/route-budget-audit.sh

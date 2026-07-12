@@ -21,6 +21,7 @@ require_text loop-steward/SKILL.md "fresh independent Steward run/actor" "review
 require_text loop-steward/SKILL.md "Immediately before merge" "pre-merge race recheck"
 require_text loop-steward/SKILL.md "reconcile the queue idempotently" "idempotent reconciliation"
 require_text loop-steward/SKILL.md "Never bypass required, flaky, missing, or failing checks" "required-check fail closed"
+require_text loop-steward/SKILL.md "git diff --check origin/main...HEAD" "agent-skills base-relative diff check"
 require_text skill-evals/loop-steward-scenarios.md "Missing policy" "missing policy scenario"
 require_text skill-evals/loop-steward-scenarios.md "Head changed before merge" "changed head scenario"
 require_text skill-evals/loop-steward-scenarios.md "Duplicate event" "duplicate event scenario"
