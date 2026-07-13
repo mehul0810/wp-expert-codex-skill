@@ -85,12 +85,13 @@ Add your reference to the appropriate skill's `SKILL.md`:
 - Add to the "Reference Router" section (lines 41-54 in wp-expert/SKILL.md)
 - Update the description of that router category if needed
 
-#### Step 6: Submit & Review
+#### Step 6: Validate And Publish
 
-1. Create a branch: `git checkout -b add-reference/your-topic`
-2. Make changes following guidelines above
-3. Test: Run `bash scripts/validate-references.sh` (see Validation section)
-4. Commit with clear message:
+This owner-managed repository publishes scoped, validated changes directly to `main`. Do not create a feature branch or pull request unless the owner explicitly asks for review or repository protection requires it.
+
+1. Make changes following the guidance above on the current `main` checkout.
+2. Test: Run `bash scripts/validate-references.sh` (see Validation section).
+3. Commit with a clear message:
    ```
    git commit -m "Add new-topic reference guidance
    
@@ -99,7 +100,7 @@ Add your reference to the appropriate skill's `SKILL.md`:
    
    Co-Authored-By: Your Name <your.email@example.com>"
    ```
-5. Submit for review
+4. Push only after validation and the applicable owner/publishing policy allow it.
 
 ### 3. Helper Scripts
 
@@ -158,7 +159,7 @@ For README, UPGRADE, or other docs:
 
 1. Ensure changes are accurate and reflect current tools/versions
 2. Include external links with dates (e.g., "as of 2026-05")
-3. Update the relevant version in `VERSION` file
+3. Update `VERSION` and `CHANGELOG.md` only for an approved release, rather than for every documentation change
 4. Run through README to ensure consistency
 
 ## Development Workflow
@@ -177,10 +178,11 @@ bash scripts/install-global-skill-links.sh --force
 
 ### Making Changes
 ```bash
-# Create a feature branch
-git checkout -b feature/your-change-name
+# Confirm that the current main checkout is clean and current
+git status --short --branch
+git fetch origin
 
-# Make changes following guidelines above
+# Make the scoped changes on main
 
 # Validate (run scripts, check syntax)
 bash scripts/validate-references.sh
@@ -193,8 +195,8 @@ git commit -m "Add/fix: your change
 
 Co-Authored-By: Your Name <email>"
 
-# Push and create a pull request
-git push origin feature/your-change-name
+# Push the validated main commit when publication is authorized
+git push origin main
 ```
 
 ### Commit Message Format
@@ -231,6 +233,7 @@ Before submitting:
 - [ ] Reference added to `reference-routing-map.md`
 - [ ] Reference added to the appropriate skill's `SKILL.md`
 - [ ] Commit message is clear and follows convention
+- [ ] Direct-to-`main` publication policy was followed, or the owner explicitly requested an exception
 - [ ] No secret keys, credentials, or PII included
 
 Run validation:
@@ -240,7 +243,7 @@ bash scripts/validate-references.sh
 
 ## Release Process
 
-When releasing a new version:
+When the owner explicitly approves a new version:
 
 1. **Update VERSION**: Increment following semantic versioning
 2. **Update CHANGELOG.md**: Document all changes in the new version

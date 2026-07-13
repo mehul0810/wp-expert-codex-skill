@@ -44,6 +44,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ### Changed
 
+- Contribution guidance now matches the repository contract: validated owner-managed changes publish directly to `main`; branches and pull requests are explicit exceptions.
 - Shortened skill frontmatter descriptions, agent default prompts, and the `wp-expert` hot-path router to reduce always-loaded token usage.
 - Global installer now symlinks `shared/` into Codex and Claude skill roots so shared references resolve consistently from globally linked skills.
 - Global installer now symlinks `templates/` into Codex and Claude skill roots so product repo starter-kit templates are discoverable from global installs.
