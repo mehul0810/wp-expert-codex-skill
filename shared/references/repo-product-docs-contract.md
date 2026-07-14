@@ -13,7 +13,7 @@ Recommended repo docs:
 - `DESIGN.md`: concise product design contract for admin UI patterns, screen hierarchy, components/controls, empty/loading/error/success states, accessibility, responsive behavior, WordPress.org/website assets, copy/tone, visual non-goals, and the default UI baseline. Use the [WordPress Design System](https://www.figma.com/community/file/1436359662053949167/wordpress-design-system) as the starting point, then layer each product's brand colors and product-specific identity on top of it.
 - `TESTING.md`: repo-specific smoke, proof, fixtures, environments, and validation shortcuts when they are not already clear in `AGENTS.md`.
 - `ROADMAP.md`: milestone sequence, release intent, current priorities, and deferred work.
-- `RELEASE.md`: beta/stable process, packaging, release train rules, WordPress.org or marketplace steps, rollback notes.
+- `RELEASE.md`: beta/stable process, packaging, main-first production merge/tag/release sequence, post-release ancestry and forward-sync checks, WordPress.org or marketplace steps, rollback notes.
 - `PLAYGROUND.md`: repo-specific WordPress Playground preview rules, entry routes, test users, and packaging caveats when Playground support matters.
 - `docs/decisions/ADR-xxxx.md`: material architecture or product decisions.
 
@@ -33,6 +33,7 @@ Update or recommend docs when:
 - A milestone or release train rule is ambiguous.
 - A product decision affects multiple future issues.
 - A repo automation needs stable local instructions.
+- A release workflow can publish from `release/*`, auto-create a tag, or finish without proving the production tag is reachable from `main`.
 - GitHub issue comments alone would hide important long-term context.
 - An active product still depends on chat-only instructions for workflow, design, testing, or release behavior.
 - A design-visible issue lacks before screenshots, or a design-visible PR lacks after screenshots.

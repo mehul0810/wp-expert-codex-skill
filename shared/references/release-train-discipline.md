@@ -4,106 +4,97 @@ Use this reference before beta, prerelease, stable, deploy, version, tag, WordPr
 
 ## Production Gate
 
-Do not create a next milestone prerelease until the previous milestone has a production release.
-
-Example: if `0.6.0` is not production-released, do not create `0.6.1-beta-*`; fold work into the current train or queue it later.
-
-Never infer prerelease readiness from milestone closure alone.
+Do not create a next milestone prerelease until the previous milestone has a production release; fold new work into the current train or queue it later. Milestone closure alone is not release proof.
 
 `main` is production release space only. Release branches merge to it only after explicit owner approval and testing. Milestone release work must target `release/<release-version>`: the version string, never the GitHub milestone ID; `develop` is only unmilestoned integration or a verified release-branch source.
 
-## Production Mainline Reconciliation
+## Main-First Production Release Transaction
 
-Treat a production release as incomplete until its exact release tag is an ancestor of `origin/main`. Never advance `main` for a beta or prerelease.
+A stable production release is one transaction. Request approval naming the exact release PR/candidate SHA and production merge, tag, GitHub release, and publish/deploy actions; approval for one SHA does not authorize another. Never publish first and sync `main` later. Beta/prerelease tags stay on the active release train and must not advance `main`.
 
-- Live-verify the release, tag, matching `release/<version>` branch, and `origin/main`.
-- Use `release/<version>` to `main` only when its head is the tag; otherwise use a narrow branch at the tag. Require owner approval; never push directly to `main`.
-- Before deployment and after release, prove `git merge-base --is-ancestor <release-tag-commit> origin/main` plus matching tag and main metadata. On failure, stop and record `mainline sync missing` before another prerelease.
+1. Live-fetch `origin/main`, `release/<version>`, releases, tags, PRs, and checks; pin the approved PR and candidate SHA.
+2. After approval, merge the approved release PR into `main` before creating the stable tag or GitHub release. Fetch, record the production SHA, prove it reachable from `origin/main`, and verify target-version metadata there.
+3. Build or revalidate the artifact from that SHA when merge, generated output, or metadata can differ.
+4. Create and push the tag at the production SHA, then run `gh release create <tag> --verify-tag`. Do not use `--target release/*`; in GitHub UI select the existing tag.
+5. After publish, prove the actual tag commit equals the approved SHA, is an ancestor of `origin/main`, and matches package metadata. `targetCommitish` is not tag proof.
+6. Forward-sync production-only metadata/hotfixes from `main` into `develop` or the next train when present; verify remaining divergence.
+
+Any failed step stops the transaction. Do not publish, close the train, or start another prerelease from a known mismatch.
+
+### Recovery: Production Mainline Reconciliation
+
+For an already-published off-main release, freeze further releases, verify the tag commit, and create a narrow branch at that tag for an owner-approved PR into `main`. Use a fast-forward or merge commit; squash, rebase, or cherry-pick recovery does not satisfy tag ancestry. Never move the public tag. Prove tag ancestry, version/artifact parity, and forward-sync; until then report `mainline sync missing` and keep the train open.
+
+## Release Automation Contract
+
+POs audit `.github/workflows` and `RELEASE.md`. Production automation uses full history; resolves the approved SHA; requires it on `origin/main` with valid metadata/package; pushes the exact tag; releases with `--verify-tag`; and repeats ancestry/artifact checks. Never auto-create a production tag from `release/*`. Use `wp-product-orchestrator/scripts/release-mainline-audit.sh <tag-or-sha> [main-ref] [expected-sha]`. Missing enforcement becomes a focused issue before release.
 
 ## Required Release Checks
 
-Before any beta, prerelease, or stable action, verify:
+Before beta, prerelease, or stable action, verify:
 
-- Latest production release.
-- Latest prerelease.
-- Current target release train.
-- Whether the previous milestone has a production release.
-- Whether the owner explicitly authorized production/beta release creation in context.
-- Whether owner testing confirmation exists for production readiness.
-- For WordPress.org plugins, whether `Tested up to` matches the live-verified release target.
-- Whether release metadata matches the target version: plugin header/version file, `readme.txt` stable tag and changelog, package metadata, and release notes.
-- Whether `readme.txt` and changelog/release notes are release-current: stable tag/version, `Tested up to`, Requires WP/PHP if present, changelog section, upgrade notice when applicable, feature descriptions, FAQ/screenshots/tags where relevant, and no overclaiming unmerged future milestone work.
-- Whether any admin UI, frontend UI, consent/setup flow, editor surface, or visual output has release-candidate visual proof from the packaged ZIP/build or release branch build.
-- Whether the product's golden workflow regression matrix has been smoke-tested against the release candidate package/build.
-- Whether package/readme/Plugin Check validation is current after metadata changes.
-- Whether the compact quality gate matrix below is complete, with every gate marked pass/fail/risk or `Not applicable - reason`.
+- Latest production/prerelease, target train, and previous milestone production state.
+- Current owner authorization and owner testing confirmation for production readiness.
+- For WordPress.org, `Tested up to` matches the live-verified release target.
+- Confirm release metadata matches the target version: plugin header/version file, `readme.txt` stable tag/changelog, package metadata, and release notes.
+- `readme.txt` and changelog/release notes are release-current: version, `Tested up to`, Requires WP/PHP, changelog, upgrade notice when applicable, feature/docs/assets metadata, and no overclaiming unmerged future milestone work.
+- Package/readme/Plugin Check validation and the compact quality gate matrix are current.
+- Changed UI has release-candidate visual proof from the packaged ZIP/build; the golden workflow regression matrix passed against that candidate.
 
-Use the source of truth hierarchy from `cto-orchestration-operating-model.md`: GitHub production releases/tags first, then prereleases/tags, then milestones/issues/PRs, then repo docs, then local state, then memory/chat.
+Apply the source hierarchy in `cto-orchestration-operating-model.md`; live releases/tags and GitHub state outrank repo/local/chat evidence.
 
 Release-ready recommendations and owner approval requests require fresh live verification. If GitHub releases/tags, milestones, issues, PRs, labels/comments, CI, package state, or WordPress.org state cannot be verified live, stop with `live check unavailable` plus the exact missing signal and fallback evidence; do not request beta/production approval.
 
 ## Active Release Train Execution
 
-An active train is quiet only with no eligible work: every scoped PR/issue is merged, owner-gated, failing, draft, wrong-base with recovery, blocked, or deferred.
-
-Action a clean, correctly based non-production PR or state its concrete blocker. Compare the prior `Next action`; on repetition, execute, delegate, or report the exact tool failure. Keep an implementation-ready/merge-ready/owner-gated/wrong-base/blocked/deferred burn-down, and escalate repeated executable work to the portfolio CTO.
+An active train is quiet only when every scoped item is merged, owner-gated, failing, draft, wrong-base, blocked, or deferred. Action clean non-production PRs or state the concrete blocker; repeated executable work escalates to portfolio CTO.
 
 ## Milestone Discipline
 
-Milestones need due dates: recommend one only from current-train and sequence evidence, ask if ambiguous, and do not treat the missing due date alone as an implementation blocker.
+Milestones need due dates: derive them from train/sequence evidence, ask if ambiguous, and do not treat the missing due date alone as an implementation blocker.
 
-For milestone work, create or use `release/<release-version>` from the verified development base; use the version string, not the GitHub milestone ID or sequence number. If it is not a version, use repo evidence or a decision brief. Do not retarget ambiguous milestones or change due dates without evidence.
+For milestone work, create/use `release/<release-version>` from the verified base; use the version string, not the GitHub milestone ID or sequence number. For non-version titles, use repo evidence or a decision brief. Do not retarget/change dates without evidence.
 
-If a wrong milestone-ID branch such as `release/3` exists, preserve and replay/reconcile commits to `release/<release-version>`, retarget PRs, and do not delete it without owner approval.
+If a wrong milestone-ID branch exists, replay/reconcile its commits into `release/<release-version>`, retarget PRs, and preserve it until deletion is approved.
 
 ## Release Stop Conditions
 
-Stop before release or prerelease creation when:
+Stop before release/prerelease creation when production state or the previous train is unresolved; metadata, readme/changelog, CI, package, or Plugin Check is stale; required credentials are unavailable; or current owner authorization is absent. For stable production, also stop unless the approved main-first merge/tag plan is explicit.
 
-- Production release state is unclear.
-- The previous release train is not production-released.
-- Plugin header, readme stable tag/changelog, package metadata, or release notes do not match the target version.
-- `readme.txt` or changelog/release notes are stale, incomplete, or overclaim unmerged future milestone work.
-- CI or package validation is not current.
-- Package/readme/Plugin Check validation is not current.
-- WordPress.org, marketplace, or deploy credentials are missing.
-- The owner did not explicitly authorize the production/beta release action.
+Package/readme/Plugin Check validation is not current when any release metadata changed after its last run.
 
-If release metadata, `readme.txt`, or changelog/release notes are stale, do not ask for production/beta approval yet. Create or delegate a focused release-readiness issue/PR against the active `release/<version>` branch, validate package/readme/Plugin Check from the release branch build after changes, then regenerate the release-ready brief. If current, include explicit readme/changelog audit evidence in the brief.
+If metadata/readme/changelog is stale, create a focused release-readiness issue/PR against the active `release/<version>` branch, rerun package/readme/Plugin Check, then regenerate the brief. If current, include explicit readme/changelog audit evidence.
 
 Normal product orchestration, issue intake, implementation, hardening PRs, branch creation for milestone work, good non-production PR review/merge, dependency/tooling work, docs work, and validation do not require explicit release approval when they avoid production/beta releases, tags, deploys, and public release approval claims.
 
 ## Release Quality Gate Matrix
 
-Every release-ready brief must include a compact quality gate matrix. Keep pass cases to one short line each. Expand only failed or risky gates. Do not omit a gate; use `Not applicable - reason` when the product/change shape justifies exclusion.
+Every release-ready brief includes a compact quality gate matrix. Keep passes to one line, expand failures/risks, and use `Not applicable - reason` rather than omit a gate.
 
 Before a worker PR is treated as merge-ready or counted in release-ready evidence, confirm the implementation also satisfies `enterprise-code-quality-gate.md` or state the exact exception and residual risk.
 
-- Security/privacy: capabilities, nonces/auth, sanitization/escaping, secrets, data handling, dependency/vulnerability signals, and no public exploitable detail.
-- Performance: admin/frontend load, queries, assets/enqueues, package footprint, cache/async behavior, and realistic regression risk for the product.
-- Modularity/architecture: boundaries, excessive coupling, public API/schema/contracts, and migration/rollback notes when relevant.
-- Maintainability: code clarity, useful comments vs stale/noisy comments, duplication pressure, and whether the change stays supportable by a new engineer.
-- Test coverage: unit/integration/e2e/browser coverage where relevant, release-branch CI, packaged release-candidate proof, and golden workflow regression proof for critical user-facing flows.
-- Documentation/release notes: `readme.txt`, changelog, upgrade notice, docs, screenshots/assets, WordPress.org metadata/tags/`Tested up to`, support/release notes, and no overclaiming future work.
-- Commented-code/dead-code hygiene: commented-out code, debug helpers, stray `var_dump`/`console.log`, stale TODOs, unused paths, and dead compatibility shims that should not ship.
-- Compatibility: launched backwards-compatibility commitments, supported WordPress/PHP/browser/runtime versions, editor/classic behavior when relevant, and integration contract compatibility.
-- Packaging/version metadata: plugin header/version file, package metadata, runtime-only Composer/npm payload, release ZIP/build contents, and target-version alignment across release surfaces.
-- UI/browser proof: required when admin, editor, frontend, consent/setup, or user-facing UI changes. Use packaged/release-candidate screenshots or Playwright/browser evidence, cover constrained widths when relevant, add design audit evidence when workflow/onboarding/settings quality changed materially, and keep the default path simple.
+- Security/privacy: capabilities, nonces/auth, sanitization/escaping, secrets/data, dependency signals, and no public exploit detail.
+- Performance: admin/frontend load, queries, assets/enqueues, footprint, cache/async behavior, and regression risk.
+- Modularity/architecture: boundaries, coupling, public contracts, migration, and rollback.
+- Maintainability: clarity, useful comments, duplication, and team supportability.
+- Test coverage: relevant unit/integration/e2e/browser, release CI, packaged candidate, and golden workflows.
+- Documentation/release notes: `readme.txt`, changelog/upgrade notice, docs/assets, WordPress.org metadata/`Tested up to`, and no future-work claims.
+- Commented-code/dead-code hygiene: disabled/debug code, stale TODOs, unused paths, and dead shims.
+- Compatibility: launched commitments, supported runtimes/browsers/editors, and integrations.
+- Packaging/version metadata: headers, package metadata, runtime-only dependencies, ZIP contents, and version alignment.
+- UI/browser proof: packaged screenshots/Playwright for changed UI and constrained widths; add design audit evidence for material workflow changes.
 
-When the train is release-ready, request exact production/beta release approval with evidence: merged PRs, remaining open issues, compact quality gate matrix, CI/package validation, package/build used, exact environment, visual proof status, golden workflow regression status, readme/changelog audit status, docs/release notes/readme/WordPress.org status, risks, rollback notes, failed or skipped proof gaps, and whether skipped proof is acceptable for release.
+When the train is release-ready, request exact production/beta approval with merged/open work, compact quality gate matrix, CI/package validation, package/build used, exact environment, visual proof status, golden workflow regression status, docs/WordPress.org state, risks, rollback, and accepted proof gaps.
 
 ## Post-Release Verification
 
-After the owner approves and the product thread completes a beta, production release, deploy, or WordPress.org publish, do not call the release train closed until the product thread returns a compact post-release check:
+After beta/production release, deploy, or WordPress.org publish, keep the train open until a compact check proves:
 
-- Approved commit, GitHub release/tag or prerelease, and published package/artifact align.
-- For a production release, the exact release tag is an ancestor of `origin/main`, `main` reports the same release version, and beta/prerelease tags have not advanced `main`.
-- Public version signal matches the intended version: WordPress.org, marketplace, product site, package download, or installable ZIP as applicable.
-- `readme.txt`, changelog, release notes, docs links, screenshots/assets, banners/icons, and `Tested up to` metadata are current where applicable.
-- Installed-package smoke check passes for the critical golden workflow, or the skipped proof gap is explicitly accepted.
-- Immediate support/forum/error signals are checked where available.
-- Rollback/backout notes are documented for the shipped artifact.
-- Next milestone/release train is started, confirmed, or intentionally deferred.
-- Temporary release/CI heartbeat, worker worktrees, and release evidence threads are reconciled or left with a documented reason.
+- Approved commit, tag/release, and package/artifact align.
+- For production, the exact release tag is an ancestor of `origin/main`, main metadata matches, and prerelease tags did not advance `main`.
+- Public version/docs/assets/`Tested up to` signals are current.
+- Installed-package golden workflow passes or its proof gap is accepted.
+- Support/error signals and rollback notes are checked.
+- Next train, temporary automation, workers/worktrees, and evidence threads are reconciled or deliberately retained.
 
 If any post-release proof fails, stop normal release closure and route recovery to the product thread or prepare an owner decision brief.

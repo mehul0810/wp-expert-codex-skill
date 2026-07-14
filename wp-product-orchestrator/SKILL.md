@@ -18,6 +18,7 @@ Run one long-lived product control thread. Cross-product governance belongs to `
 - Workers use one issue, branch, worktree, and PR. They do not merge, release, close/retarget issues, push to `main`, archive protected threads, make product decisions, or subdelegate. The PO verifies evidence and reconciles state/worktrees.
 - Discover tools before declaring delegation unavailable. Dirty primary checkouts block direct edits, not a clean worktree. Setup-blocked begins recovery; return an exact owner-only action only after safe alternatives fail.
 - Milestone work targets `release/<release-version>`, never a GitHub milestone ID. Do not start the next train's prerelease before the previous train reaches production.
+- Production is main-first: after exact approval, merge the release PR to `main`, tag and publish from the verified production SHA, then prove ancestry and forward-sync before closure. Betas remain off `main`.
 - Labels express readiness, but reversible non-release work should not stall on `owner:me`. Only current production/beta release, publish/deploy, production/main merge, destructive, pricing/licensing, privacy/security posture, public contract/schema, or broad positioning changes require owner approval.
 - Keep sensitive security details out of public issues/comments. Use sanitized hardening work and private escalation.
 - UI/design work needs issue-side before evidence and PR-side after screenshots or an explicit proof gap. Release readiness requires packaged/runtime proof and the compact quality matrix.
