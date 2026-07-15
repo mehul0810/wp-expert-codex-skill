@@ -5,5 +5,6 @@
 | Site vs content | "Write the article copy and publish the schema-enabled WordPress page." | Split outcome: `content-writer` owns copy; `wp-site-expert` owns implementation/schema/runtime proof. |
 | Plugin vs PO | "Implement issue #42 and prepare the release-ready brief." | `wp-plugin-expert` worker implements; `wp-product-orchestrator` owns issue/PR/release synthesis. |
 | Theme vs site | "Turn this design into an editable block theme and improve the conversion path." | `wp-site-expert` defines journey/outcome; `wp-theme-expert` owns theme/FSE artifacts and visual/editor proof. |
+| Implementation vs independent proof | "Fix the settings bug and independently prove the packaged plugin saves it." | `wp-plugin-expert` implements; a fresh `behavior-validator` receives only the behavior contract, exact package/runtime target, fixtures, and evidence requirements. |
 | Loop Steward vs CTO | "Review and merge an agent-skills control-plane PR." | `loop-steward`; `wp-portfolio-cto` does not review/merge control-plane PRs. |
 | WordPress contribution vs product | "Fix Gutenberg Core behavior upstream." | `wp-contributor`, not plugin/theme product implementation. |

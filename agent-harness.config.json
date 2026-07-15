@@ -94,6 +94,16 @@
         "wp-contributor/references/gutenberg-workflow.md",
         "shared/references/session-continuity-pr-discipline.md"
       ]
+    },
+    {
+      "name": "Source-blind behavior proof",
+      "maxWords": 2700,
+      "warningPercent": 85,
+      "files": [
+        "behavior-validator/SKILL.md",
+        "behavior-validator/references/wordpress-behavior-contract.md",
+        "shared/references/live-proof-wordpress.md"
+      ]
     }
   ],
   "scenarios": [
@@ -145,7 +155,12 @@
     {
       "name": "Routing collisions",
       "file": "skill-evals/routing-collision-scenarios.md",
-      "requiredPhrases": ["# Routing Collision Scenarios", "Site vs content", "Loop Steward vs CTO"]
+      "requiredPhrases": ["# Routing Collision Scenarios", "Site vs content", "Implementation vs independent proof", "Loop Steward vs CTO"]
+    },
+    {
+      "name": "Behavior Validator",
+      "file": "skill-evals/behavior-validator-scenarios.md",
+      "requiredPhrases": ["# Behavior Validator Scenarios", "Contaminated validator", "Static-only change"]
     }
   ]
 }

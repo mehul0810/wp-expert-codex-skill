@@ -4,6 +4,15 @@ Fast lookup for common WordPress tasks and which references to use.
 
 Use `$loop-steward` for policy-gated review, bounded repair, and independent merge decisions in `agent-loop`, `agent-book`, or `agent-skills` control-plane PRs.
 
+## Independent Behavior Proof
+
+Use `$behavior-validator` when a WordPress runtime, admin/editor/frontend workflow, API side effect, packaged candidate, or generated artifact needs source-blind proof against observable acceptance criteria. Give the validator a contract and target, not source, diffs, tests, or implementation notes.
+
+**"Prove this packaged WordPress change works independently of its implementation"**
+- Skill: `behavior-validator`
+- Load: `wordpress-behavior-contract.md`
+- Prefer: packaged build in disposable `wp-proof`
+
 ## Organic Search Content Tasks
 
 Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools, content briefs, outlines, drafts, audits, and refreshes.

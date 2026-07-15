@@ -19,6 +19,10 @@ This repository owns reusable Agent Skills, shared references, eval specificatio
 
 Run the commands in `TESTING.md`. Any authority, routing, release, hallucination, design, or self-learning change also requires fresh-agent scenarios for the changed role and a concise commit or durable evidence note.
 
+## Skill Admission Gate
+
+Add a top-level skill only for a recurring portable workflow, tool boundary, or evidence contract with a distinct trigger, explicit inputs/outputs, failure modes, and safety boundary. Put conditional domain detail in an existing one-level reference, repeated deterministic operations in scripts, product-specific truth in product repo docs, and one-off findings in issues or no durable artifact. Duplicate-screen first and prove the installed or runtime boundary; do not create a skill merely to restate generic engineering judgment.
+
 ## Review Priorities
 
 Findings first: unsafe authority, lost expertise/reachability, wrong routing, unverified claims, missing proof, token-route regressions, and stale transient policy. Avoid broad wording churn when a router, deterministic audit, or scenario closes the gap more cheaply.

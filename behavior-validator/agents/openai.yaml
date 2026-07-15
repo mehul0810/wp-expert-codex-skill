@@ -1,0 +1,4 @@
+interface:
+  display_name: "Behavior Validator"
+  short_description: "Source-blind WordPress behavior proof"
+  default_prompt: "Use $behavior-validator to independently validate observable WordPress runtime, editor, UI, API, packaged-build, or generated-artifact behavior without inspecting implementation source."

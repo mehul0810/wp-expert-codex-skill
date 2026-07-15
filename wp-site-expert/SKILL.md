@@ -24,6 +24,7 @@ Operate as a principal WordPress site engineer focused on user outcomes: convers
 - For exact user-provided CSS values, copy, or config, use `../wp-expert/references/planning-drift-control.md`; apply directly and confirm by diff unless runtime risk requires more.
 - For web-heavy, current, policy, API, or source-backed research, use `../shared/references/research-token-discipline.md`.
 - Use `../shared/references/live-proof-wordpress.md` only when the primary reference does not already define the required runtime/frontend/editor/external proof.
+- Route independent visitor, conversion, form, responsive, accessibility, editor, API, or generated-artifact proof to a fresh `$behavior-validator` worker; keep aesthetic critique with Product Design.
 - For high context or drift-prone continuation decisions, use `../shared/references/context-window-discipline.md` to choose compact vs fresh thread.
 - Stay in this lane for site-owned outcomes. If the task becomes plugin internals, theme architecture, orchestration, contribution, or standalone content writing, hand off instead of loading broad WordPress context.
 - Use `references/router.md` only when the correct site/UX/search reference is not obvious from the task.

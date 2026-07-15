@@ -75,6 +75,10 @@ Before calling direct worker work done, run a bounded finish pass around touched
 
 The finish pass is a narrow check around the changed boundary, not an excuse to broaden scope.
 
+## Review Convergence Gate
+
+Before applying review-triggered edits, freeze the requested behavior, owner boundary, intended files, and proof level. Classify each accepted finding as an in-scope blocker, adjacent follow-up, or contract/owner decision. After two review-triggered edit cycles without clean convergence, stop and reclassify every remaining finding. Continue only for bounded in-scope blockers with a clear proof path; route follow-ups through `adjacent-finding-protocol.md` and escalate contract changes instead of chasing the reviewer or silently expanding the task.
+
 ## Blocker Reporting
 
 If work still cannot proceed, report blockers in owner-usable form:

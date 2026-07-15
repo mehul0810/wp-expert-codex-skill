@@ -9,6 +9,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - `wp-portfolio-cto`: cross-product WordPress portfolio control room for portfolio heartbeats, product-thread health, release conflicts, owner decision briefs, and shared workflow governance.
 - `wp-product-orchestrator`: one-product WordPress plugin/theme orchestrator for issue intake, milestone scope, release-readiness drive, worker delegation, validation synthesis, and PR workflow.
 - `loop-steward`: independent control-plane PR review, bounded revision, validation, and policy-gated merge decisions for `agent-loop`, `agent-book`, and `agent-skills`.
+- `behavior-validator`: independent source-blind validation of observable WordPress runtime, editor, UI, API, packaged-build, and generated-artifact behavior against an explicit contract.
 - `wp-contributor`: official WordPress project contribution workflows for Core, Meta, Gutenberg, Trac, GitHub PRs, patches, testing, docs, triage, releases, and contributor communication.
 - `content-writer`: organic search content writing for SEO, AEO, GEO, AI Overviews, AI Mode, answer engines, AI tools, briefs, outlines, drafts, audits, and content refreshes.
 - `shared/references/research-token-discipline.md`: reusable token-efficient reasoning, repo exploration, web search, validation, and output discipline used by both skills.
@@ -30,6 +31,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - `wp-portfolio-cto` for cross-product portfolio governance, product-thread health, release conflicts, and owner portfolio briefs.
 - `wp-product-orchestrator` for one plugin/theme product's backlog, release train, GitHub issue/PR queue, and delegated implementation workflow.
 - `loop-steward` for active control-plane PRs that need independent review, bounded repair, or a policy-gated merge decision.
+- `behavior-validator` for black-box proof that a WordPress UI, editor flow, API side effect, packaged candidate, or generated artifact behaves as promised without implementation context.
 
 The detailed playbooks remain in `wp-expert/references/` and `shared/references/`; specialist skills load those references only when needed.
 
@@ -160,6 +162,7 @@ wp-site-expert/
 wp-portfolio-cto/
 wp-product-orchestrator/
 loop-steward/
+behavior-validator/
 wp-contributor/
 content-writer/
 ```
@@ -182,6 +185,8 @@ Use $wp-portfolio-cto for cross-product WordPress portfolio governance, portfoli
 Use $wp-product-orchestrator to triage, plan, delegate, validate, commit, push, or prepare PRs for one WordPress plugin/theme product thread.
 
 Use $loop-steward to review, repair, validate, and policy-gate a pull request in agent-loop, agent-book, or agent-skills.
+
+Use $behavior-validator to independently validate observable WordPress runtime, editor, UI, API, packaged-build, or generated-artifact behavior without reading source, diffs, tests, or implementation notes.
 
 Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, AI-assisted contribution guidelines, enterprise code-quality gates, triage, release/backport work, or contributor communication.
 
@@ -214,6 +219,7 @@ This symlinks the skills into `~/.claude/skills/`, where Claude Code discovers p
 ~/.claude/skills/wp-portfolio-cto/SKILL.md
 ~/.claude/skills/wp-product-orchestrator/SKILL.md
 ~/.claude/skills/loop-steward/SKILL.md
+~/.claude/skills/behavior-validator/SKILL.md
 ~/.claude/skills/wp-contributor/SKILL.md
 ~/.claude/skills/content-writer/SKILL.md
 ~/.claude/skills/shared/references/*.md
@@ -227,6 +233,7 @@ bash scripts/install-global-skill-links.sh wp-expert
 bash scripts/install-global-skill-links.sh wp-plugin-expert wp-theme-expert wp-site-expert
 bash scripts/install-global-skill-links.sh wp-expert wp-plugin-expert wp-theme-expert wp-site-expert wp-portfolio-cto wp-product-orchestrator wp-contributor
 bash scripts/install-global-skill-links.sh loop-steward
+bash scripts/install-global-skill-links.sh behavior-validator
 bash scripts/install-global-skill-links.sh content-writer
 ```
 
@@ -247,11 +254,12 @@ test -f ~/.claude/skills/wp-site-expert/SKILL.md && echo "wp-site-expert install
 test -f ~/.claude/skills/wp-portfolio-cto/SKILL.md && echo "wp-portfolio-cto installed"
 test -f ~/.claude/skills/wp-product-orchestrator/SKILL.md && echo "wp-product-orchestrator installed"
 test -f ~/.claude/skills/loop-steward/SKILL.md && echo "loop-steward installed"
+test -f ~/.claude/skills/behavior-validator/SKILL.md && echo "behavior-validator installed"
 test -f ~/.claude/skills/wp-contributor/SKILL.md && echo "wp-contributor installed"
 test -f ~/.claude/skills/content-writer/SKILL.md && echo "content-writer installed"
 ```
 
-After first install, fully restart Claude Code if the skills do not appear immediately. Then run `/help` or explicitly ask Claude Code to use `wp-expert`, `wp-plugin-expert`, `wp-theme-expert`, `wp-site-expert`, `wp-portfolio-cto`, `wp-product-orchestrator`, `loop-steward`, `wp-contributor`, or `content-writer`.
+After first install, fully restart Claude Code if the skills do not appear immediately. Then run `/help` or explicitly ask Claude Code to use `wp-expert`, `wp-plugin-expert`, `wp-theme-expert`, `wp-site-expert`, `wp-portfolio-cto`, `wp-product-orchestrator`, `loop-steward`, `behavior-validator`, `wp-contributor`, or `content-writer`.
 
 ### Install Globally For Codex
 
@@ -265,6 +273,7 @@ The same installer also symlinks skills into Codex's global skills directory:
 ~/.codex/skills/wp-portfolio-cto/SKILL.md
 ~/.codex/skills/wp-product-orchestrator/SKILL.md
 ~/.codex/skills/loop-steward/SKILL.md
+~/.codex/skills/behavior-validator/SKILL.md
 ~/.codex/skills/wp-contributor/SKILL.md
 ~/.codex/skills/content-writer/SKILL.md
 ~/.codex/skills/shared/references/*.md

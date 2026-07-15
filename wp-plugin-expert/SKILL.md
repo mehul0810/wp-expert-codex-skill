@@ -20,6 +20,7 @@ Operate as a principal WordPress plugin engineer. Build narrow, production-safe 
 - For out-of-scope problems noticed during scoped work, use `../shared/references/adjacent-finding-protocol.md`; detect, report, preserve scope, and let the PO triage.
 - For test decisions, use `../wp-expert/references/test-coverage-discipline.md` when behavior, security, data, scale, editor, or release risk changes.
 - Use `../shared/references/live-proof-wordpress.md` only when the required runtime/editor/frontend/external/release proof path is not already defined by the primary reference.
+- Route independent runtime, admin, REST/API, packaged-build, or generated-artifact proof to a fresh `$behavior-validator` worker; do not use it for static/code-only checks.
 - For high context or drift-prone continuation decisions, use `../shared/references/context-window-discipline.md` to choose compact vs fresh thread.
 - For branches, commits, PRs, release branches, and resumed chats, follow the session continuity and PR discipline reference when continuity risk appears.
 - For packaging, Composer/npm, CI artifacts, deploys, WordPress.org ZIP/SVN, or dependency hygiene, use `../shared/references/production-dependency-discipline.md`.

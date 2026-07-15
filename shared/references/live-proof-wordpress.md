@@ -14,11 +14,19 @@ Use this reference before claiming a WordPress plugin/theme change is done. Pick
 | External proof | payment/API/webhook/email/provider | real safe credential/account or explicit waiver |
 | Release proof | packaged artifact, wp.org/SVN, deploy | artifact inspection, production deps, tag/SVN checks |
 
+## Independent Source-Blind Proof
+
+Use `$behavior-validator` when observable behavior needs evidence independent of the implementation worker: changed admin/editor/frontend workflows, REST/API side effects, generated artifacts, or release-candidate golden paths. Start a fresh worker without inherited implementation discussion and provide only a compact behavior contract, exact target/build identity, access method, allowed fixtures or credential names, evidence requirements, and hard gates.
+
+Do not use source-blind validation for static lint, architecture review, release metadata-only edits, or exact user-fed values. If the validator reads source, diffs, tests, history, or implementation notes, mark the result contaminated and rerun fresh before claiming independent proof.
+
 ## Release Candidate Visual Proof
 
 Before beta/production readiness for any release that touches admin UI, frontend UI, consent screens, setup flows, editor surfaces, or other visual output, test the release-candidate package/ZIP or release branch build, not only a dev checkout. Use focused screenshots or Playwright/browser evidence from the packaged artifact.
 
 Prefer disposable localhost `wp-proof` environments for routine release readiness, browser/admin smoke, screenshots, package validation, and golden workflow proof when they are available. Use long-lived Studio environments when parity, existing local data, custom domain URLs, integration reproduction, or owner manual/visual review is the reason.
+
+When changed behavior or a critical golden workflow has material user risk, run the packaged candidate through a source-blind `$behavior-validator` in `wp-proof`. Its clause matrix supplements code review and automated tests; it does not approve the release.
 
 Cover changed UI plus critical existing UI workflows at desktop and narrow/mobile/admin-constrained widths when relevant. If automation is unavailable, require manual screenshot evidence or state an explicit proof gap in the release brief.
 
