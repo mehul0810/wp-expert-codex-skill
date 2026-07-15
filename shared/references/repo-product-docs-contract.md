@@ -8,12 +8,12 @@ The skill provides reusable orchestration behavior. Product-specific truth belon
 
 Recommended repo docs:
 
-- `AGENTS.md`: repo-specific agent workflow, branch rules, validation gates, PR rules, and automation constraints.
+- `AGENTS.md`: repo-specific agent workflow, branch rules, local validation gates, PR rules, hosted-CI exceptions, and automation constraints.
 - `PRODUCT.md`: product positioning, target users/customers, product principles, free/pro boundaries, and non-goals.
 - `DESIGN.md`: concise product design contract for admin UI patterns, screen hierarchy, components/controls, empty/loading/error/success states, accessibility, responsive behavior, WordPress.org/website assets, copy/tone, visual non-goals, and the default UI baseline. Use the [WordPress Design System](https://www.figma.com/community/file/1436359662053949167/wordpress-design-system) as the starting point, then layer each product's brand colors and product-specific identity on top of it.
-- `TESTING.md`: repo-specific smoke, proof, fixtures, environments, and validation shortcuts when they are not already clear in `AGENTS.md`.
+- `TESTING.md`: canonical local fast/full/package commands, prerequisites, fixtures, environments, expected evidence, and any justified hosted-only checks.
 - `ROADMAP.md`: milestone sequence, release intent, current priorities, and deferred work.
-- `RELEASE.md`: beta/stable process, packaging, main-first production merge/tag/release sequence, post-release ancestry and forward-sync checks, WordPress.org or marketplace steps, rollback notes.
+- `RELEASE.md`: beta/stable process, release/prerelease GitHub Actions boundary, canonical validation command reuse, packaging, main-first production merge/tag/release sequence, post-release ancestry and forward-sync checks, WordPress.org or marketplace steps, rollback notes.
 - `PLAYGROUND.md`: repo-specific WordPress Playground preview rules, entry routes, test users, and packaging caveats when Playground support matters.
 - `docs/decisions/ADR-xxxx.md`: material architecture or product decisions.
 
@@ -33,6 +33,7 @@ Update or recommend docs when:
 - A milestone or release train rule is ambiguous.
 - A product decision affects multiple future issues.
 - A repo automation needs stable local instructions.
+- Hosted PR/push workflows duplicate locally reproducible checks, no canonical local validation entrypoint exists, or a hosted-CI exception lacks a documented reason.
 - A release workflow can publish from `release/*`, auto-create a tag, or finish without proving the production tag is reachable from `main`.
 - GitHub issue comments alone would hide important long-term context.
 - An active product still depends on chat-only instructions for workflow, design, testing, or release behavior.

@@ -29,6 +29,12 @@ For an already-published off-main release, freeze further releases, verify the t
 
 POs audit `.github/workflows` and `RELEASE.md`. Production automation uses full history; resolves the approved SHA; requires it on `origin/main` with valid metadata/package; pushes the exact tag; releases with `--verify-tag`; and repeats ancestry/artifact checks. Never auto-create a production tag from `release/*`. Use `wp-product-orchestrator/scripts/release-mainline-audit.sh <tag-or-sha> [main-ref] [expected-sha]`. Missing enforcement becomes a focused issue before release.
 
+### Hosted Automation Economy
+
+Default owner-managed development to canonical local validation. Reserve GitHub Actions for beta/prerelease/stable release transactions that call the same repo scripts, validate the exact package, and gate publishing separately.
+
+Avoid duplicate PR/feature-push jobs. Keep hosted development CI only for documented non-equivalent evidence: untrusted contributions, required matrices/protections, secret-backed integration, or compliance. POs issue-track changes; saving Actions minutes never justifies skipping proof.
+
 ## Required Release Checks
 
 Before beta, prerelease, or stable action, verify:

@@ -17,6 +17,19 @@ require_text() {
   fi
 }
 
+reject_text() {
+  local file="$1"
+  local text="$2"
+  local label="$3"
+
+  if grep -Fq "$text" "$repo_root/$file"; then
+    echo "unexpected: $label ($file)" >&2
+    errors=$((errors + 1))
+  else
+    echo "ok: $label"
+  fi
+}
+
 require_text "wp-expert/SKILL.md" "push only when explicitly asked or repo-local automation policy authorizes it" "wp-expert push authorization discipline"
 require_text "wp-expert/SKILL.md" "../shared/references/live-proof-wordpress.md" "wp-expert live proof routing"
 require_text "wp-expert/SKILL.md" "../shared/references/context-window-discipline.md" "wp-expert context window discipline routing"
@@ -41,6 +54,7 @@ require_text "wp-theme-expert/SKILL.md" "design-intelligence-routing.md" "wp-the
 require_text "wp-theme-expert/SKILL.md" "adjacent-finding-protocol.md" "wp-theme-expert adjacent finding routing"
 require_text "wp-theme-expert/SKILL.md" "hand off instead of loading broad WordPress context" "wp-theme-expert lane handoff"
 require_text "wp-theme-expert/references/router.md" "../../wp-expert/references/block-theme-architecture.md" "wp-theme-expert block theme routing"
+require_text "wp-theme-expert/references/router.md" "../../wp-expert/references/standards-ci-github.md" "wp-theme-expert local-first CI routing"
 require_text "wp-site-expert/SKILL.md" "references/router.md" "wp-site-expert modular router routing"
 require_text "wp-site-expert/SKILL.md" "enterprise-code-quality-gate.md" "wp-site-expert quality contract routing"
 require_text "wp-site-expert/SKILL.md" "worker-execution-discipline.md" "wp-site-expert worker execution routing"
@@ -48,10 +62,31 @@ require_text "wp-site-expert/SKILL.md" "design-intelligence-routing.md" "wp-site
 require_text "wp-site-expert/SKILL.md" "adjacent-finding-protocol.md" "wp-site-expert adjacent finding routing"
 require_text "wp-site-expert/SKILL.md" "hand off instead of loading broad WordPress context" "wp-site-expert lane handoff"
 require_text "wp-site-expert/references/router.md" "../../wp-expert/references/conversion-focused-website-engineering.md" "wp-site-expert conversion routing"
+require_text "wp-site-expert/references/router.md" "../../wp-expert/references/standards-ci-github.md" "wp-site-expert local-first CI routing"
 require_text "shared/references/project-subagent-routing.md" "Assign one lane and the narrowest skill/reference" "subagent specialist auto routing"
 require_text "shared/references/project-subagent-routing.md" "Inspect the exact artifact first" "subagent exact artifact first"
 require_text "shared/references/enterprise-code-quality-gate.md" "Every implementation should explicitly consider these quality dimensions" "shared quality contract dimensions"
 require_text "shared/references/enterprise-code-quality-gate.md" '`Not applicable - reason`' "shared quality contract explicit exceptions"
+require_text "shared/references/enterprise-code-quality-gate.md" "Local-First Validation Contract" "shared local-first validation contract"
+require_text "shared/references/enterprise-code-quality-gate.md" "one canonical local validation command" "shared canonical local validation entrypoint"
+require_text "shared/references/enterprise-code-quality-gate.md" "missing hosted CI as permission to skip tests" "shared no-CI no-skip rule"
+require_text "wp-expert/references/standards-ci-github.md" "Local-First Automation Policy" "standards local-first automation policy"
+require_text "wp-expert/references/standards-ci-github.md" 'Do not use `pull_request` or feature-branch `push` triggers' "standards no duplicate hosted triggers"
+require_text "wp-expert/references/standards-ci-github.md" "Hosted PR/development CI is an exception" "standards hosted CI exception rule"
+require_text "wp-expert/references/standards-ci-github.md" "same canonical full validation entrypoint used locally" "standards local release parity"
+require_text "wp-expert/references/standards-ci-github.md" 'Use `workflow_dispatch` with explicit candidate SHA/version inputs' "standards safe release trigger"
+require_text "wp-expert/references/standards-ci-github.md" 'never execute fork code through `pull_request_target`' "standards untrusted fork guard"
+require_text "shared/references/release-train-discipline.md" "Hosted Automation Economy" "release hosted automation economy"
+require_text "shared/references/release-train-discipline.md" "Reserve GitHub Actions for beta/prerelease/stable release transactions" "release-only hosted default"
+require_text "shared/references/release-train-discipline.md" "saving Actions minutes never justifies skipping proof" "release proof preservation"
+require_text "shared/references/repo-product-docs-contract.md" "canonical local fast/full/package commands" "repo docs local testing contract"
+require_text "shared/references/repo-product-docs-contract.md" "release/prerelease GitHub Actions boundary" "repo docs hosted release boundary"
+require_text "skill-evals/wp-expert-scenarios.md" "Local-first CI architecture" "local-first CI specialist scenario"
+require_text "skill-evals/wp-expert-scenarios.md" "Hosted CI exception" "hosted CI exception scenario"
+require_text "skill-evals/wp-product-orchestrator-scenarios.md" "Local-first Actions economy" "local-first CI PO scenario"
+require_text "skill-evals/wp-portfolio-cto-scenarios.md" "Hosted CI spend drift" "hosted CI portfolio scenario"
+require_text "EXAMPLES.md" "Local-First Validation And Release Actions" "local-first CI example"
+reject_text "EXAMPLES.md" 'on: [push, pull_request]' "no stale blanket CI example"
 require_text "shared/references/worker-execution-discipline.md" "Direct Task Decision Contract" "shared worker direct task contract"
 require_text "shared/references/worker-execution-discipline.md" "Assumption And Confidence Gate" "shared worker assumption gate"
 require_text "shared/references/worker-execution-discipline.md" "Worker Recovery Ladder" "shared worker recovery ladder"

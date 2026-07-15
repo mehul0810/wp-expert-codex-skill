@@ -12,6 +12,7 @@ Use this router only after `wp-theme-expert` is selected. Load one primary refer
 - Style guides, design tokens, custom themes, child-theme translation: `../../wp-expert/references/style-guide-theme-translation.md`.
 - Deterministic visual parity, visitor/author workflows, content stress, responsive/browser evidence, and release proof: `../../wp-expert/references/visual-parity-regression.md`.
 - Theme/frontend performance, Core Web Vitals, fonts/images/assets: `../../wp-expert/references/theme-frontend-performance-quality-gate.md`.
+- Local-first validation, standards, GitHub Actions, and release automation: `../../wp-expert/references/standards-ci-github.md`.
 - WordPress Design System and block editor components: `../../wp-expert/references/wordpress-design-system.md`.
 - Premium UI implementation and admin/editor UX: `../../wp-expert/references/ui-ux-pro-for-wordpress.md`.
 - Plug-and-play product experience and advanced-user controls: `../../shared/references/product-experience-principles.md`.

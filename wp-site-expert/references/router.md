@@ -16,6 +16,7 @@ Use this router only after `wp-site-expert` is selected. Load one primary refere
 - Content migration, editorial scale, redirects, launch cutovers: `../../wp-expert/references/content-migration-editorial-scale.md`.
 - Accessibility, i18n, RTL, multilingual readiness: `../../wp-expert/references/accessibility-i18n-global-readiness.md`.
 - Performance profiling and Core Web Vitals: `../../wp-expert/references/performance-profiling-scale-budgets.md`.
+- Local-first validation, standards, GitHub Actions, and release automation: `../../wp-expert/references/standards-ci-github.md`.
 - Edge caching/CDN and personalization: `../../wp-expert/references/edge-caching-cdn-architecture.md`.
 - Headless/decoupled site architecture: `../../wp-expert/references/headless-decoupled-wordpress.md`.
 - Local HTTPS/browser testing blockers: `../../wp-expert/references/local-https-testing.md`.

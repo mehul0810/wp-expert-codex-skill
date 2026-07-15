@@ -4,7 +4,7 @@ Use one primary mode. Open only the named reference and relevant `##` section; a
 
 - Queue rehydration, issue-first intake, discovery, dependency/stale PR triage: `../../shared/references/product-queue-triage.md`.
 - Reversible autonomy and owner hard gates: `../../shared/references/product-autonomy-permissions.md`.
-- Release train, metadata, quality matrix, package/browser proof: `../../shared/references/release-train-discipline.md`.
+- Release train, local-first/hosted automation economy, metadata, quality matrix, package/browser proof: `../../shared/references/release-train-discipline.md`.
 - Temporary proof runner selection and Studio lifecycle: `../../shared/references/disposable-proof-environment-lifecycle.md`.
 - Worker/thread/worktree delegation, recovery, and reconciliation: `../../shared/references/delegation-protocol.md`.
 - Branch, commit, PR body/base, screenshots, and merge discipline: `../../shared/references/commit-pr-discipline.md`.

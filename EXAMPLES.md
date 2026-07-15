@@ -165,105 +165,27 @@ theme/
 
 ---
 
-## Example 3: Setting Up CI/CD with GitHub Actions
+## Example 3: Local-First Validation And Release Actions
 
-**Scenario**: Your WordPress plugin needs automated testing, linting, and releases to WordPress.org.
+**Scenario**: A WordPress plugin can run deterministic testing, linting, builds, and package checks locally. GitHub Actions usage should stay focused on beta/stable releases.
 
-### Step 1: Plan the Workflow
+### Step 1: Define One Local Contract
 
-1. **Primary**: `standards-ci-github.md`
-   - What checks should run on every PR?
-   - What triggers a release?
-   - How do we deploy to WordPress.org?
+Use `standards-ci-github.md` to create a canonical local validation entrypoint from the repo's existing Composer/npm/scripts. It should cover only applicable syntax, standards, static analysis, tests, build, package, Plugin Check, and focused runtime proof. Document fast/full/package commands in `TESTING.md` and run them before commit, PR, and non-production merge.
 
-2. **Supporting**: `build-tooling.md`
-   - Composer install for production
-   - npm build steps if needed
+### Step 2: Keep Hosted Automation Narrow
 
-### Step 2: Create GitHub Actions Workflow
+- Do not add PR or feature-push Actions that duplicate the local gate.
+- Keep a documented hosted PR exception only for non-equivalent evidence such as untrusted contributors, required matrices/protections, secret-backed integration, or compliance.
+- Use read-only, secret-free disposable runners for untrusted PRs.
 
-`.github/workflows/test.yml`:
+### Step 3: Build The Release Workflow
 
-```yaml
-name: Tests
-on: [push, pull_request]
+Use `workflow_dispatch` with explicit candidate SHA/version inputs. In a clean runner, call the same full repository validation script, build one production-only package, record its identity, and validate that exact artifact. Keep the beta/production publish job separate and owner-gated; an arbitrary tag push must not authorize deployment.
 
-jobs:
-  phpcs:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: php-actions/phpcs@v1
-        with:
-          standards: WordPress
+### Step 4: Verify Release Artifacts
 
-  phpstan:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: php-actions/phpstan@v1
-        with:
-          memory_limit: 256M
-
-  phpunit:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        php: ['7.4', '8.0', '8.1']
-    steps:
-      - uses: actions/checkout@v3
-      - uses: php-actions/phpunit@v1
-        with:
-          php_version: ${{ matrix.php }}
-          version: latest
-```
-
-### Step 3: Validate Dependency Hygiene
-
-Load: `production-dependency-discipline.md`
-
-```bash
-# Ensure dev dependencies don't ship to production
-composer install --no-dev --optimize-autoloader
-zip -r plugin.zip .
-```
-
-### Step 4: Set Up WordPress.org Deployment
-
-`.github/workflows/deploy.yml`:
-
-```yaml
-name: Deploy to WordPress.org
-on:
-  push:
-    tags:
-      - 'v*'
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - name: WordPress Plugin Deploy
-        uses: 10up/action-wordpress-plugin-deploy@stable
-        with:
-          generate-zip: true
-        env:
-          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-```
-
-### Step 5: Verify Release Artifacts
-
-```bash
-bash wp-expert/scripts/wporg-release-verify.sh ./svn-checkout 1.0.0
-```
-
-Checks:
-- `trunk/` has latest code
-- `tags/1.0.0/` has the release
-- `assets/` has banner/icon
-- No development files in production ZIP
+Use `production-dependency-discipline.md`, `release-train-discipline.md`, and the repo's release verifier to confirm production-only dependencies, metadata/version alignment, install/activation, WordPress.org SVN/assets when relevant, tag ancestry on `main`, and post-release forward sync.
 
 ---
 

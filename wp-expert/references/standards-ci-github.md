@@ -49,63 +49,32 @@ Duplication/modularity:
 - Treat dynamic WordPress hooks carefully; document array shapes and expected object types.
 - Do not refactor public APIs solely for static analysis without BC review.
 
-## GitHub Actions Principles
+## Local-First Automation Policy
 
-Official GitHub docs define a workflow as YAML in `.github/workflows`. For WordPress repos:
+Make deterministic validation locally executable before adding hosted automation. Each repo should expose one canonical command or small ordered command set for its applicable syntax, lint, static analysis, tests, build, package, Plugin Check, and focused browser/runtime proof.
 
-- Choose PHP, Node, npm, Composer, database, and action versions using `runtime-toolchain-version-policy.md`; do not use EOL versions in new workflows.
-- Use `pull_request` for validation and `push` for protected branches.
-- Use `workflow_dispatch` for manual release/deploy jobs.
-- Set least-privilege `permissions`, commonly `contents: read` for CI-only workflows.
-- Use `concurrency` to cancel stale branch runs when appropriate.
-- Use matrix jobs for PHP/WordPress/Node versions only when the project supports that range.
-- Cache Composer/npm dependencies by lockfile hash, not broad paths without keys.
-- Upload build artifacts only when needed for release/debug.
-- Never echo secrets. Avoid `pull_request_target` unless the security model is fully understood.
+- Run the canonical local gate before commit, PR, and non-production merge; record commands, relevant tool versions, and results.
+- Absence of hosted CI is not permission to skip validation. A failed or unavailable local gate is a proof gap.
+- Do not add GitHub Actions that merely repeat reliable local checks on every PR or feature-branch push.
+- Keep validation logic in versioned repository scripts or package/composer commands. Hosted workflows call those same entrypoints instead of maintaining a second YAML-only test definition.
+- Separate fast changed-boundary checks from the full release gate when that improves developer speed without weakening release proof.
 
-## Typical WordPress CI Gates
+## GitHub Actions Economy
 
-Minimum useful CI for a plugin/theme:
+For owner-managed WordPress products, default GitHub Actions to beta/prerelease/stable release mechanisms. The release workflow reruns the canonical full local gate in a clean runner against the exact candidate, builds and validates the package, then permits the separately owner-gated publish/release step.
 
-Verify the current active PHP/Node baselines before copying this example.
+Use `workflow_dispatch` with explicit candidate SHA/version inputs for owner-initiated beta or production releases by default. A tag/release event may publish only when an owner-approved upstream gate created and verified that exact tag; never let an arbitrary tag push become release authorization.
 
-```yaml
-name: CI
-on:
-  pull_request:
-  push:
-    branches: [ main ]
-permissions:
-  contents: read
-concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
-jobs:
-  quality:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.4'
-          tools: composer
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-          cache: npm
-      - run: composer install --no-interaction --prefer-dist
-        if: hashFiles('composer.json') != ''
-      - run: npm ci
-        if: hashFiles('package-lock.json') != ''
-      - run: composer lint
-        if: hashFiles('composer.json') != ''
-      - run: npm run build --if-present
-        if: hashFiles('package.json') != ''
-      - run: npm test --if-present
-        if: hashFiles('package.json') != ''
-```
+Do not use `pull_request` or feature-branch `push` triggers for locally reproducible checks by default. Hosted PR/development CI is an exception when it adds evidence local execution cannot reliably provide, such as untrusted external contributions, enforced branch protection, a required operating-system/runtime matrix, secret-backed integration proof, or an independent compliance runner. Document the reason in `AGENTS.md`, `TESTING.md`, or `RELEASE.md`; do not preserve hosted jobs only because they already exist.
 
-Adapt this to project scripts. Do not paste generic CI if the repo already has a better workflow.
+For retained workflows:
+
+- Choose active stable tool/action versions using `runtime-toolchain-version-policy.md`.
+- Use least-privilege `permissions`; never echo secrets or use `pull_request_target` without a reviewed security model.
+- For untrusted PRs, use a read-only token, no secrets, and a disposable GitHub-hosted runner; never execute fork code through `pull_request_target` or a privileged persistent/self-hosted runner.
+- Bound matrices to supported combinations, set timeouts, cache by lockfile, reuse the candidate artifact, and avoid duplicate checkout/build jobs.
+- Use concurrency carefully for prereleases; never cancel an active production publication merely to save minutes.
+- Upload artifacts only when needed for release, proof, rollback, or debugging.
 
 ## CI Troubleshooting
 
@@ -136,6 +105,8 @@ Adapt this to project scripts. Do not paste generic CI if the repo already has a
 ## Release Workflow
 
 - Build from a clean checkout.
+- Run the same canonical full validation entrypoint used locally before packaging; do not reimplement its commands only in workflow YAML.
+- Keep validation/package jobs separate from the owner-gated beta/production publish job, and fail closed when candidate identity or validation is stale.
 - Install production dependencies only where release policy requires them.
 - Exclude tests, dev configs, source maps, local env, node modules, and secrets unless intentionally shipped.
 - Confirm plugin/theme headers, versions, asset manifests, translation files, and readme/changelog.

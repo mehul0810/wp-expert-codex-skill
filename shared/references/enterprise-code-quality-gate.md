@@ -67,6 +67,10 @@ Cover rare and failure scenarios when relevant:
 
 When tests are not feasible locally, provide the strongest available evidence and explicitly name the untested risk.
 
+## Local-First Validation Contract
+
+Every maintained repo should provide one canonical local validation command or a documented small command set. Run the applicable gate before commit, PR, or non-production merge and report exact results. Prefer repository scripts so developers and release automation execute the same test/build/package logic. Do not substitute per-push GitHub Actions for locally reproducible validation, and do not treat missing hosted CI as permission to skip tests. Reserve hosted automation for release/prerelease proof or a documented risk that local execution cannot cover reliably.
+
 ## Merge And Release Expectation
 
 Before opening, recommending, merging, or counting an implementation PR toward release readiness, confirm the changed code meets this contract or record the exact exception and residual risk.
