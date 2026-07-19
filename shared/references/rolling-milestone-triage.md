@@ -13,6 +13,13 @@ Maintain these lanes when product maturity warrants it:
 
 Keep 2-3 upcoming milestone trains triaged when useful. New milestone implementation should usually start once current-train work is complete, deferred, or owner-gated.
 
+After verified production release and post-release reconciliation, create the next dated trains from current release intent:
+
+- Patch `x.y.(z+1)`: only when shipped-feature fixes or release hardening are evidenced; set the exit date 3-4 calendar days out.
+- Minor or major next SemVer: set the exit date 15 calendar days out. Choose minor versus major from roadmap and contract impact; do not manufacture a major train merely to fill the horizon.
+
+The due date is the release exit date. At T-1, implementation must already be merged into `release/<version>`; freeze scope and admit only release-proof fixes. Never start a later train prerelease before the prior train reaches production.
+
 ## Issue Type Routing
 
 - Patch/hotfix train: regressions, security/privacy fixes, support escalations, release blockers, broken packaging, urgent compatibility issues, or production incidents.

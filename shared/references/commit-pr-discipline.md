@@ -66,7 +66,7 @@ PRs must not:
 - Omit screenshot evidence when the PR changes design-visible output unless the proof gap is explicit.
 - Merge themselves unless explicitly authorized.
 
-Use closing keywords only when the PR fully resolves the linked issue and targets a branch where closure behavior is intended.
+Use `Fixes` or `Closes` only when the PR fully resolves the linked issue and targets a branch where closure behavior is intended. Partial work uses `Related`; release-branch merges require manual post-merge issue reconciliation.
 
 ## Non-Production Merge Rule
 

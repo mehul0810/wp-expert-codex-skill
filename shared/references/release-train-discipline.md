@@ -12,6 +12,8 @@ Do not create a next milestone prerelease until the previous milestone has a pro
 
 A stable production release is one transaction. Request approval naming the exact release PR/candidate SHA and production merge, tag, GitHub release, and publish/deploy actions; approval for one SHA does not authorize another. Never publish first and sync `main` later. Beta/prerelease tags stay on the active release train and must not advance `main`.
 
+For beta, require current approval for the exact version and candidate SHA. Prepare and prove the candidate autonomously on `release/<version>`; neither beta tags nor beta releases advance `main`.
+
 1. Live-fetch `origin/main`, `release/<version>`, releases, tags, PRs, and checks; pin the approved PR and candidate SHA.
 2. After approval, merge the approved release PR into `main` before creating the stable tag or GitHub release. Fetch, record the production SHA, prove it reachable from `origin/main`, and verify target-version metadata there.
 3. Build or revalidate the artifact from that SHA when merge, generated output, or metadata can differ.
@@ -54,6 +56,8 @@ Release-ready recommendations and owner approval requests require fresh live ver
 ## Active Release Train Execution
 
 An active train is quiet only when every scoped item is merged, owner-gated, failing, draft, wrong-base, blocked, or deferred. Action clean non-production PRs or state the concrete blocker; repeated executable work escalates to portfolio CTO.
+
+Treat the milestone due date as the release exit date. At T-1, require all implementation on `release/<version>`, freeze scope, and allow only fixes needed to clear release proof. One issue maps to one branch, worktree, and PR; parallel workers need non-overlapping scope. User-visible work requires packaged browser proof plus a fresh, source-blind `$behavior-validator` pass.
 
 ## Milestone Discipline
 
@@ -101,6 +105,13 @@ After beta/production release, deploy, or WordPress.org publish, keep the train 
 - Public version/docs/assets/`Tested up to` signals are current.
 - Installed-package golden workflow passes or its proof gap is accepted.
 - Support/error signals and rollback notes are checked.
+- Every issue is reconciled as `Fixed now`, `Implemented-proof-gap`, `Deferred`, or `Blocked`; close only fully accepted work. Release-branch merges may not auto-close issues, so reconcile them manually.
 - Next train, temporary automation, workers/worktrees, and evidence threads are reconciled or deliberately retained.
 
 If any post-release proof fails, stop normal release closure and route recovery to the product thread or prepare an owner decision brief.
+
+A distinct post-release regression gets a new linked issue; do not reopen a completed issue merely because a different bug appeared. Use `Fixes` or `Closes` only when a PR fully resolves the issue; partial work uses `Related`.
+
+## Production Regression Escalation
+
+A P0 or production regression pauses normal flow and requires an explicit hotfix/release decision. The CTO brief gives a recommendation, options, risk, and decision deadline. Escalate immediately at T-1; otherwise escalate when no owner response arrives within four working hours. Investigation, proof, and reversible candidate preparation may continue, but production merge/tag/release remains owner-approved.
