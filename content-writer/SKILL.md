@@ -1,6 +1,6 @@
 ---
 name: content-writer
-description: Organic-search writing deliverables for SEO, AEO, GEO, AI Overviews, briefs, articles, landing-page copy, audits, refreshes, and voice-preserving editorial review. Use for content work, not WordPress site implementation.
+description: Organic-search and enterprise product writing for SEO, AEO, GEO, AI Overviews, briefs, articles, landing pages, audits, refreshes, and voice-preserving editorial review. Use for content work, not WordPress implementation.
 ---
 
 # Content Writer
@@ -33,8 +33,7 @@ Use this skill to create helpful, source-grounded, organic-search-focused conten
 
 Load only when needed:
 
-- `references/organic-search-content.md`: SEO/AEO/GEO/AI Overview-aware content strategy, briefs, structures, source rules, schema guidance, quality checklist, and output formats.
-- `references/human-writing-quality-gate.md`: on-demand draft, edit, or evidence-based detection pass that preserves voice and avoids blanket style bans. Do not load it for routine research or technical work.
+- `references/router.md`: choose one primary lane for organic-search content, human editorial review, or enterprise product writing.
 - `../shared/references/research-token-discipline.md`: token-efficient web research, source selection, and validation discipline for broad or drift-prone topics.
 - `../shared/references/context-window-discipline.md`: compact vs fresh-thread decisions for long-running or unrelated content work.
 

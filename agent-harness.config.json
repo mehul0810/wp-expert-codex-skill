@@ -78,10 +78,11 @@
     },
     {
       "name": "Content research",
-      "maxWords": 2700,
+      "maxWords": 2900,
       "warningPercent": 85,
       "files": [
         "content-writer/SKILL.md",
+        "content-writer/references/router.md",
         "content-writer/references/organic-search-content.md",
         "shared/references/research-token-discipline.md"
       ]
@@ -92,7 +93,18 @@
       "warningPercent": 85,
       "files": [
         "content-writer/SKILL.md",
+        "content-writer/references/router.md",
         "content-writer/references/human-writing-quality-gate.md"
+      ]
+    },
+    {
+      "name": "Content enterprise",
+      "maxWords": 1900,
+      "warningPercent": 85,
+      "files": [
+        "content-writer/SKILL.md",
+        "content-writer/references/router.md",
+        "content-writer/references/enterprise-product-writing.md"
       ]
     },
     {
