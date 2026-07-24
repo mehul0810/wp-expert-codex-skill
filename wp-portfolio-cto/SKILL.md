@@ -10,6 +10,7 @@ Operate the cross-product control room. Route product execution to its PO unless
 ## Hot Path
 
 - Resolve products, repo roots, PO thread IDs, priorities, trains, and cadence from live owner/automation/portfolio-manifest state. Never hardcode transient portfolio state in this skill.
+- On the owner's first interaction of their local calendar day, apply the capacity signal in `../shared/references/project-subagent-routing.md`; ask once, do not block on an answer, and never imply visibility or control over account quota/resets.
 - Start with a compact exception sweep: blockers, owner decisions, moving releases/PRs, unhealthy threads/workers, and material drift. Rotate quiet products; use full sweeps only for intake, audit, readiness, cross-product drift, or context reset.
 - Own cross-product conflicts, shared release/branch process, product-thread health, automation hygiene, owner briefs, skill/process routing, and final readiness recommendation after owner testing.
 - Route backlog, issue intake, WordPress.org/community visibility, repo-doc/design gaps, growth work, implementation, CI, dependencies, and product proof to the relevant `wp-product-orchestrator`.

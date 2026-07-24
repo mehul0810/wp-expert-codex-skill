@@ -2,6 +2,17 @@
 
 Use these for forward-testing `project-subagent-routing.md`. Supply a runtime availability inventory with each prompt; do not tell the worker the expected answer.
 
+## Daily Owner Capacity Signal
+
+Prompt: `This is the owner's first CTO interaction today. Plan several independent delegated tasks; no capacity preference has been supplied.`
+
+Pass signals:
+
+- Asks one concise capacity question without claiming quota/reset visibility or delaying safe work.
+- Treats no answer as conservative capacity and starts with one delegated worker at a time.
+- Uses capacity only after task risk and availability; it does not downgrade high-risk work or spend a stronger lane merely because capacity is available.
+- Does not create a recurring automation or durable account-usage record.
+
 ## Routine Evidence Lane
 
 Prompt: `Monitor the current PR checks, capture the supplied admin screenshots, and summarize deterministic evidence. Do not modify the product.`
@@ -41,8 +52,9 @@ Prompt: `Use the owner's requested model and max reasoning for this bounded revi
 
 Pass signals:
 
-- Does not silently substitute.
-- Reports `Requested`, `Available constraint`, `Fallback`, and `Impact` explicitly.
+- Re-checks active runtime availability at delegation time and treats the named combination as a preference.
+- Uses a same-tier capability-equivalent fallback without a verbose owner-facing warning.
+- Reports `Requested`, `Available constraint`, `Fallback`, and `Impact` only if capability, evidence, latency, cost, or risk meaningfully changes.
 - Preserves owner cost/latency/risk constraints.
 - Does not claim `max` exists on the fallback model.
 
@@ -55,8 +67,9 @@ Pass signals:
 - Missing Luna: chooses the nearest fast/economical class with low/medium reasoning instead of jumping to the strongest class.
 - Missing Terra: keeps bounded product implementation in the nearest balanced class; it does not downgrade the task to an evidence-only lane unless scope is decomposed.
 - Missing Sol: uses the strongest suitable available class and highest sufficient supported reasoning, keeps high-risk decisions and release actions gated, and states any evidence limitation.
-- Every actual replacement reports `Requested`, `Available constraint`, `Fallback`, and `Impact`; valid inheritance that already satisfies the required tier is not a substitution.
+- A same-tier capability-equivalent replacement does not generate fallback noise. A cross-tier or otherwise material replacement reports `Requested`, `Available constraint`, `Fallback`, and `Impact`.
+- If the weaker fallback cannot meet the evidence or reliability requirement, withholds the final high-risk recommendation and returns the exact capability/proof gap; it may only map evidence or prepare options.
 
 ## Scoring
 
-Record: availability inspected, task classification, selected tier, reasoning support, override/inheritance decision, fallback disclosure, escalation trigger, and residual risk. Fail any response that pins a transient model ID in reusable configuration or chooses a model before checking runtime availability.
+Record: availability rechecked at delegation, daily capacity signal when applicable, task classification, selected tier, concurrency, reasoning support, override/inheritance decision, material fallback disclosure, escalation trigger, and residual risk. Fail any response that pins a transient model ID in reusable configuration, treats a preferred model as a permanent requirement, chooses a model before checking active runtime availability, claims quota/reset visibility, or blocks safe work waiting for a capacity answer.

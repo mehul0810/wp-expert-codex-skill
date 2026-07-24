@@ -14,15 +14,25 @@ Do not delegate small obvious edits, work without acceptance criteria, broad mut
 
 ## Availability-First Routing Contract
 
-Before assigning or overriding a model or reasoning level:
+At each delegation, before assigning or overriding a model or reasoning level:
 
-1. Inspect the model/reasoning combinations exposed by the current host or tool.
-2. Honor an explicit owner-specified combination when it is available and allowed.
+1. Re-check the model/reasoning combinations exposed by the active host or tool; do not rely on an earlier inventory.
+2. Treat an owner-named model/reasoning combination as a preference: use it when available and suitable, not as a permanent runtime requirement.
 3. Classify ambiguity, implementation completeness, risk, reversibility, evidence burden, context size, and latency/cost need.
 4. Select the lowest sufficient available capability tier and supported reasoning level.
 5. Omit overrides when inherited model/reasoning already fits.
 
 Never assume a model ID or that `high`, `xhigh`, `max`, or another reasoning label exists. Capability-check both fields at runtime.
+
+### Owner Capacity Signal
+
+On the owner's first CTO interaction of their local calendar day, ask once: `Should I plan delegated work around conservative capacity, or do you expect to use available capacity today or this week?`
+
+- Do not block work or repeat the question that day. Missing or unclear answers mean conservative capacity: start with one delegated worker at a time.
+- Never claim visibility into, control over, or a guarantee of account quota, reset timing, or future capacity.
+- Use the answer only after task risk and runtime availability are classified: choose the lowest sufficient tier, reasoning, concurrency, and duration. Capacity never lowers a risk tier or expands authority.
+- Reserve optional higher-cost or long-running parallel work for stated capacity; high-risk work still receives the strongest suitable lane even under conservative capacity.
+- Keep the signal in the current CTO control context. Do not create a recurring automation or durable account-usage record unless the owner explicitly requests it.
 
 ### Capability Tiers
 
@@ -50,7 +60,7 @@ Escalate only after concrete ambiguity, failed proof, inadequate implementation,
 
 Classify repeated retries or weak evidence caused by the assigned lane as `wrong model/reasoning allocation`, then reassess availability and tier.
 
-If the requested/configured combination is unavailable, do not silently substitute. Preserve the task-required risk tier first, then choose the nearest available class in that tier and its highest sufficient supported reasoning. Never downgrade a high-risk decision to preserve a reasoning label. Cross tiers only when no same-tier class can produce the evidence; report the evidence or cost impact. A fast/economical request should use the nearest available fast/economical class, not automatically the strongest model. Report:
+If the preferred/configured combination is unavailable, reassess it against the live inventory. Preserve the task-required risk tier first, then choose the nearest available class in that tier and its highest sufficient supported reasoning. Never downgrade a high-risk decision to preserve a model name or reasoning label. Cross tiers only when no same-tier class can produce the evidence. A fast/economical preference should use the nearest available fast/economical class, not automatically the strongest model. Keep capability-equivalent substitutions quiet; report only a meaningful capability, evidence, latency, cost, or risk change:
 
 ```text
 Requested: <model/reasoning>
@@ -58,6 +68,8 @@ Available constraint: <missing model or unsupported reasoning>
 Fallback: <selected capability tier and supported reasoning>
 Impact: <none or evidence/risk difference>
 ```
+
+If the strongest available fallback cannot meet the evidence or reliability required for a high-risk final recommendation, fail closed: return the capability/proof gap and withhold that recommendation. A weaker fallback may map evidence or prepare options, but it must not present the gated judgment as complete.
 
 ## Planning Before Allocation
 
@@ -126,7 +138,7 @@ developer_instructions = "Review changed files only. Findings first with severit
 
 ## Project Configuration
 
-Keep concurrency conservative:
+Keep concurrency conservative and reduce it further when the capacity signal is missing or conservative:
 
 ```toml
 [agents]
